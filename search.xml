@@ -1,39 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>剑指 Offer：03.数组中的重复元素</title>
-    <url>/2020/11/08/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A03-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<h1 id="剑指-Offer：03-数组中的重复元素"><a href="#剑指-Offer：03-数组中的重复元素" class="headerlink" title="剑指 Offer：03:数组中的重复元素"></a>剑指 Offer：03:数组中的重复元素</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</p>
-<h3 id="Leetcoed"><a href="#Leetcoed" class="headerlink" title="Leetcoed"></a><a href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof">Leetcoed</a></h3><hr>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="对原数组进行改变"><a href="#对原数组进行改变" class="headerlink" title="对原数组进行改变"></a>对原数组进行改变</h3><ul>
-<li>实现复杂度为o（n），空间复杂度为o（1）</li>
-</ul>
-<ul>
-<li>此处可对所有的重复数字进行查找</li>
-</ul>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] answer = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (nums[i] != i)&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = nums[i];</span><br><span class="line">                <span class="keyword">if</span>(nums[temp]==nums[i])&#123;</span><br><span class="line">                    answer[index] = nums[i];</span><br><span class="line">                    index++;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                nums[i] = nums[temp];</span><br><span class="line">                nums[temp] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        answer[<span class="number">0</span>] = index-<span class="number">1</span>;<span class="comment">//用answer的第一个空间存储重复元素个数，可以实现多元素查找</span></span><br><span class="line">        <span class="keyword">return</span> answer[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="不改变原数组"><a href="#不改变原数组" class="headerlink" title="不改变原数组"></a>不改变原数组</h3><ul>
-<li><p>用辅助数组进行，牺牲空间复杂度为o（n），时间复杂度仍为o（n）</p>
-</li>
-<li><p>用二分法可以将空间复杂度变为o（1），但时间复杂度为o（nlogn）<strong>（仅可查找一个重复元素，同时该方法要求数组元素的数量比所有数字的数量更大）</strong></p>
-</li>
-<li><p>使用HashSet同样可以实现时间复杂度为o（n）的解法，同时不用改变原数组</p>
-</li>
-</ul>
-<p><em>HashSet是通过HashMap实现的一个不包含重复元素的集合，且没有key-value的对应关系</em></p>
-<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;Integer&gt; dic = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!dic.add(nums[i]))&#123;</span><br><span class="line">                <span class="keyword">return</span> nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>剑指offer</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>重复</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode：21.合并两个有序链表</title>
     <url>/2020/11/08/Leetcode%EF%BC%9A21.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/</url>
     <content><![CDATA[<h1 id="21-合并两个有序链表"><a href="#21-合并两个有序链表" class="headerlink" title="21.合并两个有序链表"></a>21.合并两个有序链表</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
@@ -55,34 +22,8 @@
         <category>Leetcode</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>链表</tag>
         <tag>合并</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode：26.删除排序数组中的重复项</title>
-    <url>/2020/11/08/leetcode%EF%BC%9A26.%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
-    <content><![CDATA[<h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26.删除排序数组中的重复项"></a>26.删除排序数组中的重复项</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
-<h3 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">Leetcode</a></h3><hr>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><ul>
-<li>快慢两个指针，前一个用来计数，后一个用来遍历数组，在找到不同数字后进行交换</li>
-<li>时间复杂度o（n），空间复杂度o（1）</li>
-</ul>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];<span class="comment">//存在此时i==j的情况，可优化</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>重复</tag>
         <tag>算法</tag>
       </tags>
   </entry>
@@ -107,6 +48,65 @@
       </tags>
   </entry>
   <entry>
+    <title>leetcode：26.删除排序数组中的重复项</title>
+    <url>/2020/11/08/leetcode%EF%BC%9A26.%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
+    <content><![CDATA[<h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26.删除排序数组中的重复项"></a>26.删除排序数组中的重复项</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<h3 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">Leetcode</a></h3><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><ul>
+<li>快慢两个指针，前一个用来计数，后一个用来遍历数组，在找到不同数字后进行交换</li>
+<li>时间复杂度o（n），空间复杂度o（1）</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];<span class="comment">//存在此时i==j的情况，可优化</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数组</tag>
+        <tag>重复</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer：03.数组中的重复元素</title>
+    <url>/2020/11/08/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A03-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：03-数组中的重复元素"><a href="#剑指-Offer：03-数组中的重复元素" class="headerlink" title="剑指 Offer：03:数组中的重复元素"></a>剑指 Offer：03:数组中的重复元素</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</p>
+<h3 id="Leetcoed"><a href="#Leetcoed" class="headerlink" title="Leetcoed"></a><a href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof">Leetcoed</a></h3><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="对原数组进行改变"><a href="#对原数组进行改变" class="headerlink" title="对原数组进行改变"></a>对原数组进行改变</h3><ul>
+<li>实现复杂度为o（n），空间复杂度为o（1）</li>
+</ul>
+<ul>
+<li>此处可对所有的重复数字进行查找</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] answer = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (nums[i] != i)&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = nums[i];</span><br><span class="line">                <span class="keyword">if</span>(nums[temp]==nums[i])&#123;</span><br><span class="line">                    answer[index] = nums[i];</span><br><span class="line">                    index++;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                nums[i] = nums[temp];</span><br><span class="line">                nums[temp] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        answer[<span class="number">0</span>] = index-<span class="number">1</span>;<span class="comment">//用answer的第一个空间存储重复元素个数，可以实现多元素查找</span></span><br><span class="line">        <span class="keyword">return</span> answer[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="不改变原数组"><a href="#不改变原数组" class="headerlink" title="不改变原数组"></a>不改变原数组</h3><ul>
+<li><p>用辅助数组进行，牺牲空间复杂度为o（n），时间复杂度仍为o（n）</p>
+</li>
+<li><p>用二分法可以将空间复杂度变为o（1），但时间复杂度为o（nlogn）<strong>（仅可查找一个重复元素，同时该方法要求数组元素的数量比所有数字的数量更大）</strong></p>
+</li>
+<li><p>使用HashSet同样可以实现时间复杂度为o（n）的解法，同时不用改变原数组</p>
+</li>
+</ul>
+<p><em>HashSet是通过HashMap实现的一个不包含重复元素的集合，且没有key-value的对应关系</em></p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;Integer&gt; dic = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!dic.add(nums[i]))&#123;</span><br><span class="line">                <span class="keyword">return</span> nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数组</tag>
+        <tag>重复</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>剑指 Offer：04.二维数组中的查找</title>
     <url>/2020/11/09/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A04.%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
     <content><![CDATA[<h1 id="剑指-Offer：04-二维数组中的查找"><a href="#剑指-Offer：04-二维数组中的查找" class="headerlink" title="剑指 Offer：04.二维数组中的查找"></a>剑指 Offer：04.二维数组中的查找</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
@@ -124,8 +124,8 @@
         <category>剑指 Offer</category>
       </categories>
       <tags>
-        <tag>数组</tag>
         <tag>算法</tag>
+        <tag>数组</tag>
         <tag>线性查找</tag>
       </tags>
   </entry>
@@ -161,7 +161,7 @@
 <h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>可以新建一个类似的函数，改变传入的参数，直接使用原数组的空间，而不是子树遍历的拷贝</p>
 ]]></content>
       <categories>
-        <category>剑指offer</category>
+        <category>剑指 Offer</category>
       </categories>
       <tags>
         <tag>算法</tag>
@@ -181,7 +181,7 @@
 
 ]]></content>
       <categories>
-        <category>剑指offer</category>
+        <category>剑指 Offer</category>
       </categories>
       <tags>
         <tag>算法</tag>
