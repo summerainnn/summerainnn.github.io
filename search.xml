@@ -1,82 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Leetcode：21.合并两个有序链表</title>
-    <url>/2020/11/08/Leetcode%EF%BC%9A21.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/</url>
-    <content><![CDATA[<h1 id="21-合并两个有序链表"><a href="#21-合并两个有序链表" class="headerlink" title="21.合并两个有序链表"></a>21.合并两个有序链表</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
-<h3 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/">Leetcode</a></h3><hr>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h3><ul>
-<li>时间复杂度为o（m+n）</li>
-<li>空间复杂度o（m+n）这是递归调用的深度，即最多调用m+n次</li>
-</ul>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1 == <span class="keyword">null</span>) <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span>(l2 == <span class="keyword">null</span>) <span class="keyword">return</span> l1;</span><br><span class="line">        <span class="keyword">if</span>(l1.val &lt; l2.val) &#123;</span><br><span class="line">            l1.next = mergeTwoLists(l1.next,l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            l2.next = mergeTwoLists(l1,l2.next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h3><ul>
-<li>时间复杂度o（m+n）</li>
-<li>空间复杂度o（1），仅需要常数个node作为临时储存</li>
-</ul>
-<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        ListNode answer = <span class="keyword">new</span> ListNode();</span><br><span class="line">        ListNode temp = answer;</span><br><span class="line">        <span class="keyword">while</span>(l1 != <span class="keyword">null</span> &amp;&amp; l2 != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(l1.val &lt; l2.val)&#123;</span><br><span class="line">                temp.next = l1;</span><br><span class="line">                l1 = l1.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                temp.next = l2;</span><br><span class="line">                l2 = l2.next;</span><br><span class="line">            &#125;</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        temp.next = l1==<span class="keyword">null</span>? l2:l1;</span><br><span class="line">        <span class="keyword">return</span> answer.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>链表</tag>
-        <tag>合并</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode：26.删除排序数组中的重复项</title>
-    <url>/2020/11/08/leetcode%EF%BC%9A26.%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
-    <content><![CDATA[<h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26.删除排序数组中的重复项"></a>26.删除排序数组中的重复项</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
-<h3 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">Leetcode</a></h3><hr>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><ul>
-<li>快慢两个指针，前一个用来计数，后一个用来遍历数组，在找到不同数字后进行交换</li>
-<li>时间复杂度o（n），空间复杂度o（1）</li>
-</ul>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];<span class="comment">//存在此时i==j的情况，可优化</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数组</tag>
-        <tag>重复</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python实现爬取豆瓣电影评论</title>
-    <url>/2020/11/10/python%E5%AE%9E%E7%8E%B0%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E8%AE%BA/</url>
-    <content><![CDATA[<h1 id="python实现爬取豆瓣电影评论"><a href="#python实现爬取豆瓣电影评论" class="headerlink" title="python实现爬取豆瓣电影评论"></a>python实现爬取豆瓣电影评论</h1><h2 id="github"><a href="#github" class="headerlink" title="github"></a><a href="https://github.com/summerainnn/dbSpider">github</a></h2><h2 id="使用的库"><a href="#使用的库" class="headerlink" title="使用的库"></a>使用的库</h2><p>以前在写爬虫时使用的都是reques，这次发现了更好用的request_html，不需要再用bs4来解析网页了</p>
-<blockquote>
-<p>request_html</p>
-</blockquote>
-<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>首先建立一个会话（session），即让Python作为一个客户端，和远端服务器交谈</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">session = HTMLSession()</span><br></pre></td></tr></table></figure>
-
-<p>然后就可以用session来进行get的操作，这里的URL可以自己在浏览器中寻找，找到你需要的数据的具体的get的网址，该网址并不一定是网页网址</p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://pypi.org/project/requests-html/">官方文档</a></h3><h3 id="如何用Python爬数据？（一）网页抓取"><a href="#如何用Python爬数据？（一）网页抓取" class="headerlink" title="如何用Python爬数据？（一）网页抓取"></a><a href="https://www.jianshu.com/p/ba02079ecd2f">如何用Python爬数据？（一）网页抓取</a></h3><h3 id="requests-html"><a href="#requests-html" class="headerlink" title="requests-html"></a><a href="https://www.jianshu.com/p/380974ba9540">requests-html</a></h3>]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>应用</tag>
-        <tag>爬虫</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指offer：03.数组中的重复元素</title>
-    <url>/2020/11/08/%E5%89%91%E6%8C%87offer%EF%BC%9A03-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<h1 id="03-数组中的重复元素"><a href="#03-数组中的重复元素" class="headerlink" title="03:数组中的重复元素"></a>03:数组中的重复元素</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</p>
+    <title>剑指 Offer：03.数组中的重复元素</title>
+    <url>/2020/11/08/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A03-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：03-数组中的重复元素"><a href="#剑指-Offer：03-数组中的重复元素" class="headerlink" title="剑指 Offer：03:数组中的重复元素"></a>剑指 Offer：03:数组中的重复元素</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</p>
 <h3 id="Leetcoed"><a href="#Leetcoed" class="headerlink" title="Leetcoed"></a><a href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof">Leetcoed</a></h3><hr>
 <h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="对原数组进行改变"><a href="#对原数组进行改变" class="headerlink" title="对原数组进行改变"></a>对原数组进行改变</h3><ul>
 <li>实现复杂度为o（n），空间复杂度为o（1）</li>
@@ -101,15 +28,88 @@
         <category>剑指offer</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数组</tag>
         <tag>重复</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
-    <title>剑指offer：04.二维数组中的查找</title>
-    <url>/2020/11/09/%E5%89%91%E6%8C%87offer%EF%BC%9A04.%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1 id="04-二维数组中的查找"><a href="#04-二维数组中的查找" class="headerlink" title="04.二维数组中的查找"></a>04.二维数组中的查找</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
+    <title>Leetcode：21.合并两个有序链表</title>
+    <url>/2020/11/08/Leetcode%EF%BC%9A21.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/</url>
+    <content><![CDATA[<h1 id="21-合并两个有序链表"><a href="#21-合并两个有序链表" class="headerlink" title="21.合并两个有序链表"></a>21.合并两个有序链表</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
+<h3 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/">Leetcode</a></h3><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h3><ul>
+<li>时间复杂度为o（m+n）</li>
+<li>空间复杂度o（m+n）这是递归调用的深度，即最多调用m+n次</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1 == <span class="keyword">null</span>) <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span>(l2 == <span class="keyword">null</span>) <span class="keyword">return</span> l1;</span><br><span class="line">        <span class="keyword">if</span>(l1.val &lt; l2.val) &#123;</span><br><span class="line">            l1.next = mergeTwoLists(l1.next,l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            l2.next = mergeTwoLists(l1,l2.next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h3><ul>
+<li>时间复杂度o（m+n）</li>
+<li>空间复杂度o（1），仅需要常数个node作为临时储存</li>
+</ul>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        ListNode answer = <span class="keyword">new</span> ListNode();</span><br><span class="line">        ListNode temp = answer;</span><br><span class="line">        <span class="keyword">while</span>(l1 != <span class="keyword">null</span> &amp;&amp; l2 != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(l1.val &lt; l2.val)&#123;</span><br><span class="line">                temp.next = l1;</span><br><span class="line">                l1 = l1.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                temp.next = l2;</span><br><span class="line">                l2 = l2.next;</span><br><span class="line">            &#125;</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        temp.next = l1==<span class="keyword">null</span>? l2:l1;</span><br><span class="line">        <span class="keyword">return</span> answer.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>链表</tag>
+        <tag>合并</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode：26.删除排序数组中的重复项</title>
+    <url>/2020/11/08/leetcode%EF%BC%9A26.%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
+    <content><![CDATA[<h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26.删除排序数组中的重复项"></a>26.删除排序数组中的重复项</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<h3 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">Leetcode</a></h3><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><ul>
+<li>快慢两个指针，前一个用来计数，后一个用来遍历数组，在找到不同数字后进行交换</li>
+<li>时间复杂度o（n），空间复杂度o（1）</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];<span class="comment">//存在此时i==j的情况，可优化</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>重复</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python实现爬取豆瓣电影评论</title>
+    <url>/2020/11/10/python%E5%AE%9E%E7%8E%B0%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E8%AE%BA/</url>
+    <content><![CDATA[<h1 id="python实现爬取豆瓣电影评论"><a href="#python实现爬取豆瓣电影评论" class="headerlink" title="python实现爬取豆瓣电影评论"></a>python实现爬取豆瓣电影评论</h1><h2 id="github"><a href="#github" class="headerlink" title="github"></a><a href="https://github.com/summerainnn/dbSpider">github</a></h2><h2 id="使用的库"><a href="#使用的库" class="headerlink" title="使用的库"></a>使用的库</h2><p>以前在写爬虫时使用的都是reques，这次发现了更好用的request_html，不需要再用bs4来解析网页了</p>
+<blockquote>
+<p>request_html</p>
+</blockquote>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>首先建立一个会话（session），即让Python作为一个客户端，和远端服务器交谈</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">session = HTMLSession()</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以用session来进行get的操作，这里的URL可以自己在浏览器中寻找，找到你需要的数据的具体的get的网址，该网址并不一定是网页网址</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://pypi.org/project/requests-html/">官方文档</a></h3><h3 id="如何用Python爬数据？（一）网页抓取"><a href="#如何用Python爬数据？（一）网页抓取" class="headerlink" title="如何用Python爬数据？（一）网页抓取"></a><a href="https://www.jianshu.com/p/ba02079ecd2f">如何用Python爬数据？（一）网页抓取</a></h3><h3 id="requests-html"><a href="#requests-html" class="headerlink" title="requests-html"></a><a href="https://www.jianshu.com/p/380974ba9540">requests-html</a></h3>]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>应用</tag>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer：04.二维数组中的查找</title>
+    <url>/2020/11/09/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A04.%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：04-二维数组中的查找"><a href="#剑指-Offer：04-二维数组中的查找" class="headerlink" title="剑指 Offer：04.二维数组中的查找"></a>剑指 Offer：04.二维数组中的查找</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
 <h3 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof">Leetcode</a></h3><hr>
 <h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
 <li>根据该数组的特点，可从数组的右上角或者左下角开始，进行求解</li>
@@ -121,18 +121,18 @@
 
 ]]></content>
       <categories>
-        <category>剑指offer</category>
+        <category>剑指 Offer</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>数组</tag>
+        <tag>算法</tag>
         <tag>线性查找</tag>
       </tags>
   </entry>
   <entry>
-    <title>剑指offer：07.重建二叉树</title>
-    <url>/2020/11/14/%E5%89%91%E6%8C%87offer%EF%BC%9A07.%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
-    <content><![CDATA[<h1 id="剑指offer：07-重建二叉树"><a href="#剑指offer：07-重建二叉树" class="headerlink" title="剑指offer：07.重建二叉树"></a>剑指offer：07.重建二叉树</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。</p>
+    <title>剑指 Offer：07.重建二叉树</title>
+    <url>/2020/11/14/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A07.%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：07-重建二叉树"><a href="#剑指-Offer：07-重建二叉树" class="headerlink" title="剑指 Offer：07.重建二叉树"></a>剑指 Offer：07.重建二叉树</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。</p>
 <p>例如，给出：</p>
 <blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;前序遍历 preorder &#x3D; [3,9,20,15,7]</span><br><span class="line">&gt;中序遍历 inorder &#x3D; [9,3,15,20,7]</span><br></pre></td></tr></table></figure>
@@ -166,6 +166,27 @@
       <tags>
         <tag>算法</tag>
         <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer：09.用两个栈实现队列</title>
+    <url>/2020/11/14/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A09.%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：09-用两个栈实现队列"><a href="#剑指-Offer：09-用两个栈实现队列" class="headerlink" title="剑指 Offer：09.用两个栈实现队列"></a>剑指 Offer：09.用两个栈实现队列</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>用两个栈实现一个队列。</p>
+<h3 id="leetcode"><a href="#leetcode" class="headerlink" title="leetcode"></a><a href="https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/">leetcode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>队列是先进后出，而栈是先进先出</li>
+<li>用两个栈，一个用来入栈，一个用来出栈</li>
+<li>对于一系列存在一个栈内的数据出栈再入栈，那么它们在栈内储存的顺序就会反过来，即可实现队列</li>
+</ul>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CQueue</span> </span>&#123;</span><br><span class="line">    Stack&lt;Integer&gt; s1;</span><br><span class="line">    Stack&lt;Integer&gt; s2;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        s1 = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">        s2 = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">appendTail</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        s1.push(value);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">deleteHead</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s2.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">while</span>(!s1.isEmpty())&#123;</span><br><span class="line">                s2.push(s1.pop());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s2.empty()&amp;&amp;s1.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s2.pop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>栈</tag>
+        <tag>队列</tag>
       </tags>
   </entry>
 </search>
