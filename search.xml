@@ -28,6 +28,26 @@
       </tags>
   </entry>
   <entry>
+    <title>python实现爬取豆瓣电影评论</title>
+    <url>/2020/11/10/python%E5%AE%9E%E7%8E%B0%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E8%AE%BA/</url>
+    <content><![CDATA[<h1 id="python实现爬取豆瓣电影评论"><a href="#python实现爬取豆瓣电影评论" class="headerlink" title="python实现爬取豆瓣电影评论"></a>python实现爬取豆瓣电影评论</h1><h2 id="github"><a href="#github" class="headerlink" title="github"></a><a href="https://github.com/summerainnn/dbSpider">github</a></h2><h2 id="使用的库"><a href="#使用的库" class="headerlink" title="使用的库"></a>使用的库</h2><p>以前在写爬虫时使用的都是reques，这次发现了更好用的request_html，不需要再用bs4来解析网页了</p>
+<blockquote>
+<p>request_html</p>
+</blockquote>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>首先建立一个会话（session），即让Python作为一个客户端，和远端服务器交谈</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">session = HTMLSession()</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以用session来进行get的操作，这里的URL可以自己在浏览器中寻找，找到你需要的数据的具体的get的网址，该网址并不一定是网页网址</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://pypi.org/project/requests-html/">官方文档</a></h3><h3 id="如何用Python爬数据？（一）网页抓取"><a href="#如何用Python爬数据？（一）网页抓取" class="headerlink" title="如何用Python爬数据？（一）网页抓取"></a><a href="https://www.jianshu.com/p/ba02079ecd2f">如何用Python爬数据？（一）网页抓取</a></h3><h3 id="requests-html"><a href="#requests-html" class="headerlink" title="requests-html"></a><a href="https://www.jianshu.com/p/380974ba9540">requests-html</a></h3>]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>应用</tag>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode：26.删除排序数组中的重复项</title>
     <url>/2020/11/08/leetcode%EF%BC%9A26.%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
     <content><![CDATA[<h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26.删除排序数组中的重复项"></a>26.删除排序数组中的重复项</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
@@ -51,6 +71,29 @@
         <tag>算法</tag>
         <tag>数组</tag>
         <tag>重复</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指offer：04.二维数组中的查找</title>
+    <url>/2020/11/09/%E5%89%91%E6%8C%87offer%EF%BC%9A04.%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1 id="04-二维数组中的查找"><a href="#04-二维数组中的查找" class="headerlink" title="04.二维数组中的查找"></a>04.二维数组中的查找</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
+<h3 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof">Leetcode</a></h3><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>根据该数组的特点，可从数组的右上角或者左下角开始，进行求解</li>
+<li>专注于当前点，而不是下一个点，因为根据当前点即可判断出下一个点的位置，这也是初始点选择的好处所在</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">findNumberIn2DArray</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix==<span class="keyword">null</span>||matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>].length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> columns = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> row = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> column = columns-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (row&lt;rows&amp;&amp;column&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> num = matrix[row][column];</span><br><span class="line">            <span class="keyword">if</span>(num==target)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(num&lt;target)&#123;</span><br><span class="line">                row++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                column--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数组</tag>
+        <tag>线性查找</tag>
       </tags>
   </entry>
   <entry>
@@ -84,26 +127,6 @@
         <tag>算法</tag>
         <tag>数组</tag>
         <tag>重复</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python实现爬取豆瓣电影评论</title>
-    <url>/2020/11/10/python%E5%AE%9E%E7%8E%B0%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E8%AE%BA/</url>
-    <content><![CDATA[<h1 id="python实现爬取豆瓣电影评论"><a href="#python实现爬取豆瓣电影评论" class="headerlink" title="python实现爬取豆瓣电影评论"></a>python实现爬取豆瓣电影评论</h1><h2 id="github"><a href="#github" class="headerlink" title="github"></a><a href="https://github.com/summerainnn/dbSpider">github</a></h2><h2 id="使用的库"><a href="#使用的库" class="headerlink" title="使用的库"></a>使用的库</h2><p>以前在写爬虫时使用的都是reques，这次发现了更好用的request_html，不需要再用bs4来解析网页了</p>
-<blockquote>
-<p>request_html</p>
-</blockquote>
-<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>首先建立一个会话（session），即让Python作为一个客户端，和远端服务器交谈</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">session = HTMLSession()</span><br></pre></td></tr></table></figure>
-
-<p>然后就可以用session来进行get的操作，这里的URL可以自己在浏览器中寻找，找到你需要的数据的具体的get的网址，该网址并不一定是网页网址</p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://pypi.org/project/requests-html/">官方文档</a></h3><h3 id="如何用Python爬数据？（一）网页抓取"><a href="#如何用Python爬数据？（一）网页抓取" class="headerlink" title="如何用Python爬数据？（一）网页抓取"></a><a href="https://www.jianshu.com/p/ba02079ecd2f">如何用Python爬数据？（一）网页抓取</a></h3><h3 id="requests-html"><a href="#requests-html" class="headerlink" title="requests-html"></a><a href="https://www.jianshu.com/p/380974ba9540">requests-html</a></h3>]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>应用</tag>
-        <tag>爬虫</tag>
       </tags>
   </entry>
   <entry>
@@ -143,29 +166,6 @@
       <tags>
         <tag>算法</tag>
         <tag>二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指offer：04.二维数组中的查找</title>
-    <url>/2020/11/09/%E5%89%91%E6%8C%87offer%EF%BC%9A04.%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1 id="04-二维数组中的查找"><a href="#04-二维数组中的查找" class="headerlink" title="04.二维数组中的查找"></a>04.二维数组中的查找</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
-<h3 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof">Leetcode</a></h3><hr>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>根据该数组的特点，可从数组的右上角或者左下角开始，进行求解</li>
-<li>专注于当前点，而不是下一个点，因为根据当前点即可判断出下一个点的位置，这也是初始点选择的好处所在</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">findNumberIn2DArray</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix==<span class="keyword">null</span>||matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>].length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> columns = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> row = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> column = columns-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (row&lt;rows&amp;&amp;column&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> num = matrix[row][column];</span><br><span class="line">            <span class="keyword">if</span>(num==target)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(num&lt;target)&#123;</span><br><span class="line">                row++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                column--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>剑指offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数组</tag>
-        <tag>线性查找</tag>
       </tags>
   </entry>
 </search>
