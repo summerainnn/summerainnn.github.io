@@ -189,4 +189,50 @@
         <tag>队列</tag>
       </tags>
   </entry>
+  <entry>
+    <title>人工智能</title>
+    <url>/2020/11/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</url>
+    <content><![CDATA[<h1 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h1><h2 id="什么是人工智能？"><a href="#什么是人工智能？" class="headerlink" title="什么是人工智能？"></a>什么是人工智能？</h2><ul>
+<li>类人类思维方法：认知模型方法</li>
+<li>类人行为方法：图灵测试</li>
+<li>理性思维方法：思维法则</li>
+<li>理性行为方法：理性智能体</li>
+</ul>
+<p>一般解释：用人工的方法在机器（计算机）上实现的智能</p>
+<h2 id="知识表示"><a href="#知识表示" class="headerlink" title="知识表示"></a>知识表示</h2><h3 id="产生式表达法"><a href="#产生式表达法" class="headerlink" title="产生式表达法"></a>产生式表达法</h3><h4 id="事实的表示"><a href="#事实的表示" class="headerlink" title="事实的表示"></a>事实的表示</h4><h5 id="确定性知识表示"><a href="#确定性知识表示" class="headerlink" title="确定性知识表示"></a>确定性知识表示</h5><ul>
+<li>（对象，属性，值） 例如：（雪，颜色，白）</li>
+<li>（关系，对象1，对象2） 例如（热爱，汪峰，祖国）</li>
+</ul>
+<h5 id="非确定性知识："><a href="#非确定性知识：" class="headerlink" title="非确定性知识："></a>非确定性知识：</h5><ul>
+<li>（对象，属性，值，可信度因子）</li>
+</ul>
+<h4 id="规则的表示"><a href="#规则的表示" class="headerlink" title="规则的表示"></a>规则的表示</h4><p>P -&gt; Q     IF P THEN Q</p>
+<h3 id="语义网络表示法"><a href="#语义网络表示法" class="headerlink" title="语义网络表示法"></a>语义网络表示法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[节点1]--&gt;|语义关系|B[语义关系] </span><br></pre></td></tr></table></figure>
+
+<h4 id="基本语义关系"><a href="#基本语义关系" class="headerlink" title="基本语义关系"></a>基本语义关系</h4><ul>
+<li>实例关系：ISA（是一个）</li>
+<li>分类关系：AKO（是一种）</li>
+<li>成员关系：A-Member-of（是一员）</li>
+<li>聚类关系：Part-of（是一部分）</li>
+<li>属性关系：<ul>
+<li>Have（有） </li>
+<li>Can（能，会）</li>
+</ul>
+</li>
+<li>时间关系：<ul>
+<li>Before（在前）</li>
+<li>After（在后）</li>
+</ul>
+</li>
+<li>位置关系：Locate-on（在···上面）</li>
+<li>相近关系：Similar-to（相似）Near-to（接近）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>复习总结</category>
+      </categories>
+      <tags>
+        <tag>人工智能</tag>
+      </tags>
+  </entry>
 </search>
