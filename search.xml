@@ -91,7 +91,7 @@
 <li>（对象，属性，值，可信度因子）</li>
 </ul>
 <h4 id="规则的表示"><a href="#规则的表示" class="headerlink" title="规则的表示"></a>规则的表示</h4><p>P -&gt; Q     IF P THEN Q</p>
-<h3 id="语义网络表示法"><a href="#语义网络表示法" class="headerlink" title="语义网络表示法"></a>语义网络表示法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[节点1]--&gt;|语义关系|B[语义关系] </span><br></pre></td></tr></table></figure>
+<h3 id="语义网络表示法"><a href="#语义网络表示法" class="headerlink" title="语义网络表示法"></a>语义网络表示法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[节点1]--&gt;|语义关系|B[节点2] </span><br></pre></td></tr></table></figure>
 
 <h4 id="基本语义关系"><a href="#基本语义关系" class="headerlink" title="基本语义关系"></a>基本语义关系</h4><ul>
 <li>实例关系：ISA（是一个）</li>
