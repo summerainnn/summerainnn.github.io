@@ -28,52 +28,6 @@
       </tags>
   </entry>
   <entry>
-    <title>leetcode：26.删除排序数组中的重复项</title>
-    <url>/2020/11/08/leetcode%EF%BC%9A26.%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
-    <content><![CDATA[<h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26.删除排序数组中的重复项"></a>26.删除排序数组中的重复项</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">LeetCode</a></h3><hr>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><ul>
-<li>快慢两个指针，前一个用来计数，后一个用来遍历数组，在找到不同数字后进行交换</li>
-<li>时间复杂度o（n），空间复杂度o（1）</li>
-</ul>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];<span class="comment">//存在此时i==j的情况，可优化</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数组</tag>
-        <tag>重复</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python实现爬取豆瓣电影评论</title>
-    <url>/2020/11/10/python%E5%AE%9E%E7%8E%B0%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E8%AE%BA/</url>
-    <content><![CDATA[<h1 id="python实现爬取豆瓣电影评论"><a href="#python实现爬取豆瓣电影评论" class="headerlink" title="python实现爬取豆瓣电影评论"></a>python实现爬取豆瓣电影评论</h1><h2 id="github"><a href="#github" class="headerlink" title="github"></a><a href="https://github.com/summerainnn/dbSpider">github</a></h2><h2 id="使用的库"><a href="#使用的库" class="headerlink" title="使用的库"></a>使用的库</h2><p>以前在写爬虫时使用的都是reques，这次发现了更好用的request_html，不需要再用bs4来解析网页了</p>
-<blockquote>
-<p>request_html</p>
-</blockquote>
-<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>首先建立一个会话（session），即让Python作为一个客户端，和远端服务器交谈</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">session = HTMLSession()</span><br></pre></td></tr></table></figure>
-
-<p>然后就可以用session来进行get的操作，这里的URL可以自己在浏览器中寻找，找到你需要的数据的具体的get的网址，该网址并不一定是网页网址</p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://pypi.org/project/requests-html/">官方文档</a></h3><h3 id="如何用Python爬数据？（一）网页抓取"><a href="#如何用Python爬数据？（一）网页抓取" class="headerlink" title="如何用Python爬数据？（一）网页抓取"></a><a href="https://www.jianshu.com/p/ba02079ecd2f">如何用Python爬数据？（一）网页抓取</a></h3><h3 id="requests-html"><a href="#requests-html" class="headerlink" title="requests-html"></a><a href="https://www.jianshu.com/p/380974ba9540">requests-html</a></h3>]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>应用</tag>
-        <tag>爬虫</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>人工智能</title>
     <url>/2020/11/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</url>
     <content><![CDATA[<h1 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h1><h2 id="什么是人工智能？"><a href="#什么是人工智能？" class="headerlink" title="什么是人工智能？"></a>什么是人工智能？</h2><ul>
@@ -123,6 +77,52 @@
       </categories>
       <tags>
         <tag>人工智能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode：26.删除排序数组中的重复项</title>
+    <url>/2020/11/08/leetcode%EF%BC%9A26.%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
+    <content><![CDATA[<h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26.删除排序数组中的重复项"></a>26.删除排序数组中的重复项</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">LeetCode</a></h3><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><ul>
+<li>快慢两个指针，前一个用来计数，后一个用来遍历数组，在找到不同数字后进行交换</li>
+<li>时间复杂度o（n），空间复杂度o（1）</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];<span class="comment">//存在此时i==j的情况，可优化</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数组</tag>
+        <tag>重复</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python实现爬取豆瓣电影评论</title>
+    <url>/2020/11/10/python%E5%AE%9E%E7%8E%B0%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E8%AE%BA/</url>
+    <content><![CDATA[<h1 id="python实现爬取豆瓣电影评论"><a href="#python实现爬取豆瓣电影评论" class="headerlink" title="python实现爬取豆瓣电影评论"></a>python实现爬取豆瓣电影评论</h1><h2 id="github"><a href="#github" class="headerlink" title="github"></a><a href="https://github.com/summerainnn/dbSpider">github</a></h2><h2 id="使用的库"><a href="#使用的库" class="headerlink" title="使用的库"></a>使用的库</h2><p>以前在写爬虫时使用的都是reques，这次发现了更好用的request_html，不需要再用bs4来解析网页了</p>
+<blockquote>
+<p>request_html</p>
+</blockquote>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>首先建立一个会话（session），即让Python作为一个客户端，和远端服务器交谈</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">session = HTMLSession()</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以用session来进行get的操作，这里的URL可以自己在浏览器中寻找，找到你需要的数据的具体的get的网址，该网址并不一定是网页网址</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://pypi.org/project/requests-html/">官方文档</a></h3><h3 id="如何用Python爬数据？（一）网页抓取"><a href="#如何用Python爬数据？（一）网页抓取" class="headerlink" title="如何用Python爬数据？（一）网页抓取"></a><a href="https://www.jianshu.com/p/ba02079ecd2f">如何用Python爬数据？（一）网页抓取</a></h3><h3 id="requests-html"><a href="#requests-html" class="headerlink" title="requests-html"></a><a href="https://www.jianshu.com/p/380974ba9540">requests-html</a></h3>]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>应用</tag>
+        <tag>爬虫</tag>
       </tags>
   </entry>
   <entry>
@@ -179,6 +179,45 @@
         <tag>算法</tag>
         <tag>数组</tag>
         <tag>线性查找</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer：07.重建二叉树</title>
+    <url>/2020/11/14/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A07.%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：07-重建二叉树"><a href="#剑指-Offer：07-重建二叉树" class="headerlink" title="剑指 Offer：07.重建二叉树"></a>剑指 Offer：07.重建二叉树</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。</p>
+<p>例如，给出：</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;前序遍历 preorder &#x3D; [3,9,20,15,7]</span><br><span class="line">&gt;中序遍历 inorder &#x3D; [9,3,15,20,7]</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>返回如下的二叉树：</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>首先理解什么是前序遍历和中序遍历：<ul>
+<li>前序遍历：按照 根-&gt;左节点-&gt;右节点的顺序来遍历显示</li>
+<li>中序遍历：按照 左节点-&gt;根-&gt;右节点的顺序来遍历显示</li>
+</ul>
+</li>
+<li>前序遍历的首位一定是根结点，接着是这个根结点的左子树，然后是右子树</li>
+<li>中序遍历的左部分为左子树，然后是根结点，接着是这个根结点的右子树</li>
+<li>递归解决：<ul>
+<li>用前序遍历找到根结点</li>
+<li>在中序遍历中找到根结点，那么从根结点划分出两个子树，同时分出前序遍历的左右子树</li>
+<li>重复该步骤，直到子树只有一个根结点</li>
+</ul>
+</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span>[] preorder, <span class="keyword">int</span>[] inorder)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(preorder.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        TreeNode father = <span class="keyword">new</span> TreeNode(preorder[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">if</span>(inorder.length==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> father;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;inorder.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(inorder[i] == preorder[<span class="number">0</span>])&#123;</span><br><span class="line"></span><br><span class="line">                father.left =  buildTree(Arrays.copyOfRange(preorder,<span class="number">1</span>,i+<span class="number">1</span>),</span><br><span class="line">                                         Arrays.copyOfRange(inorder,<span class="number">0</span>,i));</span><br><span class="line">                father.right = buildTree(Arrays.copyOfRange(preorder,i+<span class="number">1</span>,</span><br><span class="line">                                                            preorder.length),</span><br><span class="line">                                         Arrays.copyOfRange(inorder,</span><br><span class="line">                                                            i+<span class="number">1</span>,inorder.length));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> father;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>可以新建一个类似的函数，改变传入的参数，直接使用原数组的空间，而不是子树遍历的拷贝</p>
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -244,45 +283,6 @@
       <tags>
         <tag>算法</tag>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer：07.重建二叉树</title>
-    <url>/2020/11/14/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A07.%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
-    <content><![CDATA[<h1 id="剑指-Offer：07-重建二叉树"><a href="#剑指-Offer：07-重建二叉树" class="headerlink" title="剑指 Offer：07.重建二叉树"></a>剑指 Offer：07.重建二叉树</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。</p>
-<p>例如，给出：</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;前序遍历 preorder &#x3D; [3,9,20,15,7]</span><br><span class="line">&gt;中序遍历 inorder &#x3D; [9,3,15,20,7]</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>返回如下的二叉树：</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>首先理解什么是前序遍历和中序遍历：<ul>
-<li>前序遍历：按照 根-&gt;左节点-&gt;右节点的顺序来遍历显示</li>
-<li>中序遍历：按照 左节点-&gt;根-&gt;右节点的顺序来遍历显示</li>
-</ul>
-</li>
-<li>前序遍历的首位一定是根结点，接着是这个根结点的左子树，然后是右子树</li>
-<li>中序遍历的左部分为左子树，然后是根结点，接着是这个根结点的右子树</li>
-<li>递归解决：<ul>
-<li>用前序遍历找到根结点</li>
-<li>在中序遍历中找到根结点，那么从根结点划分出两个子树，同时分出前序遍历的左右子树</li>
-<li>重复该步骤，直到子树只有一个根结点</li>
-</ul>
-</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span>[] preorder, <span class="keyword">int</span>[] inorder)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(preorder.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        TreeNode father = <span class="keyword">new</span> TreeNode(preorder[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">if</span>(inorder.length==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> father;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;inorder.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(inorder[i] == preorder[<span class="number">0</span>])&#123;</span><br><span class="line"></span><br><span class="line">                father.left =  buildTree(Arrays.copyOfRange(preorder,<span class="number">1</span>,i+<span class="number">1</span>),</span><br><span class="line">                                         Arrays.copyOfRange(inorder,<span class="number">0</span>,i));</span><br><span class="line">                father.right = buildTree(Arrays.copyOfRange(preorder,i+<span class="number">1</span>,</span><br><span class="line">                                                            preorder.length),</span><br><span class="line">                                         Arrays.copyOfRange(inorder,</span><br><span class="line">                                                            i+<span class="number">1</span>,inorder.length));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> father;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>可以新建一个类似的函数，改变传入的参数，直接使用原数组的空间，而不是子树遍历的拷贝</p>
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
