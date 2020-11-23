@@ -1,32 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>leetcode：26.删除排序数组中的重复项</title>
-    <url>/2020/11/08/leetcode%EF%BC%9A26.%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
-    <content><![CDATA[<h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26.删除排序数组中的重复项"></a>26.删除排序数组中的重复项</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">LeetCode</a></h3><hr>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><ul>
-<li>快慢两个指针，前一个用来计数，后一个用来遍历数组，在找到不同数字后进行交换</li>
-<li>时间复杂度o（n），空间复杂度o（1）</li>
-</ul>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];<span class="comment">//存在此时i==j的情况，可优化</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>重复</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode：21.合并两个有序链表</title>
     <url>/2020/11/08/Leetcode%EF%BC%9A21.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/</url>
     <content><![CDATA[<h1 id="21-合并两个有序链表"><a href="#21-合并两个有序链表" class="headerlink" title="21.合并两个有序链表"></a>21.合并两个有序链表</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
@@ -48,9 +22,35 @@
         <category>Leetcode</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>链表</tag>
         <tag>合并</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode：26.删除排序数组中的重复项</title>
+    <url>/2020/11/08/leetcode%EF%BC%9A26.%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
+    <content><![CDATA[<h1 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26.删除排序数组中的重复项"></a>26.删除排序数组中的重复项</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">LeetCode</a></h3><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><ul>
+<li>快慢两个指针，前一个用来计数，后一个用来遍历数组，在找到不同数字后进行交换</li>
+<li>时间复杂度o（n），空间复杂度o（1）</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];<span class="comment">//存在此时i==j的情况，可优化</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数组</tag>
+        <tag>重复</tag>
       </tags>
   </entry>
   <entry>
@@ -126,9 +126,31 @@
       </tags>
   </entry>
   <entry>
+    <title>剑指 Offer 11. 旋转数组的最小数字</title>
+    <url>/2020/11/23/%E5%89%91%E6%8C%87%20Offer%2011.%20%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-11-旋转数组的最小数字"><a href="#剑指-Offer-11-旋转数组的最小数字" class="headerlink" title="剑指 Offer 11. 旋转数组的最小数字"></a>剑指 Offer 11. 旋转数组的最小数字</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。  </p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof">LeetCode</a></h3><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h3><ul>
+<li>一个有一定顺序的数组一般就考虑二分法来进行查找，使得时间复杂度降低到对数级别</li>
+</ul>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minArray</span><span class="params">(<span class="keyword">int</span>[] numbers)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(numbers[<span class="number">0</span>]&lt;numbers[numbers.length-<span class="number">1</span>])&#123;</span><br><span class="line">            <span class="keyword">return</span> numbers[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end = numbers.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(start != end)&#123;</span><br><span class="line">            mid = (start + end)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=start;numbers[mid]==numbers[start];i++)&#123;</span><br><span class="line">                mid = i + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(mid == numbers.length)&#123;</span><br><span class="line">                    mid = mid-<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                start = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(numbers[mid]&gt;numbers[start])&#123;</span><br><span class="line">                start = mid;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                end = mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(start + <span class="number">1</span> == end)&#123;</span><br><span class="line">                <span class="keyword">return</span> numbers[end];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> numbers[end];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="官方简洁版代码"><a href="#官方简洁版代码" class="headerlink" title="官方简洁版代码"></a>官方简洁版代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minArray</span><span class="params">(<span class="keyword">int</span>[] numbers)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> high = numbers.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (low &lt; high) &#123;</span><br><span class="line">            <span class="keyword">int</span> pivot = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (numbers[pivot] &lt; numbers[high]) &#123;</span><br><span class="line">                high = pivot;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (numbers[pivot] &gt; numbers[high]) &#123;</span><br><span class="line">                low = pivot + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                high -= <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> numbers[low];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数组</tag>
+        <tag>二分法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>剑指 Offer：03.数组中的重复元素</title>
-    <url>/2020/11/08/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A03-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<h1 id="剑指-Offer：03-数组中的重复元素"><a href="#剑指-Offer：03-数组中的重复元素" class="headerlink" title="剑指 Offer：03:数组中的重复元素"></a>剑指 Offer：03:数组中的重复元素</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</p>
+    <url>/2020/11/08/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A03.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：03-数组中的重复元素"><a href="#剑指-Offer：03-数组中的重复元素" class="headerlink" title="剑指 Offer：03.数组中的重复元素"></a>剑指 Offer：03.数组中的重复元素</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</p>
 <h3 id="LeetCoed"><a href="#LeetCoed" class="headerlink" title="LeetCoed"></a><a href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof">LeetCoed</a></h3><hr>
 <h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="对原数组进行改变"><a href="#对原数组进行改变" class="headerlink" title="对原数组进行改变"></a>对原数组进行改变</h3><ul>
 <li>实现复杂度为o（n），空间复杂度为o（1）</li>
@@ -153,9 +175,32 @@
         <category>剑指 Offer</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>数组</tag>
         <tag>重复</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer：04.二维数组中的查找</title>
+    <url>/2020/11/09/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A04.%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：04-二维数组中的查找"><a href="#剑指-Offer：04-二维数组中的查找" class="headerlink" title="剑指 Offer：04.二维数组中的查找"></a>剑指 Offer：04.二维数组中的查找</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof">LeetCode</a></h3><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>根据该数组的特点，可从数组的右上角或者左下角开始，进行求解</li>
+<li>专注于当前点，而不是下一个点，因为根据当前点即可判断出下一个点的位置，这也是初始点选择的好处所在</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">findNumberIn2DArray</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix==<span class="keyword">null</span>||matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>].length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> columns = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> row = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> column = columns-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (row&lt;rows&amp;&amp;column&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> num = matrix[row][column];</span><br><span class="line">            <span class="keyword">if</span>(num==target)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(num&lt;target)&#123;</span><br><span class="line">                row++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                column--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
         <tag>算法</tag>
+        <tag>数组</tag>
+        <tag>线性查找</tag>
       </tags>
   </entry>
   <entry>
@@ -198,29 +243,6 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指 Offer：04.二维数组中的查找</title>
-    <url>/2020/11/09/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A04.%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1 id="剑指-Offer：04-二维数组中的查找"><a href="#剑指-Offer：04-二维数组中的查找" class="headerlink" title="剑指 Offer：04.二维数组中的查找"></a>剑指 Offer：04.二维数组中的查找</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof">LeetCode</a></h3><hr>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>根据该数组的特点，可从数组的右上角或者左下角开始，进行求解</li>
-<li>专注于当前点，而不是下一个点，因为根据当前点即可判断出下一个点的位置，这也是初始点选择的好处所在</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">findNumberIn2DArray</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix==<span class="keyword">null</span>||matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>].length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> columns = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> row = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> column = columns-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (row&lt;rows&amp;&amp;column&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> num = matrix[row][column];</span><br><span class="line">            <span class="keyword">if</span>(num==target)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(num&lt;target)&#123;</span><br><span class="line">                row++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                column--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>数组</tag>
-        <tag>算法</tag>
-        <tag>线性查找</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>剑指 Offer：09.用两个栈实现队列</title>
     <url>/2020/11/14/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A09.%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</url>
     <content><![CDATA[<h1 id="剑指-Offer：09-用两个栈实现队列"><a href="#剑指-Offer：09-用两个栈实现队列" class="headerlink" title="剑指 Offer：09.用两个栈实现队列"></a>剑指 Offer：09.用两个栈实现队列</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>用两个栈实现一个队列。</p>
@@ -255,6 +277,26 @@
 <li>利用动态规划的思想，将计算过的数值进行储存再利用即可</li>
 </ul>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> i =<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> s1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> s2 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i!=n)&#123;</span><br><span class="line">            sum = (s1 + s2) % <span class="number">1000000007</span>;</span><br><span class="line">            s1 = s2;</span><br><span class="line">            s2 = sum;</span><br><span class="line">            i = i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer：10- II. 青蛙跳台阶问题</title>
+    <url>/2020/11/18/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A10-%20II.%20%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：10-II-青蛙跳台阶问题"><a href="#剑指-Offer：10-II-青蛙跳台阶问题" class="headerlink" title="剑指 Offer：10- II. 青蛙跳台阶问题"></a>剑指 Offer：10- II. 青蛙跳台阶问题</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
+<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>简单分析可知，此题为斐波拉契数列的一种形式应用，与上一题类似</li>
+<li>需要注意的是改变了斐波拉契数列的初始值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int numWays(int n) &#123;</span><br><span class="line">        if(n&#x3D;&#x3D;0)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;1)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;2)&#123;</span><br><span class="line">            return 2;</span><br><span class="line">        &#125;</span><br><span class="line">        int i &#x3D;2;</span><br><span class="line">        int s1 &#x3D; 1;</span><br><span class="line">        int s2 &#x3D; 2;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        while(i!&#x3D;n)&#123;</span><br><span class="line">            sum &#x3D; (s1 + s2) % 1000000007;</span><br><span class="line">            s1 &#x3D; s2;</span><br><span class="line">            s2 &#x3D; sum;</span><br><span class="line">            i &#x3D; i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -360,26 +402,6 @@
       </categories>
       <tags>
         <tag>软件工程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer：10- II. 青蛙跳台阶问题</title>
-    <url>/2020/11/18/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A10-%20II.%20%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h1 id="剑指-Offer：10-II-青蛙跳台阶问题"><a href="#剑指-Offer：10-II-青蛙跳台阶问题" class="headerlink" title="剑指 Offer：10- II. 青蛙跳台阶问题"></a>剑指 Offer：10- II. 青蛙跳台阶问题</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
-<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>简单分析可知，此题为斐波拉契数列的一种形式应用，与上一题类似</li>
-<li>需要注意的是改变了斐波拉契数列的初始值</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int numWays(int n) &#123;</span><br><span class="line">        if(n&#x3D;&#x3D;0)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;1)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;2)&#123;</span><br><span class="line">            return 2;</span><br><span class="line">        &#125;</span><br><span class="line">        int i &#x3D;2;</span><br><span class="line">        int s1 &#x3D; 1;</span><br><span class="line">        int s2 &#x3D; 2;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        while(i!&#x3D;n)&#123;</span><br><span class="line">            sum &#x3D; (s1 + s2) % 1000000007;</span><br><span class="line">            s1 &#x3D; s2;</span><br><span class="line">            s2 &#x3D; sum;</span><br><span class="line">            i &#x3D; i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>动态规划</tag>
       </tags>
   </entry>
 </search>
