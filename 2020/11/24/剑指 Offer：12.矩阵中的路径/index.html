@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    剑指 Offer：10- II. 青蛙跳台阶问题 |  summerain
+    剑指 Offer：12.矩阵中的路径 |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-剑指 Offer：10- II. 青蛙跳台阶问题"
+  id="post-剑指 Offer：12.矩阵中的路径"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,15 +55,15 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  剑指 Offer：10- II. 青蛙跳台阶问题
+  剑指 Offer：12.矩阵中的路径
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/11/18/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A10-%20II.%20%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2020-11-18T14:10:04.000Z" itemprop="datePublished">2020-11-18</time>
+      <a href="/2020/11/24/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A12.%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" class="article-date">
+  <time datetime="2020-11-24T13:21:16.000Z" itemprop="datePublished">2020-11-24</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87-Offer/">剑指 Offer</a>
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">209</span>
+            <span class="post-count">370</span>
         </span>
     </span>
 
@@ -98,13 +98,13 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="剑指-Offer：10-II-青蛙跳台阶问题"><a href="#剑指-Offer：10-II-青蛙跳台阶问题" class="headerlink" title="剑指 Offer：10- II. 青蛙跳台阶问题"></a>剑指 Offer：10- II. 青蛙跳台阶问题</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
-<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>简单分析可知，此题为斐波拉契数列的一种形式应用，与上一题类似</li>
-<li>需要注意的是改变了斐波拉契数列的初始值</li>
+  <h1 id="剑指-Offer：12-矩阵中的路径"><a href="#剑指-Offer：12-矩阵中的路径" class="headerlink" title="剑指 Offer：12.矩阵中的路径"></a>剑指 Offer：12.矩阵中的路径</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof">LeetCode</a></h3><h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><ul>
+<li>这是一道比较典型的需要用到dfs的题目</li>
+<li>需要对已经经过的点进行标记，完成后需要再恢复</li>
 </ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int numWays(int n) &#123;</span><br><span class="line">        if(n&#x3D;&#x3D;0)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;1)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;2)&#123;</span><br><span class="line">            return 2;</span><br><span class="line">        &#125;</span><br><span class="line">        int i &#x3D;2;</span><br><span class="line">        int s1 &#x3D; 1;</span><br><span class="line">        int s2 &#x3D; 2;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        while(i!&#x3D;n)&#123;</span><br><span class="line">            sum &#x3D; (s1 + s2) % 1000000007;</span><br><span class="line">            s1 &#x3D; s2;</span><br><span class="line">            s2 &#x3D; sum;</span><br><span class="line">            i &#x3D; i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>专注于当前的点，而不是顾虑太多其它点，对每个点就行同样的处理，而不是特殊化</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">exist</span><span class="params">(<span class="keyword">char</span>[][] board, String word)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] dir = &#123;&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,-<span class="number">1</span>&#125;,&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;-<span class="number">1</span>,<span class="number">0</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; board.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; board[<span class="number">0</span>].length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(dfs(board, word, i, j,<span class="number">0</span>))&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[][] board, String word,<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x&gt;board.length-<span class="number">1</span>||y&gt;board[<span class="number">0</span>].length-<span class="number">1</span>||x&lt;<span class="number">0</span>||y&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span> temp = board[x][y];</span><br><span class="line">        <span class="keyword">if</span>(board[x][y] == word.charAt(k))&#123;</span><br><span class="line">            <span class="keyword">if</span>(k == word.length()-<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span> ;</span><br><span class="line">            &#125;</span><br><span class="line">            k++;</span><br><span class="line">            board[x][y] =<span class="string">&#x27;/&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span>(dfs(board,word,x+<span class="number">1</span>,y,k)||dfs(board,word,x-<span class="number">1</span>,y,k)</span><br><span class="line">                    ||dfs(board,word,x,y+<span class="number">1</span>,k)||dfs(board,word,x,y-<span class="number">1</span>,k))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        board[x][y] = temp;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
  
       <!-- reward -->
@@ -176,12 +176,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/18/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A10-%20II.%20%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/24/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A12.%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5/" rel="tag">矩阵</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
     </footer>
   </div>
@@ -189,19 +189,10 @@
    
   <nav class="article-nav">
     
+    
       <a href="/2020/11/23/%E5%89%91%E6%8C%87%20Offer%2011.%20%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            剑指 Offer：11.旋转数组的最小数字
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2020/11/18/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A10-%20I.%20%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">剑指 Offer：10- I. 斐波那契数列</div>
+        <div class="article-nav-title">剑指 Offer：11.旋转数组的最小数字</div>
       </a>
     
   </nav>
