@@ -288,26 +288,6 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指 Offer：10- II. 青蛙跳台阶问题</title>
-    <url>/2020/11/18/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A10-%20II.%20%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h1 id="剑指-Offer：10-II-青蛙跳台阶问题"><a href="#剑指-Offer：10-II-青蛙跳台阶问题" class="headerlink" title="剑指 Offer：10- II. 青蛙跳台阶问题"></a>剑指 Offer：10- II. 青蛙跳台阶问题</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
-<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>简单分析可知，此题为斐波拉契数列的一种形式应用，与上一题类似</li>
-<li>需要注意的是改变了斐波拉契数列的初始值</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int numWays(int n) &#123;</span><br><span class="line">        if(n&#x3D;&#x3D;0)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;1)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;2)&#123;</span><br><span class="line">            return 2;</span><br><span class="line">        &#125;</span><br><span class="line">        int i &#x3D;2;</span><br><span class="line">        int s1 &#x3D; 1;</span><br><span class="line">        int s2 &#x3D; 2;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        while(i!&#x3D;n)&#123;</span><br><span class="line">            sum &#x3D; (s1 + s2) % 1000000007;</span><br><span class="line">            s1 &#x3D; s2;</span><br><span class="line">            s2 &#x3D; sum;</span><br><span class="line">            i &#x3D; i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>剑指 Offer：12.矩阵中的路径</title>
     <url>/2020/11/24/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A12.%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/</url>
     <content><![CDATA[<h1 id="剑指-Offer：12-矩阵中的路径"><a href="#剑指-Offer：12-矩阵中的路径" class="headerlink" title="剑指 Offer：12.矩阵中的路径"></a>剑指 Offer：12.矩阵中的路径</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。</p>
@@ -326,103 +306,6 @@
         <tag>算法</tag>
         <tag>dfs</tag>
         <tag>矩阵</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件工程</title>
-    <url>/2020/11/17/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="软件工程"><a href="#软件工程" class="headerlink" title="软件工程"></a>软件工程</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="什么是软件工程？"><a href="#什么是软件工程？" class="headerlink" title="什么是软件工程？"></a>什么是软件工程？</h3><p>用来制造软件的工程化方法</p>
-<h3 id="什么是软件？"><a href="#什么是软件？" class="headerlink" title="什么是软件？"></a>什么是软件？</h3><p>程序：是为实现特定目标或解决特定问题而用计算机语言编写的命令序列的集合</p>
-<p>软件：软件是程序、数据以及开发、使用和维护所需要的所有文档的总称</p>
-<p>软件 = 程序 + 数据 + 文档</p>
-<h3 id="软件的本质特性："><a href="#软件的本质特性：" class="headerlink" title="软件的本质特性："></a>软件的本质特性：</h3><p>复杂度、一致性、可变（演化）性和不可见性</p>
-<h3 id="软件开发面临的挑战"><a href="#软件开发面临的挑战" class="headerlink" title="软件开发面临的挑战"></a>软件开发面临的挑战</h3><ul>
-<li>客户不满意</li>
-<li>风险与成本问题</li>
-<li>项目过程失控</li>
-<li>无力管理团队</li>
-</ul>
-<h3 id="什么是工程化的方法？"><a href="#什么是工程化的方法？" class="headerlink" title="什么是工程化的方法？"></a>什么是工程化的方法？</h3><p>工程是将理论和所学的知识应用于实践的科学，以便经济有效地解决实际问题</p>
-<h3 id="工程化思想"><a href="#工程化思想" class="headerlink" title="工程化思想"></a>工程化思想</h3><ul>
-<li>分而治之</li>
-<li>折中</li>
-<li>复用</li>
-</ul>
-<h3 id="软件工程的内容"><a href="#软件工程的内容" class="headerlink" title="软件工程的内容"></a>软件工程的内容</h3><ul>
-<li>工具</li>
-<li>方法</li>
-<li>过程</li>
-<li>质量关注点</li>
-</ul>
-<h3 id="软件工程过程"><a href="#软件工程过程" class="headerlink" title="软件工程过程"></a>软件工程过程</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">	A[问题定义]--&gt;B[需求开发]</span><br><span class="line">	B--&gt;C[软件设计]</span><br><span class="line">	C--&gt;D[软件实现]</span><br><span class="line">	D--&gt;E[软件测试]</span><br></pre></td></tr></table></figure>
-
-<h2 id="软件项目开发过程与管理"><a href="#软件项目开发过程与管理" class="headerlink" title="软件项目开发过程与管理"></a>软件项目开发过程与管理</h2><h3 id="软件开发过程的典型阶段"><a href="#软件开发过程的典型阶段" class="headerlink" title="软件开发过程的典型阶段"></a>软件开发过程的典型阶段</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">	A[计划]--&gt;B[需求分析]</span><br><span class="line">	B--&gt;C[软件设计]</span><br><span class="line">	C--&gt;D[软件实现]</span><br><span class="line">	D--&gt;E[软件验证]</span><br><span class="line">	E--&gt;F[软件维护]</span><br></pre></td></tr></table></figure>
-
-<h3 id="典型软件过程模型"><a href="#典型软件过程模型" class="headerlink" title="典型软件过程模型"></a>典型软件过程模型</h3><ul>
-<li>瀑布模型：线性，需要要求明确，上一阶段输出是下一阶段输入，难以修改</li>
-<li>增量过程模型<ul>
-<li>增量模型：本质是以迭代的方式运用瀑布模型</li>
-<li>快速应用程序开发（RAD）：瀑布模型的高速变体，并行运行，侧重短周期</li>
-</ul>
-</li>
-<li>演化过程模型<ul>
-<li>快速原型开发模型：循环反复，不断调整，原型可抛弃</li>
-<li>螺旋模型：将软件生存周期分为四个可重复的阶段：规划、风险分析、开发和评估</li>
-</ul>
-</li>
-</ul>
-<h3 id="软件管理的基本概念："><a href="#软件管理的基本概念：" class="headerlink" title="软件管理的基本概念："></a>软件管理的基本概念：</h3><ul>
-<li>项目：进行定义的一组活动，使用受约束的资源来满足预定义的目标</li>
-<li>项目管理：有效的组织和管理各类资源，以使项目能够在预定的范围、质量、时间和成本等约束条件下顺利交付</li>
-</ul>
-<h3 id="软件项目的特征"><a href="#软件项目的特征" class="headerlink" title="软件项目的特征"></a>软件项目的特征</h3><ul>
-<li>软件产品的不可见性</li>
-<li>项目的高度不确定性</li>
-<li>软件过程的多变性</li>
-<li>软件人员的高技能及其高流动性</li>
-</ul>
-<h3 id="项目估算的内容"><a href="#项目估算的内容" class="headerlink" title="项目估算的内容"></a>项目估算的内容</h3><ul>
-<li>规模估算</li>
-<li>工作量估算</li>
-<li>进度估算</li>
-<li>成本估算</li>
-</ul>
-<p>估算的风险取决于资源、成本及进度的定量估算中存在的不确定性</p>
-<h3 id="代码行技术"><a href="#代码行技术" class="headerlink" title="代码行技术"></a>代码行技术</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gksg344szpj30v00dejsz.jpg" alt="image-20201117203134488"></p>
-<h2 id="软件需求工程"><a href="#软件需求工程" class="headerlink" title="软件需求工程"></a>软件需求工程</h2><h3 id="用户故事"><a href="#用户故事" class="headerlink" title="用户故事"></a>用户故事</h3><p>格式：作为一个&lt;角色&gt;，可以&lt;活动&gt;，以便于&lt;价值&gt;</p>
-<h3 id="需求规格说明书（SRS）"><a href="#需求规格说明书（SRS）" class="headerlink" title="需求规格说明书（SRS）"></a>需求规格说明书（SRS）</h3><ul>
-<li>功能</li>
-<li>外部接口</li>
-<li>性能</li>
-<li>非功能属性</li>
-<li>约束条件</li>
-</ul>
-<h3 id="SRS的三大部分"><a href="#SRS的三大部分" class="headerlink" title="SRS的三大部分"></a>SRS的三大部分</h3><ul>
-<li>引言</li>
-<li>整体描述</li>
-<li>需求描述</li>
-</ul>
-<h2 id="软件设计"><a href="#软件设计" class="headerlink" title="软件设计"></a>软件设计</h2><h3 id="软件工程方法"><a href="#软件工程方法" class="headerlink" title="软件工程方法"></a>软件工程方法</h3><ul>
-<li>功能分解法</li>
-<li>结构化方法</li>
-<li>信息建模法</li>
-<li>面向对象法</li>
-</ul>
-<h3 id="软件体系结构"><a href="#软件体系结构" class="headerlink" title="软件体系结构"></a>软件体系结构</h3><ul>
-<li>构件</li>
-<li>连接件</li>
-<li>约束</li>
-</ul>
-<h3 id="黑盒测试"><a href="#黑盒测试" class="headerlink" title="黑盒测试"></a>黑盒测试</h3><p>不考虑程序内部逻辑结构和内部特性，只依据程序的需求规格说明书，检查程序的功能是否符合它的功能说明<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gksiqhnruvj30o00d2jsb.jpg" alt="image-20201117220318785"></p>
-<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gksjbm31o4j30ia0ckmyr.jpg" alt="image-20201117222337336"></p>
-<h3 id="白盒测试"><a href="#白盒测试" class="headerlink" title="白盒测试"></a>白盒测试</h3><p>允许测试人员利用程序内部的逻辑结构及有关信息，设计或选择测试用例，对程序所有逻辑路径进行测试。<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gksis3gc08j30hw0comyc.jpg" alt="image-20201117220451687"></p>
-<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gksj0xkp6xj31ak0pmq8q.jpg" alt="image-20201117221320972"></p>
-]]></content>
-      <categories>
-        <category>复习总结</category>
-      </categories>
-      <tags>
-        <tag>软件工程</tag>
       </tags>
   </entry>
   <entry>
@@ -490,6 +373,38 @@
       <tags>
         <tag>操作系统</tag>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer：10- II. 青蛙跳台阶问题</title>
+    <url>/2020/11/18/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A10-%20II.%20%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：10-II-青蛙跳台阶问题"><a href="#剑指-Offer：10-II-青蛙跳台阶问题" class="headerlink" title="剑指 Offer：10- II. 青蛙跳台阶问题"></a>剑指 Offer：10- II. 青蛙跳台阶问题</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
+<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>简单分析可知，此题为斐波拉契数列的一种形式应用，与上一题类似</li>
+<li>需要注意的是改变了斐波拉契数列的初始值</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int numWays(int n) &#123;</span><br><span class="line">        if(n&#x3D;&#x3D;0)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;1)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;2)&#123;</span><br><span class="line">            return 2;</span><br><span class="line">        &#125;</span><br><span class="line">        int i &#x3D;2;</span><br><span class="line">        int s1 &#x3D; 1;</span><br><span class="line">        int s2 &#x3D; 2;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        while(i!&#x3D;n)&#123;</span><br><span class="line">            sum &#x3D; (s1 + s2) % 1000000007;</span><br><span class="line">            s1 &#x3D; s2;</span><br><span class="line">            s2 &#x3D; sum;</span><br><span class="line">            i &#x3D; i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络（二）性能指标</title>
+    <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%8C%EF%BC%89%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/</url>
+    <content><![CDATA[<h1 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h1>]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>计算机网络</tag>
       </tags>
   </entry>
   <entry>
@@ -596,15 +511,100 @@
       </tags>
   </entry>
   <entry>
-    <title>计算机网络（二）性能指标</title>
-    <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%8C%EF%BC%89%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/</url>
-    <content><![CDATA[<h1 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h1>]]></content>
+    <title>软件工程</title>
+    <url>/2020/11/17/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="软件工程"><a href="#软件工程" class="headerlink" title="软件工程"></a>软件工程</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="什么是软件工程？"><a href="#什么是软件工程？" class="headerlink" title="什么是软件工程？"></a>什么是软件工程？</h3><p>用来制造软件的工程化方法</p>
+<h3 id="什么是软件？"><a href="#什么是软件？" class="headerlink" title="什么是软件？"></a>什么是软件？</h3><p>程序：是为实现特定目标或解决特定问题而用计算机语言编写的命令序列的集合</p>
+<p>软件：软件是程序、数据以及开发、使用和维护所需要的所有文档的总称</p>
+<p>软件 = 程序 + 数据 + 文档</p>
+<h3 id="软件的本质特性："><a href="#软件的本质特性：" class="headerlink" title="软件的本质特性："></a>软件的本质特性：</h3><p>复杂度、一致性、可变（演化）性和不可见性</p>
+<h3 id="软件开发面临的挑战"><a href="#软件开发面临的挑战" class="headerlink" title="软件开发面临的挑战"></a>软件开发面临的挑战</h3><ul>
+<li>客户不满意</li>
+<li>风险与成本问题</li>
+<li>项目过程失控</li>
+<li>无力管理团队</li>
+</ul>
+<h3 id="什么是工程化的方法？"><a href="#什么是工程化的方法？" class="headerlink" title="什么是工程化的方法？"></a>什么是工程化的方法？</h3><p>工程是将理论和所学的知识应用于实践的科学，以便经济有效地解决实际问题</p>
+<h3 id="工程化思想"><a href="#工程化思想" class="headerlink" title="工程化思想"></a>工程化思想</h3><ul>
+<li>分而治之</li>
+<li>折中</li>
+<li>复用</li>
+</ul>
+<h3 id="软件工程的内容"><a href="#软件工程的内容" class="headerlink" title="软件工程的内容"></a>软件工程的内容</h3><ul>
+<li>工具</li>
+<li>方法</li>
+<li>过程</li>
+<li>质量关注点</li>
+</ul>
+<h3 id="软件工程过程"><a href="#软件工程过程" class="headerlink" title="软件工程过程"></a>软件工程过程</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">	A[问题定义]--&gt;B[需求开发]</span><br><span class="line">	B--&gt;C[软件设计]</span><br><span class="line">	C--&gt;D[软件实现]</span><br><span class="line">	D--&gt;E[软件测试]</span><br></pre></td></tr></table></figure>
+
+<h2 id="软件项目开发过程与管理"><a href="#软件项目开发过程与管理" class="headerlink" title="软件项目开发过程与管理"></a>软件项目开发过程与管理</h2><h3 id="软件开发过程的典型阶段"><a href="#软件开发过程的典型阶段" class="headerlink" title="软件开发过程的典型阶段"></a>软件开发过程的典型阶段</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">	A[计划]--&gt;B[需求分析]</span><br><span class="line">	B--&gt;C[软件设计]</span><br><span class="line">	C--&gt;D[软件实现]</span><br><span class="line">	D--&gt;E[软件验证]</span><br><span class="line">	E--&gt;F[软件维护]</span><br></pre></td></tr></table></figure>
+
+<h3 id="典型软件过程模型"><a href="#典型软件过程模型" class="headerlink" title="典型软件过程模型"></a>典型软件过程模型</h3><ul>
+<li>瀑布模型：线性，需要要求明确，上一阶段输出是下一阶段输入，难以修改</li>
+<li>增量过程模型<ul>
+<li>增量模型：本质是以迭代的方式运用瀑布模型</li>
+<li>快速应用程序开发（RAD）：瀑布模型的高速变体，并行运行，侧重短周期</li>
+</ul>
+</li>
+<li>演化过程模型<ul>
+<li>快速原型开发模型：循环反复，不断调整，原型可抛弃</li>
+<li>螺旋模型：将软件生存周期分为四个可重复的阶段：规划、风险分析、开发和评估</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件管理的基本概念："><a href="#软件管理的基本概念：" class="headerlink" title="软件管理的基本概念："></a>软件管理的基本概念：</h3><ul>
+<li>项目：进行定义的一组活动，使用受约束的资源来满足预定义的目标</li>
+<li>项目管理：有效的组织和管理各类资源，以使项目能够在预定的范围、质量、时间和成本等约束条件下顺利交付</li>
+</ul>
+<h3 id="软件项目的特征"><a href="#软件项目的特征" class="headerlink" title="软件项目的特征"></a>软件项目的特征</h3><ul>
+<li>软件产品的不可见性</li>
+<li>项目的高度不确定性</li>
+<li>软件过程的多变性</li>
+<li>软件人员的高技能及其高流动性</li>
+</ul>
+<h3 id="项目估算的内容"><a href="#项目估算的内容" class="headerlink" title="项目估算的内容"></a>项目估算的内容</h3><ul>
+<li>规模估算</li>
+<li>工作量估算</li>
+<li>进度估算</li>
+<li>成本估算</li>
+</ul>
+<p>估算的风险取决于资源、成本及进度的定量估算中存在的不确定性</p>
+<h3 id="代码行技术"><a href="#代码行技术" class="headerlink" title="代码行技术"></a>代码行技术</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gksg344szpj30v00dejsz.jpg" alt="image-20201117203134488"></p>
+<h2 id="软件需求工程"><a href="#软件需求工程" class="headerlink" title="软件需求工程"></a>软件需求工程</h2><h3 id="用户故事"><a href="#用户故事" class="headerlink" title="用户故事"></a>用户故事</h3><p>格式：作为一个&lt;角色&gt;，可以&lt;活动&gt;，以便于&lt;价值&gt;</p>
+<h3 id="需求规格说明书（SRS）"><a href="#需求规格说明书（SRS）" class="headerlink" title="需求规格说明书（SRS）"></a>需求规格说明书（SRS）</h3><ul>
+<li>功能</li>
+<li>外部接口</li>
+<li>性能</li>
+<li>非功能属性</li>
+<li>约束条件</li>
+</ul>
+<h3 id="SRS的三大部分"><a href="#SRS的三大部分" class="headerlink" title="SRS的三大部分"></a>SRS的三大部分</h3><ul>
+<li>引言</li>
+<li>整体描述</li>
+<li>需求描述</li>
+</ul>
+<h2 id="软件设计"><a href="#软件设计" class="headerlink" title="软件设计"></a>软件设计</h2><h3 id="软件工程方法"><a href="#软件工程方法" class="headerlink" title="软件工程方法"></a>软件工程方法</h3><ul>
+<li>功能分解法</li>
+<li>结构化方法</li>
+<li>信息建模法</li>
+<li>面向对象法</li>
+</ul>
+<h3 id="软件体系结构"><a href="#软件体系结构" class="headerlink" title="软件体系结构"></a>软件体系结构</h3><ul>
+<li>构件</li>
+<li>连接件</li>
+<li>约束</li>
+</ul>
+<h3 id="黑盒测试"><a href="#黑盒测试" class="headerlink" title="黑盒测试"></a>黑盒测试</h3><p>不考虑程序内部逻辑结构和内部特性，只依据程序的需求规格说明书，检查程序的功能是否符合它的功能说明<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gksiqhnruvj30o00d2jsb.jpg" alt="image-20201117220318785"></p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gksjbm31o4j30ia0ckmyr.jpg" alt="image-20201117222337336"></p>
+<h3 id="白盒测试"><a href="#白盒测试" class="headerlink" title="白盒测试"></a>白盒测试</h3><p>允许测试人员利用程序内部的逻辑结构及有关信息，设计或选择测试用例，对程序所有逻辑路径进行测试。<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gksis3gc08j30hw0comyc.jpg" alt="image-20201117220451687"></p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gksj0xkp6xj31ak0pmq8q.jpg" alt="image-20201117221320972"></p>
+]]></content>
       <categories>
-        <category>计算机网络</category>
+        <category>复习总结</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
-        <tag>计算机网络</tag>
+        <tag>软件工程</tag>
       </tags>
   </entry>
 </search>
