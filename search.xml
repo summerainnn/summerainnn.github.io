@@ -426,8 +426,8 @@
       </tags>
   </entry>
   <entry>
-    <title>操作系统的概念和定义</title>
-    <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E5%AE%9A%E4%B9%89/</url>
+    <title>操作系统（一）概念和定义</title>
+    <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E5%BF%B5%E5%92%8C%E5%AE%9A%E4%B9%89/</url>
     <content><![CDATA[<h1 id="操作系统的概念和定义"><a href="#操作系统的概念和定义" class="headerlink" title="操作系统的概念和定义"></a>操作系统的概念和定义</h1><h2 id="一、操作系统的功能和目标："><a href="#一、操作系统的功能和目标：" class="headerlink" title="一、操作系统的功能和目标："></a>一、操作系统的功能和目标：</h2><h3 id="1-作为系统资源的管理者"><a href="#1-作为系统资源的管理者" class="headerlink" title="1.作为系统资源的管理者"></a>1.作为系统资源的管理者</h3><ul>
 <li>提供的功能<ul>
 <li>处理机管理</li>
@@ -462,6 +462,68 @@
 <li>时分复用技术（虚拟处理器）</li>
 </ul>
 <h3 id="4-异步"><a href="#4-异步" class="headerlink" title="4.异步"></a>4.异步</h3><p>允许多个程序并发执行，由于资源有限，进程执行不是一贯到底的，而是走走停停，以不可预知的速度向前推进</p>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统（三）系统调用</title>
+    <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h1><h2 id="一、系统调用的意义"><a href="#一、系统调用的意义" class="headerlink" title="一、系统调用的意义"></a>一、系统调用的意义</h2><p>操作系统提供给应用程序使用的接口，来获得操作系统的服务</p>
+<p>系统调用使得系统中的各种资源由操作系统统一掌控</p>
+<h2 id="二、系统调用和库函数的区别"><a href="#二、系统调用和库函数的区别" class="headerlink" title="二、系统调用和库函数的区别"></a>二、系统调用和库函数的区别</h2><p>库函数封装了系统调用</p>
+<h2 id="三、系统调用的过程"><a href="#三、系统调用的过程" class="headerlink" title="三、系统调用的过程"></a>三、系统调用的过程</h2><ol>
+<li>传递系统调用参数</li>
+<li>执行陷入指令（只能在用户态执行的指令，不能在和心态执行）</li>
+<li>执行系统调用相应服务程序</li>
+<li>返回用户程序</li>
+</ol>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统（二）中断和异常</title>
+    <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[<h1 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h1><h2 id="一、中断的意义"><a href="#一、中断的意义" class="headerlink" title="一、中断的意义"></a>一、中断的意义</h2><p>实现多道程序并发执行</p>
+<p>本质：发生中断，意味着需要操作系统介入，开展管理工作（中断是唯一途径使得用户态-&gt;核心态）</p>
+<h2 id="二、特点"><a href="#二、特点" class="headerlink" title="二、特点"></a>二、特点</h2><ul>
+<li>中断发生时，CPU立即进入核心态</li>
+<li>中断发生后，当前进程暂停运行，并由操作系统内核对中断进行处理</li>
+<li>对不同的中断信号，会进行不同的处理</li>
+</ul>
+<h2 id="三、分类"><a href="#三、分类" class="headerlink" title="三、分类"></a>三、分类</h2><ul>
+<li>内中断（异常）：信号来自CPU内部，与当前执行的指令有关<ul>
+<li>自愿中断（指令中断）</li>
+<li>强迫中断<ul>
+<li>硬件故障</li>
+<li>软件中断</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>外中断（中继）：信号来自CPU外部，与当前执行的指令无关<ul>
+<li>外设请求</li>
+<li>人工干预</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、外中断的处理过程"><a href="#四、外中断的处理过程" class="headerlink" title="四、外中断的处理过程"></a>四、外中断的处理过程</h2><ol>
+<li>执行完每个指令后都要检查是否有外部中断信号</li>
+<li>如果检测到外部中断信号，则需要保护被中断进程的CPU环境</li>
+<li>根据中断信号转入相应的中断处理程序</li>
+<li>恢复原进程的CPU环境并退出中断，返回原进程继续往下执行</li>
+</ol>
 ]]></content>
       <categories>
         <category>操作系统</category>
