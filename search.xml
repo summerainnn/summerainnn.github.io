@@ -533,4 +533,38 @@
         <tag>笔记</tag>
       </tags>
   </entry>
+  <entry>
+    <title>计算机网络（一）基本概念</title>
+    <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="计算机网络基础"><a href="#计算机网络基础" class="headerlink" title="计算机网络基础"></a>计算机网络基础</h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>将分散的、具有独立功能的计算机系统，通过通信设备与线路连接起来，由功能完善的软件实现资源共享和信息传递的系统</p>
+<p><em>计算机网络是互联的、自洽的计算机集合</em></p>
+<h2 id="二、功能"><a href="#二、功能" class="headerlink" title="二、功能"></a>二、功能</h2><ol>
+<li>数据通信（连通性）</li>
+<li>资源共享（硬件、软件和数据）</li>
+<li>分布式处理（多台计算机各自承担同一工作的不同部分）</li>
+<li>提高可靠性</li>
+<li>负载均衡</li>
+</ol>
+<h2 id="三、组成"><a href="#三、组成" class="headerlink" title="三、组成"></a>三、组成</h2><ol>
+<li>组成部分：硬件、软件、协议</li>
+<li>工作方式：<ul>
+<li>边缘部分：用户直接使用（C/S、P2P）</li>
+<li>核心部分：为边缘部分服务</li>
+</ul>
+</li>
+<li>功能组成：<ul>
+<li>通信子网：实现数据通信</li>
+<li>资源子网：实现资源共享/数据处理</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
 </search>
