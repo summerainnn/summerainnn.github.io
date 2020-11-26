@@ -398,7 +398,32 @@
   <entry>
     <title>计算机网络（二）性能指标</title>
     <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%8C%EF%BC%89%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/</url>
-    <content><![CDATA[<h1 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h1>]]></content>
+    <content><![CDATA[<h1 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h1><h2 id="一、速率"><a href="#一、速率" class="headerlink" title="一、速率"></a>一、速率</h2><p>速率即数据率或称数据传输率或者比特率（比特：1/0 位）</p>
+<p><strong><em>区分速率的单位和储存容量的单位</em></strong>     (1Byte = 8bit)<br>$$<br>\begin{aligned}<br>速率：&amp;1Tb/s &amp;=&amp; 10^3Gb &amp;=&amp; 10^6Mb/s &amp;=&amp; 10^9kb/s &amp;=&amp; 10^{12}b/s<br>\储存容量：&amp;1TB &amp;=&amp; 2^{10}GB &amp;=&amp; 2^{20}MB &amp;=&amp; 2^{30}KB &amp;=&amp; 2^{40}B \quad\quad = 2^{40}*8b<br>\end{aligned}<br>$$</p>
+<h2 id="二、带宽"><a href="#二、带宽" class="headerlink" title="二、带宽"></a>二、带宽</h2><p>“带宽”原本指，某个信号具有的频带宽度，即最高频率与最低频率之差，单位是赫兹（Hz）</p>
+<p>计算机网络中，带宽用来表示网络的通信线路传送数据的能力，通常是指单位时间内从网络中的某一点到另一点所能通过的==<strong>最高数据率</strong>==，单位是“比特每秒”</p>
+<p>指的是网络设备所支持的最高速度，因为信号在链路中的传播速度是一样的，都是光速，不同的只是设备单位时间可以发出的比特的个数</p>
+<h2 id="三、吞吐量"><a href="#三、吞吐量" class="headerlink" title="三、吞吐量"></a>三、吞吐量</h2><p>表示在单位时间内通过某个网络（或信道、接口）的数据量。单位“比特每秒”</p>
+<p>吞吐量和带宽的区别：吞吐量是带宽的实际情况，带宽是吞吐量的理论上限</p>
+<h2 id="四、时延"><a href="#四、时延" class="headerlink" title="四、时延"></a>四、时延</h2><p>指数据从网络的一端传送到另一端所需的时间，单位是秒</p>
+<ul>
+<li>发送时延:$\frac{数据长度}{信道带宽（发送速率）}$</li>
+<li> 传播时延：$\frac{信道长度}{电磁波在信道上的传播速率}$</li>
+<li>排队时延：等待输出/输入链路可用</li>
+<li>处理时延：检错，找出口</li>
+</ul>
+<h2 id="五、时延带宽积"><a href="#五、时延带宽积" class="headerlink" title="五、时延带宽积"></a>五、时延带宽积</h2><p>时延带宽积 = 传播时延 X 带宽        单位：bit</p>
+<p>又称==比特为单位的链路长度==，即==某段链路现在有多少比特==</p>
+<h2 id="六、往返时延RTT"><a href="#六、往返时延RTT" class="headerlink" title="六、往返时延RTT"></a>六、往返时延RTT</h2><p>从发送方发送数据开始，到接收方收到接收方的确认（接收方收到数据后立即发送确认）总共经历的时延</p>
+<p>RTT包括</p>
+<ul>
+<li>往返时延 = 传播时延 X 2</li>
+<li>末端处理时间</li>
+</ul>
+<h2 id="七、利用率"><a href="#七、利用率" class="headerlink" title="七、利用率"></a>七、利用率</h2><ul>
+<li>信道利用率</li>
+</ul>
+]]></content>
       <categories>
         <category>计算机网络</category>
       </categories>
@@ -711,5 +736,49 @@
         <tag>操作系统</tag>
         <tag>笔记</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Java（一）接口</title>
+    <url>/2020/11/26/Java%EF%BC%88%E4%B8%80%EF%BC%89%E6%8E%A5%E5%8F%A3/</url>
+    <content><![CDATA[<h1 id="Java（一）接口"><a href="#Java（一）接口" class="headerlink" title="Java（一）接口"></a>Java（一）接口</h1><h2 id="1-定义格式"><a href="#1-定义格式" class="headerlink" title="1.定义格式"></a>1.定义格式</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 接口名称</span>&#123;</span><br><span class="line">	<span class="comment">// 接口内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-使用步骤"><a href="#2-使用步骤" class="headerlink" title="2.使用步骤"></a>2.使用步骤</h2><ol>
+<li><p>接口不能直接使用，必须有一个“实现类”来“实现”该接口</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 实现类名称 <span class="keyword">implements</span> 接口名称</span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口的实现类必须覆盖重写（实现）接口中的所有抽象方法</p>
+<p> 实现：去掉abstract关键字，加上方法体大括号</p>
+</li>
+<li><p>创建实现类的对象，进行使用</p>
+</li>
+</ol>
+<h2 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3.注意事项"></a>3.注意事项</h2><p>如果实现类并没有覆盖重写接口中所有的抽象方法，那么这个实现类自己就必须是抽象类</p>
+<h2 id="4-具体例子"><a href="#4-具体例子" class="headerlink" title="4.具体例子"></a>4.具体例子</h2><ol>
+<li><p>MyInterfaceAbstract</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInterfaceAbstract</span></span>&#123;</span><br><span class="line">    <span class="comment">// 接口中也可以定义“成员变量”，但是必须用public static final三个关键字进行修饰</span></span><br><span class="line">    <span class="comment">// 从效果上看，这就是接口的【常量】</span></span><br><span class="line">    <span class="comment">// 可以省略public static final三个关键字不写，但效果是等同的</span></span><br><span class="line">    <span class="comment">// 该常量必须手动赋值，且不可改变</span></span><br><span class="line">    <span class="comment">// 推荐命名规则，全大写，使用下划线分隔单词</span></span><br><span class="line">    <span class="comment">// 访问时直接用接口名称调用</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NUM_OF = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">// public abstract可以省略，默认为抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 新添加一个默认方法，可用于接口升级，使之前实现的类不需要重写该方法，也能继续使用</span></span><br><span class="line">    <span class="comment">// 该默认方法可以在实现类中直接调用，也可以进行覆盖重写</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> <span class="keyword">void</span> <span class="title">methodDefault</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 接口中也可以定义静态方法，通过接口名称直接调用静态方法，即可使用</span></span><br><span class="line">    <span class="comment">// 注意事项：不能通过接口实现类来调用接口中的静态方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStatic</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接口中可以定义私有方法，使得该方法不会被实现类访问,但可以被接口中的默认方法调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">methodCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接口中可以定义静态私有方法，使得该方法不会被实现类访问,但可以被接口中的静态方法调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStaticCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MyInterfaceAbstractImpl</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterfaceAbstractImpl</span> <span class="keyword">implements</span> <span class="title">MyInterfaceAbstract</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="comment">//</span></span><br><span class="line">     &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="comment">//</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="五、接口的实现类"><a href="#五、接口的实现类" class="headerlink" title="五、接口的实现类"></a>五、接口的实现类</h2><p>一个类可以实现多个接口，但所有接口中的抽象方法都要重写</p>
+<p>如果实现多个接口中存在重复的抽象方法，只需要覆盖重写一次即可</p>
+<p>如果实现多个接口中存在重复的默认方法，需要覆盖重写</p>
+<p>如果类的父类方法和接口中的默认方法产生冲突，优先使用父类方法</p>
+<p>接口是可以多继承接口的，父接口的默认方法冲突需要重写，抽象方法冲突无影响</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>基础语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>new</title>
+    <url>/2020/11/26/new/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

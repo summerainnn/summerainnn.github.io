@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    操作系统（四）进程 |  summerain
+    new |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-操作系统（四）进程"
+  id="post-new"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,26 +55,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  操作系统（四）进程
+  new
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/11/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89%E8%BF%9B%E7%A8%8B/" class="article-date">
-  <time datetime="2020-11-26T01:47:26.000Z" itemprop="datePublished">2020-11-26</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-  </div>
-  
+      <a href="/2020/11/26/new/" class="article-date">
+  <time datetime="2020-11-26T09:35:16.000Z" itemprop="datePublished">2020-11-26</time>
+</a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">832</span>
+            <span class="post-count">0</span>
         </span>
     </span>
 
@@ -83,94 +79,20 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">1 min</span>
         </span>
     </span>
 </div>
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="一、进程的定义"><a href="#一、进程的定义" class="headerlink" title="一、进程的定义"></a>一、进程的定义</h2><p>程序段、数据段、PCB三部分组成了进程实体，PCB是进程存在的唯一标志，用来描述进程的各种信息。</p>
-<h3 id="典型定义："><a href="#典型定义：" class="headerlink" title="典型定义："></a>典型定义：</h3><p>进程是程序的一次执行过程</p>
-<p>进程是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位。</p>
-<h2 id="二、进程的组成"><a href="#二、进程的组成" class="headerlink" title="二、进程的组成"></a>二、进程的组成</h2><ul>
-<li><h3 id="PCB："><a href="#PCB：" class="headerlink" title="PCB："></a>PCB：</h3><ul>
-<li>进程描述信息：进程标识符PID、用户标识符UID</li>
-<li>进程控制和管理信息：进程当前状态、进程优先级</li>
-<li>资源分配清单：程序段指针、数据段指针、键盘、鼠标</li>
-<li>处理机相关信息：各种寄存器值</li>
-</ul>
-</li>
-<li><h3 id="程序段："><a href="#程序段：" class="headerlink" title="程序段："></a>程序段：</h3><ul>
-<li>存放要执行的代码</li>
-</ul>
-</li>
-<li><h3 id="数据段："><a href="#数据段：" class="headerlink" title="数据段："></a>数据段：</h3><ul>
-<li>存放程序运行过程中处理的各种数据</li>
-</ul>
-</li>
-</ul>
-<h2 id="三、进程的组织"><a href="#三、进程的组织" class="headerlink" title="三、进程的组织"></a>三、进程的组织</h2><p>多个进程之间的组织方式问题</p>
-<ul>
-<li><h3 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h3><ul>
-<li>按照进程状态将PCB分为多个队列<ul>
-<li>执行指针-&gt;当前处于运行态的进程（单CPU中，只有一个进程在同一时刻运行）</li>
-<li>就绪队列指针-&gt;处于就绪态的进程（为一个队列，优先级高的在前）</li>
-<li>阻塞队列指针-&gt;处于阻塞态的进程（可能有多个阻塞队列）</li>
-</ul>
-</li>
-<li>操作系统持有指向各个队列的指针</li>
-</ul>
-</li>
-<li><h3 id="索引方式"><a href="#索引方式" class="headerlink" title="索引方式"></a>索引方式</h3><ul>
-<li>根据进程状态的不同，建立几张索引表</li>
-<li>操作系统持有指向各个索引表的指针</li>
-</ul>
-</li>
-</ul>
-<h2 id="四、进程的特征"><a href="#四、进程的特征" class="headerlink" title="四、进程的特征"></a>四、进程的特征</h2><ol>
-<li>动态性：进程是动态的、变化的、消亡的</li>
-<li>并发性：内存中有多个进程实体，各进程可并发执行</li>
-<li>独立性：进程是能独立运行、独立获得资源、独立接受调度的基本单位</li>
-<li>异步性：并发执行的进程的结果的完成速度的不确定性，操作系统需要提供“进程同步机制”来解决异步问题</li>
-<li>结构性：每个进程都配备一个PCB，结构上由数据段、代码段、PCB组成</li>
-</ol>
-<h2 id="五、进程的状态"><a href="#五、进程的状态" class="headerlink" title="五、进程的状态"></a>五、进程的状态</h2><h3 id="1-三种基本状态："><a href="#1-三种基本状态：" class="headerlink" title="1. 三种基本状态："></a>1. 三种基本状态：</h3><ul>
-<li>运行态：占用CPU<ul>
-<li>CPU✅其它所需资源✅</li>
-</ul>
-</li>
-<li>就绪态：可以运行，但CPU被其它进程占用<ul>
-<li>CPU❌其它所需资源✅</li>
-</ul>
-</li>
-<li>阻塞态：等待某一事件的完成而暂时无法运行<ul>
-<li>CPU❌其它所需资源❌</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-另外两种状态："><a href="#2-另外两种状态：" class="headerlink" title="2.另外两种状态："></a>2.另外两种状态：</h3><ul>
-<li>创建态：操作系统为进程分配资源、初始化PCB</li>
-<li>终止态：进程从操作系统中撤销，操作系统回收进程资源，撤销PCB</li>
-</ul>
-<h3 id="3-进程的状态转换"><a href="#3-进程的状态转换" class="headerlink" title="3.进程的状态转换"></a>3.进程的状态转换</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl2d2mq7nvj31go0nugqd.jpg" alt="image-20201126102303056"></p>
-<p>注意：运行态-&gt;阻塞态是进程自身的主动行为</p>
-<p>​           阻塞态-&gt;就绪态是被动的，阻塞态不能直接转换为运行态</p>
-<h2 id="六、进程控制"><a href="#六、进程控制" class="headerlink" title="六、进程控制"></a>六、进程控制</h2><h3 id="1-实现的方式："><a href="#1-实现的方式：" class="headerlink" title="1.实现的方式："></a>1.实现的方式：</h3><p>用原语来实现进程的控制，其特点是执行期间不允许中断（原子操作），可以保证进程转换时PCB不会发生混乱（保证进程转换的过程完整发生，而不被其它中断打断，原语运行在核心态中，采用“关中断指令”和“开中断指令”，权限极大是核心态下执行的特权指令）</p>
-<h3 id="2-控制的内容："><a href="#2-控制的内容：" class="headerlink" title="2.控制的内容："></a>2.控制的内容：</h3><ul>
-<li>更新PCB中的信息</li>
-<li>将PCB插入合适的队列</li>
-<li>分配/回收资源</li>
-</ul>
- 
+   
       <!-- reward -->
       
       <div id="reword-out">
@@ -240,32 +162,21 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89%E8%BF%9B%E7%A8%8B/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/26/new/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
-
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
+    
       <a href="/2020/11/26/Java%EF%BC%88%E4%B8%80%EF%BC%89%E6%8E%A5%E5%8F%A3/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Java（一）接口
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2020/11/25/%E5%89%91%E6%8C%87%20Offer%2013.%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">剑指 Offer 13. 机器人的运动范围</div>
+        <div class="article-nav-title">Java（一）接口</div>
       </a>
     
   </nav>
