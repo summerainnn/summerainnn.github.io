@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java（二）多态</title>
+    <url>/2020/11/26/Java%EF%BC%88%E4%BA%8C%EF%BC%89%E5%A4%9A%E6%80%81/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>基础语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java（一）接口</title>
+    <url>/2020/11/26/Java%EF%BC%88%E4%B8%80%EF%BC%89%E6%8E%A5%E5%8F%A3/</url>
+    <content><![CDATA[<h1 id="Java（一）接口"><a href="#Java（一）接口" class="headerlink" title="Java（一）接口"></a>Java（一）接口</h1><h2 id="1-定义格式"><a href="#1-定义格式" class="headerlink" title="1.定义格式"></a>1.定义格式</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 接口名称</span>&#123;</span><br><span class="line">	<span class="comment">// 接口内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-使用步骤"><a href="#2-使用步骤" class="headerlink" title="2.使用步骤"></a>2.使用步骤</h2><ol>
+<li><p>接口不能直接使用，必须有一个“实现类”来“实现”该接口</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 实现类名称 <span class="keyword">implements</span> 接口名称</span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口的实现类必须覆盖重写（实现）接口中的所有抽象方法</p>
+<p> 实现：去掉abstract关键字，加上方法体大括号</p>
+</li>
+<li><p>创建实现类的对象，进行使用</p>
+</li>
+</ol>
+<h2 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3.注意事项"></a>3.注意事项</h2><p>如果实现类并没有覆盖重写接口中所有的抽象方法，那么这个实现类自己就必须是抽象类</p>
+<h2 id="4-具体例子"><a href="#4-具体例子" class="headerlink" title="4.具体例子"></a>4.具体例子</h2><ol>
+<li><p>MyInterfaceAbstract</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInterfaceAbstract</span></span>&#123;</span><br><span class="line">    <span class="comment">// 接口中也可以定义“成员变量”，但是必须用public static final三个关键字进行修饰</span></span><br><span class="line">    <span class="comment">// 从效果上看，这就是接口的【常量】</span></span><br><span class="line">    <span class="comment">// 可以省略public static final三个关键字不写，但效果是等同的</span></span><br><span class="line">    <span class="comment">// 该常量必须手动赋值，且不可改变</span></span><br><span class="line">    <span class="comment">// 推荐命名规则，全大写，使用下划线分隔单词</span></span><br><span class="line">    <span class="comment">// 访问时直接用接口名称调用</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NUM_OF = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">// public abstract可以省略，默认为抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 新添加一个默认方法，可用于接口升级，使之前实现的类不需要重写该方法，也能继续使用</span></span><br><span class="line">    <span class="comment">// 该默认方法可以在实现类中直接调用，也可以进行覆盖重写</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> <span class="keyword">void</span> <span class="title">methodDefault</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 接口中也可以定义静态方法，通过接口名称直接调用静态方法，即可使用</span></span><br><span class="line">    <span class="comment">// 注意事项：不能通过接口实现类来调用接口中的静态方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStatic</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接口中可以定义私有方法，使得该方法不会被实现类访问,但可以被接口中的默认方法调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">methodCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接口中可以定义静态私有方法，使得该方法不会被实现类访问,但可以被接口中的静态方法调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStaticCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MyInterfaceAbstractImpl</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterfaceAbstractImpl</span> <span class="keyword">implements</span> <span class="title">MyInterfaceAbstract</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="comment">//</span></span><br><span class="line">     &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="comment">//</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="五、接口的实现类"><a href="#五、接口的实现类" class="headerlink" title="五、接口的实现类"></a>五、接口的实现类</h2><p>一个类可以实现多个接口，但所有接口中的抽象方法都要重写</p>
+<p>如果实现多个接口中存在重复的抽象方法，只需要覆盖重写一次即可</p>
+<p>如果实现多个接口中存在重复的默认方法，需要覆盖重写</p>
+<p>如果类的父类方法和接口中的默认方法产生冲突，优先使用父类方法</p>
+<p>接口是可以多继承接口的，父接口的默认方法冲突需要重写，抽象方法冲突无影响</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>基础语法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode：21.合并两个有序链表</title>
     <url>/2020/11/08/Leetcode%EF%BC%9A21.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/</url>
     <content><![CDATA[<h1 id="21-合并两个有序链表"><a href="#21-合并两个有序链表" class="headerlink" title="21.合并两个有序链表"></a>21.合并两个有序链表</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
@@ -148,6 +199,27 @@
       </tags>
   </entry>
   <entry>
+    <title>剑指 Offer 13. 机器人的运动范围</title>
+    <url>/2020/11/25/%E5%89%91%E6%8C%87%20Offer%2013.%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-13-机器人的运动范围"><a href="#剑指-Offer-13-机器人的运动范围" class="headerlink" title="剑指 Offer 13. 机器人的运动范围"></a>剑指 Offer 13. 机器人的运动范围</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>地上有一个m行n列的方格，从坐标 [0,0] 到坐标 [m-1,n-1] 。一个机器人从坐标 [0, 0] 的格子开始移动，它每次可以向左、右、上、下移动一格（不能移动到方格外），也不能进入行坐标和列坐标的数位之和大于k的格子。例如，当k为18时，机器人能够进入方格 [35, 37] ，因为3+5+3+7=18。但它不能进入方格 [35, 38]，因为3+5+3+8=19。请问该机器人能够到达多少个格子？</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof">LeetCode</a></h3><h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><ul>
+<li>简单的dfs题目，用递归来实现即可</li>
+<li>对于已到达的点需要进行标记，以便后续检查该点是否已到达</li>
+</ul>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>对于简单的运算不要再写函数，否则反而因为调用函数而浪费了时间和空间</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">movingCount</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span>[][] map = <span class="keyword">new</span> <span class="keyword">boolean</span>[m][n];</span><br><span class="line">        <span class="keyword">return</span> dfs(<span class="number">0</span>,<span class="number">0</span>,map,<span class="number">1</span>,k);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">boolean</span>[][] map, <span class="keyword">int</span> num,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x==map.length||y==map[<span class="number">0</span>].length)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>((x/<span class="number">10</span>+x%<span class="number">10</span>+y/<span class="number">10</span>+y%<span class="number">10</span>)&lt;=k&amp;&amp; !map[x][y])&#123;</span><br><span class="line">                map[x][y] = <span class="keyword">true</span>;</span><br><span class="line">                num = dfs(x+<span class="number">1</span>,y,map,num,k) + dfs(x,y+<span class="number">1</span>,map,num,k) + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">return</span> num;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>dfs</tag>
+        <tag>矩阵</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>剑指 Offer：03.数组中的重复元素</title>
     <url>/2020/11/08/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A03.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
     <content><![CDATA[<h1 id="剑指-Offer：03-数组中的重复元素"><a href="#剑指-Offer：03-数组中的重复元素" class="headerlink" title="剑指 Offer：03.数组中的重复元素"></a>剑指 Offer：03.数组中的重复元素</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</p>
@@ -288,6 +360,26 @@
       </tags>
   </entry>
   <entry>
+    <title>剑指 Offer：10- II. 青蛙跳台阶问题</title>
+    <url>/2020/11/18/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A10-%20II.%20%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：10-II-青蛙跳台阶问题"><a href="#剑指-Offer：10-II-青蛙跳台阶问题" class="headerlink" title="剑指 Offer：10- II. 青蛙跳台阶问题"></a>剑指 Offer：10- II. 青蛙跳台阶问题</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
+<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>简单分析可知，此题为斐波拉契数列的一种形式应用，与上一题类似</li>
+<li>需要注意的是改变了斐波拉契数列的初始值</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int numWays(int n) &#123;</span><br><span class="line">        if(n&#x3D;&#x3D;0)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;1)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;2)&#123;</span><br><span class="line">            return 2;</span><br><span class="line">        &#125;</span><br><span class="line">        int i &#x3D;2;</span><br><span class="line">        int s1 &#x3D; 1;</span><br><span class="line">        int s2 &#x3D; 2;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        while(i!&#x3D;n)&#123;</span><br><span class="line">            sum &#x3D; (s1 + s2) % 1000000007;</span><br><span class="line">            s1 &#x3D; s2;</span><br><span class="line">            s2 &#x3D; sum;</span><br><span class="line">            i &#x3D; i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>剑指 Offer：12.矩阵中的路径</title>
     <url>/2020/11/24/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A12.%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/</url>
     <content><![CDATA[<h1 id="剑指-Offer：12-矩阵中的路径"><a href="#剑指-Offer：12-矩阵中的路径" class="headerlink" title="剑指 Offer：12.矩阵中的路径"></a>剑指 Offer：12.矩阵中的路径</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。</p>
@@ -355,84 +447,6 @@
       </tags>
   </entry>
   <entry>
-    <title>操作系统（三）系统调用</title>
-    <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h1><h2 id="一、系统调用的意义"><a href="#一、系统调用的意义" class="headerlink" title="一、系统调用的意义"></a>一、系统调用的意义</h2><p>操作系统提供给应用程序使用的接口，来获得操作系统的服务</p>
-<p>系统调用使得系统中的各种资源由操作系统统一掌控</p>
-<h2 id="二、系统调用和库函数的区别"><a href="#二、系统调用和库函数的区别" class="headerlink" title="二、系统调用和库函数的区别"></a>二、系统调用和库函数的区别</h2><p>库函数封装了系统调用</p>
-<h2 id="三、系统调用的过程"><a href="#三、系统调用的过程" class="headerlink" title="三、系统调用的过程"></a>三、系统调用的过程</h2><ol>
-<li>传递系统调用参数</li>
-<li>执行陷入指令（只能在用户态执行的指令，不能在和心态执行）</li>
-<li>执行系统调用相应服务程序</li>
-<li>返回用户程序</li>
-</ol>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer：10- II. 青蛙跳台阶问题</title>
-    <url>/2020/11/18/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A10-%20II.%20%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h1 id="剑指-Offer：10-II-青蛙跳台阶问题"><a href="#剑指-Offer：10-II-青蛙跳台阶问题" class="headerlink" title="剑指 Offer：10- II. 青蛙跳台阶问题"></a>剑指 Offer：10- II. 青蛙跳台阶问题</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
-<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>简单分析可知，此题为斐波拉契数列的一种形式应用，与上一题类似</li>
-<li>需要注意的是改变了斐波拉契数列的初始值</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int numWays(int n) &#123;</span><br><span class="line">        if(n&#x3D;&#x3D;0)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;1)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n&#x3D;&#x3D;2)&#123;</span><br><span class="line">            return 2;</span><br><span class="line">        &#125;</span><br><span class="line">        int i &#x3D;2;</span><br><span class="line">        int s1 &#x3D; 1;</span><br><span class="line">        int s2 &#x3D; 2;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        while(i!&#x3D;n)&#123;</span><br><span class="line">            sum &#x3D; (s1 + s2) % 1000000007;</span><br><span class="line">            s1 &#x3D; s2;</span><br><span class="line">            s2 &#x3D; sum;</span><br><span class="line">            i &#x3D; i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络（二）性能指标</title>
-    <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%8C%EF%BC%89%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/</url>
-    <content><![CDATA[<h1 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h1><h2 id="一、速率"><a href="#一、速率" class="headerlink" title="一、速率"></a>一、速率</h2><p>速率即数据率或称数据传输率或者比特率（比特：1/0 位）</p>
-<p><strong><em>区分速率的单位和储存容量的单位</em></strong>     (1Byte = 8bit)<br>$$<br>\begin{aligned}<br>速率：&amp;1Tb/s &amp;=&amp; 10^3Gb &amp;=&amp; 10^6Mb/s &amp;=&amp; 10^9kb/s &amp;=&amp; 10^{12}b/s<br>\储存容量：&amp;1TB &amp;=&amp; 2^{10}GB &amp;=&amp; 2^{20}MB &amp;=&amp; 2^{30}KB &amp;=&amp; 2^{40}B \quad\quad = 2^{40}*8b<br>\end{aligned}<br>$$</p>
-<h2 id="二、带宽"><a href="#二、带宽" class="headerlink" title="二、带宽"></a>二、带宽</h2><p>“带宽”原本指，某个信号具有的频带宽度，即最高频率与最低频率之差，单位是赫兹（Hz）</p>
-<p>计算机网络中，带宽用来表示网络的通信线路传送数据的能力，通常是指单位时间内从网络中的某一点到另一点所能通过的==<strong>最高数据率</strong>==，单位是“比特每秒”</p>
-<p>指的是网络设备所支持的最高速度，因为信号在链路中的传播速度是一样的，都是光速，不同的只是设备单位时间可以发出的比特的个数</p>
-<h2 id="三、吞吐量"><a href="#三、吞吐量" class="headerlink" title="三、吞吐量"></a>三、吞吐量</h2><p>表示在单位时间内通过某个网络（或信道、接口）的数据量。单位“比特每秒”</p>
-<p>吞吐量和带宽的区别：吞吐量是带宽的实际情况，带宽是吞吐量的理论上限</p>
-<h2 id="四、时延"><a href="#四、时延" class="headerlink" title="四、时延"></a>四、时延</h2><p>指数据从网络的一端传送到另一端所需的时间，单位是秒</p>
-<ul>
-<li>发送时延:$\frac{数据长度}{信道带宽（发送速率）}$</li>
-<li> 传播时延：$\frac{信道长度}{电磁波在信道上的传播速率}$</li>
-<li>排队时延：等待输出/输入链路可用</li>
-<li>处理时延：检错，找出口</li>
-</ul>
-<h2 id="五、时延带宽积"><a href="#五、时延带宽积" class="headerlink" title="五、时延带宽积"></a>五、时延带宽积</h2><p>时延带宽积 = 传播时延 X 带宽        单位：bit</p>
-<p>又称==比特为单位的链路长度==，即==某段链路现在有多少比特==</p>
-<h2 id="六、往返时延RTT"><a href="#六、往返时延RTT" class="headerlink" title="六、往返时延RTT"></a>六、往返时延RTT</h2><p>从发送方发送数据开始，到接收方收到接收方的确认（接收方收到数据后立即发送确认）总共经历的时延</p>
-<p>RTT包括</p>
-<ul>
-<li>往返时延 = 传播时延 X 2</li>
-<li>末端处理时间</li>
-</ul>
-<h2 id="七、利用率"><a href="#七、利用率" class="headerlink" title="七、利用率"></a>七、利用率</h2><ul>
-<li>信道利用率</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>操作系统（二）中断和异常</title>
     <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/</url>
     <content><![CDATA[<h1 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h1><h2 id="一、中断的意义"><a href="#一、中断的意义" class="headerlink" title="一、中断的意义"></a>一、中断的意义</h2><p>实现多道程序并发执行</p>
@@ -463,6 +477,111 @@
 <li>如果检测到外部中断信号，则需要保护被中断进程的CPU环境</li>
 <li>根据中断信号转入相应的中断处理程序</li>
 <li>恢复原进程的CPU环境并退出中断，返回原进程继续往下执行</li>
+</ol>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统（四）进程</title>
+    <url>/2020/11/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89%E8%BF%9B%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="一、进程的定义"><a href="#一、进程的定义" class="headerlink" title="一、进程的定义"></a>一、进程的定义</h2><p>程序段、数据段、PCB三部分组成了进程实体，PCB是进程存在的唯一标志，用来描述进程的各种信息。</p>
+<h3 id="典型定义："><a href="#典型定义：" class="headerlink" title="典型定义："></a>典型定义：</h3><p>进程是程序的一次执行过程</p>
+<p>进程是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位。</p>
+<h2 id="二、进程的组成"><a href="#二、进程的组成" class="headerlink" title="二、进程的组成"></a>二、进程的组成</h2><ul>
+<li><h3 id="PCB："><a href="#PCB：" class="headerlink" title="PCB："></a>PCB：</h3><ul>
+<li>进程描述信息：进程标识符PID、用户标识符UID</li>
+<li>进程控制和管理信息：进程当前状态、进程优先级</li>
+<li>资源分配清单：程序段指针、数据段指针、键盘、鼠标</li>
+<li>处理机相关信息：各种寄存器值</li>
+</ul>
+</li>
+<li><h3 id="程序段："><a href="#程序段：" class="headerlink" title="程序段："></a>程序段：</h3><ul>
+<li>存放要执行的代码</li>
+</ul>
+</li>
+<li><h3 id="数据段："><a href="#数据段：" class="headerlink" title="数据段："></a>数据段：</h3><ul>
+<li>存放程序运行过程中处理的各种数据</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、进程的组织"><a href="#三、进程的组织" class="headerlink" title="三、进程的组织"></a>三、进程的组织</h2><p>多个进程之间的组织方式问题</p>
+<ul>
+<li><h3 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h3><ul>
+<li>按照进程状态将PCB分为多个队列<ul>
+<li>执行指针-&gt;当前处于运行态的进程（单CPU中，只有一个进程在同一时刻运行）</li>
+<li>就绪队列指针-&gt;处于就绪态的进程（为一个队列，优先级高的在前）</li>
+<li>阻塞队列指针-&gt;处于阻塞态的进程（可能有多个阻塞队列）</li>
+</ul>
+</li>
+<li>操作系统持有指向各个队列的指针</li>
+</ul>
+</li>
+<li><h3 id="索引方式"><a href="#索引方式" class="headerlink" title="索引方式"></a>索引方式</h3><ul>
+<li>根据进程状态的不同，建立几张索引表</li>
+<li>操作系统持有指向各个索引表的指针</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、进程的特征"><a href="#四、进程的特征" class="headerlink" title="四、进程的特征"></a>四、进程的特征</h2><ol>
+<li>动态性：进程是动态的、变化的、消亡的</li>
+<li>并发性：内存中有多个进程实体，各进程可并发执行</li>
+<li>独立性：进程是能独立运行、独立获得资源、独立接受调度的基本单位</li>
+<li>异步性：并发执行的进程的结果的完成速度的不确定性，操作系统需要提供“进程同步机制”来解决异步问题</li>
+<li>结构性：每个进程都配备一个PCB，结构上由数据段、代码段、PCB组成</li>
+</ol>
+<h2 id="五、进程的状态"><a href="#五、进程的状态" class="headerlink" title="五、进程的状态"></a>五、进程的状态</h2><h3 id="1-三种基本状态："><a href="#1-三种基本状态：" class="headerlink" title="1. 三种基本状态："></a>1. 三种基本状态：</h3><ul>
+<li>运行态：占用CPU<ul>
+<li>CPU✅其它所需资源✅</li>
+</ul>
+</li>
+<li>就绪态：可以运行，但CPU被其它进程占用<ul>
+<li>CPU❌其它所需资源✅</li>
+</ul>
+</li>
+<li>阻塞态：等待某一事件的完成而暂时无法运行<ul>
+<li>CPU❌其它所需资源❌</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-另外两种状态："><a href="#2-另外两种状态：" class="headerlink" title="2.另外两种状态："></a>2.另外两种状态：</h3><ul>
+<li>创建态：操作系统为进程分配资源、初始化PCB</li>
+<li>终止态：进程从操作系统中撤销，操作系统回收进程资源，撤销PCB</li>
+</ul>
+<h3 id="3-进程的状态转换"><a href="#3-进程的状态转换" class="headerlink" title="3.进程的状态转换"></a>3.进程的状态转换</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl2d2mq7nvj31go0nugqd.jpg" alt="image-20201126102303056"></p>
+<p>注意：运行态-&gt;阻塞态是进程自身的主动行为</p>
+<p>​           阻塞态-&gt;就绪态是被动的，阻塞态不能直接转换为运行态</p>
+<h2 id="六、进程控制"><a href="#六、进程控制" class="headerlink" title="六、进程控制"></a>六、进程控制</h2><h3 id="1-实现的方式："><a href="#1-实现的方式：" class="headerlink" title="1.实现的方式："></a>1.实现的方式：</h3><p>用原语来实现进程的控制，其特点是执行期间不允许中断（原子操作），可以保证进程转换时PCB不会发生混乱（保证进程转换的过程完整发生，而不被其它中断打断，原语运行在核心态中，采用“关中断指令”和“开中断指令”，权限极大是核心态下执行的特权指令）</p>
+<h3 id="2-控制的内容："><a href="#2-控制的内容：" class="headerlink" title="2.控制的内容："></a>2.控制的内容：</h3><ul>
+<li>更新PCB中的信息</li>
+<li>将PCB插入合适的队列</li>
+<li>分配/回收资源</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统（三）系统调用</title>
+    <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h1><h2 id="一、系统调用的意义"><a href="#一、系统调用的意义" class="headerlink" title="一、系统调用的意义"></a>一、系统调用的意义</h2><p>操作系统提供给应用程序使用的接口，来获得操作系统的服务</p>
+<p>系统调用使得系统中的各种资源由操作系统统一掌控</p>
+<h2 id="二、系统调用和库函数的区别"><a href="#二、系统调用和库函数的区别" class="headerlink" title="二、系统调用和库函数的区别"></a>二、系统调用和库函数的区别</h2><p>库函数封装了系统调用</p>
+<h2 id="三、系统调用的过程"><a href="#三、系统调用的过程" class="headerlink" title="三、系统调用的过程"></a>三、系统调用的过程</h2><ol>
+<li>传递系统调用参数</li>
+<li>执行陷入指令（只能在用户态执行的指令，不能在和心态执行）</li>
+<li>执行系统调用相应服务程序</li>
+<li>返回用户程序</li>
 </ol>
 ]]></content>
       <categories>
@@ -633,159 +752,40 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指 Offer 13. 机器人的运动范围</title>
-    <url>/2020/11/25/%E5%89%91%E6%8C%87%20Offer%2013.%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/</url>
-    <content><![CDATA[<h1 id="剑指-Offer-13-机器人的运动范围"><a href="#剑指-Offer-13-机器人的运动范围" class="headerlink" title="剑指 Offer 13. 机器人的运动范围"></a>剑指 Offer 13. 机器人的运动范围</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>地上有一个m行n列的方格，从坐标 [0,0] 到坐标 [m-1,n-1] 。一个机器人从坐标 [0, 0] 的格子开始移动，它每次可以向左、右、上、下移动一格（不能移动到方格外），也不能进入行坐标和列坐标的数位之和大于k的格子。例如，当k为18时，机器人能够进入方格 [35, 37] ，因为3+5+3+7=18。但它不能进入方格 [35, 38]，因为3+5+3+8=19。请问该机器人能够到达多少个格子？</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof">LeetCode</a></h3><h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><ul>
-<li>简单的dfs题目，用递归来实现即可</li>
-<li>对于已到达的点需要进行标记，以便后续检查该点是否已到达</li>
-</ul>
-<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>对于简单的运算不要再写函数，否则反而因为调用函数而浪费了时间和空间</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">movingCount</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span>[][] map = <span class="keyword">new</span> <span class="keyword">boolean</span>[m][n];</span><br><span class="line">        <span class="keyword">return</span> dfs(<span class="number">0</span>,<span class="number">0</span>,map,<span class="number">1</span>,k);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">boolean</span>[][] map, <span class="keyword">int</span> num,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x==map.length||y==map[<span class="number">0</span>].length)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>((x/<span class="number">10</span>+x%<span class="number">10</span>+y/<span class="number">10</span>+y%<span class="number">10</span>)&lt;=k&amp;&amp; !map[x][y])&#123;</span><br><span class="line">                map[x][y] = <span class="keyword">true</span>;</span><br><span class="line">                num = dfs(x+<span class="number">1</span>,y,map,num,k) + dfs(x,y+<span class="number">1</span>,map,num,k) + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">return</span> num;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>dfs</tag>
-        <tag>矩阵</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>操作系统（四）进程</title>
-    <url>/2020/11/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89%E8%BF%9B%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="一、进程的定义"><a href="#一、进程的定义" class="headerlink" title="一、进程的定义"></a>一、进程的定义</h2><p>程序段、数据段、PCB三部分组成了进程实体，PCB是进程存在的唯一标志，用来描述进程的各种信息。</p>
-<h3 id="典型定义："><a href="#典型定义：" class="headerlink" title="典型定义："></a>典型定义：</h3><p>进程是程序的一次执行过程</p>
-<p>进程是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位。</p>
-<h2 id="二、进程的组成"><a href="#二、进程的组成" class="headerlink" title="二、进程的组成"></a>二、进程的组成</h2><ul>
-<li><h3 id="PCB："><a href="#PCB：" class="headerlink" title="PCB："></a>PCB：</h3><ul>
-<li>进程描述信息：进程标识符PID、用户标识符UID</li>
-<li>进程控制和管理信息：进程当前状态、进程优先级</li>
-<li>资源分配清单：程序段指针、数据段指针、键盘、鼠标</li>
-<li>处理机相关信息：各种寄存器值</li>
-</ul>
-</li>
-<li><h3 id="程序段："><a href="#程序段：" class="headerlink" title="程序段："></a>程序段：</h3><ul>
-<li>存放要执行的代码</li>
-</ul>
-</li>
-<li><h3 id="数据段："><a href="#数据段：" class="headerlink" title="数据段："></a>数据段：</h3><ul>
-<li>存放程序运行过程中处理的各种数据</li>
-</ul>
-</li>
-</ul>
-<h2 id="三、进程的组织"><a href="#三、进程的组织" class="headerlink" title="三、进程的组织"></a>三、进程的组织</h2><p>多个进程之间的组织方式问题</p>
+    <title>计算机网络（二）性能指标</title>
+    <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%8C%EF%BC%89%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/</url>
+    <content><![CDATA[<h1 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h1><h2 id="一、速率"><a href="#一、速率" class="headerlink" title="一、速率"></a>一、速率</h2><p>速率即数据率或称数据传输率或者比特率（比特：1/0 位）</p>
+<p><strong><em>区分速率的单位和储存容量的单位</em></strong>     (1Byte = 8bit)<br>$$<br>\begin{aligned}<br>速率：&amp;1Tb/s &amp;=&amp; 10^3Gb &amp;=&amp; 10^6Mb/s &amp;=&amp; 10^9kb/s &amp;=&amp; 10^{12}b/s<br>\储存容量：&amp;1TB &amp;=&amp; 2^{10}GB &amp;=&amp; 2^{20}MB &amp;=&amp; 2^{30}KB &amp;=&amp; 2^{40}B \quad\quad = 2^{40}*8b<br>\end{aligned}<br>$$</p>
+<h2 id="二、带宽"><a href="#二、带宽" class="headerlink" title="二、带宽"></a>二、带宽</h2><p>“带宽”原本指，某个信号具有的频带宽度，即最高频率与最低频率之差，单位是赫兹（Hz）</p>
+<p>计算机网络中，带宽用来表示网络的通信线路传送数据的能力，通常是指单位时间内从网络中的某一点到另一点所能通过的==<strong>最高数据率</strong>==，单位是“比特每秒”</p>
+<p>指的是网络设备所支持的最高速度，因为信号在链路中的传播速度是一样的，都是光速，不同的只是设备单位时间可以发出的比特的个数</p>
+<h2 id="三、吞吐量"><a href="#三、吞吐量" class="headerlink" title="三、吞吐量"></a>三、吞吐量</h2><p>表示在单位时间内通过某个网络（或信道、接口）的数据量。单位“比特每秒”</p>
+<p>吞吐量和带宽的区别：吞吐量是带宽的实际情况，带宽是吞吐量的理论上限</p>
+<h2 id="四、时延"><a href="#四、时延" class="headerlink" title="四、时延"></a>四、时延</h2><p>指数据从网络的一端传送到另一端所需的时间，单位是秒</p>
 <ul>
-<li><h3 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h3><ul>
-<li>按照进程状态将PCB分为多个队列<ul>
-<li>执行指针-&gt;当前处于运行态的进程（单CPU中，只有一个进程在同一时刻运行）</li>
-<li>就绪队列指针-&gt;处于就绪态的进程（为一个队列，优先级高的在前）</li>
-<li>阻塞队列指针-&gt;处于阻塞态的进程（可能有多个阻塞队列）</li>
+<li>发送时延:$\frac{数据长度}{信道带宽（发送速率）}$</li>
+<li> 传播时延：$\frac{信道长度}{电磁波在信道上的传播速率}$</li>
+<li>排队时延：等待输出/输入链路可用</li>
+<li>处理时延：检错，找出口</li>
 </ul>
-</li>
-<li>操作系统持有指向各个队列的指针</li>
+<h2 id="五、时延带宽积"><a href="#五、时延带宽积" class="headerlink" title="五、时延带宽积"></a>五、时延带宽积</h2><p>时延带宽积 = 传播时延 X 带宽        单位：bit</p>
+<p>又称==比特为单位的链路长度==，即==某段链路现在有多少比特==</p>
+<h2 id="六、往返时延RTT"><a href="#六、往返时延RTT" class="headerlink" title="六、往返时延RTT"></a>六、往返时延RTT</h2><p>从发送方发送数据开始，到接收方收到接收方的确认（接收方收到数据后立即发送确认）总共经历的时延</p>
+<p>RTT包括</p>
+<ul>
+<li>往返时延 = 传播时延 X 2</li>
+<li>末端处理时间</li>
 </ul>
-</li>
-<li><h3 id="索引方式"><a href="#索引方式" class="headerlink" title="索引方式"></a>索引方式</h3><ul>
-<li>根据进程状态的不同，建立几张索引表</li>
-<li>操作系统持有指向各个索引表的指针</li>
-</ul>
-</li>
-</ul>
-<h2 id="四、进程的特征"><a href="#四、进程的特征" class="headerlink" title="四、进程的特征"></a>四、进程的特征</h2><ol>
-<li>动态性：进程是动态的、变化的、消亡的</li>
-<li>并发性：内存中有多个进程实体，各进程可并发执行</li>
-<li>独立性：进程是能独立运行、独立获得资源、独立接受调度的基本单位</li>
-<li>异步性：并发执行的进程的结果的完成速度的不确定性，操作系统需要提供“进程同步机制”来解决异步问题</li>
-<li>结构性：每个进程都配备一个PCB，结构上由数据段、代码段、PCB组成</li>
-</ol>
-<h2 id="五、进程的状态"><a href="#五、进程的状态" class="headerlink" title="五、进程的状态"></a>五、进程的状态</h2><h3 id="1-三种基本状态："><a href="#1-三种基本状态：" class="headerlink" title="1. 三种基本状态："></a>1. 三种基本状态：</h3><ul>
-<li>运行态：占用CPU<ul>
-<li>CPU✅其它所需资源✅</li>
-</ul>
-</li>
-<li>就绪态：可以运行，但CPU被其它进程占用<ul>
-<li>CPU❌其它所需资源✅</li>
-</ul>
-</li>
-<li>阻塞态：等待某一事件的完成而暂时无法运行<ul>
-<li>CPU❌其它所需资源❌</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-另外两种状态："><a href="#2-另外两种状态：" class="headerlink" title="2.另外两种状态："></a>2.另外两种状态：</h3><ul>
-<li>创建态：操作系统为进程分配资源、初始化PCB</li>
-<li>终止态：进程从操作系统中撤销，操作系统回收进程资源，撤销PCB</li>
-</ul>
-<h3 id="3-进程的状态转换"><a href="#3-进程的状态转换" class="headerlink" title="3.进程的状态转换"></a>3.进程的状态转换</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl2d2mq7nvj31go0nugqd.jpg" alt="image-20201126102303056"></p>
-<p>注意：运行态-&gt;阻塞态是进程自身的主动行为</p>
-<p>​           阻塞态-&gt;就绪态是被动的，阻塞态不能直接转换为运行态</p>
-<h2 id="六、进程控制"><a href="#六、进程控制" class="headerlink" title="六、进程控制"></a>六、进程控制</h2><h3 id="1-实现的方式："><a href="#1-实现的方式：" class="headerlink" title="1.实现的方式："></a>1.实现的方式：</h3><p>用原语来实现进程的控制，其特点是执行期间不允许中断（原子操作），可以保证进程转换时PCB不会发生混乱（保证进程转换的过程完整发生，而不被其它中断打断，原语运行在核心态中，采用“关中断指令”和“开中断指令”，权限极大是核心态下执行的特权指令）</p>
-<h3 id="2-控制的内容："><a href="#2-控制的内容：" class="headerlink" title="2.控制的内容："></a>2.控制的内容：</h3><ul>
-<li>更新PCB中的信息</li>
-<li>将PCB插入合适的队列</li>
-<li>分配/回收资源</li>
+<h2 id="七、利用率"><a href="#七、利用率" class="headerlink" title="七、利用率"></a>七、利用率</h2><ul>
+<li>信道利用率</li>
 </ul>
 ]]></content>
       <categories>
-        <category>操作系统</category>
+        <category>计算机网络</category>
       </categories>
       <tags>
-        <tag>操作系统</tag>
         <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java（一）接口</title>
-    <url>/2020/11/26/Java%EF%BC%88%E4%B8%80%EF%BC%89%E6%8E%A5%E5%8F%A3/</url>
-    <content><![CDATA[<h1 id="Java（一）接口"><a href="#Java（一）接口" class="headerlink" title="Java（一）接口"></a>Java（一）接口</h1><h2 id="1-定义格式"><a href="#1-定义格式" class="headerlink" title="1.定义格式"></a>1.定义格式</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 接口名称</span>&#123;</span><br><span class="line">	<span class="comment">// 接口内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-使用步骤"><a href="#2-使用步骤" class="headerlink" title="2.使用步骤"></a>2.使用步骤</h2><ol>
-<li><p>接口不能直接使用，必须有一个“实现类”来“实现”该接口</p>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 实现类名称 <span class="keyword">implements</span> 接口名称</span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>接口的实现类必须覆盖重写（实现）接口中的所有抽象方法</p>
-<p> 实现：去掉abstract关键字，加上方法体大括号</p>
-</li>
-<li><p>创建实现类的对象，进行使用</p>
-</li>
-</ol>
-<h2 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3.注意事项"></a>3.注意事项</h2><p>如果实现类并没有覆盖重写接口中所有的抽象方法，那么这个实现类自己就必须是抽象类</p>
-<h2 id="4-具体例子"><a href="#4-具体例子" class="headerlink" title="4.具体例子"></a>4.具体例子</h2><ol>
-<li><p>MyInterfaceAbstract</p>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInterfaceAbstract</span></span>&#123;</span><br><span class="line">    <span class="comment">// 接口中也可以定义“成员变量”，但是必须用public static final三个关键字进行修饰</span></span><br><span class="line">    <span class="comment">// 从效果上看，这就是接口的【常量】</span></span><br><span class="line">    <span class="comment">// 可以省略public static final三个关键字不写，但效果是等同的</span></span><br><span class="line">    <span class="comment">// 该常量必须手动赋值，且不可改变</span></span><br><span class="line">    <span class="comment">// 推荐命名规则，全大写，使用下划线分隔单词</span></span><br><span class="line">    <span class="comment">// 访问时直接用接口名称调用</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NUM_OF = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">// public abstract可以省略，默认为抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 新添加一个默认方法，可用于接口升级，使之前实现的类不需要重写该方法，也能继续使用</span></span><br><span class="line">    <span class="comment">// 该默认方法可以在实现类中直接调用，也可以进行覆盖重写</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> <span class="keyword">void</span> <span class="title">methodDefault</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 接口中也可以定义静态方法，通过接口名称直接调用静态方法，即可使用</span></span><br><span class="line">    <span class="comment">// 注意事项：不能通过接口实现类来调用接口中的静态方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStatic</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接口中可以定义私有方法，使得该方法不会被实现类访问,但可以被接口中的默认方法调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">methodCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接口中可以定义静态私有方法，使得该方法不会被实现类访问,但可以被接口中的静态方法调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStaticCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>MyInterfaceAbstractImpl</p>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterfaceAbstractImpl</span> <span class="keyword">implements</span> <span class="title">MyInterfaceAbstract</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="comment">//</span></span><br><span class="line">     &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="comment">//</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="五、接口的实现类"><a href="#五、接口的实现类" class="headerlink" title="五、接口的实现类"></a>五、接口的实现类</h2><p>一个类可以实现多个接口，但所有接口中的抽象方法都要重写</p>
-<p>如果实现多个接口中存在重复的抽象方法，只需要覆盖重写一次即可</p>
-<p>如果实现多个接口中存在重复的默认方法，需要覆盖重写</p>
-<p>如果类的父类方法和接口中的默认方法产生冲突，优先使用父类方法</p>
-<p>接口是可以多继承接口的，父接口的默认方法冲突需要重写，抽象方法冲突无影响</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>基础语法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java（二）多态</title>
-    <url>/2020/11/26/Java%EF%BC%88%E4%BA%8C%EF%BC%89%E5%A4%9A%E6%80%81/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>基础语法</tag>
+        <tag>计算机网络</tag>
       </tags>
   </entry>
 </search>
