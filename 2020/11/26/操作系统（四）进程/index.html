@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">832</span>
+            <span class="post-count">1.3k</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">4 min</span>
         </span>
     </span>
 </div>
@@ -169,6 +169,32 @@
 <li>更新PCB中的信息</li>
 <li>将PCB插入合适的队列</li>
 <li>分配/回收资源</li>
+</ul>
+<h2 id="七、进程通信"><a href="#七、进程通信" class="headerlink" title="七、进程通信"></a>七、进程通信</h2><p>进程间的信息交换</p>
+<h3 id="1-共享存储"><a href="#1-共享存储" class="headerlink" title="1. 共享存储"></a>1. 共享存储</h3><p>两个进程对共享空间的访问必须是==互斥==的（操作系统只负责提供共享空间和同步互斥工具）</p>
+<ul>
+<li>基于数据结构的共享<ul>
+<li>速度慢、限制多，是一种低级通信方式</li>
+</ul>
+</li>
+<li>基于储存区的共享<ul>
+<li>数据的形式和存放位置都由进程控制，速度更快，是一种高级通信方式</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-管道通信"><a href="#2-管道通信" class="headerlink" title="2.管道通信"></a>2.管道通信</h3><p>在内存中开辟一个大小固定的缓存区</p>
+<ul>
+<li>管道只能采用==半双工==通信，某一时间段只能实现单向的传输，要实现双向同时通信，需要两个管道</li>
+<li>各进程==互斥==地形式访问管道</li>
+<li>数据以字符流的形式写入管道，当管道写满时，写进程的write()将被阻塞，等待读进程。当读进程将数据全部取走后，管道变空，此时读进程的read()将被阻塞</li>
+<li>如果==没写满，就不允许读==，如果==没读空，就不允许写==</li>
+<li>数据一旦被读出，就从管道中被抛弃，这就意味着==读进程最多只能有一个==，否则可能会有读错数据的情况。</li>
+</ul>
+<h3 id="3-消息传递"><a href="#3-消息传递" class="headerlink" title="3.消息传递"></a>3.消息传递</h3><p>进程间的数据交换以==格式化的消息==为单位。通过操作系统提供的“发消息/接受消息”两个==原语==进行数据交换</p>
+<p>消息由==消息头==和==消息体==组成：消息头包括发送进程ID、接受进程ID、消息类型、消息长度等格式化信息（计网中的“报文”就是一种==格式化==的消息）</p>
+<ul>
+<li>直接通信方式：消息直接挂到接收进程的消息缓冲队列上</li>
+<li>间接通信方式：消息先发送到中间实体（信箱）中，也称信箱通信方式</li>
 </ul>
  
       <!-- reward -->
