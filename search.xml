@@ -962,4 +962,23 @@
         <tag>软件工程</tag>
       </tags>
   </entry>
+  <entry>
+    <title>使用阿里云和hexo搭建个人博客</title>
+    <url>/2020/12/02/%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="使用阿里云和hexo搭建个人博客"><a href="#使用阿里云和hexo搭建个人博客" class="headerlink" title="使用阿里云和hexo搭建个人博客"></a>使用阿里云和hexo搭建个人博客</h1><p>本次主要参考的是<a href="https://blog.csdn.net/qq_37391214/article/details/106161526(https://blog.csdn.net/qq_37391214/article/details/106161526)">https://blog.csdn.net/qq_37391214/article/details/106161526(https://blog.csdn.net/qq_37391214/article/details/106161526)</a></p>
+<p>现对其中遇到的问题进行总结</p>
+<h2 id="1-nginx编译问题"><a href="#1-nginx编译问题" class="headerlink" title="1.nginx编译问题"></a>1.nginx编译问题</h2><p>原文提到的nginx版本有一点问题，无法通过编译，我选择了nginx-1.19.5这样一个版本</p>
+<h2 id="2-双推送"><a href="#2-双推送" class="headerlink" title="2.双推送"></a>2.双推送</h2><p>因为域名是在阿里云购买的，必须绑定阿里云的服务器，此次迁移博客也是因为这个原因，但是还是希望推送到GitHub上，所以可以对_config.yml文件进行修改，使其可以推送到两个服务器上</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl9u32tm91j319e0aqwgb.jpg" alt="image-20201202213036808"></p>
+<h2 id="3-nginx配置问题"><a href="#3-nginx配置问题" class="headerlink" title="3.nginx配置问题"></a>3.nginx配置问题</h2><p>nginx修改配置后需要再次重启nginx，才能使得配置生效</p>
+]]></content>
+      <categories>
+        <category>实战</category>
+      </categories>
+      <tags>
+        <tag>应用</tag>
+        <tag>网站开发</tag>
+        <tag>问题总结</tag>
+      </tags>
+  </entry>
 </search>
