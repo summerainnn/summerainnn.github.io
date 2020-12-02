@@ -105,6 +105,26 @@
       </tags>
   </entry>
   <entry>
+    <title>python实现爬取豆瓣电影评论</title>
+    <url>/2020/11/10/python%E5%AE%9E%E7%8E%B0%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E8%AE%BA/</url>
+    <content><![CDATA[<h1 id="python实现爬取豆瓣电影评论"><a href="#python实现爬取豆瓣电影评论" class="headerlink" title="python实现爬取豆瓣电影评论"></a>python实现爬取豆瓣电影评论</h1><h2 id="github"><a href="#github" class="headerlink" title="github"></a><a href="https://github.com/summerainnn/dbSpider">github</a></h2><h2 id="使用的库"><a href="#使用的库" class="headerlink" title="使用的库"></a>使用的库</h2><p>以前在写爬虫时使用的都是reques，这次发现了更好用的request_html，不需要再用bs4来解析网页了</p>
+<blockquote>
+<p>request_html</p>
+</blockquote>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>首先建立一个会话（session），即让Python作为一个客户端，和远端服务器交谈</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">session = HTMLSession()</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以用session来进行get的操作，这里的URL可以自己在浏览器中寻找，找到你需要的数据的具体的get的网址，该网址并不一定是网页网址</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://pypi.org/project/requests-html/">官方文档</a></h3><h3 id="如何用Python爬数据？（一）网页抓取"><a href="#如何用Python爬数据？（一）网页抓取" class="headerlink" title="如何用Python爬数据？（一）网页抓取"></a><a href="https://www.jianshu.com/p/ba02079ecd2f">如何用Python爬数据？（一）网页抓取</a></h3><h3 id="requests-html"><a href="#requests-html" class="headerlink" title="requests-html"></a><a href="https://www.jianshu.com/p/380974ba9540">requests-html</a></h3>]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>应用</tag>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>人工智能</title>
     <url>/2020/11/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</url>
     <content><![CDATA[<h1 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h1><h2 id="什么是人工智能？"><a href="#什么是人工智能？" class="headerlink" title="什么是人工智能？"></a>什么是人工智能？</h2><ul>
@@ -157,26 +177,6 @@
       </tags>
   </entry>
   <entry>
-    <title>python实现爬取豆瓣电影评论</title>
-    <url>/2020/11/10/python%E5%AE%9E%E7%8E%B0%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E8%AE%BA/</url>
-    <content><![CDATA[<h1 id="python实现爬取豆瓣电影评论"><a href="#python实现爬取豆瓣电影评论" class="headerlink" title="python实现爬取豆瓣电影评论"></a>python实现爬取豆瓣电影评论</h1><h2 id="github"><a href="#github" class="headerlink" title="github"></a><a href="https://github.com/summerainnn/dbSpider">github</a></h2><h2 id="使用的库"><a href="#使用的库" class="headerlink" title="使用的库"></a>使用的库</h2><p>以前在写爬虫时使用的都是reques，这次发现了更好用的request_html，不需要再用bs4来解析网页了</p>
-<blockquote>
-<p>request_html</p>
-</blockquote>
-<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>首先建立一个会话（session），即让Python作为一个客户端，和远端服务器交谈</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">session = HTMLSession()</span><br></pre></td></tr></table></figure>
-
-<p>然后就可以用session来进行get的操作，这里的URL可以自己在浏览器中寻找，找到你需要的数据的具体的get的网址，该网址并不一定是网页网址</p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a><a href="https://pypi.org/project/requests-html/">官方文档</a></h3><h3 id="如何用Python爬数据？（一）网页抓取"><a href="#如何用Python爬数据？（一）网页抓取" class="headerlink" title="如何用Python爬数据？（一）网页抓取"></a><a href="https://www.jianshu.com/p/ba02079ecd2f">如何用Python爬数据？（一）网页抓取</a></h3><h3 id="requests-html"><a href="#requests-html" class="headerlink" title="requests-html"></a><a href="https://www.jianshu.com/p/380974ba9540">requests-html</a></h3>]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>应用</tag>
-        <tag>爬虫</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>剑指 Offer：11.旋转数组的最小数字</title>
     <url>/2020/11/23/%E5%89%91%E6%8C%87%20Offer%2011.%20%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/</url>
     <content><![CDATA[<h1 id="剑指-Offer-11-旋转数组的最小数字"><a href="#剑指-Offer-11-旋转数组的最小数字" class="headerlink" title="剑指 Offer 11. 旋转数组的最小数字"></a>剑指 Offer 11. 旋转数组的最小数字</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。  </p>
@@ -220,15 +220,15 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指 Offer：04.二维数组中的查找</title>
-    <url>/2020/11/09/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A04.%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1 id="剑指-Offer：04-二维数组中的查找"><a href="#剑指-Offer：04-二维数组中的查找" class="headerlink" title="剑指 Offer：04.二维数组中的查找"></a>剑指 Offer：04.二维数组中的查找</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof">LeetCode</a></h3><hr>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>根据该数组的特点，可从数组的右上角或者左下角开始，进行求解</li>
-<li>专注于当前点，而不是下一个点，因为根据当前点即可判断出下一个点的位置，这也是初始点选择的好处所在</li>
+    <title>剑指 Offer 14- II. 剪绳子 II</title>
+    <url>/2020/11/30/%E5%89%91%E6%8C%87%20Offer%2014-%20II.%20%E5%89%AA%E7%BB%B3%E5%AD%90%20II/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-14-II-剪绳子-II"><a href="#剑指-Offer-14-II-剪绳子-II" class="headerlink" title="剑指 Offer 14- II. 剪绳子 II"></a>剑指 Offer 14- II. 剪绳子 II</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m - 1] 。请问 k[0]<em>k[1]</em>…*k[m - 1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。</p>
+<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>首先找出规律，分成3相乘时，积最大，但是当剩余的长度为4时，分成2和2最大</li>
+<li>需要定义long，使用int会有溢出的风险</li>
 </ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">findNumberIn2DArray</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix==<span class="keyword">null</span>||matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>].length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> columns = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> row = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> column = columns-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (row&lt;rows&amp;&amp;column&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> num = matrix[row][column];</span><br><span class="line">            <span class="keyword">if</span>(num==target)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(num&lt;target)&#123;</span><br><span class="line">                row++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                column--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">cuttingRope</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">4</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> sum = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(n&gt;<span class="number">4</span>)&#123;</span><br><span class="line">            sum = sum * <span class="number">3</span>;</span><br><span class="line">            sum = sum %<span class="number">1000000007</span>;</span><br><span class="line">            n = n - <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// if(n==4)&#123;</span></span><br><span class="line">        <span class="comment">//     return sum*4%1000000007;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// if(n==3)&#123;</span></span><br><span class="line">        <span class="comment">//     return sum*3%1000000007;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// if(n == 2)&#123;</span></span><br><span class="line">        <span class="comment">//     return sum*2%1000000007;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) (sum*n%<span class="number">1000000007</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -238,8 +238,60 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数组</tag>
-        <tag>线性查找</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 15. 二进制中1的个数</title>
+    <url>/2020/11/30/%E5%89%91%E6%8C%87%20Offer%2015.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-15-二进制中1的个数"><a href="#剑指-Offer-15-二进制中1的个数" class="headerlink" title="剑指 Offer 15. 二进制中1的个数"></a>剑指 Offer 15. 二进制中1的个数</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>请实现一个函数，输入一个整数（以二进制串形式），输出该数二进制表示中 1 的个数。例如，把 9 表示成二进制是 1001，有 2 位是 1。因此，如果输入 9，则该函数输出 2。</p>
+<p> 示例 1：</p>
+<p>输入：00000000000000000000000000001011<br>输出：3<br>解释：输入的二进制串 00000000000000000000000000001011 中，共有三位为 ‘1’。<br>示例 2：</p>
+<p>输入：00000000000000000000000010000000<br>输出：1<br>解释：输入的二进制串 00000000000000000000000010000000 中，共有一位为 ‘1’。<br>示例 3：</p>
+<p>输入：11111111111111111111111111111101<br>输出：31<br>解释：输入的二进制串 11111111111111111111111111111101 中，共有 31 位为 ‘1’。</p>
+<p>提示：</p>
+<p>输入必须是长度为 32 的 二进制串 。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>使用移位的方法，来对每一位进行判断，是否为1</li>
+<li>时间复杂度为O（$log_2N$）(此处的N并不是二进制的位数)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n != <span class="number">0</span>) &#123;</span><br><span class="line">            res += n &amp; <span class="number">1</span>;</span><br><span class="line">            n &gt;&gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用n&amp;(n-1)的方法，对n进行减一的操作，再与原来的数进行与操作，可以使得该数的低位第一个1变成0</li>
+<li>时间复杂度相比上一个方法有所降低</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// you need to treat n as an unsigned value</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n!=<span class="number">0</span>)&#123;</span><br><span class="line">            n = n &amp; (n-<span class="number">1</span>);</span><br><span class="line">            result++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 18. 删除链表的节点</title>
+    <url>/2020/12/01/%E5%89%91%E6%8C%87%20Offer%2018.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-18-删除链表的节点"><a href="#剑指-Offer-18-删除链表的节点" class="headerlink" title="剑指 Offer 18. 删除链表的节点"></a>剑指 Offer 18. 删除链表的节点</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。</p>
+<p>返回删除后的链表的头节点。 </p>
+<p>注意：此题对比原题有改动</p>
+<p>示例 1:</p>
+<p>输入: head = [4,5,1,9], val = 5<br>输出: [4,1,9]<br>解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.<br>示例 2:</p>
+<p>输入: head = [4,5,1,9], val = 1<br>输出: [4,5,9]<br>解释: 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 5 -&gt; 9.</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/shan-chu-lian-biao-de-jie-dian-lcof">LeetCode</a></h3><h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><ul>
+<li>对链表有基本的了解即可</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteNode</span><span class="params">(ListNode head, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (head.val == val) &#123;</span><br><span class="line">            <span class="comment">//如果要删除的是头指针，直接令 head 指向下一个结点</span></span><br><span class="line">            head = head.next;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode n = head;</span><br><span class="line">        <span class="keyword">while</span>(n.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n.next.val == val)&#123;</span><br><span class="line">                n.next = n.next.next;</span><br><span class="line">                <span class="keyword">return</span> head;</span><br><span class="line">            &#125;</span><br><span class="line">            n = n.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -273,6 +325,28 @@
         <tag>算法</tag>
         <tag>数组</tag>
         <tag>重复</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 22. 链表中倒数第k个节点</title>
+    <url>/2020/12/01/%E5%89%91%E6%8C%87%20Offer%2022.%20%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-22-链表中倒数第k个节点"><a href="#剑指-Offer-22-链表中倒数第k个节点" class="headerlink" title="剑指 Offer 22. 链表中倒数第k个节点"></a>剑指 Offer 22. 链表中倒数第k个节点</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。</p>
+<p>示例：</p>
+<p>给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 k = 2.</p>
+<p>返回链表 4-&gt;5.</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>链表中计数巧妙的使用双指针，让一个先行，另一个后续尾行</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">getKthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        ListNode start = head;</span><br><span class="line">        ListNode end = head;</span><br><span class="line">        <span class="keyword">for</span>(;k&gt;<span class="number">0</span>;k--)&#123;</span><br><span class="line">            end = end.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(end!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            start = start.next;</span><br><span class="line">            end = end.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> start;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+        <tag>算法</tag>
+        <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
@@ -312,6 +386,50 @@
       <tags>
         <tag>算法</tag>
         <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer：04.二维数组中的查找</title>
+    <url>/2020/11/09/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A04.%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：04-二维数组中的查找"><a href="#剑指-Offer：04-二维数组中的查找" class="headerlink" title="剑指 Offer：04.二维数组中的查找"></a>剑指 Offer：04.二维数组中的查找</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof">LeetCode</a></h3><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>根据该数组的特点，可从数组的右上角或者左下角开始，进行求解</li>
+<li>专注于当前点，而不是下一个点，因为根据当前点即可判断出下一个点的位置，这也是初始点选择的好处所在</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">findNumberIn2DArray</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix==<span class="keyword">null</span>||matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>].length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> columns = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> row = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> column = columns-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (row&lt;rows&amp;&amp;column&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> num = matrix[row][column];</span><br><span class="line">            <span class="keyword">if</span>(num==target)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(num&lt;target)&#123;</span><br><span class="line">                row++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                column--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数组</tag>
+        <tag>线性查找</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer：09.用两个栈实现队列</title>
+    <url>/2020/11/14/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A09.%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：09-用两个栈实现队列"><a href="#剑指-Offer：09-用两个栈实现队列" class="headerlink" title="剑指 Offer：09.用两个栈实现队列"></a>剑指 Offer：09.用两个栈实现队列</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>用两个栈实现一个队列。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>队列是先进后出，而栈是先进先出</li>
+<li>用两个栈，一个用来入栈，一个用来出栈</li>
+<li>对于一系列存在一个栈内的数据出栈再入栈，那么它们在栈内储存的顺序就会反过来，即可实现队列</li>
+</ul>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CQueue</span> </span>&#123;</span><br><span class="line">    Stack&lt;Integer&gt; s1;</span><br><span class="line">    Stack&lt;Integer&gt; s2;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        s1 = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">        s2 = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">appendTail</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        s1.push(value);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">deleteHead</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s2.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">while</span>(!s1.isEmpty())&#123;</span><br><span class="line">                s2.push(s1.pop());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s2.empty()&amp;&amp;s1.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s2.pop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>栈</tag>
+        <tag>队列</tag>
       </tags>
   </entry>
   <entry>
@@ -377,27 +495,6 @@
         <tag>算法</tag>
         <tag>dfs</tag>
         <tag>矩阵</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer：09.用两个栈实现队列</title>
-    <url>/2020/11/14/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A09.%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</url>
-    <content><![CDATA[<h1 id="剑指-Offer：09-用两个栈实现队列"><a href="#剑指-Offer：09-用两个栈实现队列" class="headerlink" title="剑指 Offer：09.用两个栈实现队列"></a>剑指 Offer：09.用两个栈实现队列</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>用两个栈实现一个队列。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>队列是先进后出，而栈是先进先出</li>
-<li>用两个栈，一个用来入栈，一个用来出栈</li>
-<li>对于一系列存在一个栈内的数据出栈再入栈，那么它们在栈内储存的顺序就会反过来，即可实现队列</li>
-</ul>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CQueue</span> </span>&#123;</span><br><span class="line">    Stack&lt;Integer&gt; s1;</span><br><span class="line">    Stack&lt;Integer&gt; s2;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        s1 = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">        s2 = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">appendTail</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        s1.push(value);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">deleteHead</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s2.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">while</span>(!s1.isEmpty())&#123;</span><br><span class="line">                s2.push(s1.pop());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s2.empty()&amp;&amp;s1.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s2.pop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>栈</tag>
-        <tag>队列</tag>
       </tags>
   </entry>
   <entry>
@@ -693,6 +790,44 @@
       </tags>
   </entry>
   <entry>
+    <title>计算机网络（三）分层结构</title>
+    <url>/2020/11/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%89%EF%BC%89%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="计算机网络的分层结构"><a href="#计算机网络的分层结构" class="headerlink" title="计算机网络的分层结构"></a>计算机网络的分层结构</h1><h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><h3 id="为什么分层："><a href="#为什么分层：" class="headerlink" title="为什么分层："></a>为什么分层：</h3><ul>
+<li>激活数据通路</li>
+<li>告诉网络如何识别目的主机</li>
+<li>查明目的主机状态</li>
+<li>弄清楚目的主机的文件管理系统是否准备好</li>
+<li>确保差错和意外可以解决</li>
+</ul>
+<h3 id="分层结构："><a href="#分层结构：" class="headerlink" title="分层结构："></a>分层结构：</h3><ul>
+<li>协议：为进行网络中的对等实体数据交换而建立的规则、标准或约定称为网络协议<ul>
+<li>语法：规定传送数据的格式</li>
+<li>语义：规定所要完成的功能</li>
+<li>同步：规定各种操作的顺序</li>
+</ul>
+</li>
+<li>接口：上层使用下层服务的入口（仅在<strong>相邻层有接口</strong>，且所提供服务的具体细节对上一层完全屏蔽</li>
+<li>服务：下层为上层提供的功能调用</li>
+</ul>
+<h3 id="分层的基本原则："><a href="#分层的基本原则：" class="headerlink" title="分层的基本原则："></a>分层的基本原则：</h3><ul>
+<li>各层相互<strong>独立</strong>，每层只实现一种相对独立的功能</li>
+<li>各层之间<strong>界面自然清晰</strong>，相互交流尽可能少</li>
+<li>结构上可分割，<strong>每层都采用最合适的技术来实现</strong></li>
+<li>保持上下层独立性，<strong>上层单向使用下层提供的服务</strong></li>
+<li>分层结构能够促进标准化工作</li>
+</ul>
+<h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><p>7层的法定标准</p>
+<p>目的：支持异构网络系统的互联互通</p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>计算机网络（二）性能指标</title>
     <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%8C%EF%BC%89%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/</url>
     <content><![CDATA[<h1 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h1><h2 id="一、速率"><a href="#一、速率" class="headerlink" title="一、速率"></a>一、速率</h2><p>速率即数据率或称数据传输率或者比特率（比特：1/0 位）</p>
@@ -825,141 +960,6 @@
       </categories>
       <tags>
         <tag>软件工程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer 15. 二进制中1的个数</title>
-    <url>/2020/11/30/%E5%89%91%E6%8C%87%20Offer%2015.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="剑指-Offer-15-二进制中1的个数"><a href="#剑指-Offer-15-二进制中1的个数" class="headerlink" title="剑指 Offer 15. 二进制中1的个数"></a>剑指 Offer 15. 二进制中1的个数</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>请实现一个函数，输入一个整数（以二进制串形式），输出该数二进制表示中 1 的个数。例如，把 9 表示成二进制是 1001，有 2 位是 1。因此，如果输入 9，则该函数输出 2。</p>
-<p> 示例 1：</p>
-<p>输入：00000000000000000000000000001011<br>输出：3<br>解释：输入的二进制串 00000000000000000000000000001011 中，共有三位为 ‘1’。<br>示例 2：</p>
-<p>输入：00000000000000000000000010000000<br>输出：1<br>解释：输入的二进制串 00000000000000000000000010000000 中，共有一位为 ‘1’。<br>示例 3：</p>
-<p>输入：11111111111111111111111111111101<br>输出：31<br>解释：输入的二进制串 11111111111111111111111111111101 中，共有 31 位为 ‘1’。</p>
-<p>提示：</p>
-<p>输入必须是长度为 32 的 二进制串 。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>使用移位的方法，来对每一位进行判断，是否为1</li>
-<li>时间复杂度为O（$log_2N$）(此处的N并不是二进制的位数)</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n != <span class="number">0</span>) &#123;</span><br><span class="line">            res += n &amp; <span class="number">1</span>;</span><br><span class="line">            n &gt;&gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用n&amp;(n-1)的方法，对n进行减一的操作，再与原来的数进行与操作，可以使得该数的低位第一个1变成0</li>
-<li>时间复杂度相比上一个方法有所降低</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// you need to treat n as an unsigned value</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n!=<span class="number">0</span>)&#123;</span><br><span class="line">            n = n &amp; (n-<span class="number">1</span>);</span><br><span class="line">            result++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer 14- II. 剪绳子 II</title>
-    <url>/2020/11/30/%E5%89%91%E6%8C%87%20Offer%2014-%20II.%20%E5%89%AA%E7%BB%B3%E5%AD%90%20II/</url>
-    <content><![CDATA[<h1 id="剑指-Offer-14-II-剪绳子-II"><a href="#剑指-Offer-14-II-剪绳子-II" class="headerlink" title="剑指 Offer 14- II. 剪绳子 II"></a>剑指 Offer 14- II. 剪绳子 II</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m - 1] 。请问 k[0]<em>k[1]</em>…*k[m - 1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。</p>
-<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>首先找出规律，分成3相乘时，积最大，但是当剩余的长度为4时，分成2和2最大</li>
-<li>需要定义long，使用int会有溢出的风险</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">cuttingRope</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">4</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> sum = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(n&gt;<span class="number">4</span>)&#123;</span><br><span class="line">            sum = sum * <span class="number">3</span>;</span><br><span class="line">            sum = sum %<span class="number">1000000007</span>;</span><br><span class="line">            n = n - <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// if(n==4)&#123;</span></span><br><span class="line">        <span class="comment">//     return sum*4%1000000007;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// if(n==3)&#123;</span></span><br><span class="line">        <span class="comment">//     return sum*3%1000000007;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// if(n == 2)&#123;</span></span><br><span class="line">        <span class="comment">//     return sum*2%1000000007;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) (sum*n%<span class="number">1000000007</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络（三）分层结构</title>
-    <url>/2020/11/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%89%EF%BC%89%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="计算机网络的分层结构"><a href="#计算机网络的分层结构" class="headerlink" title="计算机网络的分层结构"></a>计算机网络的分层结构</h1><h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><h3 id="为什么分层："><a href="#为什么分层：" class="headerlink" title="为什么分层："></a>为什么分层：</h3><ul>
-<li>激活数据通路</li>
-<li>告诉网络如何识别目的主机</li>
-<li>查明目的主机状态</li>
-<li>弄清楚目的主机的文件管理系统是否准备好</li>
-<li>确保差错和意外可以解决</li>
-</ul>
-<h3 id="分层结构："><a href="#分层结构：" class="headerlink" title="分层结构："></a>分层结构：</h3><ul>
-<li>协议：为进行网络中的对等实体数据交换而建立的规则、标准或约定称为网络协议<ul>
-<li>语法：规定传送数据的格式</li>
-<li>语义：规定所要完成的功能</li>
-<li>同步：规定各种操作的顺序</li>
-</ul>
-</li>
-<li>接口：上层使用下层服务的入口（仅在<strong>相邻层有接口</strong>，且所提供服务的具体细节对上一层完全屏蔽</li>
-<li>服务：下层为上层提供的功能调用</li>
-</ul>
-<h3 id="分层的基本原则："><a href="#分层的基本原则：" class="headerlink" title="分层的基本原则："></a>分层的基本原则：</h3><ul>
-<li>各层相互<strong>独立</strong>，每层只实现一种相对独立的功能</li>
-<li>各层之间<strong>界面自然清晰</strong>，相互交流尽可能少</li>
-<li>结构上可分割，<strong>每层都采用最合适的技术来实现</strong></li>
-<li>保持上下层独立性，<strong>上层单向使用下层提供的服务</strong></li>
-<li>分层结构能够促进标准化工作</li>
-</ul>
-<h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><p>7层的法定标准</p>
-<p>目的：支持异构网络系统的互联互通</p>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer 18. 删除链表的节点</title>
-    <url>/2020/12/01/%E5%89%91%E6%8C%87%20Offer%2018.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/</url>
-    <content><![CDATA[<h1 id="剑指-Offer-18-删除链表的节点"><a href="#剑指-Offer-18-删除链表的节点" class="headerlink" title="剑指 Offer 18. 删除链表的节点"></a>剑指 Offer 18. 删除链表的节点</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。</p>
-<p>返回删除后的链表的头节点。 </p>
-<p>注意：此题对比原题有改动</p>
-<p>示例 1:</p>
-<p>输入: head = [4,5,1,9], val = 5<br>输出: [4,1,9]<br>解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.<br>示例 2:</p>
-<p>输入: head = [4,5,1,9], val = 1<br>输出: [4,5,9]<br>解释: 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 5 -&gt; 9.</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/shan-chu-lian-biao-de-jie-dian-lcof">LeetCode</a></h3><h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><ul>
-<li>对链表有基本的了解即可</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteNode</span><span class="params">(ListNode head, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (head.val == val) &#123;</span><br><span class="line">            <span class="comment">//如果要删除的是头指针，直接令 head 指向下一个结点</span></span><br><span class="line">            head = head.next;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode n = head;</span><br><span class="line">        <span class="keyword">while</span>(n.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n.next.val == val)&#123;</span><br><span class="line">                n.next = n.next.next;</span><br><span class="line">                <span class="keyword">return</span> head;</span><br><span class="line">            &#125;</span><br><span class="line">            n = n.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>链表</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer 22. 链表中倒数第k个节点</title>
-    <url>/2020/12/01/%E5%89%91%E6%8C%87%20Offer%2022.%20%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9/</url>
-    <content><![CDATA[<h1 id="剑指-Offer-22-链表中倒数第k个节点"><a href="#剑指-Offer-22-链表中倒数第k个节点" class="headerlink" title="剑指 Offer 22. 链表中倒数第k个节点"></a>剑指 Offer 22. 链表中倒数第k个节点</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。</p>
-<p>示例：</p>
-<p>给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 k = 2.</p>
-<p>返回链表 4-&gt;5.</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>链表中计数巧妙的使用双指针，让一个先行，另一个后续尾行</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">getKthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        ListNode start = head;</span><br><span class="line">        ListNode end = head;</span><br><span class="line">        <span class="keyword">for</span>(;k&gt;<span class="number">0</span>;k--)&#123;</span><br><span class="line">            end = end.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(end!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            start = start.next;</span><br><span class="line">            end = end.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> start;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>链表</tag>
-        <tag>算法</tag>
-        <tag>双指针</tag>
       </tags>
   </entry>
 </search>
