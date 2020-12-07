@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.3k</span>
+            <span class="post-count">1.5k</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">4 min</span>
+            <span class="post-count">5 min</span>
         </span>
     </span>
 </div>
@@ -196,6 +196,17 @@
 <li>直接通信方式：消息直接挂到接收进程的消息缓冲队列上</li>
 <li>间接通信方式：消息先发送到中间实体（信箱）中，也称信箱通信方式</li>
 </ul>
+<h2 id="八、进程互斥"><a href="#八、进程互斥" class="headerlink" title="八、进程互斥"></a>八、进程互斥</h2><p>实现对临界资源的互斥访问</p>
+<ul>
+<li>空闲让进</li>
+<li>忙则等待</li>
+<li>有限等待</li>
+<li>让权等待</li>
+</ul>
+<h3 id="Peterson算法："><a href="#Peterson算法：" class="headerlink" title="Peterson算法："></a>Peterson算法：</h3><p>结合双标志后检查法和单标志法，定义一个布尔数组和一个轮转标志，同时检查这两个标志，优先让对方先使用临界资源</p>
+<h3 id="TestAndSet指令"><a href="#TestAndSet指令" class="headerlink" title="TestAndSet指令"></a>TestAndSet指令</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">TestAndSet</span><span class="params">(<span class="keyword">bool</span> *lock)</span></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> old;</span><br><span class="line">    old = *lock;</span><br><span class="line">    *lock = <span class="literal">true</span>; <span class="comment">// 上锁</span></span><br><span class="line">    <span class="keyword">return</span> old; <span class="comment">// 返回上锁前的状态</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TSL指令实现</span></span><br><span class="line"><span class="keyword">while</span>(TestAndSet(&amp;lock));<span class="comment">// 不停上锁，直到发现某一次临界资源并未被上锁</span></span><br><span class="line"><span class="comment">/**/</span></span><br><span class="line">lock = <span class="literal">false</span>; <span class="comment">// 解锁</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Swap指令"><a href="#Swap指令" class="headerlink" title="Swap指令"></a>Swap指令</h3><p>交换old和lock的值来实现锁</p>
  
       <!-- reward -->
       
