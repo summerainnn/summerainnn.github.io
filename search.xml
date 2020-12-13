@@ -663,7 +663,7 @@
       </tags>
   </entry>
   <entry>
-    <title>a</title>
+    <title>操作系统（六）进程</title>
     <url>/2020/12/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%85%AD%EF%BC%89%E8%BF%9B%E7%A8%8B/</url>
     <content><![CDATA[]]></content>
   </entry>
@@ -1065,6 +1065,42 @@
       </categories>
       <tags>
         <tag>软件工程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>密码学</title>
+    <url>/2020/12/13/%E5%AF%86%E7%A0%81%E5%AD%A6/</url>
+    <content><![CDATA[<h1 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>密码术：密码编码学+密码分析学</p>
+<p>扩散：<strong>让明文中的每一位影响密文中的许多位，或者说让密文中的每一位受明文中的许多位的影响</strong>（明文<strong>统计特性散布</strong>到密文中）</p>
+<p>混淆：<strong>将密文与密钥之间的统计关系变得尽可能复杂</strong></p>
+<p>扩散和混淆的目的是为了抵抗对手对密码体制的统计分析（<strong>乘积和迭代有助于实现扩散和混淆</strong>）</p>
+<p>对称加密：加密和解密由同一个密钥来控制，就是对称算法（单匙算法）</p>
+<pre><code>- **加密** ：$E_K(M)=C$
+- **解密** ：$D_K(C)=M$</code></pre>
+<p>非对称加密：用作加密的密钥不同于用作解密的密钥，而且解密密钥不能根据加密密钥计算出来，就是非对称算法（公钥加密）</p>
+<ul>
+<li><strong>加密</strong> ：$E_{K1}(M)=C$</li>
+<li><strong>解密</strong> ：$D_{K2}(C)=M$</li>
+</ul>
+<p>密码系统的攻击类型：</p>
+<p><strong>（1）唯密文攻击</strong>：密码分析者仅知道一些密文。</p>
+<p><strong>（2）已知明文攻击</strong>：密码分析者知道一些明文和相应的密文。</p>
+<p><strong>（3）选择明文攻击</strong>：密码分析者可以选择一些明文，并得到相应的密文。</p>
+<p><strong>（4）选择密文攻击</strong>：密码分析者可以选择一些密文，并得到相应的明文。</p>
+<p>分组密码工作模式:</p>
+<h2 id="数学基础知识"><a href="#数学基础知识" class="headerlink" title="数学基础知识"></a>数学基础知识</h2><p>扩展欧几里得算法：</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmhub891mj30sw0jkwj1.jpg" alt="image-20201213201918360"></p>
+<p>中国剩余定理：</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmikbw9m8j31hc0kswnz.jpg" alt="image-20201213204421185"></p>
+<p>费马小定理：</p>
+<p>p为质数，a为任意自然数</p>
+<p>$a^{p-1}\equiv1\ (mod\ p)$</p>
+<h2 id="密码算法"><a href="#密码算法" class="headerlink" title="密码算法"></a>密码算法</h2>]]></content>
+      <categories>
+        <category>复习总结</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
       </tags>
   </entry>
 </search>
