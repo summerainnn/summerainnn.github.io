@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">397</span>
+            <span class="post-count">560</span>
         </span>
     </span>
 
@@ -115,7 +115,18 @@
 <p><strong>（2）已知明文攻击</strong>：密码分析者知道一些明文和相应的密文。</p>
 <p><strong>（3）选择明文攻击</strong>：密码分析者可以选择一些明文，并得到相应的密文。</p>
 <p><strong>（4）选择密文攻击</strong>：密码分析者可以选择一些密文，并得到相应的明文。</p>
-<p>分组密码工作模式:</p>
+<h3 id="分组密码工作模式"><a href="#分组密码工作模式" class="headerlink" title="分组密码工作模式:"></a>分组密码工作模式:</h3><p>电子密码本(Electronic Code Book, ECB)模式</p>
+<p>​    Ø最简单的工作模式</p>
+<p>​    Ø加密：一次对一个64比特长的明文分组加密，每次加密密钥相同</p>
+<p>​    Ø适用于短消息加密传输</p>
+<p>密码分组链接(Cipher Block Chaining, CBC)模式</p>
+<p>​    Ø加密：一次对一个明文分组加密，每次加密使用同一密钥，加密算法的输入是当前明文分组和前一次密文分组的异或</p>
+<p>密码反馈（Cipher Feedback，CFB）模式</p>
+<p>​    <img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmnqbyx7pj30h409l3za.jpg" alt="img"></p>
+<p>输出反馈（Output Feedback, OFB）模式</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmnrckjgrj30hm0gowgd.jpg" alt="OFB加密和解密"></p>
+<p>计数器模式(CTR, Counter Mode)</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmnrkxs5tj30fm0ch3zk.jpg" alt="img"></p>
 <h2 id="数学基础知识"><a href="#数学基础知识" class="headerlink" title="数学基础知识"></a>数学基础知识</h2><p>扩展欧几里得算法：</p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmhub891mj30sw0jkwj1.jpg" alt="image-20201213201918360"></p>
 <p>中国剩余定理：</p>
@@ -123,6 +134,7 @@
 <p>费马小定理：</p>
 <p>p为质数，a为任意自然数</p>
 <p>$a^{p-1}\equiv1\ (mod\ p)$</p>
+<p>密码算法四种性质：机密性、完整性、消息认证、不可否认</p>
 <h2 id="密码算法"><a href="#密码算法" class="headerlink" title="密码算法"></a>密码算法</h2> 
       <!-- reward -->
       
