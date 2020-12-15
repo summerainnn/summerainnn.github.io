@@ -40,18 +40,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java（二）多态</title>
-    <url>/2020/11/26/Java%EF%BC%88%E4%BA%8C%EF%BC%89%E5%A4%9A%E6%80%81/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>基础语法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode：21.合并两个有序链表</title>
     <url>/2020/11/08/Leetcode%EF%BC%9A21.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/</url>
     <content><![CDATA[<h1 id="21-合并两个有序链表"><a href="#21-合并两个有序链表" class="headerlink" title="21.合并两个有序链表"></a>21.合并两个有序链表</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
@@ -125,6 +113,59 @@
       </tags>
   </entry>
   <entry>
+    <title>Java（二）多态</title>
+    <url>/2020/11/26/Java%EF%BC%88%E4%BA%8C%EF%BC%89%E5%A4%9A%E6%80%81/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>基础语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer：11.旋转数组的最小数字</title>
+    <url>/2020/11/23/%E5%89%91%E6%8C%87%20Offer%2011.%20%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-11-旋转数组的最小数字"><a href="#剑指-Offer-11-旋转数组的最小数字" class="headerlink" title="剑指 Offer 11. 旋转数组的最小数字"></a>剑指 Offer 11. 旋转数组的最小数字</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。  </p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof">LeetCode</a></h3><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h3><ul>
+<li>一个有一定顺序的数组一般就考虑二分法来进行查找，使得时间复杂度降低到对数级别</li>
+</ul>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minArray</span><span class="params">(<span class="keyword">int</span>[] numbers)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(numbers[<span class="number">0</span>]&lt;numbers[numbers.length-<span class="number">1</span>])&#123;</span><br><span class="line">            <span class="keyword">return</span> numbers[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end = numbers.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(start != end)&#123;</span><br><span class="line">            mid = (start + end)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=start;numbers[mid]==numbers[start];i++)&#123;</span><br><span class="line">                mid = i + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(mid == numbers.length)&#123;</span><br><span class="line">                    mid = mid-<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                start = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(numbers[mid]&gt;numbers[start])&#123;</span><br><span class="line">                start = mid;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                end = mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(start + <span class="number">1</span> == end)&#123;</span><br><span class="line">                <span class="keyword">return</span> numbers[end];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> numbers[end];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="官方简洁版代码"><a href="#官方简洁版代码" class="headerlink" title="官方简洁版代码"></a>官方简洁版代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minArray</span><span class="params">(<span class="keyword">int</span>[] numbers)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> high = numbers.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (low &lt; high) &#123;</span><br><span class="line">            <span class="keyword">int</span> pivot = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (numbers[pivot] &lt; numbers[high]) &#123;</span><br><span class="line">                high = pivot;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (numbers[pivot] &gt; numbers[high]) &#123;</span><br><span class="line">                low = pivot + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                high -= <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> numbers[low];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数组</tag>
+        <tag>二分法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用阿里云和hexo搭建个人博客</title>
+    <url>/2020/12/02/%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="使用阿里云和hexo搭建个人博客"><a href="#使用阿里云和hexo搭建个人博客" class="headerlink" title="使用阿里云和hexo搭建个人博客"></a>使用阿里云和hexo搭建个人博客</h1><p>本次主要参考的是<a href="https://blog.csdn.net/qq_37391214/article/details/106161526">阿里云服务器和 hexo 博客实战</a></p>
+<p>现对其中遇到的问题进行总结</p>
+<h2 id="1-nginx编译问题"><a href="#1-nginx编译问题" class="headerlink" title="1.nginx编译问题"></a>1.nginx编译问题</h2><p>原文提到的nginx版本有一点问题，无法通过编译，我选择了nginx-1.19.5这样一个版本</p>
+<h2 id="2-双推送"><a href="#2-双推送" class="headerlink" title="2.双推送"></a>2.双推送</h2><p>因为域名是在阿里云购买的，必须绑定阿里云的服务器，此次迁移博客也是因为这个原因，但是还是希望推送到GitHub上，所以可以对_config.yml文件进行修改，使其可以推送到两个服务器上</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl9u32tm91j319e0aqwgb.jpg" alt="image-20201202213036808"></p>
+<h2 id="3-nginx配置问题"><a href="#3-nginx配置问题" class="headerlink" title="3.nginx配置问题"></a>3.nginx配置问题</h2><p>nginx修改配置后需要再次重启nginx，才能使得配置生效</p>
+]]></content>
+      <categories>
+        <category>实战</category>
+      </categories>
+      <tags>
+        <tag>应用</tag>
+        <tag>网站开发</tag>
+        <tag>问题总结</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>人工智能</title>
     <url>/2020/11/15/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</url>
     <content><![CDATA[<h1 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h1><h2 id="什么是人工智能？"><a href="#什么是人工智能？" class="headerlink" title="什么是人工智能？"></a>什么是人工智能？</h2><ul>
@@ -177,47 +218,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用阿里云和hexo搭建个人博客</title>
-    <url>/2020/12/02/%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h1 id="使用阿里云和hexo搭建个人博客"><a href="#使用阿里云和hexo搭建个人博客" class="headerlink" title="使用阿里云和hexo搭建个人博客"></a>使用阿里云和hexo搭建个人博客</h1><p>本次主要参考的是<a href="https://blog.csdn.net/qq_37391214/article/details/106161526">阿里云服务器和 hexo 博客实战</a></p>
-<p>现对其中遇到的问题进行总结</p>
-<h2 id="1-nginx编译问题"><a href="#1-nginx编译问题" class="headerlink" title="1.nginx编译问题"></a>1.nginx编译问题</h2><p>原文提到的nginx版本有一点问题，无法通过编译，我选择了nginx-1.19.5这样一个版本</p>
-<h2 id="2-双推送"><a href="#2-双推送" class="headerlink" title="2.双推送"></a>2.双推送</h2><p>因为域名是在阿里云购买的，必须绑定阿里云的服务器，此次迁移博客也是因为这个原因，但是还是希望推送到GitHub上，所以可以对_config.yml文件进行修改，使其可以推送到两个服务器上</p>
-<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl9u32tm91j319e0aqwgb.jpg" alt="image-20201202213036808"></p>
-<h2 id="3-nginx配置问题"><a href="#3-nginx配置问题" class="headerlink" title="3.nginx配置问题"></a>3.nginx配置问题</h2><p>nginx修改配置后需要再次重启nginx，才能使得配置生效</p>
-]]></content>
-      <categories>
-        <category>实战</category>
-      </categories>
-      <tags>
-        <tag>应用</tag>
-        <tag>网站开发</tag>
-        <tag>问题总结</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer：11.旋转数组的最小数字</title>
-    <url>/2020/11/23/%E5%89%91%E6%8C%87%20Offer%2011.%20%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/</url>
-    <content><![CDATA[<h1 id="剑指-Offer-11-旋转数组的最小数字"><a href="#剑指-Offer-11-旋转数组的最小数字" class="headerlink" title="剑指 Offer 11. 旋转数组的最小数字"></a>剑指 Offer 11. 旋转数组的最小数字</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。  </p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof">LeetCode</a></h3><hr>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h3><ul>
-<li>一个有一定顺序的数组一般就考虑二分法来进行查找，使得时间复杂度降低到对数级别</li>
-</ul>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minArray</span><span class="params">(<span class="keyword">int</span>[] numbers)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(numbers[<span class="number">0</span>]&lt;numbers[numbers.length-<span class="number">1</span>])&#123;</span><br><span class="line">            <span class="keyword">return</span> numbers[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end = numbers.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(start != end)&#123;</span><br><span class="line">            mid = (start + end)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=start;numbers[mid]==numbers[start];i++)&#123;</span><br><span class="line">                mid = i + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(mid == numbers.length)&#123;</span><br><span class="line">                    mid = mid-<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                start = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(numbers[mid]&gt;numbers[start])&#123;</span><br><span class="line">                start = mid;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                end = mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(start + <span class="number">1</span> == end)&#123;</span><br><span class="line">                <span class="keyword">return</span> numbers[end];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> numbers[end];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="官方简洁版代码"><a href="#官方简洁版代码" class="headerlink" title="官方简洁版代码"></a>官方简洁版代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minArray</span><span class="params">(<span class="keyword">int</span>[] numbers)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> high = numbers.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (low &lt; high) &#123;</span><br><span class="line">            <span class="keyword">int</span> pivot = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (numbers[pivot] &lt; numbers[high]) &#123;</span><br><span class="line">                high = pivot;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (numbers[pivot] &gt; numbers[high]) &#123;</span><br><span class="line">                low = pivot + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                high -= <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> numbers[low];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数组</tag>
-        <tag>二分法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>剑指 Offer 13. 机器人的运动范围</title>
     <url>/2020/11/25/%E5%89%91%E6%8C%87%20Offer%2013.%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/</url>
     <content><![CDATA[<h1 id="剑指-Offer-13-机器人的运动范围"><a href="#剑指-Offer-13-机器人的运动范围" class="headerlink" title="剑指 Offer 13. 机器人的运动范围"></a>剑指 Offer 13. 机器人的运动范围</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>地上有一个m行n列的方格，从坐标 [0,0] 到坐标 [m-1,n-1] 。一个机器人从坐标 [0, 0] 的格子开始移动，它每次可以向左、右、上、下移动一格（不能移动到方格外），也不能进入行坐标和列坐标的数位之和大于k的格子。例如，当k为18时，机器人能够进入方格 [35, 37] ，因为3+5+3+7=18。但它不能进入方格 [35, 38]，因为3+5+3+8=19。请问该机器人能够到达多少个格子？</p>
@@ -236,6 +236,27 @@
         <tag>算法</tag>
         <tag>dfs</tag>
         <tag>矩阵</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 14- II. 剪绳子 II</title>
+    <url>/2020/11/30/%E5%89%91%E6%8C%87%20Offer%2014-%20II.%20%E5%89%AA%E7%BB%B3%E5%AD%90%20II/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-14-II-剪绳子-II"><a href="#剑指-Offer-14-II-剪绳子-II" class="headerlink" title="剑指 Offer 14- II. 剪绳子 II"></a>剑指 Offer 14- II. 剪绳子 II</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m - 1] 。请问 k[0]<em>k[1]</em>…*k[m - 1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。</p>
+<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>首先找出规律，分成3相乘时，积最大，但是当剩余的长度为4时，分成2和2最大</li>
+<li>需要定义long，使用int会有溢出的风险</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">cuttingRope</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">4</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> sum = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(n&gt;<span class="number">4</span>)&#123;</span><br><span class="line">            sum = sum * <span class="number">3</span>;</span><br><span class="line">            sum = sum %<span class="number">1000000007</span>;</span><br><span class="line">            n = n - <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// if(n==4)&#123;</span></span><br><span class="line">        <span class="comment">//     return sum*4%1000000007;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// if(n==3)&#123;</span></span><br><span class="line">        <span class="comment">//     return sum*3%1000000007;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// if(n == 2)&#123;</span></span><br><span class="line">        <span class="comment">//     return sum*2%1000000007;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) (sum*n%<span class="number">1000000007</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -267,27 +288,6 @@
       <tags>
         <tag>算法</tag>
         <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer 14- II. 剪绳子 II</title>
-    <url>/2020/11/30/%E5%89%91%E6%8C%87%20Offer%2014-%20II.%20%E5%89%AA%E7%BB%B3%E5%AD%90%20II/</url>
-    <content><![CDATA[<h1 id="剑指-Offer-14-II-剪绳子-II"><a href="#剑指-Offer-14-II-剪绳子-II" class="headerlink" title="剑指 Offer 14- II. 剪绳子 II"></a>剑指 Offer 14- II. 剪绳子 II</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m - 1] 。请问 k[0]<em>k[1]</em>…*k[m - 1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。</p>
-<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof">LeetCode</a></h3><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>首先找出规律，分成3相乘时，积最大，但是当剩余的长度为4时，分成2和2最大</li>
-<li>需要定义long，使用int会有溢出的风险</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">cuttingRope</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">4</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> sum = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(n&gt;<span class="number">4</span>)&#123;</span><br><span class="line">            sum = sum * <span class="number">3</span>;</span><br><span class="line">            sum = sum %<span class="number">1000000007</span>;</span><br><span class="line">            n = n - <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// if(n==4)&#123;</span></span><br><span class="line">        <span class="comment">//     return sum*4%1000000007;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// if(n==3)&#123;</span></span><br><span class="line">        <span class="comment">//     return sum*3%1000000007;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// if(n == 2)&#123;</span></span><br><span class="line">        <span class="comment">//     return sum*2%1000000007;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) (sum*n%<span class="number">1000000007</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -339,6 +339,29 @@
     <title>剑指 Offer 24. 反转链表</title>
     <url>/2020/12/12/%E5%89%91%E6%8C%87%20Offer%2024.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>剑指 Offer：04.二维数组中的查找</title>
+    <url>/2020/11/09/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A04.%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h1 id="剑指-Offer：04-二维数组中的查找"><a href="#剑指-Offer：04-二维数组中的查找" class="headerlink" title="剑指 Offer：04.二维数组中的查找"></a>剑指 Offer：04.二维数组中的查找</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
+<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof">LeetCode</a></h3><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>根据该数组的特点，可从数组的右上角或者左下角开始，进行求解</li>
+<li>专注于当前点，而不是下一个点，因为根据当前点即可判断出下一个点的位置，这也是初始点选择的好处所在</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">findNumberIn2DArray</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix==<span class="keyword">null</span>||matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>].length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> columns = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> row = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> column = columns-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (row&lt;rows&amp;&amp;column&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> num = matrix[row][column];</span><br><span class="line">            <span class="keyword">if</span>(num==target)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(num&lt;target)&#123;</span><br><span class="line">                row++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                column--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数组</tag>
+        <tag>线性查找</tag>
+      </tags>
   </entry>
   <entry>
     <title>剑指 Offer：03.数组中的重复元素</title>
@@ -410,29 +433,6 @@
       <tags>
         <tag>算法</tag>
         <tag>二叉树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer：04.二维数组中的查找</title>
-    <url>/2020/11/09/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A04.%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h1 id="剑指-Offer：04-二维数组中的查找"><a href="#剑指-Offer：04-二维数组中的查找" class="headerlink" title="剑指 Offer：04.二维数组中的查找"></a>剑指 Offer：04.二维数组中的查找</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
-<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof">LeetCode</a></h3><hr>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>根据该数组的特点，可从数组的右上角或者左下角开始，进行求解</li>
-<li>专注于当前点，而不是下一个点，因为根据当前点即可判断出下一个点的位置，这也是初始点选择的好处所在</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">findNumberIn2DArray</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix==<span class="keyword">null</span>||matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>].length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> columns = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> row = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> column = columns-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (row&lt;rows&amp;&amp;column&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> num = matrix[row][column];</span><br><span class="line">            <span class="keyword">if</span>(num==target)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(num&lt;target)&#123;</span><br><span class="line">                row++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                column--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>剑指 Offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数组</tag>
-        <tag>线性查找</tag>
       </tags>
   </entry>
   <entry>
@@ -522,6 +522,54 @@
       </tags>
   </entry>
   <entry>
+    <title>密码学</title>
+    <url>/2020/12/13/%E5%AF%86%E7%A0%81%E5%AD%A6/</url>
+    <content><![CDATA[<h1 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>密码术：密码编码学+密码分析学</p>
+<p>扩散：<strong>让明文中的每一位影响密文中的许多位，或者说让密文中的每一位受明文中的许多位的影响</strong>（明文<strong>统计特性散布</strong>到密文中）</p>
+<p>混淆：<strong>将密文与密钥之间的统计关系变得尽可能复杂</strong></p>
+<p>扩散和混淆的目的是为了抵抗对手对密码体制的统计分析（<strong>乘积和迭代有助于实现扩散和混淆</strong>）</p>
+<p>对称加密：加密和解密由同一个密钥来控制，就是对称算法（单匙算法）</p>
+<pre><code>- **加密** ：$E_K(M)=C$
+- **解密** ：$D_K(C)=M$</code></pre>
+<p>非对称加密：用作加密的密钥不同于用作解密的密钥，而且解密密钥不能根据加密密钥计算出来，就是非对称算法（公钥加密）</p>
+<ul>
+<li><strong>加密</strong> ：$E_{K1}(M)=C$</li>
+<li><strong>解密</strong> ：$D_{K2}(C)=M$</li>
+</ul>
+<p>密码系统的攻击类型：</p>
+<p><strong>（1）唯密文攻击</strong>：密码分析者仅知道一些密文。</p>
+<p><strong>（2）已知明文攻击</strong>：密码分析者知道一些明文和相应的密文。</p>
+<p><strong>（3）选择明文攻击</strong>：密码分析者可以选择一些明文，并得到相应的密文。</p>
+<p><strong>（4）选择密文攻击</strong>：密码分析者可以选择一些密文，并得到相应的明文。</p>
+<h3 id="分组密码工作模式"><a href="#分组密码工作模式" class="headerlink" title="分组密码工作模式:"></a>分组密码工作模式:</h3><p>电子密码本(Electronic Code Book, ECB)模式</p>
+<p>​    Ø最简单的工作模式</p>
+<p>​    Ø加密：一次对一个64比特长的明文分组加密，每次加密密钥相同</p>
+<p>​    Ø适用于短消息加密传输</p>
+<p>密码分组链接(Cipher Block Chaining, CBC)模式</p>
+<p>​    Ø加密：一次对一个明文分组加密，每次加密使用同一密钥，加密算法的输入是当前明文分组和前一次密文分组的异或</p>
+<p>密码反馈（Cipher Feedback，CFB）模式</p>
+<p>​    <img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmnqbyx7pj30h409l3za.jpg" alt="img"></p>
+<p>输出反馈（Output Feedback, OFB）模式</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmnrckjgrj30hm0gowgd.jpg" alt="OFB加密和解密"></p>
+<p>计数器模式(CTR, Counter Mode)</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmnrkxs5tj30fm0ch3zk.jpg" alt="img"></p>
+<h2 id="数学基础知识"><a href="#数学基础知识" class="headerlink" title="数学基础知识"></a>数学基础知识</h2><p>扩展欧几里得算法：</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmhub891mj30sw0jkwj1.jpg" alt="image-20201213201918360"></p>
+<p>中国剩余定理：</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmikbw9m8j31hc0kswnz.jpg" alt="image-20201213204421185"></p>
+<p>费马小定理：</p>
+<p>p为质数，a为任意自然数</p>
+<p>$a^{p-1}\equiv1\ (mod\ p)$</p>
+<p>密码算法四种性质：机密性、完整性、消息认证、不可否认</p>
+<h2 id="密码算法"><a href="#密码算法" class="headerlink" title="密码算法"></a>密码算法</h2>]]></content>
+      <categories>
+        <category>复习总结</category>
+      </categories>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>操作系统（一）概念和定义</title>
     <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E5%BF%B5%E5%92%8C%E5%AE%9A%E4%B9%89/</url>
     <content><![CDATA[<h1 id="操作系统的概念和定义"><a href="#操作系统的概念和定义" class="headerlink" title="操作系统的概念和定义"></a>操作系统的概念和定义</h1><h2 id="一、操作系统的功能和目标："><a href="#一、操作系统的功能和目标：" class="headerlink" title="一、操作系统的功能和目标："></a>一、操作系统的功能和目标：</h2><h3 id="1-作为系统资源的管理者"><a href="#1-作为系统资源的管理者" class="headerlink" title="1.作为系统资源的管理者"></a>1.作为系统资源的管理者</h3><ul>
@@ -589,6 +637,39 @@
       </tags>
   </entry>
   <entry>
+    <title>操作系统（五）调度算法</title>
+    <url>/2020/11/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%94%EF%BC%89%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h1><h2 id="1-FCFS（First-Come-First-Serve）"><a href="#1-FCFS（First-Come-First-Serve）" class="headerlink" title="1.FCFS（First Come First Serve）"></a>1.FCFS（First Come First Serve）</h2><p>先到先服务，非抢占式</p>
+<ul>
+<li>优点：算法简单易实现，公平</li>
+<li>缺点：对长作业有利，对短作业不利</li>
+</ul>
+<h2 id="2-SJF（Shortest-Job-First）"><a href="#2-SJF（Shortest-Job-First）" class="headerlink" title="2.SJF（Shortest Job First）"></a>2.SJF（Shortest Job First）</h2><p>短进程先进性，分为抢占式和非抢占式</p>
+<ul>
+<li>最短的平均等待时间，平均周转时间</li>
+<li>对短作业有利，长作业不利，可能产生饥饿</li>
+</ul>
+<h2 id="3-HRRN（Highest-Response-Ration-Next"><a href="#3-HRRN（Highest-Response-Ration-Next" class="headerlink" title="3.HRRN（Highest Response Ration Next)"></a>3.HRRN（Highest Response Ration Next)</h2><p>每次调度时计算响应比（$\frac{等待时间+要求服务时间}{要求服务时间}$），选择响应比最高的进行服务，一般为非抢占式</p>
+<h2 id="4-时间片轮转（RR，Round-Robin）"><a href="#4-时间片轮转（RR，Round-Robin）" class="headerlink" title="4.时间片轮转（RR，Round-Robin）"></a>4.时间片轮转（RR，Round-Robin）</h2><p>公平的轮流为各个进程服务，抢占式</p>
+<ul>
+<li>优点：公平，适用于分时操作系统</li>
+<li>缺点：进程切换导致有一定开销，且不区分紧急程度</li>
+</ul>
+<h2 id="5-优先级调服算法"><a href="#5-优先级调服算法" class="headerlink" title="5.优先级调服算法"></a>5.优先级调服算法</h2><p>调度时选择最高优先级的活动，非抢占式和抢占式</p>
+<ul>
+<li>优点：适用于实时操作系统</li>
+<li>缺点：可能导致饥饿</li>
+</ul>
+<h2 id="6-多级反馈队列调度算法"><a href="#6-多级反馈队列调度算法" class="headerlink" title="6.多级反馈队列调度算法"></a>6.多级反馈队列调度算法</h2>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>操作系统（二）中断和异常</title>
     <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/</url>
     <content><![CDATA[<h1 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h1><h2 id="一、中断的意义"><a href="#一、中断的意义" class="headerlink" title="一、中断的意义"></a>一、中断的意义</h2><p>实现多道程序并发执行</p>
@@ -630,42 +711,153 @@
       </tags>
   </entry>
   <entry>
-    <title>操作系统（五）调度算法</title>
-    <url>/2020/11/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%94%EF%BC%89%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h1><h2 id="1-FCFS（First-Come-First-Serve）"><a href="#1-FCFS（First-Come-First-Serve）" class="headerlink" title="1.FCFS（First Come First Serve）"></a>1.FCFS（First Come First Serve）</h2><p>先到先服务，非抢占式</p>
-<ul>
-<li>优点：算法简单易实现，公平</li>
-<li>缺点：对长作业有利，对短作业不利</li>
-</ul>
-<h2 id="2-SJF（Shortest-Job-First）"><a href="#2-SJF（Shortest-Job-First）" class="headerlink" title="2.SJF（Shortest Job First）"></a>2.SJF（Shortest Job First）</h2><p>短进程先进性，分为抢占式和非抢占式</p>
-<ul>
-<li>最短的平均等待时间，平均周转时间</li>
-<li>对短作业有利，长作业不利，可能产生饥饿</li>
-</ul>
-<h2 id="3-HRRN（Highest-Response-Ration-Next"><a href="#3-HRRN（Highest-Response-Ration-Next" class="headerlink" title="3.HRRN（Highest Response Ration Next)"></a>3.HRRN（Highest Response Ration Next)</h2><p>每次调度时计算响应比（$\frac{等待时间+要求服务时间}{要求服务时间}$），选择响应比最高的进行服务，一般为非抢占式</p>
-<h2 id="4-时间片轮转（RR，Round-Robin）"><a href="#4-时间片轮转（RR，Round-Robin）" class="headerlink" title="4.时间片轮转（RR，Round-Robin）"></a>4.时间片轮转（RR，Round-Robin）</h2><p>公平的轮流为各个进程服务，抢占式</p>
-<ul>
-<li>优点：公平，适用于分时操作系统</li>
-<li>缺点：进程切换导致有一定开销，且不区分紧急程度</li>
-</ul>
-<h2 id="5-优先级调服算法"><a href="#5-优先级调服算法" class="headerlink" title="5.优先级调服算法"></a>5.优先级调服算法</h2><p>调度时选择最高优先级的活动，非抢占式和抢占式</p>
-<ul>
-<li>优点：适用于实时操作系统</li>
-<li>缺点：可能导致饥饿</li>
-</ul>
-<h2 id="6-多级反馈队列调度算法"><a href="#6-多级反馈队列调度算法" class="headerlink" title="6.多级反馈队列调度算法"></a>6.多级反馈队列调度算法</h2>]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>操作系统（六）进程</title>
     <url>/2020/12/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%85%AD%EF%BC%89%E8%BF%9B%E7%A8%8B/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>计算机网络（三）分层结构</title>
+    <url>/2020/11/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%89%EF%BC%89%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="计算机网络的分层结构"><a href="#计算机网络的分层结构" class="headerlink" title="计算机网络的分层结构"></a>计算机网络的分层结构</h1><h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><h3 id="为什么分层："><a href="#为什么分层：" class="headerlink" title="为什么分层："></a>为什么分层：</h3><ul>
+<li>激活数据通路</li>
+<li>告诉网络如何识别目的主机</li>
+<li>查明目的主机状态</li>
+<li>弄清楚目的主机的文件管理系统是否准备好</li>
+<li>确保差错和意外可以解决</li>
+</ul>
+<h3 id="分层结构："><a href="#分层结构：" class="headerlink" title="分层结构："></a>分层结构：</h3><ul>
+<li>协议：为进行网络中的对等实体数据交换而建立的规则、标准或约定称为网络协议<ul>
+<li>语法：规定传送数据的格式</li>
+<li>语义：规定所要完成的功能</li>
+<li>同步：规定各种操作的顺序</li>
+</ul>
+</li>
+<li>接口：上层使用下层服务的入口（仅在<strong>相邻层有接口</strong>，且所提供服务的具体细节对上一层完全屏蔽</li>
+<li>服务：下层为上层提供的功能调用</li>
+</ul>
+<h3 id="分层的基本原则："><a href="#分层的基本原则：" class="headerlink" title="分层的基本原则："></a>分层的基本原则：</h3><ul>
+<li>各层相互<strong>独立</strong>，每层只实现一种相对独立的功能</li>
+<li>各层之间<strong>界面自然清晰</strong>，相互交流尽可能少</li>
+<li>结构上可分割，<strong>每层都采用最合适的技术来实现</strong></li>
+<li>保持上下层独立性，<strong>上层单向使用下层提供的服务</strong></li>
+<li>分层结构能够促进标准化工作</li>
+</ul>
+<h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><p>7层的法定标准</p>
+<p>目的：支持异构网络系统的互联互通</p>
+<p>结构：</p>
+<ul>
+<li>通信子网（数据通信）（中间系统）<ul>
+<li>1.物理层：在物理媒体上实现比特流的传输<ul>
+<li>定义接口特性</li>
+<li>定义传输模式：单工、半双工、双工</li>
+<li>定义传输速率</li>
+<li>比特同步</li>
+<li>比特编码</li>
+</ul>
+</li>
+<li>2.数据链路层：把网络层的数据报组装成帧<ul>
+<li>成帧：定义帧的开始和结束</li>
+<li>差错控制：帧错+位错</li>
+<li>流量控制</li>
+<li>访问/接入控制：控制对信道的访问</li>
+</ul>
+</li>
+<li>3.网络层<ul>
+<li>路由选择，选择最佳路径</li>
+<li>流量控制：协调速度</li>
+<li>差错控制：检查错误</li>
+<li>拥塞控制：宏观控制整个网络的拥塞状态</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>4.传输层：负责主机中两个进程的通信，功能：可靠传输、不可靠传输，差错控制，流量控制，复用分用</li>
+<li>资源子网（数据处理）<ul>
+<li>5.会话层：向表示层提供建立连接并有序地传输数据<ul>
+<li>建立，管理，终止会话</li>
+<li>插入校验点用来恢复通信</li>
+</ul>
+</li>
+<li>6.表示层：处理两个通信系统中交换信息的表示方式<ul>
+<li>数据格式变换</li>
+<li>数据加密解密</li>
+<li>数据压缩与恢复</li>
+</ul>
+</li>
+<li>7.应用层：产生网络交互的应用</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络（一）基本概念</title>
+    <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<h1 id="计算机网络基础"><a href="#计算机网络基础" class="headerlink" title="计算机网络基础"></a>计算机网络基础</h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>将分散的、具有独立功能的计算机系统，通过通信设备与线路连接起来，由功能完善的软件实现资源共享和信息传递的系统</p>
+<p><strong><em>计算机网络是互联的、自治的计算机集合</em></strong></p>
+<h2 id="二、功能"><a href="#二、功能" class="headerlink" title="二、功能"></a>二、功能</h2><ol>
+<li>数据通信（连通性）</li>
+<li>资源共享（硬件、软件和数据）</li>
+<li>分布式处理（多台计算机各自承担同一工作的不同部分）</li>
+<li>提高可靠性</li>
+<li>负载均衡</li>
+</ol>
+<h2 id="三、组成"><a href="#三、组成" class="headerlink" title="三、组成"></a>三、组成</h2><ol>
+<li>组成部分：硬件、软件、协议</li>
+<li>工作方式：<ul>
+<li>边缘部分：用户直接使用（C/S、P2P）</li>
+<li>核心部分：为边缘部分服务</li>
+</ul>
+</li>
+<li>功能组成：<ul>
+<li>通信子网：实现数据通信</li>
+<li>资源子网：实现资源共享/数据处理</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、分类"><a href="#四、分类" class="headerlink" title="四、分类"></a>四、分类</h2><ol>
+<li><p>按分布范围</p>
+<ul>
+<li>广域网WAN（交换技术）</li>
+<li>城域网MAN</li>
+<li>局域网LAN（广播技术）</li>
+<li>个人区域网（PAN）</li>
+</ul>
+</li>
+<li><p>按使用者分：公用网，专用网</p>
+</li>
+<li><p>按交换技术分：电路交换，报文交换，分组交换</p>
+</li>
+<li><p>按拓扑结构分：</p>
+<p> <img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl1oy3x8dtj30ie0aqjrq.jpg" alt="img"></p>
+</li>
+<li><p>按传输技术分：</p>
+<ul>
+<li>广播式网络：共享公共通信信道</li>
+<li>点对点网络：使用分组储存转发和路由选择机制</li>
+</ul>
+</li>
+</ol>
+<h2 id="五、标准化工作"><a href="#五、标准化工作" class="headerlink" title="五、标准化工作"></a>五、标准化工作</h2><h3 id="标准的分类："><a href="#标准的分类：" class="headerlink" title="标准的分类："></a>标准的分类：</h3><ol>
+<li>法定标准：由权威制定（OSI）</li>
+<li>事实标准：由某些产品的主流技术（TCP/IP）</li>
+</ol>
+<h3 id="RFC（Request-For-Comments）"><a href="#RFC（Request-For-Comments）" class="headerlink" title="RFC（Request For Comments）"></a>RFC（Request For Comments）</h3><p>RFC是因特网的标准形式</p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>计算机网络</tag>
+      </tags>
   </entry>
   <entry>
     <title>操作系统（四）进程</title>
@@ -789,68 +981,6 @@
       </tags>
   </entry>
   <entry>
-    <title>计算机网络（一）基本概念</title>
-    <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<h1 id="计算机网络基础"><a href="#计算机网络基础" class="headerlink" title="计算机网络基础"></a>计算机网络基础</h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>将分散的、具有独立功能的计算机系统，通过通信设备与线路连接起来，由功能完善的软件实现资源共享和信息传递的系统</p>
-<p><strong><em>计算机网络是互联的、自治的计算机集合</em></strong></p>
-<h2 id="二、功能"><a href="#二、功能" class="headerlink" title="二、功能"></a>二、功能</h2><ol>
-<li>数据通信（连通性）</li>
-<li>资源共享（硬件、软件和数据）</li>
-<li>分布式处理（多台计算机各自承担同一工作的不同部分）</li>
-<li>提高可靠性</li>
-<li>负载均衡</li>
-</ol>
-<h2 id="三、组成"><a href="#三、组成" class="headerlink" title="三、组成"></a>三、组成</h2><ol>
-<li>组成部分：硬件、软件、协议</li>
-<li>工作方式：<ul>
-<li>边缘部分：用户直接使用（C/S、P2P）</li>
-<li>核心部分：为边缘部分服务</li>
-</ul>
-</li>
-<li>功能组成：<ul>
-<li>通信子网：实现数据通信</li>
-<li>资源子网：实现资源共享/数据处理</li>
-</ul>
-</li>
-</ol>
-<h2 id="四、分类"><a href="#四、分类" class="headerlink" title="四、分类"></a>四、分类</h2><ol>
-<li><p>按分布范围</p>
-<ul>
-<li>广域网WAN（交换技术）</li>
-<li>城域网MAN</li>
-<li>局域网LAN（广播技术）</li>
-<li>个人区域网（PAN）</li>
-</ul>
-</li>
-<li><p>按使用者分：公用网，专用网</p>
-</li>
-<li><p>按交换技术分：电路交换，报文交换，分组交换</p>
-</li>
-<li><p>按拓扑结构分：</p>
-<p> <img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl1oy3x8dtj30ie0aqjrq.jpg" alt="img"></p>
-</li>
-<li><p>按传输技术分：</p>
-<ul>
-<li>广播式网络：共享公共通信信道</li>
-<li>点对点网络：使用分组储存转发和路由选择机制</li>
-</ul>
-</li>
-</ol>
-<h2 id="五、标准化工作"><a href="#五、标准化工作" class="headerlink" title="五、标准化工作"></a>五、标准化工作</h2><h3 id="标准的分类："><a href="#标准的分类：" class="headerlink" title="标准的分类："></a>标准的分类：</h3><ol>
-<li>法定标准：由权威制定（OSI）</li>
-<li>事实标准：由某些产品的主流技术（TCP/IP）</li>
-</ol>
-<h3 id="RFC（Request-For-Comments）"><a href="#RFC（Request-For-Comments）" class="headerlink" title="RFC（Request For Comments）"></a>RFC（Request For Comments）</h3><p>RFC是因特网的标准形式</p>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>计算机网络（二）性能指标</title>
     <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%8C%EF%BC%89%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/</url>
     <content><![CDATA[<h1 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h1><h2 id="一、速率"><a href="#一、速率" class="headerlink" title="一、速率"></a>一、速率</h2><p>速率即数据率或称数据传输率或者比特率（比特：1/0 位）</p>
@@ -878,88 +1008,6 @@
 <h2 id="七、利用率"><a href="#七、利用率" class="headerlink" title="七、利用率"></a>七、利用率</h2><ul>
 <li>信道利用率：$\frac{有数据通过时间}{（有+无）数据通过时间}$</li>
 <li>网络利用率：信道利用率</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络（三）分层结构</title>
-    <url>/2020/11/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%89%EF%BC%89%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="计算机网络的分层结构"><a href="#计算机网络的分层结构" class="headerlink" title="计算机网络的分层结构"></a>计算机网络的分层结构</h1><h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><h3 id="为什么分层："><a href="#为什么分层：" class="headerlink" title="为什么分层："></a>为什么分层：</h3><ul>
-<li>激活数据通路</li>
-<li>告诉网络如何识别目的主机</li>
-<li>查明目的主机状态</li>
-<li>弄清楚目的主机的文件管理系统是否准备好</li>
-<li>确保差错和意外可以解决</li>
-</ul>
-<h3 id="分层结构："><a href="#分层结构：" class="headerlink" title="分层结构："></a>分层结构：</h3><ul>
-<li>协议：为进行网络中的对等实体数据交换而建立的规则、标准或约定称为网络协议<ul>
-<li>语法：规定传送数据的格式</li>
-<li>语义：规定所要完成的功能</li>
-<li>同步：规定各种操作的顺序</li>
-</ul>
-</li>
-<li>接口：上层使用下层服务的入口（仅在<strong>相邻层有接口</strong>，且所提供服务的具体细节对上一层完全屏蔽</li>
-<li>服务：下层为上层提供的功能调用</li>
-</ul>
-<h3 id="分层的基本原则："><a href="#分层的基本原则：" class="headerlink" title="分层的基本原则："></a>分层的基本原则：</h3><ul>
-<li>各层相互<strong>独立</strong>，每层只实现一种相对独立的功能</li>
-<li>各层之间<strong>界面自然清晰</strong>，相互交流尽可能少</li>
-<li>结构上可分割，<strong>每层都采用最合适的技术来实现</strong></li>
-<li>保持上下层独立性，<strong>上层单向使用下层提供的服务</strong></li>
-<li>分层结构能够促进标准化工作</li>
-</ul>
-<h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><p>7层的法定标准</p>
-<p>目的：支持异构网络系统的互联互通</p>
-<p>结构：</p>
-<ul>
-<li>通信子网（数据通信）（中间系统）<ul>
-<li>1.物理层：在物理媒体上实现比特流的传输<ul>
-<li>定义接口特性</li>
-<li>定义传输模式：单工、半双工、双工</li>
-<li>定义传输速率</li>
-<li>比特同步</li>
-<li>比特编码</li>
-</ul>
-</li>
-<li>2.数据链路层：把网络层的数据报组装成帧<ul>
-<li>成帧：定义帧的开始和结束</li>
-<li>差错控制：帧错+位错</li>
-<li>流量控制</li>
-<li>访问/接入控制：控制对信道的访问</li>
-</ul>
-</li>
-<li>3.网络层<ul>
-<li>路由选择，选择最佳路径</li>
-<li>流量控制：协调速度</li>
-<li>差错控制：检查错误</li>
-<li>拥塞控制：宏观控制整个网络的拥塞状态</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>4.传输层：负责主机中两个进程的通信，功能：可靠传输、不可靠传输，差错控制，流量控制，复用分用</li>
-<li>资源子网（数据处理）<ul>
-<li>5.会话层：向表示层提供建立连接并有序地传输数据<ul>
-<li>建立，管理，终止会话</li>
-<li>插入校验点用来恢复通信</li>
-</ul>
-</li>
-<li>6.表示层：处理两个通信系统中交换信息的表示方式<ul>
-<li>数据格式变换</li>
-<li>数据加密解密</li>
-<li>数据压缩与恢复</li>
-</ul>
-</li>
-<li>7.应用层：产生网络交互的应用</li>
-</ul>
-</li>
 </ul>
 ]]></content>
       <categories>
@@ -1065,54 +1113,6 @@
       </categories>
       <tags>
         <tag>软件工程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>密码学</title>
-    <url>/2020/12/13/%E5%AF%86%E7%A0%81%E5%AD%A6/</url>
-    <content><![CDATA[<h1 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>密码术：密码编码学+密码分析学</p>
-<p>扩散：<strong>让明文中的每一位影响密文中的许多位，或者说让密文中的每一位受明文中的许多位的影响</strong>（明文<strong>统计特性散布</strong>到密文中）</p>
-<p>混淆：<strong>将密文与密钥之间的统计关系变得尽可能复杂</strong></p>
-<p>扩散和混淆的目的是为了抵抗对手对密码体制的统计分析（<strong>乘积和迭代有助于实现扩散和混淆</strong>）</p>
-<p>对称加密：加密和解密由同一个密钥来控制，就是对称算法（单匙算法）</p>
-<pre><code>- **加密** ：$E_K(M)=C$
-- **解密** ：$D_K(C)=M$</code></pre>
-<p>非对称加密：用作加密的密钥不同于用作解密的密钥，而且解密密钥不能根据加密密钥计算出来，就是非对称算法（公钥加密）</p>
-<ul>
-<li><strong>加密</strong> ：$E_{K1}(M)=C$</li>
-<li><strong>解密</strong> ：$D_{K2}(C)=M$</li>
-</ul>
-<p>密码系统的攻击类型：</p>
-<p><strong>（1）唯密文攻击</strong>：密码分析者仅知道一些密文。</p>
-<p><strong>（2）已知明文攻击</strong>：密码分析者知道一些明文和相应的密文。</p>
-<p><strong>（3）选择明文攻击</strong>：密码分析者可以选择一些明文，并得到相应的密文。</p>
-<p><strong>（4）选择密文攻击</strong>：密码分析者可以选择一些密文，并得到相应的明文。</p>
-<h3 id="分组密码工作模式"><a href="#分组密码工作模式" class="headerlink" title="分组密码工作模式:"></a>分组密码工作模式:</h3><p>电子密码本(Electronic Code Book, ECB)模式</p>
-<p>​    Ø最简单的工作模式</p>
-<p>​    Ø加密：一次对一个64比特长的明文分组加密，每次加密密钥相同</p>
-<p>​    Ø适用于短消息加密传输</p>
-<p>密码分组链接(Cipher Block Chaining, CBC)模式</p>
-<p>​    Ø加密：一次对一个明文分组加密，每次加密使用同一密钥，加密算法的输入是当前明文分组和前一次密文分组的异或</p>
-<p>密码反馈（Cipher Feedback，CFB）模式</p>
-<p>​    <img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmnqbyx7pj30h409l3za.jpg" alt="img"></p>
-<p>输出反馈（Output Feedback, OFB）模式</p>
-<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmnrckjgrj30hm0gowgd.jpg" alt="OFB加密和解密"></p>
-<p>计数器模式(CTR, Counter Mode)</p>
-<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmnrkxs5tj30fm0ch3zk.jpg" alt="img"></p>
-<h2 id="数学基础知识"><a href="#数学基础知识" class="headerlink" title="数学基础知识"></a>数学基础知识</h2><p>扩展欧几里得算法：</p>
-<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmhub891mj30sw0jkwj1.jpg" alt="image-20201213201918360"></p>
-<p>中国剩余定理：</p>
-<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glmikbw9m8j31hc0kswnz.jpg" alt="image-20201213204421185"></p>
-<p>费马小定理：</p>
-<p>p为质数，a为任意自然数</p>
-<p>$a^{p-1}\equiv1\ (mod\ p)$</p>
-<p>密码算法四种性质：机密性、完整性、消息认证、不可否认</p>
-<h2 id="密码算法"><a href="#密码算法" class="headerlink" title="密码算法"></a>密码算法</h2>]]></content>
-      <categories>
-        <category>复习总结</category>
-      </categories>
-      <tags>
-        <tag>密码学</tag>
       </tags>
   </entry>
 </search>
