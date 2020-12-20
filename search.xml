@@ -1118,17 +1118,162 @@
   <entry>
     <title>编译原理</title>
     <url>/2020/12/18/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<h1 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h1><p>转载自<a href="https://www.bilibili.com/video/BV1ft4y1X7p6?p=3">编译原理—混子速成期末保过</a></p>
-<h2 id="1-集合"><a href="#1-集合" class="headerlink" title="1.集合"></a>1.集合</h2><p><img src="../../../Library/Application%20Support/typora-user-images/image-20201219212645113.png" alt="image-20201219212645113"></p>
-<h2 id="2-文法"><a href="#2-文法" class="headerlink" title="2.文法"></a>2.文法</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glthjo36z8j31420aiqal.jpg" alt="image-20201219212804466"></p>
+    <content><![CDATA[<h1 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h1><p>转载整合自<a href="https://www.bilibili.com/video/BV1ft4y1X7p6?p=3">编译原理—混子速成期末保过</a></p>
+<h2 id="一、习题"><a href="#一、习题" class="headerlink" title="一、习题"></a>一、习题</h2><h3 id="1-集合"><a href="#1-集合" class="headerlink" title="1.集合"></a>1.集合</h3><p><img src="../../../Library/Application%20Support/typora-user-images/image-20201219212645113.png" alt="image-20201219212645113"></p>
+<h3 id="2-文法"><a href="#2-文法" class="headerlink" title="2.文法"></a>2.文法</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glthjo36z8j31420aiqal.jpg" alt="image-20201219212804466"></p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glthninja4j318s0rye7u.jpg" alt="image-20201219213146516"></p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glthqe21i2j312g05en56.jpg" alt="image-20201219213431745"></p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gltif5j3k7j317g0b0dti.jpg" alt="image-20201219215819514"></p>
 <p><img src="../../../Library/Application%20Support/typora-user-images/image-20201219220301895.png" alt="image-20201219220301895"></p>
-<h2 id="3-词法分析"><a href="#3-词法分析" class="headerlink" title="3.词法分析"></a>3.词法分析</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glti6ut0j1j30xq0acthn.jpg" alt="image-20201219215021767"></p>
+<h3 id="3-词法分析"><a href="#3-词法分析" class="headerlink" title="3.词法分析"></a>3.词法分析</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glti6ut0j1j30xq0acthn.jpg" alt="image-20201219215021767"></p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gltjb4h3jpj31by0i8qhu.jpg" alt="image-20201219222903897"></p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gltjgqnsemj319q0hih0i.jpg" alt="image-20201219223422025"></p>
-<h2 id="4-语法分析"><a href="#4-语法分析" class="headerlink" title="4.语法分析"></a>4.语法分析</h2>]]></content>
+<h3 id="4-语法分析"><a href="#4-语法分析" class="headerlink" title="4.语法分析"></a>4.语法分析</h3><p> <img src="../../../Library/Application%20Support/typora-user-images/image-20201220100828634.png" alt="image-20201220100828634"></p>
+<h2 id="二、PPT重难点合集"><a href="#二、PPT重难点合集" class="headerlink" title="二、PPT重难点合集"></a>二、PPT重难点合集</h2><h3 id="1-引言"><a href="#1-引言" class="headerlink" title="1.引言"></a>1.引言</h3><ul>
+<li>重点：<ul>
+<li>编译系统的结构：<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glu3x51inmj312y0u0q9k.jpg" alt="image-20201220102212223"></li>
+</ul>
+</li>
+<li>难点：<ul>
+<li>编译程序的生成<img src="../../../Library/Application%20Support/typora-user-images/image-20201220103759973.png" alt="image-20201220103759973"><img src="../../../Library/Application%20Support/typora-user-images/image-20201220103835776.png" alt="image-20201220103835776"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glu4kg0oo3j31ag0cytaa.jpg" alt="image-20201220103903408"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glu4kf9kzyj31ak0dq3zy.jpg" alt="image-20201220103932642"></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-高级语言及其文法"><a href="#2-高级语言及其文法" class="headerlink" title="2.高级语言及其文法"></a>2.高级语言及其文法</h3><ul>
+<li><p>重点：</p>
+<ul>
+<li><p>文法的定义与分类</p>
+<ul>
+<li><p>定义一个包含元素的集合为一个字母表∑</p>
+</li>
+<li><p>对字母表可进行乘和加。</p>
+</li>
+<li><p>$$<br>  ∑^+ = ∑^1+∑^2+∑^3+…\<br>  ∑^* = ∑^0+∑^1+∑^2+…\<br>  对任意的∑^0 = {ε}<br>  $$</p>
+</li>
+<li><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glu4xyanwpj31420aigmy.jpg" alt="image-20201219212804466"></p>
+</li>
+<li><p>四种文法：<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glu5596nrzj30xo0ikacg.jpg" alt="image-20201220110436053"></p>
+</li>
+<li><p>0型文法也称为短语文法:一个非常重要的理论结果是，0型文法的能力相当于图灵机（Turing）</p>
+</li>
+<li><p>1型文法（上下文有关文法）：A只有出现在α1α2的上下文中，才允许用β替换。</p>
+</li>
+<li><p>2型文法(CFG):即β取代A时，与A所处的上下文无关。（程序设计语言的多数语法</p>
+</li>
+<li><p>3型文法(RG)：也称正规文法</p>
+<ul>
+<li><p>每个产生式均为 “A→aB”或“A→a” —— 右线性</p>
+<p>  　　 “A→Ba”或“A→a” —— 左线性</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CFG的语法树及二义性</p>
+<ul>
+<li>短语：语法树每一层的所有叶结点</li>
+<li>直接短语：该子树不能再推出其它短语</li>
+<li>句柄：最左边的直接短语</li>
+<li>二义性：语法树唯一</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>难点：</p>
+<ul>
+<li>程序设计语言的语义定义</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-词法分析-1"><a href="#3-词法分析-1" class="headerlink" title="3.词法分析"></a>3.词法分析</h3><ul>
+<li>重点<ul>
+<li>词法分析器的输入、输出<ul>
+<li>输入源程序，输出单词符号(token)</li>
+</ul>
+</li>
+<li>用于识别符号的状态转移图的构造<ul>
+<li>有穷自动机<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glud8jamfwj314w0kadmc.jpg" alt="image-20201220154432277"></li>
+</ul>
+</li>
+<li>根据状态转移图实现词法分析器</li>
+</ul>
+</li>
+<li>难点<ul>
+<li>词法的正规文法表示、正规表达式表示、状态转移图表示，它们之间的转换。 <ul>
+<li><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glu5zginv5j319q0hiacy.jpg" alt="image-20201219223422025"></li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-自顶向下的语法分析"><a href="#4-自顶向下的语法分析" class="headerlink" title="4.自顶向下的语法分析"></a>4.自顶向下的语法分析</h3><ul>
+<li>重点<ul>
+<li>自顶向下分析的基本思想：<ul>
+<li>递归子程序法（从根开始构建整棵树）</li>
+<li>预测分析法(LL(1))</li>
+</ul>
+</li>
+<li>预测分析器总体结构，预测分析表的构造，递归下降分析法基本思想，简单算术表达式的递归下降分析器。</li>
+</ul>
+</li>
+<li>难点<ul>
+<li>FIRST 和 FOLLOW 集的求法，<ul>
+<li><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glufka7em5j30z70u04qp.jpg" alt="image-20201220170458995"></li>
+</ul>
+</li>
+<li>对它们的理解以及在构造LL(1)分析表时的使用。递归子程序法中如何体现分析的结果。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-自底向上的语法分析"><a href="#5-自底向上的语法分析" class="headerlink" title="5.自底向上的语法分析"></a>5.自底向上的语法分析</h3><ul>
+<li>重点<ul>
+<li>自底向上分析的基本思想：从输入串出发，反复利用产生式进行归约，如果最后能得到文法的开始符号，则输入串是句子，否则输入串有语法错误。</li>
+<li>算符优先分析法的基本思想，简单算符优先分析法。LR 分析器的基本构造思想，LR分析算法，规范句型活前缀及其识别器——DFA，LR(0)分析表的构造，SLR(1)分析表的构造, LR(1)分析表的构造。</li>
+</ul>
+</li>
+<li>难点<ul>
+<li>求FIRSTOP 和LASTOP，算符优先关系的确定，算符优先分析表的构造，素短语与最左素短语的概念。规范句型活前缀，LR(0)项目集闭包与项目集规范族，它们与句柄识别的关系，活前缀与句柄的关系, LR(1)项目集闭包与项目集规范族。 </li>
+</ul>
+</li>
+</ul>
+<h3 id="6-语法制导翻译与属性文法"><a href="#6-语法制导翻译与属性文法" class="headerlink" title="6.语法制导翻译与属性文法"></a>6.语法制导翻译与属性文法</h3><ul>
+<li>重点<ul>
+<li>语法制导翻译：语法分析中进行静态语义检查和中间代码生成的技术称为语法制导翻译技术</li>
+<li>语法制导定义：为了通过将语义属性关联到文法符号、将语义规则关联到产生式，有效地将语法和语义关联起来，人们引入了语法制导定义，没有副作用的语法制导定义又称为属性文法</li>
+<li>翻译模式：如果不仅将语义属性关联到文法符号、将语义规则关联到产生式，而且还通过将语义动作嵌入到产生式的适当位置来表达该语义动作的执行时机，这就是翻译模式。翻译模式给语义分析的实现提供了更好的支持。</li>
+<li>自顶向下翻译，自底向上翻译。</li>
+</ul>
+</li>
+<li>难点<ul>
+<li>属性的意义：为相应的语法成分设置表示语义的属性，属性的值是可以计算的，根据属性值计算的关联关系，将其分成综合属性和继承属性，根据属性文法中所含的属性将属性文法分成<em>S</em>-属性文法和<em>L</em>-属性文法。</li>
+<li>对综合属性，继承属性，固有属性的理解，属性计算，怎么通过属性来表达翻译。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-语义分析与中间代码生成"><a href="#7-语义分析与中间代码生成" class="headerlink" title="7.语义分析与中间代码生成"></a>7.语义分析与中间代码生成</h3><ul>
+<li>重点<ul>
+<li>三地址码：是指这种代码的每条指令最多只能包含三个地址，即两个操作数地址和一个结果地址。</li>
+<li>各种语句的目标代码结构、语法制导定义与翻译模式。</li>
+</ul>
+</li>
+<li>难点<ul>
+<li>布尔表达式的翻译<img src="https://tva1.sinaimg.cn/large/0081Kckwgy1glumljhu9aj319e0mk784.jpg" alt="image-20201220210826008"><img src="../../../Library/Application%20Support/typora-user-images/image-20201220210803201.png" alt="image-20201220210803201"></li>
+<li>对各种语句的目标代码结构、语法制导定义与翻译模式的理解。</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-运行时的存储组织"><a href="#9-运行时的存储组织" class="headerlink" title="9.运行时的存储组织"></a>9.运行时的存储组织</h3><ul>
+<li>重点<ul>
+<li>符号表的内容、组织，过程调用实现，静态存储分配、动态存储分配的基本方法。</li>
+</ul>
+</li>
+<li>难点<ul>
+<li>参数传递，过程说明语句代码结构，过程调用语句的代码结构，过程调用语句的语法制导定义，栈式存储分配。 </li>
+</ul>
+</li>
+</ul>
+]]></content>
       <categories>
         <category>复习总结</category>
       </categories>
