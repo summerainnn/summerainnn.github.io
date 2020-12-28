@@ -336,11 +336,6 @@
       </tags>
   </entry>
   <entry>
-    <title>剑指 Offer 24. 反转链表</title>
-    <url>/2020/12/12/%E5%89%91%E6%8C%87%20Offer%2024.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>剑指 Offer：09.用两个栈实现队列</title>
     <url>/2020/11/14/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A09.%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/</url>
     <content><![CDATA[<h1 id="剑指-Offer：09-用两个栈实现队列"><a href="#剑指-Offer：09-用两个栈实现队列" class="headerlink" title="剑指 Offer：09.用两个栈实现队列"></a>剑指 Offer：09.用两个栈实现队列</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>用两个栈实现一个队列。</p>
@@ -1319,6 +1314,25 @@
       <tags>
         <tag>算法</tag>
         <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 32 - II. 从上到下打印二叉树 II</title>
+    <url>/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2032%20-%20II.%20%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%20II/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-32-II-从上到下打印二叉树-II"><a href="#剑指-Offer-32-II-从上到下打印二叉树-II" class="headerlink" title="剑指 Offer 32 - II. 从上到下打印二叉树 II"></a>剑指 Offer 32 - II. 从上到下打印二叉树 II</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>从上到下按层打印二叉树，同一层的节点按从左到右的顺序打印，每一层打印到一行。</p>
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/">LeetCode</a></h2><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>利用广度优先的思想来进行解题</li>
+</ul>
+<h3 id="注意：需要首先用i来记录下queue的size，因为该大小是变化的"><a href="#注意：需要首先用i来记录下queue的size，因为该大小是变化的" class="headerlink" title="注意：需要首先用i来记录下queue的size，因为该大小是变化的"></a>注意：需要首先用i来记录下queue的size，因为该大小是变化的</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; answer = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="keyword">null</span>) queue.add(root);</span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            List&lt;Integer&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=queue.size();i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">                TreeNode node  = queue.poll();</span><br><span class="line">                temp.add(node.val);</span><br><span class="line">                <span class="keyword">if</span>(node.left!=<span class="keyword">null</span>) queue.add(node.left);</span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="keyword">null</span>) queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            answer.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>二叉树</tag>
       </tags>
   </entry>
 </search>
