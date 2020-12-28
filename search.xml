@@ -1287,13 +1287,34 @@
     <content><![CDATA[<h1 id="剑指-Offer-30-包含min函数的栈"><a href="#剑指-Offer-30-包含min函数的栈" class="headerlink" title="剑指 Offer 30. 包含min函数的栈"></a>剑指 Offer 30. 包含min函数的栈</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>定义栈的数据结构，请在该类型中实现一个能够得到栈的最小元素的 min 函数在该栈中，调用 min、push 及 pop 的时间复杂度都是 O(1)。</p>
 <h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof/">LeetCode</a></h2><hr>
 <h2 id="前置知识点回顾："><a href="#前置知识点回顾：" class="headerlink" title="前置知识点回顾："></a>前置知识点回顾：</h2><p>java栈的相关函数及用法：</p>
-<ul>
-<li>boolean empty()<br>  测试堆栈是否为空。</li>
-<li>Object peek( )<br>  查看堆栈顶部的对象，但不从堆栈中移除它。</li>
-<li>Object pop( )<br>  移除堆栈顶部的对象，并作为此函数的值返回该对象。</li>
-<li>Object push(Object element) 或使用继承自<strong>Vector类</strong>的add方法<br>  把项压入堆栈顶部。</li>
-<li>nt search(Object element)<br>  返回对象在堆栈中的位置，以 1 为基数。</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">方法描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">boolean empty()  测试堆栈是否为空。</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Object peek( ) 查看堆栈顶部的对象，但不从堆栈中移除它。</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Object pop( ) 移除堆栈顶部的对象，并作为此函数的值返回该对象。</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">Object push(Object element) 把项压入堆栈顶部。</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">int search(Object element) 返回对象在堆栈中的位置，以 1 为基数。</td>
+</tr>
+</tbody></table>
 <h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><h3 id="1-两个栈来解决"><a href="#1-两个栈来解决" class="headerlink" title="1.两个栈来解决"></a>1.两个栈来解决</h3><ul>
 <li>维护两个栈，一个为正常栈，另一个为压栈时出现过的最小值，栈顶为当前最小值</li>
 <li>出栈时检测出栈元素是否为当前栈最小值，若为最小值，则将存有最小值的栈出栈</li>
@@ -1333,6 +1354,143 @@
       <tags>
         <tag>算法</tag>
         <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 39. 数组中出现次数超过一半的数字</title>
+    <url>/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2039.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-39-数组中出现次数超过一半的数字"><a href="#剑指-Offer-39-数组中出现次数超过一半的数字" class="headerlink" title="剑指 Offer 39. 数组中出现次数超过一半的数字"></a>剑指 Offer 39. 数组中出现次数超过一半的数字</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。</p>
+<p>你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p>
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/">LeetCode</a></h2><hr>
+<h2 id="前置知识点回顾："><a href="#前置知识点回顾：" class="headerlink" title="前置知识点回顾："></a>前置知识点回顾：</h2><p>java中HasMap的相关函数及用法：</p>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-clear.html">clear()</a></td>
+<td align="left">删除 hashMap 中的所有键/值对</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-clone.html">clone()</a></td>
+<td align="left">复制一份 hashMap</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-isempty.html">isEmpty()</a></td>
+<td align="left">判断 hashMap 是否为空</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-size.html">size()</a></td>
+<td align="left">计算 hashMap 中键/值对的数量</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-put.html">put()</a></td>
+<td align="left">将键/值对添加到 hashMap 中</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-putall.html">putAll()</a></td>
+<td align="left">将所有键/值对添加到 hashMap 中</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-putifabsent.html">putIfAbsent()</a></td>
+<td align="left">如果 hashMap 中不存在指定的键，则将指定的键/值对插入到 hashMap 中。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-remove.html">remove()</a></td>
+<td align="left">删除 hashMap 中指定键 key 的映射关系</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-containskey.html">containsKey()</a></td>
+<td align="left">检查 hashMap 中是否存在指定的 key 对应的映射关系。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-containsvalue.html">containsValue()</a></td>
+<td align="left">检查 hashMap 中是否存在指定的 value 对应的映射关系。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-replace.html">replace()</a></td>
+<td align="left">替换 hashMap 中是指定的 key 对应的 value。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-replaceall.html">replaceAll()</a></td>
+<td align="left">将 hashMap 中的所有映射关系替换成给定的函数所执行的结果。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-get.html">get()</a></td>
+<td align="left">获取指定 key 对应对 value</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-getordefault.html">getOrDefault()</a></td>
+<td align="left">获取指定 key 对应对 value，如果找不到 key ，则返回设置的默认值</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-foreach.html">forEach()</a></td>
+<td align="left">对 hashMap 中的每个映射执行指定的操作。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-entryset.html">entrySet()</a></td>
+<td align="left">返回 hashMap 中所有映射项的集合集合视图。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-keyset.html">keySet</a>()</td>
+<td align="left">返回 hashMap 中所有 key 组成的集合视图。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-values.html">values()</a></td>
+<td align="left">返回 hashMap 中存在的所有 value 值。</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-merge.html">merge()</a></td>
+<td align="left">添加键值对到 hashMap 中</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-compute.html">compute()</a></td>
+<td align="left">对 hashMap 中指定 key 的值进行重新计算</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-computeifabsent.html">computeIfAbsent()</a></td>
+<td align="left">对 hashMap 中指定 key 的值进行重新计算，如果不存在这个 key，则添加到 hasMap 中</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.runoob.com/java/java-hashmap-computeifpresent.html">computeIfPresent()</a></td>
+<td align="left">对 hashMap 中指定 key 的值进行重新计算，前提是该 key 存在于 hashMap 中。</td>
+</tr>
+</tbody></table>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li><p>使用HashMap来对数组进行遍历并记录每个数字出现的个数，对每个数都判断其是否超过了一半，若超过，则返回答案</p>
+<ul>
+<li><p>时间复杂度和空间复杂度都是o（n）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> n = nums.length/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">            map.put(num, map.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(map.get(num) &gt; n) &#123;</span><br><span class="line">                <span class="keyword">return</span> num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>最佳解法：摩尔投票</p>
+<ul>
+<li><p>空间复杂度为o（1）</p>
+</li>
+<li><p>具体思路为遍历数组，对两个不同的元素进行消去操作，最后剩下的元素即为出现次数超过一半的数</p>
+</li>
+<li><p>具体实现时使用的技巧为“投票”，将数组的第一个值记为众数，在遍历数组遇到相同值则计数器加1，否则计数器减一，计数器为0则代表前面的数值被全部消去，将下一个值再次记为众数，重复该过程，最后得到的即为众数</p>
+</li>
+<li><p>需要注意的是该数组中必须存在超过半数的众数，否则无法找到众数</p>
+</li>
+<li><p>可以通过多遍历一次的方法来进行验证</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> answer=nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(count==<span class="number">0</span>)&#123;</span><br><span class="line">                answer = num;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(answer == num)&#123;</span><br><span class="line">                count = count + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                count = count - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(answer==num)&#123;</span><br><span class="line">                sum++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(sum &gt; n)&#123;</span><br><span class="line">                <span class="keyword">return</span> answer;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">// 无答案</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
 </search>

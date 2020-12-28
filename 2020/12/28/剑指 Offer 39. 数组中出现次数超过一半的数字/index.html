@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    剑指 Offer 32 - II. 从上到下打印二叉树 II |  summerain
+    剑指 Offer 39. 数组中出现次数超过一半的数字 |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-剑指 Offer 32 - II. 从上到下打印二叉树 II"
+  id="post-剑指 Offer 39. 数组中出现次数超过一半的数字"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,15 +55,15 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  剑指 Offer 32 - II. 从上到下打印二叉树 II
+  剑指 Offer 39. 数组中出现次数超过一半的数字
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2032%20-%20II.%20%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%20II/" class="article-date">
-  <time datetime="2020-12-28T14:31:42.000Z" itemprop="datePublished">2020-12-28</time>
+      <a href="/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2039.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/" class="article-date">
+  <time datetime="2020-12-28T14:57:30.000Z" itemprop="datePublished">2020-12-28</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87-Offer/">剑指 Offer</a>
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">214</span>
+            <span class="post-count">834</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
@@ -98,13 +98,131 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="剑指-Offer-32-II-从上到下打印二叉树-II"><a href="#剑指-Offer-32-II-从上到下打印二叉树-II" class="headerlink" title="剑指 Offer 32 - II. 从上到下打印二叉树 II"></a>剑指 Offer 32 - II. 从上到下打印二叉树 II</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>从上到下按层打印二叉树，同一层的节点按从左到右的顺序打印，每一层打印到一行。</p>
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/">LeetCode</a></h2><hr>
+  <h1 id="剑指-Offer-39-数组中出现次数超过一半的数字"><a href="#剑指-Offer-39-数组中出现次数超过一半的数字" class="headerlink" title="剑指 Offer 39. 数组中出现次数超过一半的数字"></a>剑指 Offer 39. 数组中出现次数超过一半的数字</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。</p>
+<p>你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p>
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/">LeetCode</a></h2><hr>
+<h2 id="前置知识点回顾："><a href="#前置知识点回顾：" class="headerlink" title="前置知识点回顾："></a>前置知识点回顾：</h2><p>java中HasMap的相关函数及用法：</p>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-clear.html">clear()</a></td>
+<td align="left">删除 hashMap 中的所有键/值对</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-clone.html">clone()</a></td>
+<td align="left">复制一份 hashMap</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-isempty.html">isEmpty()</a></td>
+<td align="left">判断 hashMap 是否为空</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-size.html">size()</a></td>
+<td align="left">计算 hashMap 中键/值对的数量</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-put.html">put()</a></td>
+<td align="left">将键/值对添加到 hashMap 中</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-putall.html">putAll()</a></td>
+<td align="left">将所有键/值对添加到 hashMap 中</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-putifabsent.html">putIfAbsent()</a></td>
+<td align="left">如果 hashMap 中不存在指定的键，则将指定的键/值对插入到 hashMap 中。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-remove.html">remove()</a></td>
+<td align="left">删除 hashMap 中指定键 key 的映射关系</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-containskey.html">containsKey()</a></td>
+<td align="left">检查 hashMap 中是否存在指定的 key 对应的映射关系。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-containsvalue.html">containsValue()</a></td>
+<td align="left">检查 hashMap 中是否存在指定的 value 对应的映射关系。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-replace.html">replace()</a></td>
+<td align="left">替换 hashMap 中是指定的 key 对应的 value。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-replaceall.html">replaceAll()</a></td>
+<td align="left">将 hashMap 中的所有映射关系替换成给定的函数所执行的结果。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-get.html">get()</a></td>
+<td align="left">获取指定 key 对应对 value</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-getordefault.html">getOrDefault()</a></td>
+<td align="left">获取指定 key 对应对 value，如果找不到 key ，则返回设置的默认值</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-foreach.html">forEach()</a></td>
+<td align="left">对 hashMap 中的每个映射执行指定的操作。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-entryset.html">entrySet()</a></td>
+<td align="left">返回 hashMap 中所有映射项的集合集合视图。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-keyset.html">keySet</a>()</td>
+<td align="left">返回 hashMap 中所有 key 组成的集合视图。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-values.html">values()</a></td>
+<td align="left">返回 hashMap 中存在的所有 value 值。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-merge.html">merge()</a></td>
+<td align="left">添加键值对到 hashMap 中</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-compute.html">compute()</a></td>
+<td align="left">对 hashMap 中指定 key 的值进行重新计算</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-computeifabsent.html">computeIfAbsent()</a></td>
+<td align="left">对 hashMap 中指定 key 的值进行重新计算，如果不存在这个 key，则添加到 hasMap 中</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-computeifpresent.html">computeIfPresent()</a></td>
+<td align="left">对 hashMap 中指定 key 的值进行重新计算，前提是该 key 存在于 hashMap 中。</td>
+</tr>
+</tbody></table>
 <h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>利用广度优先的思想来进行解题</li>
+<li><p>使用HashMap来对数组进行遍历并记录每个数字出现的个数，对每个数都判断其是否超过了一半，若超过，则返回答案</p>
+<ul>
+<li><p>时间复杂度和空间复杂度都是o（n）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> n = nums.length/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">            map.put(num, map.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(map.get(num) &gt; n) &#123;</span><br><span class="line">                <span class="keyword">return</span> num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h3 id="注意：需要首先用i来记录下queue的size，因为该大小是变化的"><a href="#注意：需要首先用i来记录下queue的size，因为该大小是变化的" class="headerlink" title="注意：需要首先用i来记录下queue的size，因为该大小是变化的"></a>注意：需要首先用i来记录下queue的size，因为该大小是变化的</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; answer = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="keyword">null</span>) queue.add(root);</span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            List&lt;Integer&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=queue.size();i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">                TreeNode node  = queue.poll();</span><br><span class="line">                temp.add(node.val);</span><br><span class="line">                <span class="keyword">if</span>(node.left!=<span class="keyword">null</span>) queue.add(node.left);</span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="keyword">null</span>) queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            answer.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最佳解法：摩尔投票</p>
+<ul>
+<li><p>空间复杂度为o（1）</p>
+</li>
+<li><p>具体思路为遍历数组，对两个不同的元素进行消去操作，最后剩下的元素即为出现次数超过一半的数</p>
+</li>
+<li><p>具体实现时使用的技巧为“投票”，将数组的第一个值记为众数，在遍历数组遇到相同值则计数器加1，否则计数器减一，计数器为0则代表前面的数值被全部消去，将下一个值再次记为众数，重复该过程，最后得到的即为众数</p>
+</li>
+<li><p>需要注意的是该数组中必须存在超过半数的众数，否则无法找到众数</p>
+</li>
+<li><p>可以通过多遍历一次的方法来进行验证</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> answer=nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(count==<span class="number">0</span>)&#123;</span><br><span class="line">                answer = num;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(answer == num)&#123;</span><br><span class="line">                count = count + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                count = count - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(answer==num)&#123;</span><br><span class="line">                sum++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(sum &gt; n)&#123;</span><br><span class="line">                <span class="keyword">return</span> answer;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">// 无答案</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
+</li>
+</ul>
  
       <!-- reward -->
       
@@ -175,12 +293,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2032%20-%20II.%20%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%20II/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2039.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
     </footer>
   </div>
@@ -188,19 +306,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2039.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            剑指 Offer 39. 数组中出现次数超过一半的数字
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/12/26/%E5%89%91%E6%8C%87%20Offer%2030.%20%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88/" class="article-nav-link">
+      <a href="/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2032%20-%20II.%20%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%20II/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">剑指 Offer 30. 包含min函数的栈</div>
+        <div class="article-nav-title">剑指 Offer 32 - II. 从上到下打印二叉树 II</div>
       </a>
     
   </nav>
