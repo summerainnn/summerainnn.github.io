@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    操作系统（六）具体问题 |  summerain
+    Java（2）多态 |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-操作系统（六）具体问题"
+  id="post-Java（2）多态"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,18 +55,18 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  操作系统（六）具体问题
+  Java（2）多态
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/12/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%85%AD%EF%BC%89%E5%85%B7%E4%BD%93%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2020-12-06T13:15:50.000Z" itemprop="datePublished">2020-12-06</time>
+      <a href="/2020/11/26/Java%EF%BC%882%EF%BC%89%E5%A4%9A%E6%80%81/" class="article-date">
+  <time datetime="2020-11-26T09:35:16.000Z" itemprop="datePublished">2020-11-26</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
   </div>
   
 <div class="word_count">
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.1k</span>
+            <span class="post-count">0</span>
         </span>
     </span>
 
@@ -83,44 +83,20 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">1 min</span>
         </span>
     </span>
 </div>
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="生产者和消费者问题"><a href="#生产者和消费者问题" class="headerlink" title="生产者和消费者问题"></a>生产者和消费者问题</h1><h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>有一个进程可以生产一种资源（生产者程序），另一种程序需要消耗这种资源才能执行，使用一个有限的缓存区来保存这种资源</p>
-<h2 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h2><p>生产者和消费者对于缓存区的使用必须是互斥的，而且针对缓存区满和空这两种情况，生产者和消费者之间有两种先后执行的顺序，即两种同步关系（考虑资源为0时必须先执行生产者，资源为满时必须先执行消费者）</p>
-<h2 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">semaohore mutex &#x3D; 1</span><br><span class="line">semaohore empty &#x3D; n</span><br><span class="line">semaohore full &#x3D; 0</span><br><span class="line">producer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		生产一个产品；</span><br><span class="line">		P(empty);</span><br><span class="line">		P(mutex);</span><br><span class="line">		把产品放入缓存区；</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(full)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">consumer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(full);</span><br><span class="line">		P(mutex);</span><br><span class="line">		从缓存区取出一个产品；</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(empty);</span><br><span class="line">		使用产品；</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h2><p>实现互斥的P操作一定要在实现同步的P操作之后，否则可能导致死锁（考虑缓存区为双方必须的，但是当一个进程占用后，缓存区确没有自己想要的资源，必须要对方提供，但是自己已经占用了缓存区，对方无法使用缓存区，也就无法为你提供），即互斥的操作可能导致了同步的操作没办法再同步。即互斥后接同步中的后操作，而互斥操作后占用了同步中的先操作的临界区，导致同步的先操作无法完成</p>
-<p>V操作不会导致阻塞，所以两个V操作顺序可以交换</p>
-<hr>
-<h1 id="吸烟者问题"><a href="#吸烟者问题" class="headerlink" title="吸烟者问题"></a>吸烟者问题</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>与生产者消费者类似，多了一个轮流的操作</p>
-<h2 id="分析与解决："><a href="#分析与解决：" class="headerlink" title="分析与解决："></a>分析与解决：</h2><p>多设置一个i，在每次生产后都对i加1取余，通过判断i的值来确定轮到谁进行操作</p>
-<hr>
-<h1 id="读者和写者问题"><a href="#读者和写者问题" class="headerlink" title="读者和写者问题"></a>读者和写者问题</h1><h2 id="题目：-1"><a href="#题目：-1" class="headerlink" title="题目："></a>题目：</h2><p>读者可以一起进行读文件的操作，写者必须单独占用缓存区</p>
-<h2 id="分析：-1"><a href="#分析：-1" class="headerlink" title="分析："></a>分析：</h2><p>对缓存区上锁是很直接的想法，关键是如果仅仅是上锁，会导致读者不能同时进行读操作，所以需要增加一个count来进行计数，记录当前的读者数量，只有当读者数量为0时，才需要进行上锁的操作。</p>
-<p>上述操作存在的问题时count的改变和上锁的动作无法保证连续执行，因此需要增加一个新的互斥量来保证对count的改变和上锁是连续的</p>
-<h2 id="解答：-1"><a href="#解答：-1" class="headerlink" title="解答："></a>解答：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">semaphore rw &#x3D; 1;</span><br><span class="line">int count &#x3D; 0;</span><br><span class="line">semaphore mutex &#x3D; 1;</span><br><span class="line">semaphore w &#x3D; 1; &#x2F;&#x2F; 实现写优先,并不是绝对优先，而是相对于后来的读者有优先权，也可以称为读写公平</span><br><span class="line">writer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(w);</span><br><span class="line">		P(rw);</span><br><span class="line">		写文件；</span><br><span class="line">		V(rw);</span><br><span class="line">		V(w);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">reader()&#123;</span><br><span class="line">	P(w);</span><br><span class="line">	P(mutex);</span><br><span class="line">	if(count &#x3D;&#x3D; 0)&#123;</span><br><span class="line">		P(rw);</span><br><span class="line">	&#125;</span><br><span class="line">	count++;</span><br><span class="line">	V(mutex);</span><br><span class="line">	V(w);</span><br><span class="line">	读文件；</span><br><span class="line">	P(mutex);</span><br><span class="line">	count--;</span><br><span class="line">	if(count &#x3D;&#x3D; 0)&#123;</span><br><span class="line">		V(rw);</span><br><span class="line">	&#125;</span><br><span class="line">	V(mutex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="注意：-1"><a href="#注意：-1" class="headerlink" title="注意："></a>注意：</h2><p>增加了count计数来判断当前的读者数量，以实现读者的同时访问</p>
-<p>此方法默认了读者的优先级更高，因为只要有读进程还在读，那么文件区就被上锁，写者无法访问，但是读者是可以访问的，新的读者进行访问，相当于延长了读者的时间，除非没有新的读者，且全部读者完成了读操作，此时写者才能进行写操作。可以增加一个信号量w来实现写优先，即在写之前对w进行占用，在对读者进行count++时也进行占用和释放。会发生当写进程被读者的rw阻塞时，新的读进程无法顺利完成count++的操作，即新的读进程无法加入读者行列，只能阻塞等待写进程完成后结束w的占用。实现了写的优先</p>
-<hr>
-<h1 id="哲学家进餐问题"><a href="#哲学家进餐问题" class="headerlink" title="哲学家进餐问题"></a>哲学家进餐问题</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>每个进程需要多个不同的资源</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>每个进程都持有别人需要的资源，都无法完成操作但却同时占用了资源，会形成死锁</p>
- 
+   
       <!-- reward -->
       
       <div id="reword-out">
@@ -190,12 +166,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/12/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%85%AD%EF%BC%89%E5%85%B7%E4%BD%93%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/26/Java%EF%BC%882%EF%BC%89%E5%A4%9A%E6%80%81/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="tag">基础语法</a></li></ul>
 
     </footer>
   </div>
@@ -203,19 +179,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/12/13/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="article-nav-link">
+      <a href="/2020/11/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%885%EF%BC%89%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            密码学
+            操作系统（5）调度算法
           
         </div>
       </a>
     
     
-      <a href="/2020/12/02/%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="article-nav-link">
+      <a href="/2020/11/26/Java%EF%BC%881%EF%BC%89%E6%8E%A5%E5%8F%A3/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">使用阿里云和hexo搭建个人博客</div>
+        <div class="article-nav-title">Java（1）接口</div>
       </a>
     
   </nav>

@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Java（二）多态</title>
-    <url>/2020/11/26/Java%EF%BC%88%E4%BA%8C%EF%BC%89%E5%A4%9A%E6%80%81/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>基础语法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>python实现爬取豆瓣电影评论</title>
     <url>/2020/11/10/python%E5%AE%9E%E7%8E%B0%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E8%AF%84%E8%AE%BA/</url>
     <content><![CDATA[<h1 id="python实现爬取豆瓣电影评论"><a href="#python实现爬取豆瓣电影评论" class="headerlink" title="python实现爬取豆瓣电影评论"></a>python实现爬取豆瓣电影评论</h1><h2 id="github"><a href="#github" class="headerlink" title="github"></a><a href="https://github.com/summerainnn/dbSpider">github</a></h2><h2 id="使用的库"><a href="#使用的库" class="headerlink" title="使用的库"></a>使用的库</h2><p>以前在写爬虫时使用的都是reques，这次发现了更好用的request_html，不需要再用bs4来解析网页了</p>
@@ -75,45 +63,6 @@
         <tag>应用</tag>
         <tag>网站开发</tag>
         <tag>问题总结</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java（一）接口</title>
-    <url>/2020/11/26/Java%EF%BC%88%E4%B8%80%EF%BC%89%E6%8E%A5%E5%8F%A3/</url>
-    <content><![CDATA[<h1 id="Java（一）接口"><a href="#Java（一）接口" class="headerlink" title="Java（一）接口"></a>Java（一）接口</h1><h2 id="1-定义格式"><a href="#1-定义格式" class="headerlink" title="1.定义格式"></a>1.定义格式</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 接口名称</span>&#123;</span><br><span class="line">	<span class="comment">// 接口内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-使用步骤"><a href="#2-使用步骤" class="headerlink" title="2.使用步骤"></a>2.使用步骤</h2><ol>
-<li><p>接口不能直接使用，必须有一个“实现类”来“实现”该接口</p>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 实现类名称 <span class="keyword">implements</span> 接口名称</span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>接口的实现类必须覆盖重写（实现）接口中的所有抽象方法</p>
-<p> 实现：去掉abstract关键字，加上方法体大括号</p>
-</li>
-<li><p>创建实现类的对象，进行使用</p>
-</li>
-</ol>
-<h2 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3.注意事项"></a>3.注意事项</h2><p>如果实现类并没有覆盖重写接口中所有的抽象方法，那么这个实现类自己就必须是抽象类</p>
-<h2 id="4-具体例子"><a href="#4-具体例子" class="headerlink" title="4.具体例子"></a>4.具体例子</h2><ol>
-<li><p>MyInterfaceAbstract</p>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInterfaceAbstract</span></span>&#123;</span><br><span class="line">    <span class="comment">// 接口中也可以定义“成员变量”，但是必须用public static final三个关键字进行修饰</span></span><br><span class="line">    <span class="comment">// 从效果上看，这就是接口的【常量】</span></span><br><span class="line">    <span class="comment">// 可以省略public static final三个关键字不写，但效果是等同的</span></span><br><span class="line">    <span class="comment">// 该常量必须手动赋值，且不可改变</span></span><br><span class="line">    <span class="comment">// 推荐命名规则，全大写，使用下划线分隔单词</span></span><br><span class="line">    <span class="comment">// 访问时直接用接口名称调用</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NUM_OF = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">// public abstract可以省略，默认为抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 新添加一个默认方法，可用于接口升级，使之前实现的类不需要重写该方法，也能继续使用</span></span><br><span class="line">    <span class="comment">// 该默认方法可以在实现类中直接调用，也可以进行覆盖重写</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> <span class="keyword">void</span> <span class="title">methodDefault</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 接口中也可以定义静态方法，通过接口名称直接调用静态方法，即可使用</span></span><br><span class="line">    <span class="comment">// 注意事项：不能通过接口实现类来调用接口中的静态方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStatic</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接口中可以定义私有方法，使得该方法不会被实现类访问,但可以被接口中的默认方法调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">methodCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接口中可以定义静态私有方法，使得该方法不会被实现类访问,但可以被接口中的静态方法调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStaticCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>MyInterfaceAbstractImpl</p>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterfaceAbstractImpl</span> <span class="keyword">implements</span> <span class="title">MyInterfaceAbstract</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="comment">//</span></span><br><span class="line">     &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="comment">//</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="5-接口的实现类"><a href="#5-接口的实现类" class="headerlink" title="5.接口的实现类"></a>5.接口的实现类</h2><p>一个类可以实现多个接口，但所有接口中的抽象方法都要重写</p>
-<p>如果实现多个接口中存在重复的抽象方法，只需要覆盖重写一次即可</p>
-<p>如果实现多个接口中存在重复的默认方法，需要覆盖重写</p>
-<p>如果类的父类方法和接口中的默认方法产生冲突，优先使用父类方法</p>
-<p>接口是可以多继承接口的，父接口的默认方法冲突需要重写，抽象方法冲突无影响</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>基础语法</tag>
       </tags>
   </entry>
   <entry>
@@ -517,114 +466,6 @@
       </tags>
   </entry>
   <entry>
-    <title>操作系统（三）系统调用</title>
-    <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h1><h2 id="一、系统调用的意义"><a href="#一、系统调用的意义" class="headerlink" title="一、系统调用的意义"></a>一、系统调用的意义</h2><p>操作系统提供给应用程序使用的接口，来获得操作系统的服务</p>
-<p>系统调用使得系统中的各种资源由操作系统统一掌控</p>
-<h2 id="二、系统调用和库函数的区别"><a href="#二、系统调用和库函数的区别" class="headerlink" title="二、系统调用和库函数的区别"></a>二、系统调用和库函数的区别</h2><p>库函数封装了系统调用</p>
-<h2 id="三、系统调用的过程"><a href="#三、系统调用的过程" class="headerlink" title="三、系统调用的过程"></a>三、系统调用的过程</h2><ol>
-<li>传递系统调用参数</li>
-<li>执行陷入指令（只能在用户态执行的指令，不能在和心态执行）</li>
-<li>执行系统调用相应服务程序</li>
-<li>返回用户程序</li>
-</ol>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>操作系统（二）中断和异常</title>
-    <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/</url>
-    <content><![CDATA[<h1 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h1><h2 id="一、中断的意义"><a href="#一、中断的意义" class="headerlink" title="一、中断的意义"></a>一、中断的意义</h2><p>实现多道程序并发执行</p>
-<p>本质：发生中断，意味着需要操作系统介入，开展管理工作（中断是唯一途径使得用户态-&gt;核心态）</p>
-<h2 id="二、特点"><a href="#二、特点" class="headerlink" title="二、特点"></a>二、特点</h2><ul>
-<li>中断发生时，CPU立即进入核心态</li>
-<li>中断发生后，当前进程暂停运行，并由操作系统内核对中断进行处理</li>
-<li>对不同的中断信号，会进行不同的处理</li>
-</ul>
-<h2 id="三、分类"><a href="#三、分类" class="headerlink" title="三、分类"></a>三、分类</h2><ul>
-<li>内中断（异常）：信号来自CPU内部，与当前执行的指令有关<ul>
-<li>自愿中断（指令中断）</li>
-<li>强迫中断<ul>
-<li>硬件故障</li>
-<li>软件中断</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>外中断（中继）：信号来自CPU外部，与当前执行的指令无关<ul>
-<li>外设请求</li>
-<li>人工干预</li>
-</ul>
-</li>
-</ul>
-<h2 id="四、外中断的处理过程"><a href="#四、外中断的处理过程" class="headerlink" title="四、外中断的处理过程"></a>四、外中断的处理过程</h2><ol>
-<li>执行完每个指令后都要检查是否有外部中断信号</li>
-<li>如果检测到外部中断信号，则需要保护被中断进程的CPU环境</li>
-<li>根据中断信号转入相应的中断处理程序</li>
-<li>恢复原进程的CPU环境并退出中断，返回原进程继续往下执行</li>
-</ol>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>操作系统（一）概念和定义</title>
-    <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E5%BF%B5%E5%92%8C%E5%AE%9A%E4%B9%89/</url>
-    <content><![CDATA[<h1 id="操作系统的概念和定义"><a href="#操作系统的概念和定义" class="headerlink" title="操作系统的概念和定义"></a>操作系统的概念和定义</h1><h2 id="一、操作系统的功能和目标："><a href="#一、操作系统的功能和目标：" class="headerlink" title="一、操作系统的功能和目标："></a>一、操作系统的功能和目标：</h2><h3 id="1-作为系统资源的管理者"><a href="#1-作为系统资源的管理者" class="headerlink" title="1.作为系统资源的管理者"></a>1.作为系统资源的管理者</h3><ul>
-<li>提供的功能<ul>
-<li>处理机管理</li>
-<li>储存器管理</li>
-<li>文件管理</li>
-<li>设备管理</li>
-</ul>
-</li>
-<li>目标： 安全、高效</li>
-</ul>
-<h3 id="2-作为用户和计算机硬件之间的接口"><a href="#2-作为用户和计算机硬件之间的接口" class="headerlink" title="2.作为用户和计算机硬件之间的接口"></a>2.作为用户和计算机硬件之间的接口</h3><ul>
-<li>提供的功能<ul>
-<li>命令接口<ul>
-<li>联机命令接口：交互式命令接口（实时反馈）</li>
-<li>脱机命令接口：批处理命令接口（系列指令执行）</li>
-</ul>
-</li>
-<li>程序接口：系统调用（广义指令）</li>
-<li>CUI（图形用户界面）</li>
-</ul>
-</li>
-<li>目标：方便用户使用</li>
-</ul>
-<h3 id="3-实现对硬件机器的拓展"><a href="#3-实现对硬件机器的拓展" class="headerlink" title="3.实现对硬件机器的拓展"></a>3.实现对硬件机器的拓展</h3><h2 id="二、操作系统的特征"><a href="#二、操作系统的特征" class="headerlink" title="二、操作系统的特征"></a>二、操作系统的特征</h2><h3 id="1-并发"><a href="#1-并发" class="headerlink" title="1.并发"></a>1.并发</h3><p>微观上交替，宏观上同时</p>
-<h3 id="2-共享"><a href="#2-共享" class="headerlink" title="2.共享"></a>2.共享</h3><ul>
-<li>互斥共享：一个时间段只允许一个进程访问该资源</li>
-<li>同时共享：允许一个时间段内多个进程“同时”对它们访问（宏观上同时）</li>
-</ul>
-<h3 id="3-虚拟"><a href="#3-虚拟" class="headerlink" title="3.虚拟"></a>3.虚拟</h3><p>把一个物理上的实体变为若干个逻辑上的对应物物理实体是实际存在的，而逻辑对应物是用户感受到的</p>
-<ul>
-<li>空分复用技术（虚拟储存技术）</li>
-<li>时分复用技术（虚拟处理器）</li>
-</ul>
-<h3 id="4-异步"><a href="#4-异步" class="headerlink" title="4.异步"></a>4.异步</h3><p>允许多个程序并发执行，由于资源有限，进程执行不是一贯到底的，而是走走停停，以不可预知的速度向前推进</p>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>密码学</title>
     <url>/2020/12/13/%E5%AF%86%E7%A0%81%E5%AD%A6/</url>
     <content><![CDATA[<h1 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>密码术：密码编码学+密码分析学</p>
@@ -670,68 +511,6 @@
       </categories>
       <tags>
         <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络（一）基本概念</title>
-    <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<h1 id="计算机网络基础"><a href="#计算机网络基础" class="headerlink" title="计算机网络基础"></a>计算机网络基础</h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>将分散的、具有独立功能的计算机系统，通过通信设备与线路连接起来，由功能完善的软件实现资源共享和信息传递的系统</p>
-<p><strong><em>计算机网络是互联的、自治的计算机集合</em></strong></p>
-<h2 id="二、功能"><a href="#二、功能" class="headerlink" title="二、功能"></a>二、功能</h2><ol>
-<li>数据通信（连通性）</li>
-<li>资源共享（硬件、软件和数据）</li>
-<li>分布式处理（多台计算机各自承担同一工作的不同部分）</li>
-<li>提高可靠性</li>
-<li>负载均衡</li>
-</ol>
-<h2 id="三、组成"><a href="#三、组成" class="headerlink" title="三、组成"></a>三、组成</h2><ol>
-<li>组成部分：硬件、软件、协议</li>
-<li>工作方式：<ul>
-<li>边缘部分：用户直接使用（C/S、P2P）</li>
-<li>核心部分：为边缘部分服务</li>
-</ul>
-</li>
-<li>功能组成：<ul>
-<li>通信子网：实现数据通信</li>
-<li>资源子网：实现资源共享/数据处理</li>
-</ul>
-</li>
-</ol>
-<h2 id="四、分类"><a href="#四、分类" class="headerlink" title="四、分类"></a>四、分类</h2><ol>
-<li><p>按分布范围</p>
-<ul>
-<li>广域网WAN（交换技术）</li>
-<li>城域网MAN</li>
-<li>局域网LAN（广播技术）</li>
-<li>个人区域网（PAN）</li>
-</ul>
-</li>
-<li><p>按使用者分：公用网，专用网</p>
-</li>
-<li><p>按交换技术分：电路交换，报文交换，分组交换</p>
-</li>
-<li><p>按拓扑结构分：</p>
-<p> <img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl1oy3x8dtj30ie0aqjrq.jpg" alt="img"></p>
-</li>
-<li><p>按传输技术分：</p>
-<ul>
-<li>广播式网络：共享公共通信信道</li>
-<li>点对点网络：使用分组储存转发和路由选择机制</li>
-</ul>
-</li>
-</ol>
-<h2 id="五、标准化工作"><a href="#五、标准化工作" class="headerlink" title="五、标准化工作"></a>五、标准化工作</h2><h3 id="标准的分类："><a href="#标准的分类：" class="headerlink" title="标准的分类："></a>标准的分类：</h3><ol>
-<li>法定标准：由权威制定（OSI）</li>
-<li>事实标准：由某些产品的主流技术（TCP/IP）</li>
-</ol>
-<h3 id="RFC（Request-For-Comments）"><a href="#RFC（Request-For-Comments）" class="headerlink" title="RFC（Request For Comments）"></a>RFC（Request For Comments）</h3><p>RFC是因特网的标准形式</p>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>计算机网络</tag>
       </tags>
   </entry>
   <entry>
@@ -896,313 +675,6 @@
       </categories>
       <tags>
         <tag>编译原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>操作系统（四）进程</title>
-    <url>/2020/11/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89%E8%BF%9B%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="一、进程的定义"><a href="#一、进程的定义" class="headerlink" title="一、进程的定义"></a>一、进程的定义</h2><p>程序段、数据段、PCB三部分组成了进程实体，PCB是进程存在的唯一标志，用来描述进程的各种信息。</p>
-<h3 id="典型定义："><a href="#典型定义：" class="headerlink" title="典型定义："></a>典型定义：</h3><p>进程是程序的一次执行过程</p>
-<p>进程是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位。</p>
-<h2 id="二、进程的组成"><a href="#二、进程的组成" class="headerlink" title="二、进程的组成"></a>二、进程的组成</h2><ul>
-<li><h3 id="PCB："><a href="#PCB：" class="headerlink" title="PCB："></a>PCB：</h3><ul>
-<li>进程描述信息：进程标识符PID、用户标识符UID</li>
-<li>进程控制和管理信息：进程当前状态、进程优先级</li>
-<li>资源分配清单：程序段指针、数据段指针、键盘、鼠标</li>
-<li>处理机相关信息：各种寄存器值</li>
-</ul>
-</li>
-<li><h3 id="程序段："><a href="#程序段：" class="headerlink" title="程序段："></a>程序段：</h3><ul>
-<li>存放要执行的代码</li>
-</ul>
-</li>
-<li><h3 id="数据段："><a href="#数据段：" class="headerlink" title="数据段："></a>数据段：</h3><ul>
-<li>存放程序运行过程中处理的各种数据</li>
-</ul>
-</li>
-</ul>
-<h2 id="三、进程的组织"><a href="#三、进程的组织" class="headerlink" title="三、进程的组织"></a>三、进程的组织</h2><p>多个进程之间的组织方式问题</p>
-<ul>
-<li><h3 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h3><ul>
-<li>按照进程状态将PCB分为多个队列<ul>
-<li>执行指针-&gt;当前处于运行态的进程（单CPU中，只有一个进程在同一时刻运行）</li>
-<li>就绪队列指针-&gt;处于就绪态的进程（为一个队列，优先级高的在前）</li>
-<li>阻塞队列指针-&gt;处于阻塞态的进程（可能有多个阻塞队列）</li>
-</ul>
-</li>
-<li>操作系统持有指向各个队列的指针</li>
-</ul>
-</li>
-<li><h3 id="索引方式"><a href="#索引方式" class="headerlink" title="索引方式"></a>索引方式</h3><ul>
-<li>根据进程状态的不同，建立几张索引表</li>
-<li>操作系统持有指向各个索引表的指针</li>
-</ul>
-</li>
-</ul>
-<h2 id="四、进程的特征"><a href="#四、进程的特征" class="headerlink" title="四、进程的特征"></a>四、进程的特征</h2><ol>
-<li>动态性：进程是动态的、变化的、消亡的</li>
-<li>并发性：内存中有多个进程实体，各进程可并发执行</li>
-<li>独立性：进程是能独立运行、独立获得资源、独立接受调度的基本单位</li>
-<li>异步性：并发执行的进程的结果的完成速度的不确定性，操作系统需要提供“进程同步机制”来解决异步问题</li>
-<li>结构性：每个进程都配备一个PCB，结构上由数据段、代码段、PCB组成</li>
-</ol>
-<h2 id="五、进程的状态"><a href="#五、进程的状态" class="headerlink" title="五、进程的状态"></a>五、进程的状态</h2><h3 id="1-三种基本状态："><a href="#1-三种基本状态：" class="headerlink" title="1. 三种基本状态："></a>1. 三种基本状态：</h3><ul>
-<li>运行态：占用CPU<ul>
-<li>CPU✅其它所需资源✅</li>
-</ul>
-</li>
-<li>就绪态：可以运行，但CPU被其它进程占用<ul>
-<li>CPU❌其它所需资源✅</li>
-</ul>
-</li>
-<li>阻塞态：等待某一事件的完成而暂时无法运行<ul>
-<li>CPU❌其它所需资源❌</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-另外两种状态："><a href="#2-另外两种状态：" class="headerlink" title="2.另外两种状态："></a>2.另外两种状态：</h3><ul>
-<li>创建态：操作系统为进程分配资源、初始化PCB</li>
-<li>终止态：进程从操作系统中撤销，操作系统回收进程资源，撤销PCB</li>
-</ul>
-<h3 id="3-进程的状态转换"><a href="#3-进程的状态转换" class="headerlink" title="3.进程的状态转换"></a>3.进程的状态转换</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl2d2mq7nvj31go0nugqd.jpg" alt="image-20201126102303056"></p>
-<p>注意：运行态-&gt;阻塞态是进程自身的主动行为</p>
-<p>​           阻塞态-&gt;就绪态是被动的，阻塞态不能直接转换为运行态</p>
-<h2 id="六、进程控制"><a href="#六、进程控制" class="headerlink" title="六、进程控制"></a>六、进程控制</h2><h3 id="1-实现的方式："><a href="#1-实现的方式：" class="headerlink" title="1.实现的方式："></a>1.实现的方式：</h3><p>用原语来实现进程的控制，其特点是执行期间不允许中断（原子操作），可以保证进程转换时PCB不会发生混乱（保证进程转换的过程完整发生，而不被其它中断打断，原语运行在核心态中，采用“关中断指令”和“开中断指令”，权限极大是核心态下执行的特权指令）</p>
-<h3 id="2-控制的内容："><a href="#2-控制的内容：" class="headerlink" title="2.控制的内容："></a>2.控制的内容：</h3><ul>
-<li>更新PCB中的信息</li>
-<li>将PCB插入合适的队列</li>
-<li>分配/回收资源</li>
-</ul>
-<h2 id="七、进程通信"><a href="#七、进程通信" class="headerlink" title="七、进程通信"></a>七、进程通信</h2><p>进程间的信息交换</p>
-<h3 id="1-共享存储"><a href="#1-共享存储" class="headerlink" title="1. 共享存储"></a>1. 共享存储</h3><p>两个进程对共享空间的访问必须是<strong>互斥</strong>的（操作系统只负责提供共享空间和同步互斥工具）</p>
-<ul>
-<li>基于数据结构的共享<ul>
-<li>速度慢、限制多，是一种低级通信方式</li>
-</ul>
-</li>
-<li>基于储存区的共享<ul>
-<li>数据的形式和存放位置都由进程控制，速度更快，是一种高级通信方式</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-管道通信"><a href="#2-管道通信" class="headerlink" title="2.管道通信"></a>2.管道通信</h3><p>在内存中开辟一个大小固定的缓存区</p>
-<ul>
-<li>管道只能采用<strong>半双工</strong>通信，某一时间段只能实现单向的传输，要实现双向同时通信，需要两个管道</li>
-<li>各进程<strong>互斥</strong>地形式访问管道</li>
-<li>数据以字符流的形式写入管道，当管道写满时，写进程的write()将被阻塞，等待读进程。当读进程将数据全部取走后，管道变空，此时读进程的read()将被阻塞</li>
-<li>如果<strong>没写满，就不允许读</strong>，如果<strong>没读空，就不允许写</strong></li>
-<li>数据一旦被读出，就从管道中被抛弃，这就意味着读<strong>进程最多只能有一个</strong>，否则可能会有读错数据的情况。</li>
-</ul>
-<h3 id="3-消息传递"><a href="#3-消息传递" class="headerlink" title="3.消息传递"></a>3.消息传递</h3><p>进程间的数据交换以<strong>格式化的消息</strong>为单位。通过操作系统提供的“发消息/接受消息”两个<strong>原语</strong>进行数据交换</p>
-<p>消息由<strong>消息头</strong>和<strong>消息体</strong>组成：消息头包括发送进程ID、接受进程ID、消息类型、消息长度等格式化信息（计网中的“报文”就是一种<strong>格式化</strong>的消息）</p>
-<ul>
-<li>直接通信方式：消息直接挂到接收进程的消息缓冲队列上</li>
-<li>间接通信方式：消息先发送到中间实体（信箱）中，也称信箱通信方式</li>
-</ul>
-<h2 id="八、进程互斥"><a href="#八、进程互斥" class="headerlink" title="八、进程互斥"></a>八、进程互斥</h2><p>实现对临界资源的互斥访问</p>
-<ul>
-<li>空闲让进</li>
-<li>忙则等待</li>
-<li>有限等待</li>
-<li>让权等待</li>
-</ul>
-<p>软件实现方法：</p>
-<ul>
-<li>单标志法</li>
-<li>双标志先检查</li>
-<li>双标志后检查</li>
-<li>Peterson算法</li>
-</ul>
-<h3 id="Peterson算法："><a href="#Peterson算法：" class="headerlink" title="Peterson算法："></a>Peterson算法：</h3><p>结合双标志后检查法和单标志法，定义一个布尔数组和一个轮转标志，同时检查这两个标志，优先让对方先使用临界资源</p>
-<hr>
-<p>硬件实现方法：</p>
-<ul>
-<li>中断屏蔽法</li>
-<li>TestAndSet</li>
-<li>Swap指令</li>
-</ul>
-<h3 id="TestAndSet指令"><a href="#TestAndSet指令" class="headerlink" title="TestAndSet指令"></a>TestAndSet指令</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">TestAndSet</span><span class="params">(<span class="keyword">bool</span> *lock)</span></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> old;</span><br><span class="line">    old = *lock;</span><br><span class="line">    *lock = <span class="literal">true</span>; <span class="comment">// 上锁</span></span><br><span class="line">    <span class="keyword">return</span> old; <span class="comment">// 返回上锁前的状态</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TSL指令实现</span></span><br><span class="line"><span class="keyword">while</span>(TestAndSet(&amp;lock));<span class="comment">// 不停上锁，直到发现某一次临界资源并未被上锁</span></span><br><span class="line"><span class="comment">/**/</span></span><br><span class="line">lock = <span class="literal">false</span>; <span class="comment">// 解锁</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Swap指令"><a href="#Swap指令" class="headerlink" title="Swap指令"></a>Swap指令</h3><p>交换old和lock的值来实现锁</p>
-<h2 id="信号量机制"><a href="#信号量机制" class="headerlink" title="信号量机制"></a>信号量机制</h2><p>用户通过操作系统提供的原语来对信号量进行操作，从而实现进程互斥和同步</p>
-<p>一对原语：wait和signal，简写为P、V操作，P（wait，代表需要别人等等，自己要使用了，所以减一）就是将信号量减一，V（signal）就是将信号量加一</p>
-<h3 id="整型信号量："><a href="#整型信号量：" class="headerlink" title="整型信号量："></a>整型信号量：</h3><p>用来表示系统中某种资源的数量（只能进行初始化、P操作和V操作）</p>
-<h3 id="记录型信号量："><a href="#记录型信号量：" class="headerlink" title="记录型信号量："></a>记录型信号量：</h3><p>整型存在忙等问题，用记录型数据结构表示信号量。可以阻塞进程（让权等待，不会忙等），同时用负数表示资源数，记录有进程在等待资源，维护一个等待队列，记录阻塞进程。</p>
-<h3 id="实现进程互斥："><a href="#实现进程互斥：" class="headerlink" title="实现进程互斥："></a>实现进程互斥：</h3><p>设置互斥信号量mutex = 1</p>
-<p>进临界区前执行P（mutex）</p>
-<p>出临界区后执行V（mutex）</p>
-<h3 id="实现进程同步："><a href="#实现进程同步：" class="headerlink" title="实现进程同步："></a>实现进程同步：</h3><p>进程同步问题：让本来异步并发的进程互相配合，有序推进</p>
-<p>设置同步信号量S = 0</p>
-<p>在“前操作”之后执行V（S）：执行了加一，相当于有资源了，后续的代码即可执行</p>
-<p>在“后操作”之前执行P（S）：只有当S执行了加一，才能执行后续的操作，即前操作必须先执行完才可执行后操作</p>
-<h4 id="拓展：实现前驱关系"><a href="#拓展：实现前驱关系" class="headerlink" title="拓展：实现前驱关系"></a>拓展：实现前驱关系</h4><p>对于多个代码的前驱关系，需要多个信号量即可</p>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>操作系统（五）调度算法</title>
-    <url>/2020/11/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%94%EF%BC%89%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h1><h2 id="1-FCFS（First-Come-First-Serve）"><a href="#1-FCFS（First-Come-First-Serve）" class="headerlink" title="1.FCFS（First Come First Serve）"></a>1.FCFS（First Come First Serve）</h2><p>先到先服务，非抢占式</p>
-<ul>
-<li>优点：算法简单易实现，公平</li>
-<li>缺点：对长作业有利，对短作业不利</li>
-</ul>
-<h2 id="2-SJF（Shortest-Job-First）"><a href="#2-SJF（Shortest-Job-First）" class="headerlink" title="2.SJF（Shortest Job First）"></a>2.SJF（Shortest Job First）</h2><p>短进程先进性，分为抢占式和非抢占式</p>
-<ul>
-<li>最短的平均等待时间，平均周转时间</li>
-<li>对短作业有利，长作业不利，可能产生饥饿</li>
-</ul>
-<h2 id="3-HRRN（Highest-Response-Ration-Next"><a href="#3-HRRN（Highest-Response-Ration-Next" class="headerlink" title="3.HRRN（Highest Response Ration Next)"></a>3.HRRN（Highest Response Ration Next)</h2><p>每次调度时计算响应比（$\frac{等待时间+要求服务时间}{要求服务时间}$），选择响应比最高的进行服务，一般为非抢占式</p>
-<h2 id="4-时间片轮转（RR，Round-Robin）"><a href="#4-时间片轮转（RR，Round-Robin）" class="headerlink" title="4.时间片轮转（RR，Round-Robin）"></a>4.时间片轮转（RR，Round-Robin）</h2><p>公平的轮流为各个进程服务，抢占式</p>
-<ul>
-<li>优点：公平，适用于分时操作系统</li>
-<li>缺点：进程切换导致有一定开销，且不区分紧急程度</li>
-</ul>
-<h2 id="5-优先级调服算法"><a href="#5-优先级调服算法" class="headerlink" title="5.优先级调服算法"></a>5.优先级调服算法</h2><p>调度时选择最高优先级的活动，非抢占式和抢占式</p>
-<ul>
-<li>优点：适用于实时操作系统</li>
-<li>缺点：可能导致饥饿</li>
-</ul>
-<h2 id="6-多级反馈队列调度算法"><a href="#6-多级反馈队列调度算法" class="headerlink" title="6.多级反馈队列调度算法"></a>6.多级反馈队列调度算法</h2>]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络（二）性能指标</title>
-    <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%BA%8C%EF%BC%89%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/</url>
-    <content><![CDATA[<h1 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h1><h2 id="一、速率"><a href="#一、速率" class="headerlink" title="一、速率"></a>一、速率</h2><p>速率即数据率或称数据传输率或者比特率（比特：1/0 位）</p>
-<p><strong><em>区分速率的单位和储存容量的单位</em></strong>     (1Byte = 8bit)<br>$$<br>\begin{aligned}<br>速率：&amp;1Tb/s &amp;=&amp; 10^3Gb &amp;=&amp; 10^6Mb/s &amp;=&amp; 10^9kb/s &amp;=&amp; 10^{12}b/s<br>\储存容量：&amp;1TB &amp;=&amp; 2^{10}GB &amp;=&amp; 2^{20}MB &amp;=&amp; 2^{30}KB &amp;=&amp; 2^{40}B \quad\quad = 2^{40}*8b<br>\end{aligned}<br>$$</p>
-<h2 id="二、带宽"><a href="#二、带宽" class="headerlink" title="二、带宽"></a>二、带宽</h2><p>“带宽”原本指，某个信号具有的频带宽度，即最高频率与最低频率之差，单位是赫兹（Hz）</p>
-<p>计算机网络中，带宽用来表示网络的通信线路传送数据的能力，通常是指单位时间内从网络中的某一点到另一点所能通过的<strong>最高数据率</strong>，单位是“比特每秒”</p>
-<p>指的是网络设备所支持的最高速度，因为信号在链路中的传播速度是一样的，都是光速，不同的只是设备单位时间可以发出的比特的个数</p>
-<h2 id="三、吞吐量"><a href="#三、吞吐量" class="headerlink" title="三、吞吐量"></a>三、吞吐量</h2><p>表示在单位时间内通过某个网络（或信道、接口）的数据量。单位“比特每秒”</p>
-<p>吞吐量和带宽的区别：吞吐量是带宽的实际情况，带宽是吞吐量的理论上限</p>
-<h2 id="四、时延"><a href="#四、时延" class="headerlink" title="四、时延"></a>四、时延</h2><p>指数据从网络的一端传送到另一端所需的时间，单位是秒</p>
-<ul>
-<li>发送时延:$\frac{数据长度}{信道带宽（发送速率）}$</li>
-<li> 传播时延：$\frac{信道长度}{电磁波在信道上的传播速率}$</li>
-<li>排队时延：等待输出/输入链路可用</li>
-<li>处理时延：检错，找出口</li>
-</ul>
-<h2 id="五、时延带宽积"><a href="#五、时延带宽积" class="headerlink" title="五、时延带宽积"></a>五、时延带宽积</h2><p>时延带宽积 = 传播时延 X 带宽        单位：bit</p>
-<p>又称<strong>比特为单位的链路长度</strong>，即<strong>某段链路现在有多少比特</strong></p>
-<h2 id="六、往返时延RTT"><a href="#六、往返时延RTT" class="headerlink" title="六、往返时延RTT"></a>六、往返时延RTT</h2><p>从发送方发送数据开始，到接收方收到接收方的确认（接收方收到数据后立即发送确认）总共经历的时延</p>
-<p>RTT包括</p>
-<ul>
-<li>往返时延 = 传播时延 X 2</li>
-<li>末端处理时间</li>
-</ul>
-<h2 id="七、利用率"><a href="#七、利用率" class="headerlink" title="七、利用率"></a>七、利用率</h2><ul>
-<li>信道利用率：$\frac{有数据通过时间}{（有+无）数据通过时间}$</li>
-<li>网络利用率：信道利用率</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络（三）分层结构</title>
-    <url>/2020/11/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%89%EF%BC%89%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="计算机网络的分层结构"><a href="#计算机网络的分层结构" class="headerlink" title="计算机网络的分层结构"></a>计算机网络的分层结构</h1><h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><h3 id="为什么分层："><a href="#为什么分层：" class="headerlink" title="为什么分层："></a>为什么分层：</h3><ul>
-<li>激活数据通路</li>
-<li>告诉网络如何识别目的主机</li>
-<li>查明目的主机状态</li>
-<li>弄清楚目的主机的文件管理系统是否准备好</li>
-<li>确保差错和意外可以解决</li>
-</ul>
-<h3 id="分层结构："><a href="#分层结构：" class="headerlink" title="分层结构："></a>分层结构：</h3><ul>
-<li>协议：为进行网络中的对等实体数据交换而建立的规则、标准或约定称为网络协议<ul>
-<li>语法：规定传送数据的格式</li>
-<li>语义：规定所要完成的功能</li>
-<li>同步：规定各种操作的顺序</li>
-</ul>
-</li>
-<li>接口：上层使用下层服务的入口（仅在<strong>相邻层有接口</strong>，且所提供服务的具体细节对上一层完全屏蔽</li>
-<li>服务：下层为上层提供的功能调用</li>
-</ul>
-<h3 id="分层的基本原则："><a href="#分层的基本原则：" class="headerlink" title="分层的基本原则："></a>分层的基本原则：</h3><ul>
-<li>各层相互<strong>独立</strong>，每层只实现一种相对独立的功能</li>
-<li>各层之间<strong>界面自然清晰</strong>，相互交流尽可能少</li>
-<li>结构上可分割，<strong>每层都采用最合适的技术来实现</strong></li>
-<li>保持上下层独立性，<strong>上层单向使用下层提供的服务</strong></li>
-<li>分层结构能够促进标准化工作</li>
-</ul>
-<h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><p>7层的法定标准</p>
-<p>目的：支持异构网络系统的互联互通</p>
-<p>结构：</p>
-<ul>
-<li>通信子网（数据通信）（中间系统）<ul>
-<li>1.物理层：在物理媒体上实现比特流的传输<ul>
-<li>定义接口特性</li>
-<li>定义传输模式：单工、半双工、双工</li>
-<li>定义传输速率</li>
-<li>比特同步</li>
-<li>比特编码</li>
-</ul>
-</li>
-<li>2.数据链路层：把网络层的数据报组装成帧<ul>
-<li>成帧：定义帧的开始和结束</li>
-<li>差错控制：帧错+位错</li>
-<li>流量控制</li>
-<li>访问/接入控制：控制对信道的访问</li>
-</ul>
-</li>
-<li>3.网络层<ul>
-<li>路由选择，选择最佳路径</li>
-<li>流量控制：协调速度</li>
-<li>差错控制：检查错误</li>
-<li>拥塞控制：宏观控制整个网络的拥塞状态</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>4.传输层：负责主机中两个进程的通信，功能：可靠传输、不可靠传输，差错控制，流量控制，复用分用</li>
-<li>资源子网（数据处理）<ul>
-<li>5.会话层：向表示层提供建立连接并有序地传输数据<ul>
-<li>建立，管理，终止会话</li>
-<li>插入校验点用来恢复通信</li>
-</ul>
-</li>
-<li>6.表示层：处理两个通信系统中交换信息的表示方式<ul>
-<li>数据格式变换</li>
-<li>数据加密解密</li>
-<li>数据压缩与恢复</li>
-</ul>
-</li>
-<li>7.应用层：产生网络交互的应用</li>
-</ul>
-</li>
-</ul>
-<h2 id="5层参考模型"><a href="#5层参考模型" class="headerlink" title="5层参考模型"></a>5层参考模型</h2><ul>
-<li>应用层：支持各种网络应用（FTP、SMTP、HTTP）</li>
-<li>传输层：进程-进程的数据传输（TCP、UDP）</li>
-<li>网络层：源主机到目的主机的数据分组路由与转发（IP、ICMP、OSPF）</li>
-<li>数据链路层：把网络层传下来的数据报组装成帧（Ethernet、PPP）</li>
-<li>比特传输</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>计算机网络</tag>
       </tags>
   </entry>
   <entry>
@@ -1515,8 +987,347 @@
       </tags>
   </entry>
   <entry>
-    <title>操作系统（六）具体问题</title>
-    <url>/2020/12/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%85%AD%EF%BC%89%E5%85%B7%E4%BD%93%E9%97%AE%E9%A2%98/</url>
+    <title>Java（2）多态</title>
+    <url>/2020/11/26/Java%EF%BC%882%EF%BC%89%E5%A4%9A%E6%80%81/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>基础语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统（一）概念和定义</title>
+    <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%881%EF%BC%89%E6%A6%82%E5%BF%B5%E5%92%8C%E5%AE%9A%E4%B9%89/</url>
+    <content><![CDATA[<h1 id="操作系统的概念和定义"><a href="#操作系统的概念和定义" class="headerlink" title="操作系统的概念和定义"></a>操作系统的概念和定义</h1><h2 id="一、操作系统的功能和目标："><a href="#一、操作系统的功能和目标：" class="headerlink" title="一、操作系统的功能和目标："></a>一、操作系统的功能和目标：</h2><h3 id="1-作为系统资源的管理者"><a href="#1-作为系统资源的管理者" class="headerlink" title="1.作为系统资源的管理者"></a>1.作为系统资源的管理者</h3><ul>
+<li>提供的功能<ul>
+<li>处理机管理</li>
+<li>储存器管理</li>
+<li>文件管理</li>
+<li>设备管理</li>
+</ul>
+</li>
+<li>目标： 安全、高效</li>
+</ul>
+<h3 id="2-作为用户和计算机硬件之间的接口"><a href="#2-作为用户和计算机硬件之间的接口" class="headerlink" title="2.作为用户和计算机硬件之间的接口"></a>2.作为用户和计算机硬件之间的接口</h3><ul>
+<li>提供的功能<ul>
+<li>命令接口<ul>
+<li>联机命令接口：交互式命令接口（实时反馈）</li>
+<li>脱机命令接口：批处理命令接口（系列指令执行）</li>
+</ul>
+</li>
+<li>程序接口：系统调用（广义指令）</li>
+<li>CUI（图形用户界面）</li>
+</ul>
+</li>
+<li>目标：方便用户使用</li>
+</ul>
+<h3 id="3-实现对硬件机器的拓展"><a href="#3-实现对硬件机器的拓展" class="headerlink" title="3.实现对硬件机器的拓展"></a>3.实现对硬件机器的拓展</h3><h2 id="二、操作系统的特征"><a href="#二、操作系统的特征" class="headerlink" title="二、操作系统的特征"></a>二、操作系统的特征</h2><h3 id="1-并发"><a href="#1-并发" class="headerlink" title="1.并发"></a>1.并发</h3><p>微观上交替，宏观上同时</p>
+<h3 id="2-共享"><a href="#2-共享" class="headerlink" title="2.共享"></a>2.共享</h3><ul>
+<li>互斥共享：一个时间段只允许一个进程访问该资源</li>
+<li>同时共享：允许一个时间段内多个进程“同时”对它们访问（宏观上同时）</li>
+</ul>
+<h3 id="3-虚拟"><a href="#3-虚拟" class="headerlink" title="3.虚拟"></a>3.虚拟</h3><p>把一个物理上的实体变为若干个逻辑上的对应物物理实体是实际存在的，而逻辑对应物是用户感受到的</p>
+<ul>
+<li>空分复用技术（虚拟储存技术）</li>
+<li>时分复用技术（虚拟处理器）</li>
+</ul>
+<h3 id="4-异步"><a href="#4-异步" class="headerlink" title="4.异步"></a>4.异步</h3><p>允许多个程序并发执行，由于资源有限，进程执行不是一贯到底的，而是走走停停，以不可预知的速度向前推进</p>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java（1）接口</title>
+    <url>/2020/11/26/Java%EF%BC%881%EF%BC%89%E6%8E%A5%E5%8F%A3/</url>
+    <content><![CDATA[<h1 id="Java（一）接口"><a href="#Java（一）接口" class="headerlink" title="Java（一）接口"></a>Java（一）接口</h1><h2 id="1-定义格式"><a href="#1-定义格式" class="headerlink" title="1.定义格式"></a>1.定义格式</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 接口名称</span>&#123;</span><br><span class="line">	<span class="comment">// 接口内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-使用步骤"><a href="#2-使用步骤" class="headerlink" title="2.使用步骤"></a>2.使用步骤</h2><ol>
+<li><p>接口不能直接使用，必须有一个“实现类”来“实现”该接口</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 实现类名称 <span class="keyword">implements</span> 接口名称</span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口的实现类必须覆盖重写（实现）接口中的所有抽象方法</p>
+<p> 实现：去掉abstract关键字，加上方法体大括号</p>
+</li>
+<li><p>创建实现类的对象，进行使用</p>
+</li>
+</ol>
+<h2 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3.注意事项"></a>3.注意事项</h2><p>如果实现类并没有覆盖重写接口中所有的抽象方法，那么这个实现类自己就必须是抽象类</p>
+<h2 id="4-具体例子"><a href="#4-具体例子" class="headerlink" title="4.具体例子"></a>4.具体例子</h2><ol>
+<li><p>MyInterfaceAbstract</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInterfaceAbstract</span></span>&#123;</span><br><span class="line">    <span class="comment">// 接口中也可以定义“成员变量”，但是必须用public static final三个关键字进行修饰</span></span><br><span class="line">    <span class="comment">// 从效果上看，这就是接口的【常量】</span></span><br><span class="line">    <span class="comment">// 可以省略public static final三个关键字不写，但效果是等同的</span></span><br><span class="line">    <span class="comment">// 该常量必须手动赋值，且不可改变</span></span><br><span class="line">    <span class="comment">// 推荐命名规则，全大写，使用下划线分隔单词</span></span><br><span class="line">    <span class="comment">// 访问时直接用接口名称调用</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NUM_OF = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">// public abstract可以省略，默认为抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 新添加一个默认方法，可用于接口升级，使之前实现的类不需要重写该方法，也能继续使用</span></span><br><span class="line">    <span class="comment">// 该默认方法可以在实现类中直接调用，也可以进行覆盖重写</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> <span class="keyword">void</span> <span class="title">methodDefault</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 接口中也可以定义静态方法，通过接口名称直接调用静态方法，即可使用</span></span><br><span class="line">    <span class="comment">// 注意事项：不能通过接口实现类来调用接口中的静态方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStatic</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接口中可以定义私有方法，使得该方法不会被实现类访问,但可以被接口中的默认方法调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">methodCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接口中可以定义静态私有方法，使得该方法不会被实现类访问,但可以被接口中的静态方法调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStaticCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MyInterfaceAbstractImpl</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterfaceAbstractImpl</span> <span class="keyword">implements</span> <span class="title">MyInterfaceAbstract</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="comment">//</span></span><br><span class="line">     &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="comment">//</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="5-接口的实现类"><a href="#5-接口的实现类" class="headerlink" title="5.接口的实现类"></a>5.接口的实现类</h2><p>一个类可以实现多个接口，但所有接口中的抽象方法都要重写</p>
+<p>如果实现多个接口中存在重复的抽象方法，只需要覆盖重写一次即可</p>
+<p>如果实现多个接口中存在重复的默认方法，需要覆盖重写</p>
+<p>如果类的父类方法和接口中的默认方法产生冲突，优先使用父类方法</p>
+<p>接口是可以多继承接口的，父接口的默认方法冲突需要重写，抽象方法冲突无影响</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>基础语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统（3）系统调用</title>
+    <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%883%EF%BC%89%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h1><h2 id="一、系统调用的意义"><a href="#一、系统调用的意义" class="headerlink" title="一、系统调用的意义"></a>一、系统调用的意义</h2><p>操作系统提供给应用程序使用的接口，来获得操作系统的服务</p>
+<p>系统调用使得系统中的各种资源由操作系统统一掌控</p>
+<h2 id="二、系统调用和库函数的区别"><a href="#二、系统调用和库函数的区别" class="headerlink" title="二、系统调用和库函数的区别"></a>二、系统调用和库函数的区别</h2><p>库函数封装了系统调用</p>
+<h2 id="三、系统调用的过程"><a href="#三、系统调用的过程" class="headerlink" title="三、系统调用的过程"></a>三、系统调用的过程</h2><ol>
+<li>传递系统调用参数</li>
+<li>执行陷入指令（只能在用户态执行的指令，不能在和心态执行）</li>
+<li>执行系统调用相应服务程序</li>
+<li>返回用户程序</li>
+</ol>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统（2）中断和异常</title>
+    <url>/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%882%EF%BC%89%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[<h1 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h1><h2 id="一、中断的意义"><a href="#一、中断的意义" class="headerlink" title="一、中断的意义"></a>一、中断的意义</h2><p>实现多道程序并发执行</p>
+<p>本质：发生中断，意味着需要操作系统介入，开展管理工作（中断是唯一途径使得用户态-&gt;核心态）</p>
+<h2 id="二、特点"><a href="#二、特点" class="headerlink" title="二、特点"></a>二、特点</h2><ul>
+<li>中断发生时，CPU立即进入核心态</li>
+<li>中断发生后，当前进程暂停运行，并由操作系统内核对中断进行处理</li>
+<li>对不同的中断信号，会进行不同的处理</li>
+</ul>
+<h2 id="三、分类"><a href="#三、分类" class="headerlink" title="三、分类"></a>三、分类</h2><ul>
+<li>内中断（异常）：信号来自CPU内部，与当前执行的指令有关<ul>
+<li>自愿中断（指令中断）</li>
+<li>强迫中断<ul>
+<li>硬件故障</li>
+<li>软件中断</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>外中断（中继）：信号来自CPU外部，与当前执行的指令无关<ul>
+<li>外设请求</li>
+<li>人工干预</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、外中断的处理过程"><a href="#四、外中断的处理过程" class="headerlink" title="四、外中断的处理过程"></a>四、外中断的处理过程</h2><ol>
+<li>执行完每个指令后都要检查是否有外部中断信号</li>
+<li>如果检测到外部中断信号，则需要保护被中断进程的CPU环境</li>
+<li>根据中断信号转入相应的中断处理程序</li>
+<li>恢复原进程的CPU环境并退出中断，返回原进程继续往下执行</li>
+</ol>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统（5）调度算法</title>
+    <url>/2020/11/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%885%EF%BC%89%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h1><h2 id="1-FCFS（First-Come-First-Serve）"><a href="#1-FCFS（First-Come-First-Serve）" class="headerlink" title="1.FCFS（First Come First Serve）"></a>1.FCFS（First Come First Serve）</h2><p>先到先服务，非抢占式</p>
+<ul>
+<li>优点：算法简单易实现，公平</li>
+<li>缺点：对长作业有利，对短作业不利</li>
+</ul>
+<h2 id="2-SJF（Shortest-Job-First）"><a href="#2-SJF（Shortest-Job-First）" class="headerlink" title="2.SJF（Shortest Job First）"></a>2.SJF（Shortest Job First）</h2><p>短进程先进性，分为抢占式和非抢占式</p>
+<ul>
+<li>最短的平均等待时间，平均周转时间</li>
+<li>对短作业有利，长作业不利，可能产生饥饿</li>
+</ul>
+<h2 id="3-HRRN（Highest-Response-Ration-Next"><a href="#3-HRRN（Highest-Response-Ration-Next" class="headerlink" title="3.HRRN（Highest Response Ration Next)"></a>3.HRRN（Highest Response Ration Next)</h2><p>每次调度时计算响应比（$\frac{等待时间+要求服务时间}{要求服务时间}$），选择响应比最高的进行服务，一般为非抢占式</p>
+<h2 id="4-时间片轮转（RR，Round-Robin）"><a href="#4-时间片轮转（RR，Round-Robin）" class="headerlink" title="4.时间片轮转（RR，Round-Robin）"></a>4.时间片轮转（RR，Round-Robin）</h2><p>公平的轮流为各个进程服务，抢占式</p>
+<ul>
+<li>优点：公平，适用于分时操作系统</li>
+<li>缺点：进程切换导致有一定开销，且不区分紧急程度</li>
+</ul>
+<h2 id="5-优先级调服算法"><a href="#5-优先级调服算法" class="headerlink" title="5.优先级调服算法"></a>5.优先级调服算法</h2><p>调度时选择最高优先级的活动，非抢占式和抢占式</p>
+<ul>
+<li>优点：适用于实时操作系统</li>
+<li>缺点：可能导致饥饿</li>
+</ul>
+<h2 id="6-多级反馈队列调度算法"><a href="#6-多级反馈队列调度算法" class="headerlink" title="6.多级反馈队列调度算法"></a>6.多级反馈队列调度算法</h2>]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统（4）进程</title>
+    <url>/2020/11/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%884%EF%BC%89%E8%BF%9B%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="一、进程的定义"><a href="#一、进程的定义" class="headerlink" title="一、进程的定义"></a>一、进程的定义</h2><p>程序段、数据段、PCB三部分组成了进程实体，PCB是进程存在的唯一标志，用来描述进程的各种信息。</p>
+<h3 id="典型定义："><a href="#典型定义：" class="headerlink" title="典型定义："></a>典型定义：</h3><p>进程是程序的一次执行过程</p>
+<p>进程是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位。</p>
+<h2 id="二、进程的组成"><a href="#二、进程的组成" class="headerlink" title="二、进程的组成"></a>二、进程的组成</h2><ul>
+<li><h3 id="PCB："><a href="#PCB：" class="headerlink" title="PCB："></a>PCB：</h3><ul>
+<li>进程描述信息：进程标识符PID、用户标识符UID</li>
+<li>进程控制和管理信息：进程当前状态、进程优先级</li>
+<li>资源分配清单：程序段指针、数据段指针、键盘、鼠标</li>
+<li>处理机相关信息：各种寄存器值</li>
+</ul>
+</li>
+<li><h3 id="程序段："><a href="#程序段：" class="headerlink" title="程序段："></a>程序段：</h3><ul>
+<li>存放要执行的代码</li>
+</ul>
+</li>
+<li><h3 id="数据段："><a href="#数据段：" class="headerlink" title="数据段："></a>数据段：</h3><ul>
+<li>存放程序运行过程中处理的各种数据</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、进程的组织"><a href="#三、进程的组织" class="headerlink" title="三、进程的组织"></a>三、进程的组织</h2><p>多个进程之间的组织方式问题</p>
+<ul>
+<li><h3 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h3><ul>
+<li>按照进程状态将PCB分为多个队列<ul>
+<li>执行指针-&gt;当前处于运行态的进程（单CPU中，只有一个进程在同一时刻运行）</li>
+<li>就绪队列指针-&gt;处于就绪态的进程（为一个队列，优先级高的在前）</li>
+<li>阻塞队列指针-&gt;处于阻塞态的进程（可能有多个阻塞队列）</li>
+</ul>
+</li>
+<li>操作系统持有指向各个队列的指针</li>
+</ul>
+</li>
+<li><h3 id="索引方式"><a href="#索引方式" class="headerlink" title="索引方式"></a>索引方式</h3><ul>
+<li>根据进程状态的不同，建立几张索引表</li>
+<li>操作系统持有指向各个索引表的指针</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、进程的特征"><a href="#四、进程的特征" class="headerlink" title="四、进程的特征"></a>四、进程的特征</h2><ol>
+<li>动态性：进程是动态的、变化的、消亡的</li>
+<li>并发性：内存中有多个进程实体，各进程可并发执行</li>
+<li>独立性：进程是能独立运行、独立获得资源、独立接受调度的基本单位</li>
+<li>异步性：并发执行的进程的结果的完成速度的不确定性，操作系统需要提供“进程同步机制”来解决异步问题</li>
+<li>结构性：每个进程都配备一个PCB，结构上由数据段、代码段、PCB组成</li>
+</ol>
+<h2 id="五、进程的状态"><a href="#五、进程的状态" class="headerlink" title="五、进程的状态"></a>五、进程的状态</h2><h3 id="1-三种基本状态："><a href="#1-三种基本状态：" class="headerlink" title="1. 三种基本状态："></a>1. 三种基本状态：</h3><ul>
+<li>运行态：占用CPU<ul>
+<li>CPU✅其它所需资源✅</li>
+</ul>
+</li>
+<li>就绪态：可以运行，但CPU被其它进程占用<ul>
+<li>CPU❌其它所需资源✅</li>
+</ul>
+</li>
+<li>阻塞态：等待某一事件的完成而暂时无法运行<ul>
+<li>CPU❌其它所需资源❌</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-另外两种状态："><a href="#2-另外两种状态：" class="headerlink" title="2.另外两种状态："></a>2.另外两种状态：</h3><ul>
+<li>创建态：操作系统为进程分配资源、初始化PCB</li>
+<li>终止态：进程从操作系统中撤销，操作系统回收进程资源，撤销PCB</li>
+</ul>
+<h3 id="3-进程的状态转换"><a href="#3-进程的状态转换" class="headerlink" title="3.进程的状态转换"></a>3.进程的状态转换</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl2d2mq7nvj31go0nugqd.jpg" alt="image-20201126102303056"></p>
+<p>注意：运行态-&gt;阻塞态是进程自身的主动行为</p>
+<p>​           阻塞态-&gt;就绪态是被动的，阻塞态不能直接转换为运行态</p>
+<h2 id="六、进程控制"><a href="#六、进程控制" class="headerlink" title="六、进程控制"></a>六、进程控制</h2><h3 id="1-实现的方式："><a href="#1-实现的方式：" class="headerlink" title="1.实现的方式："></a>1.实现的方式：</h3><p>用原语来实现进程的控制，其特点是执行期间不允许中断（原子操作），可以保证进程转换时PCB不会发生混乱（保证进程转换的过程完整发生，而不被其它中断打断，原语运行在核心态中，采用“关中断指令”和“开中断指令”，权限极大是核心态下执行的特权指令）</p>
+<h3 id="2-控制的内容："><a href="#2-控制的内容：" class="headerlink" title="2.控制的内容："></a>2.控制的内容：</h3><ul>
+<li>更新PCB中的信息</li>
+<li>将PCB插入合适的队列</li>
+<li>分配/回收资源</li>
+</ul>
+<h2 id="七、进程通信"><a href="#七、进程通信" class="headerlink" title="七、进程通信"></a>七、进程通信</h2><p>进程间的信息交换</p>
+<h3 id="1-共享存储"><a href="#1-共享存储" class="headerlink" title="1. 共享存储"></a>1. 共享存储</h3><p>两个进程对共享空间的访问必须是<strong>互斥</strong>的（操作系统只负责提供共享空间和同步互斥工具）</p>
+<ul>
+<li>基于数据结构的共享<ul>
+<li>速度慢、限制多，是一种低级通信方式</li>
+</ul>
+</li>
+<li>基于储存区的共享<ul>
+<li>数据的形式和存放位置都由进程控制，速度更快，是一种高级通信方式</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-管道通信"><a href="#2-管道通信" class="headerlink" title="2.管道通信"></a>2.管道通信</h3><p>在内存中开辟一个大小固定的缓存区</p>
+<ul>
+<li>管道只能采用<strong>半双工</strong>通信，某一时间段只能实现单向的传输，要实现双向同时通信，需要两个管道</li>
+<li>各进程<strong>互斥</strong>地形式访问管道</li>
+<li>数据以字符流的形式写入管道，当管道写满时，写进程的write()将被阻塞，等待读进程。当读进程将数据全部取走后，管道变空，此时读进程的read()将被阻塞</li>
+<li>如果<strong>没写满，就不允许读</strong>，如果<strong>没读空，就不允许写</strong></li>
+<li>数据一旦被读出，就从管道中被抛弃，这就意味着读<strong>进程最多只能有一个</strong>，否则可能会有读错数据的情况。</li>
+</ul>
+<h3 id="3-消息传递"><a href="#3-消息传递" class="headerlink" title="3.消息传递"></a>3.消息传递</h3><p>进程间的数据交换以<strong>格式化的消息</strong>为单位。通过操作系统提供的“发消息/接受消息”两个<strong>原语</strong>进行数据交换</p>
+<p>消息由<strong>消息头</strong>和<strong>消息体</strong>组成：消息头包括发送进程ID、接受进程ID、消息类型、消息长度等格式化信息（计网中的“报文”就是一种<strong>格式化</strong>的消息）</p>
+<ul>
+<li>直接通信方式：消息直接挂到接收进程的消息缓冲队列上</li>
+<li>间接通信方式：消息先发送到中间实体（信箱）中，也称信箱通信方式</li>
+</ul>
+<h2 id="八、进程互斥"><a href="#八、进程互斥" class="headerlink" title="八、进程互斥"></a>八、进程互斥</h2><p>实现对临界资源的互斥访问</p>
+<ul>
+<li>空闲让进</li>
+<li>忙则等待</li>
+<li>有限等待</li>
+<li>让权等待</li>
+</ul>
+<p>软件实现方法：</p>
+<ul>
+<li>单标志法</li>
+<li>双标志先检查</li>
+<li>双标志后检查</li>
+<li>Peterson算法</li>
+</ul>
+<h3 id="Peterson算法："><a href="#Peterson算法：" class="headerlink" title="Peterson算法："></a>Peterson算法：</h3><p>结合双标志后检查法和单标志法，定义一个布尔数组和一个轮转标志，同时检查这两个标志，优先让对方先使用临界资源</p>
+<hr>
+<p>硬件实现方法：</p>
+<ul>
+<li>中断屏蔽法</li>
+<li>TestAndSet</li>
+<li>Swap指令</li>
+</ul>
+<h3 id="TestAndSet指令"><a href="#TestAndSet指令" class="headerlink" title="TestAndSet指令"></a>TestAndSet指令</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">TestAndSet</span><span class="params">(<span class="keyword">bool</span> *lock)</span></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> old;</span><br><span class="line">    old = *lock;</span><br><span class="line">    *lock = <span class="literal">true</span>; <span class="comment">// 上锁</span></span><br><span class="line">    <span class="keyword">return</span> old; <span class="comment">// 返回上锁前的状态</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TSL指令实现</span></span><br><span class="line"><span class="keyword">while</span>(TestAndSet(&amp;lock));<span class="comment">// 不停上锁，直到发现某一次临界资源并未被上锁</span></span><br><span class="line"><span class="comment">/**/</span></span><br><span class="line">lock = <span class="literal">false</span>; <span class="comment">// 解锁</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Swap指令"><a href="#Swap指令" class="headerlink" title="Swap指令"></a>Swap指令</h3><p>交换old和lock的值来实现锁</p>
+<h2 id="信号量机制"><a href="#信号量机制" class="headerlink" title="信号量机制"></a>信号量机制</h2><p>用户通过操作系统提供的原语来对信号量进行操作，从而实现进程互斥和同步</p>
+<p>一对原语：wait和signal，简写为P、V操作，P（wait，代表需要别人等等，自己要使用了，所以减一）就是将信号量减一，V（signal）就是将信号量加一</p>
+<h3 id="整型信号量："><a href="#整型信号量：" class="headerlink" title="整型信号量："></a>整型信号量：</h3><p>用来表示系统中某种资源的数量（只能进行初始化、P操作和V操作）</p>
+<h3 id="记录型信号量："><a href="#记录型信号量：" class="headerlink" title="记录型信号量："></a>记录型信号量：</h3><p>整型存在忙等问题，用记录型数据结构表示信号量。可以阻塞进程（让权等待，不会忙等），同时用负数表示资源数，记录有进程在等待资源，维护一个等待队列，记录阻塞进程。</p>
+<h3 id="实现进程互斥："><a href="#实现进程互斥：" class="headerlink" title="实现进程互斥："></a>实现进程互斥：</h3><p>设置互斥信号量mutex = 1</p>
+<p>进临界区前执行P（mutex）</p>
+<p>出临界区后执行V（mutex）</p>
+<h3 id="实现进程同步："><a href="#实现进程同步：" class="headerlink" title="实现进程同步："></a>实现进程同步：</h3><p>进程同步问题：让本来异步并发的进程互相配合，有序推进</p>
+<p>设置同步信号量S = 0</p>
+<p>在“前操作”之后执行V（S）：执行了加一，相当于有资源了，后续的代码即可执行</p>
+<p>在“后操作”之前执行P（S）：只有当S执行了加一，才能执行后续的操作，即前操作必须先执行完才可执行后操作</p>
+<h4 id="拓展：实现前驱关系"><a href="#拓展：实现前驱关系" class="headerlink" title="拓展：实现前驱关系"></a>拓展：实现前驱关系</h4><p>对于多个代码的前驱关系，需要多个信号量即可</p>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统（6）具体问题</title>
+    <url>/2020/12/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%886%EF%BC%89%E5%85%B7%E4%BD%93%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h1 id="生产者和消费者问题"><a href="#生产者和消费者问题" class="headerlink" title="生产者和消费者问题"></a>生产者和消费者问题</h1><h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>有一个进程可以生产一种资源（生产者程序），另一种程序需要消耗这种资源才能执行，使用一个有限的缓存区来保存这种资源</p>
 <h2 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h2><p>生产者和消费者对于缓存区的使用必须是互斥的，而且针对缓存区满和空这两种情况，生产者和消费者之间有两种先后执行的顺序，即两种同步关系（考虑资源为0时必须先执行生产者，资源为满时必须先执行消费者）</p>
 <h2 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">semaohore mutex &#x3D; 1</span><br><span class="line">semaohore empty &#x3D; n</span><br><span class="line">semaohore full &#x3D; 0</span><br><span class="line">producer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		生产一个产品；</span><br><span class="line">		P(empty);</span><br><span class="line">		P(mutex);</span><br><span class="line">		把产品放入缓存区；</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(full)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">consumer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(full);</span><br><span class="line">		P(mutex);</span><br><span class="line">		从缓存区取出一个产品；</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(empty);</span><br><span class="line">		使用产品；</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1546,6 +1357,285 @@
       <tags>
         <tag>操作系统</tag>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络（1）基本概念</title>
+    <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%881%EF%BC%89%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<h1 id="计算机网络基础"><a href="#计算机网络基础" class="headerlink" title="计算机网络基础"></a>计算机网络基础</h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>将分散的、具有独立功能的计算机系统，通过通信设备与线路连接起来，由功能完善的软件实现资源共享和信息传递的系统</p>
+<p><strong><em>计算机网络是互联的、自治的计算机集合</em></strong></p>
+<h2 id="二、功能"><a href="#二、功能" class="headerlink" title="二、功能"></a>二、功能</h2><ol>
+<li>数据通信（连通性）</li>
+<li>资源共享（硬件、软件和数据）</li>
+<li>分布式处理（多台计算机各自承担同一工作的不同部分）</li>
+<li>提高可靠性</li>
+<li>负载均衡</li>
+</ol>
+<h2 id="三、组成"><a href="#三、组成" class="headerlink" title="三、组成"></a>三、组成</h2><ol>
+<li>组成部分：硬件、软件、协议</li>
+<li>工作方式：<ul>
+<li>边缘部分：用户直接使用（C/S、P2P）</li>
+<li>核心部分：为边缘部分服务</li>
+</ul>
+</li>
+<li>功能组成：<ul>
+<li>通信子网：实现数据通信</li>
+<li>资源子网：实现资源共享/数据处理</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、分类"><a href="#四、分类" class="headerlink" title="四、分类"></a>四、分类</h2><ol>
+<li><p>按分布范围</p>
+<ul>
+<li>广域网WAN（交换技术）</li>
+<li>城域网MAN</li>
+<li>局域网LAN（广播技术）</li>
+<li>个人区域网（PAN）</li>
+</ul>
+</li>
+<li><p>按使用者分：公用网，专用网</p>
+</li>
+<li><p>按交换技术分：电路交换，报文交换，分组交换</p>
+</li>
+<li><p>按拓扑结构分：</p>
+<p> <img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl1oy3x8dtj30ie0aqjrq.jpg" alt="img"></p>
+</li>
+<li><p>按传输技术分：</p>
+<ul>
+<li>广播式网络：共享公共通信信道</li>
+<li>点对点网络：使用分组储存转发和路由选择机制</li>
+</ul>
+</li>
+</ol>
+<h2 id="五、标准化工作"><a href="#五、标准化工作" class="headerlink" title="五、标准化工作"></a>五、标准化工作</h2><h3 id="标准的分类："><a href="#标准的分类：" class="headerlink" title="标准的分类："></a>标准的分类：</h3><ol>
+<li>法定标准：由权威制定（OSI）</li>
+<li>事实标准：由某些产品的主流技术（TCP/IP）</li>
+</ol>
+<h3 id="RFC（Request-For-Comments）"><a href="#RFC（Request-For-Comments）" class="headerlink" title="RFC（Request For Comments）"></a>RFC（Request For Comments）</h3><p>RFC是因特网的标准形式</p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络（3）分层结构</title>
+    <url>/2020/11/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%883%EF%BC%89%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="计算机网络的分层结构"><a href="#计算机网络的分层结构" class="headerlink" title="计算机网络的分层结构"></a>计算机网络的分层结构</h1><h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><h3 id="为什么分层："><a href="#为什么分层：" class="headerlink" title="为什么分层："></a>为什么分层：</h3><ul>
+<li>激活数据通路</li>
+<li>告诉网络如何识别目的主机</li>
+<li>查明目的主机状态</li>
+<li>弄清楚目的主机的文件管理系统是否准备好</li>
+<li>确保差错和意外可以解决</li>
+</ul>
+<h3 id="分层结构："><a href="#分层结构：" class="headerlink" title="分层结构："></a>分层结构：</h3><ul>
+<li>协议：为进行网络中的对等实体数据交换而建立的规则、标准或约定称为网络协议<ul>
+<li>语法：规定传送数据的格式</li>
+<li>语义：规定所要完成的功能</li>
+<li>同步：规定各种操作的顺序</li>
+</ul>
+</li>
+<li>接口：上层使用下层服务的入口（仅在<strong>相邻层有接口</strong>，且所提供服务的具体细节对上一层完全屏蔽</li>
+<li>服务：下层为上层提供的功能调用</li>
+</ul>
+<h3 id="分层的基本原则："><a href="#分层的基本原则：" class="headerlink" title="分层的基本原则："></a>分层的基本原则：</h3><ul>
+<li>各层相互<strong>独立</strong>，每层只实现一种相对独立的功能</li>
+<li>各层之间<strong>界面自然清晰</strong>，相互交流尽可能少</li>
+<li>结构上可分割，<strong>每层都采用最合适的技术来实现</strong></li>
+<li>保持上下层独立性，<strong>上层单向使用下层提供的服务</strong></li>
+<li>分层结构能够促进标准化工作</li>
+</ul>
+<h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><p>7层的法定标准</p>
+<p>目的：支持异构网络系统的互联互通</p>
+<p>结构：</p>
+<ul>
+<li>通信子网（数据通信）（中间系统）<ul>
+<li>1.物理层：在物理媒体上实现比特流的传输<ul>
+<li>定义接口特性</li>
+<li>定义传输模式：单工、半双工、双工</li>
+<li>定义传输速率</li>
+<li>比特同步</li>
+<li>比特编码</li>
+</ul>
+</li>
+<li>2.数据链路层：把网络层的数据报组装成帧<ul>
+<li>成帧：定义帧的开始和结束</li>
+<li>差错控制：帧错+位错</li>
+<li>流量控制</li>
+<li>访问/接入控制：控制对信道的访问</li>
+</ul>
+</li>
+<li>3.网络层<ul>
+<li>路由选择，选择最佳路径</li>
+<li>流量控制：协调速度</li>
+<li>差错控制：检查错误</li>
+<li>拥塞控制：宏观控制整个网络的拥塞状态</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>4.传输层：负责主机中两个进程的通信，功能：可靠传输、不可靠传输，差错控制，流量控制，复用分用</li>
+<li>资源子网（数据处理）<ul>
+<li>5.会话层：向表示层提供建立连接并有序地传输数据<ul>
+<li>建立，管理，终止会话</li>
+<li>插入校验点用来恢复通信</li>
+</ul>
+</li>
+<li>6.表示层：处理两个通信系统中交换信息的表示方式<ul>
+<li>数据格式变换</li>
+<li>数据加密解密</li>
+<li>数据压缩与恢复</li>
+</ul>
+</li>
+<li>7.应用层：产生网络交互的应用</li>
+</ul>
+</li>
+</ul>
+<h2 id="5层参考模型"><a href="#5层参考模型" class="headerlink" title="5层参考模型"></a>5层参考模型</h2><ul>
+<li>应用层：支持各种网络应用（FTP、SMTP、HTTP）</li>
+<li>传输层：进程-进程的数据传输（TCP、UDP）</li>
+<li>网络层：源主机到目的主机的数据分组路由与转发（IP、ICMP、OSPF）</li>
+<li>数据链路层：把网络层传下来的数据报组装成帧（Ethernet、PPP）</li>
+<li>比特传输</li>
+</ul>
+<h2 id="TCP-IP参考模型"><a href="#TCP-IP参考模型" class="headerlink" title="TCP/IP参考模型"></a>TCP/IP参考模型</h2><ul>
+<li>应用层（HTTP/FTP/DNS）</li>
+<li>传输层（TCP/UDP）</li>
+<li>网际层（IP）</li>
+<li>网络接口层（Ethernet/ATM/Frame Relay）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络（2）性能指标</title>
+    <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%882%EF%BC%89%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/</url>
+    <content><![CDATA[<h1 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h1><h2 id="一、速率"><a href="#一、速率" class="headerlink" title="一、速率"></a>一、速率</h2><p>速率即数据率或称数据传输率或者比特率（比特：1/0 位）</p>
+<p><strong><em>区分速率的单位和储存容量的单位</em></strong>     (1Byte = 8bit)<br>$$<br>\begin{aligned}<br>速率：&amp;1Tb/s &amp;=&amp; 10^3Gb &amp;=&amp; 10^6Mb/s &amp;=&amp; 10^9kb/s &amp;=&amp; 10^{12}b/s<br>\储存容量：&amp;1TB &amp;=&amp; 2^{10}GB &amp;=&amp; 2^{20}MB &amp;=&amp; 2^{30}KB &amp;=&amp; 2^{40}B \quad\quad = 2^{40}*8b<br>\end{aligned}<br>$$</p>
+<h2 id="二、带宽"><a href="#二、带宽" class="headerlink" title="二、带宽"></a>二、带宽</h2><p>“带宽”原本指，某个信号具有的频带宽度，即最高频率与最低频率之差，单位是赫兹（Hz）</p>
+<p>计算机网络中，带宽用来表示网络的通信线路传送数据的能力，通常是指单位时间内从网络中的某一点到另一点所能通过的<strong>最高数据率</strong>，单位是“比特每秒”</p>
+<p>指的是网络设备所支持的最高速度，因为信号在链路中的传播速度是一样的，都是光速，不同的只是设备单位时间可以发出的比特的个数</p>
+<h2 id="三、吞吐量"><a href="#三、吞吐量" class="headerlink" title="三、吞吐量"></a>三、吞吐量</h2><p>表示在单位时间内通过某个网络（或信道、接口）的数据量。单位“比特每秒”</p>
+<p>吞吐量和带宽的区别：吞吐量是带宽的实际情况，带宽是吞吐量的理论上限</p>
+<h2 id="四、时延"><a href="#四、时延" class="headerlink" title="四、时延"></a>四、时延</h2><p>指数据从网络的一端传送到另一端所需的时间，单位是秒</p>
+<ul>
+<li>发送时延:$\frac{数据长度}{信道带宽（发送速率）}$</li>
+<li> 传播时延：$\frac{信道长度}{电磁波在信道上的传播速率}$</li>
+<li>排队时延：等待输出/输入链路可用</li>
+<li>处理时延：检错，找出口</li>
+</ul>
+<h2 id="五、时延带宽积"><a href="#五、时延带宽积" class="headerlink" title="五、时延带宽积"></a>五、时延带宽积</h2><p>时延带宽积 = 传播时延 X 带宽        单位：bit</p>
+<p>又称<strong>比特为单位的链路长度</strong>，即<strong>某段链路现在有多少比特</strong></p>
+<h2 id="六、往返时延RTT"><a href="#六、往返时延RTT" class="headerlink" title="六、往返时延RTT"></a>六、往返时延RTT</h2><p>从发送方发送数据开始，到接收方收到接收方的确认（接收方收到数据后立即发送确认）总共经历的时延</p>
+<p>RTT包括</p>
+<ul>
+<li>往返时延 = 传播时延 X 2</li>
+<li>末端处理时间</li>
+</ul>
+<h2 id="七、利用率"><a href="#七、利用率" class="headerlink" title="七、利用率"></a>七、利用率</h2><ul>
+<li>信道利用率：$\frac{有数据通过时间}{（有+无）数据通过时间}$</li>
+<li>网络利用率：信道利用率</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络（4）物理层</title>
+    <url>/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%884%EF%BC%89%E7%89%A9%E7%90%86%E5%B1%82/</url>
+    <content><![CDATA[<h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><p>在连接各种计算机的传输媒体上传输数据比特流</p>
+<p>主要任务：确定余传输媒体接口有关的一些特性</p>
+<ul>
+<li>机械特性：规定物理连接时所采用的规格、接口形状、引线等</li>
+<li>电气特性：规定传输二进制位时，线路上信号的电压范围、阻抗匹配、传输速率和距离限制等</li>
+<li>功能特性：指明某一电平表示何种意义，接口部件的信号线用途</li>
+<li>规程特性（过程特性）：定义物理线路的工作规程和时序的关系</li>
+</ul>
+<h2 id="数据通信例子："><a href="#数据通信例子：" class="headerlink" title="数据通信例子："></a>数据通信例子：</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9qep6s8nj31hg0iuas9.jpg" alt="image-20210102224341083"></p>
+<h2 id="相关术语："><a href="#相关术语：" class="headerlink" title="相关术语："></a>相关术语：</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9qf7o2u8j31fi0ms1gv.jpg" alt="image-20210102224413342"></p>
+<h3 id="三种通信方式："><a href="#三种通信方式：" class="headerlink" title="三种通信方式："></a>三种通信方式：</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>英文</th>
+<th>定义</th>
+<th>需要信道条数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单工通信</td>
+<td>Simplex</td>
+<td>只能一个发一个收</td>
+<td>一条</td>
+</tr>
+<tr>
+<td>半双工通信</td>
+<td>half-duplex</td>
+<td>都可以发或者收，但是同一时间只能进行一个</td>
+<td>两条</td>
+</tr>
+<tr>
+<td>全双工通信</td>
+<td>duplex</td>
+<td>都可以同时收发数据</td>
+<td>两条</td>
+</tr>
+</tbody></table>
+<h3 id="两种数据传输方式"><a href="#两种数据传输方式" class="headerlink" title="两种数据传输方式"></a>两种数据传输方式</h3><table>
+<thead>
+<tr>
+<th>传输方式</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>串行传输</td>
+<td>速度慢，省钱，适合远距离</td>
+</tr>
+<tr>
+<td>并行传输</td>
+<td>速度快，耗钱，适合近距离</td>
+</tr>
+</tbody></table>
+<h3 id="码原"><a href="#码原" class="headerlink" title="码原"></a>码原</h3><p>定义：码元是指用一个固定时长的信号波形（数字脉冲），代表离散数值的基本波形。当有多个离散状态时，成为M进制码元<br>一个码元可以携带多个比特的信息（即不为二进制时就可以不只一个比特<br>个人理解：码元就是在网线上传输的一个个信号段。码元的不同进制就是用来表示不同的数值的</p>
+<h3 id="速率"><a href="#速率" class="headerlink" title="速率"></a>速率</h3><p>分为<strong>码元传输速率</strong>和<strong>信息传输速率</strong><br>信息传输速率就是b/s，就是我们平常说的<strong>网速</strong><br>码元可以理解为几个比特的<strong>集合</strong>，所以信息传输速率（网速）=码元传输速率x码元所带信息量（多少比特）<br>码元所带信息量（比特数）=log2（码元进制数）</p>
+<h3 id="带宽"><a href="#带宽" class="headerlink" title="带宽"></a>带宽</h3><p>用来表示最高数据速率</p>
+<h3 id="失真"><a href="#失真" class="headerlink" title="失真"></a>失真</h3><ul>
+<li>码元传输速率</li>
+<li>信号传输距离</li>
+<li>噪声干扰</li>
+<li>传输媒体质量</li>
+</ul>
+<p>码间串扰：接收端收到的信号波形失去了码元之间的清晰界限（频率太高）</p>
+<h2 id="奈式准则（无噪声）"><a href="#奈式准则（无噪声）" class="headerlink" title="奈式准则（无噪声）"></a>奈式准则（无噪声）</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9qy7o5vkj31gy0ncx6a.jpg" alt="image-20210102230229193"></p>
+<h2 id="香农公式（有噪声）"><a href="#香农公式（有噪声）" class="headerlink" title="香农公式（有噪声）"></a>香农公式（有噪声）</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9r4eqrxoj31ha0j07ok.jpg" alt="image-20210102230826383"></p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9r4tscy9j31hk0n4kg1.jpg" alt="image-20210102230836321"></p>
+<h2 id="基带信号和宽带-带通信号"><a href="#基带信号和宽带-带通信号" class="headerlink" title="基带信号和宽带/带通信号"></a>基带信号和宽带/带通信号</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9rfcsy6kj31cg0c4wva.jpg" alt="image-20210102231856989"></p>
+<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p>将数据转化为<strong>数字信号</strong><br>数字数据(digtal data)通过 数字发送器(digit emitter) 转化为 数字信号(digtal signal)</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9rgcc4xpj30o204e3z7.jpg" alt="image-20210102231954526"></p>
+<p>模拟数据(analog data)通过 PCM编码器(PCM coder) 转化为 数字信号 (digtal signal)</p>
+<p><img src="../../../Library/Application%20Support/typora-user-images/image-20210102232017666.png" alt="image-20210102232017666"></p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>计算机网络</tag>
       </tags>
   </entry>
 </search>

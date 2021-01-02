@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Java（一）接口 |  summerain
+    计算机网络（4）物理层 |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Java（一）接口"
+  id="post-计算机网络（4）物理层"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,18 +55,18 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Java（一）接口
+  计算机网络（4）物理层
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/11/26/Java%EF%BC%88%E4%B8%80%EF%BC%89%E6%8E%A5%E5%8F%A3/" class="article-date">
-  <time datetime="2020-11-26T07:28:13.000Z" itemprop="datePublished">2020-11-26</time>
+      <a href="/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%884%EF%BC%89%E7%89%A9%E7%90%86%E5%B1%82/" class="article-date">
+  <time datetime="2021-01-02T14:28:15.000Z" itemprop="datePublished">2021-01-02</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
   </div>
   
 <div class="word_count">
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">702</span>
+            <span class="post-count">653</span>
         </span>
     </span>
 
@@ -98,33 +98,78 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="Java（一）接口"><a href="#Java（一）接口" class="headerlink" title="Java（一）接口"></a>Java（一）接口</h1><h2 id="1-定义格式"><a href="#1-定义格式" class="headerlink" title="1.定义格式"></a>1.定义格式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 接口名称</span>&#123;</span><br><span class="line">	<span class="comment">// 接口内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-使用步骤"><a href="#2-使用步骤" class="headerlink" title="2.使用步骤"></a>2.使用步骤</h2><ol>
-<li><p>接口不能直接使用，必须有一个“实现类”来“实现”该接口</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 实现类名称 <span class="keyword">implements</span> 接口名称</span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>接口的实现类必须覆盖重写（实现）接口中的所有抽象方法</p>
-<p> 实现：去掉abstract关键字，加上方法体大括号</p>
-</li>
-<li><p>创建实现类的对象，进行使用</p>
-</li>
-</ol>
-<h2 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3.注意事项"></a>3.注意事项</h2><p>如果实现类并没有覆盖重写接口中所有的抽象方法，那么这个实现类自己就必须是抽象类</p>
-<h2 id="4-具体例子"><a href="#4-具体例子" class="headerlink" title="4.具体例子"></a>4.具体例子</h2><ol>
-<li><p>MyInterfaceAbstract</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInterfaceAbstract</span></span>&#123;</span><br><span class="line">    <span class="comment">// 接口中也可以定义“成员变量”，但是必须用public static final三个关键字进行修饰</span></span><br><span class="line">    <span class="comment">// 从效果上看，这就是接口的【常量】</span></span><br><span class="line">    <span class="comment">// 可以省略public static final三个关键字不写，但效果是等同的</span></span><br><span class="line">    <span class="comment">// 该常量必须手动赋值，且不可改变</span></span><br><span class="line">    <span class="comment">// 推荐命名规则，全大写，使用下划线分隔单词</span></span><br><span class="line">    <span class="comment">// 访问时直接用接口名称调用</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> NUM_OF = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">// public abstract可以省略，默认为抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 新添加一个默认方法，可用于接口升级，使之前实现的类不需要重写该方法，也能继续使用</span></span><br><span class="line">    <span class="comment">// 该默认方法可以在实现类中直接调用，也可以进行覆盖重写</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> <span class="keyword">void</span> <span class="title">methodDefault</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 接口中也可以定义静态方法，通过接口名称直接调用静态方法，即可使用</span></span><br><span class="line">    <span class="comment">// 注意事项：不能通过接口实现类来调用接口中的静态方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStatic</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接口中可以定义私有方法，使得该方法不会被实现类访问,但可以被接口中的默认方法调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">methodCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//接口中可以定义静态私有方法，使得该方法不会被实现类访问,但可以被接口中的静态方法调用</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStaticCommon</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>MyInterfaceAbstractImpl</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterfaceAbstractImpl</span> <span class="keyword">implements</span> <span class="title">MyInterfaceAbstract</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs1</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="comment">//</span></span><br><span class="line">     &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodAbs2</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="comment">//</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="5-接口的实现类"><a href="#5-接口的实现类" class="headerlink" title="5.接口的实现类"></a>5.接口的实现类</h2><p>一个类可以实现多个接口，但所有接口中的抽象方法都要重写</p>
-<p>如果实现多个接口中存在重复的抽象方法，只需要覆盖重写一次即可</p>
-<p>如果实现多个接口中存在重复的默认方法，需要覆盖重写</p>
-<p>如果类的父类方法和接口中的默认方法产生冲突，优先使用父类方法</p>
-<p>接口是可以多继承接口的，父接口的默认方法冲突需要重写，抽象方法冲突无影响</p>
+  <h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><p>在连接各种计算机的传输媒体上传输数据比特流</p>
+<p>主要任务：确定余传输媒体接口有关的一些特性</p>
+<ul>
+<li>机械特性：规定物理连接时所采用的规格、接口形状、引线等</li>
+<li>电气特性：规定传输二进制位时，线路上信号的电压范围、阻抗匹配、传输速率和距离限制等</li>
+<li>功能特性：指明某一电平表示何种意义，接口部件的信号线用途</li>
+<li>规程特性（过程特性）：定义物理线路的工作规程和时序的关系</li>
+</ul>
+<h2 id="数据通信例子："><a href="#数据通信例子：" class="headerlink" title="数据通信例子："></a>数据通信例子：</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9qep6s8nj31hg0iuas9.jpg" alt="image-20210102224341083"></p>
+<h2 id="相关术语："><a href="#相关术语：" class="headerlink" title="相关术语："></a>相关术语：</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9qf7o2u8j31fi0ms1gv.jpg" alt="image-20210102224413342"></p>
+<h3 id="三种通信方式："><a href="#三种通信方式：" class="headerlink" title="三种通信方式："></a>三种通信方式：</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>英文</th>
+<th>定义</th>
+<th>需要信道条数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单工通信</td>
+<td>Simplex</td>
+<td>只能一个发一个收</td>
+<td>一条</td>
+</tr>
+<tr>
+<td>半双工通信</td>
+<td>half-duplex</td>
+<td>都可以发或者收，但是同一时间只能进行一个</td>
+<td>两条</td>
+</tr>
+<tr>
+<td>全双工通信</td>
+<td>duplex</td>
+<td>都可以同时收发数据</td>
+<td>两条</td>
+</tr>
+</tbody></table>
+<h3 id="两种数据传输方式"><a href="#两种数据传输方式" class="headerlink" title="两种数据传输方式"></a>两种数据传输方式</h3><table>
+<thead>
+<tr>
+<th>传输方式</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>串行传输</td>
+<td>速度慢，省钱，适合远距离</td>
+</tr>
+<tr>
+<td>并行传输</td>
+<td>速度快，耗钱，适合近距离</td>
+</tr>
+</tbody></table>
+<h3 id="码原"><a href="#码原" class="headerlink" title="码原"></a>码原</h3><p>定义：码元是指用一个固定时长的信号波形（数字脉冲），代表离散数值的基本波形。当有多个离散状态时，成为M进制码元<br>一个码元可以携带多个比特的信息（即不为二进制时就可以不只一个比特<br>个人理解：码元就是在网线上传输的一个个信号段。码元的不同进制就是用来表示不同的数值的</p>
+<h3 id="速率"><a href="#速率" class="headerlink" title="速率"></a>速率</h3><p>分为<strong>码元传输速率</strong>和<strong>信息传输速率</strong><br>信息传输速率就是b/s，就是我们平常说的<strong>网速</strong><br>码元可以理解为几个比特的<strong>集合</strong>，所以信息传输速率（网速）=码元传输速率x码元所带信息量（多少比特）<br>码元所带信息量（比特数）=log2（码元进制数）</p>
+<h3 id="带宽"><a href="#带宽" class="headerlink" title="带宽"></a>带宽</h3><p>用来表示最高数据速率</p>
+<h3 id="失真"><a href="#失真" class="headerlink" title="失真"></a>失真</h3><ul>
+<li>码元传输速率</li>
+<li>信号传输距离</li>
+<li>噪声干扰</li>
+<li>传输媒体质量</li>
+</ul>
+<p>码间串扰：接收端收到的信号波形失去了码元之间的清晰界限（频率太高）</p>
+<h2 id="奈式准则（无噪声）"><a href="#奈式准则（无噪声）" class="headerlink" title="奈式准则（无噪声）"></a>奈式准则（无噪声）</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9qy7o5vkj31gy0ncx6a.jpg" alt="image-20210102230229193"></p>
+<h2 id="香农公式（有噪声）"><a href="#香农公式（有噪声）" class="headerlink" title="香农公式（有噪声）"></a>香农公式（有噪声）</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9r4eqrxoj31ha0j07ok.jpg" alt="image-20210102230826383"></p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9r4tscy9j31hk0n4kg1.jpg" alt="image-20210102230836321"></p>
+<h2 id="基带信号和宽带-带通信号"><a href="#基带信号和宽带-带通信号" class="headerlink" title="基带信号和宽带/带通信号"></a>基带信号和宽带/带通信号</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9rfcsy6kj31cg0c4wva.jpg" alt="image-20210102231856989"></p>
+<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p>将数据转化为<strong>数字信号</strong><br>数字数据(digtal data)通过 数字发送器(digit emitter) 转化为 数字信号(digtal signal)</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9rgcc4xpj30o204e3z7.jpg" alt="image-20210102231954526"></p>
+<p>模拟数据(analog data)通过 PCM编码器(PCM coder) 转化为 数字信号 (digtal signal)</p>
+<p><img src="../../../Library/Application%20Support/typora-user-images/image-20210102232017666.png" alt="image-20210102232017666"></p>
  
       <!-- reward -->
       
@@ -195,12 +240,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/26/Java%EF%BC%88%E4%B8%80%EF%BC%89%E6%8E%A5%E5%8F%A3/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%884%EF%BC%89%E7%89%A9%E7%90%86%E5%B1%82/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="tag">基础语法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
 
     </footer>
   </div>
@@ -208,19 +253,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/11/26/Java%EF%BC%88%E4%BA%8C%EF%BC%89%E5%A4%9A%E6%80%81/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Java（二）多态
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/11/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89%E8%BF%9B%E7%A8%8B/" class="article-nav-link">
+      <a href="/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2039.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">操作系统（四）进程</div>
+        <div class="article-nav-title">剑指 Offer 39. 数组中出现次数超过一半的数字</div>
       </a>
     
   </nav>

@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    剑指 Offer 39. 数组中出现次数超过一半的数字 |  summerain
+    计算机网络（3）分层结构 |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-剑指 Offer 39. 数组中出现次数超过一半的数字"
+  id="post-计算机网络（3）分层结构"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,18 +55,18 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  剑指 Offer 39. 数组中出现次数超过一半的数字
+  计算机网络（3）分层结构
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2039.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/" class="article-date">
-  <time datetime="2020-12-28T14:57:30.000Z" itemprop="datePublished">2020-12-28</time>
+      <a href="/2020/11/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%883%EF%BC%89%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" class="article-date">
+  <time datetime="2020-11-30T07:18:55.000Z" itemprop="datePublished">2020-11-30</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87-Offer/">剑指 Offer</a>
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
   </div>
   
 <div class="word_count">
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">834</span>
+            <span class="post-count">746</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -98,130 +98,88 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="剑指-Offer-39-数组中出现次数超过一半的数字"><a href="#剑指-Offer-39-数组中出现次数超过一半的数字" class="headerlink" title="剑指 Offer 39. 数组中出现次数超过一半的数字"></a>剑指 Offer 39. 数组中出现次数超过一半的数字</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。</p>
-<p>你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p>
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/">LeetCode</a></h2><hr>
-<h2 id="前置知识点回顾："><a href="#前置知识点回顾：" class="headerlink" title="前置知识点回顾："></a>前置知识点回顾：</h2><p>java中HasMap的相关函数及用法：</p>
-<table>
-<thead>
-<tr>
-<th align="left">方法</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-clear.html">clear()</a></td>
-<td align="left">删除 hashMap 中的所有键/值对</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-clone.html">clone()</a></td>
-<td align="left">复制一份 hashMap</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-isempty.html">isEmpty()</a></td>
-<td align="left">判断 hashMap 是否为空</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-size.html">size()</a></td>
-<td align="left">计算 hashMap 中键/值对的数量</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-put.html">put()</a></td>
-<td align="left">将键/值对添加到 hashMap 中</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-putall.html">putAll()</a></td>
-<td align="left">将所有键/值对添加到 hashMap 中</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-putifabsent.html">putIfAbsent()</a></td>
-<td align="left">如果 hashMap 中不存在指定的键，则将指定的键/值对插入到 hashMap 中。</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-remove.html">remove()</a></td>
-<td align="left">删除 hashMap 中指定键 key 的映射关系</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-containskey.html">containsKey()</a></td>
-<td align="left">检查 hashMap 中是否存在指定的 key 对应的映射关系。</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-containsvalue.html">containsValue()</a></td>
-<td align="left">检查 hashMap 中是否存在指定的 value 对应的映射关系。</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-replace.html">replace()</a></td>
-<td align="left">替换 hashMap 中是指定的 key 对应的 value。</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-replaceall.html">replaceAll()</a></td>
-<td align="left">将 hashMap 中的所有映射关系替换成给定的函数所执行的结果。</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-get.html">get()</a></td>
-<td align="left">获取指定 key 对应对 value</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-getordefault.html">getOrDefault()</a></td>
-<td align="left">获取指定 key 对应对 value，如果找不到 key ，则返回设置的默认值</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-foreach.html">forEach()</a></td>
-<td align="left">对 hashMap 中的每个映射执行指定的操作。</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-entryset.html">entrySet()</a></td>
-<td align="left">返回 hashMap 中所有映射项的集合集合视图。</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-keyset.html">keySet</a>()</td>
-<td align="left">返回 hashMap 中所有 key 组成的集合视图。</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-values.html">values()</a></td>
-<td align="left">返回 hashMap 中存在的所有 value 值。</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-merge.html">merge()</a></td>
-<td align="left">添加键值对到 hashMap 中</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-compute.html">compute()</a></td>
-<td align="left">对 hashMap 中指定 key 的值进行重新计算</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-computeifabsent.html">computeIfAbsent()</a></td>
-<td align="left">对 hashMap 中指定 key 的值进行重新计算，如果不存在这个 key，则添加到 hasMap 中</td>
-</tr>
-<tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashmap-computeifpresent.html">computeIfPresent()</a></td>
-<td align="left">对 hashMap 中指定 key 的值进行重新计算，前提是该 key 存在于 hashMap 中。</td>
-</tr>
-</tbody></table>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li><p>使用HashMap来对数组进行遍历并记录每个数字出现的个数，对每个数都判断其是否超过了一半，若超过，则返回答案</p>
+  <h1 id="计算机网络的分层结构"><a href="#计算机网络的分层结构" class="headerlink" title="计算机网络的分层结构"></a>计算机网络的分层结构</h1><h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><h3 id="为什么分层："><a href="#为什么分层：" class="headerlink" title="为什么分层："></a>为什么分层：</h3><ul>
+<li>激活数据通路</li>
+<li>告诉网络如何识别目的主机</li>
+<li>查明目的主机状态</li>
+<li>弄清楚目的主机的文件管理系统是否准备好</li>
+<li>确保差错和意外可以解决</li>
+</ul>
+<h3 id="分层结构："><a href="#分层结构：" class="headerlink" title="分层结构："></a>分层结构：</h3><ul>
+<li>协议：为进行网络中的对等实体数据交换而建立的规则、标准或约定称为网络协议<ul>
+<li>语法：规定传送数据的格式</li>
+<li>语义：规定所要完成的功能</li>
+<li>同步：规定各种操作的顺序</li>
+</ul>
+</li>
+<li>接口：上层使用下层服务的入口（仅在<strong>相邻层有接口</strong>，且所提供服务的具体细节对上一层完全屏蔽</li>
+<li>服务：下层为上层提供的功能调用</li>
+</ul>
+<h3 id="分层的基本原则："><a href="#分层的基本原则：" class="headerlink" title="分层的基本原则："></a>分层的基本原则：</h3><ul>
+<li>各层相互<strong>独立</strong>，每层只实现一种相对独立的功能</li>
+<li>各层之间<strong>界面自然清晰</strong>，相互交流尽可能少</li>
+<li>结构上可分割，<strong>每层都采用最合适的技术来实现</strong></li>
+<li>保持上下层独立性，<strong>上层单向使用下层提供的服务</strong></li>
+<li>分层结构能够促进标准化工作</li>
+</ul>
+<h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><p>7层的法定标准</p>
+<p>目的：支持异构网络系统的互联互通</p>
+<p>结构：</p>
 <ul>
-<li><p>时间复杂度和空间复杂度都是o（n）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> n = nums.length/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">            map.put(num, map.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(map.get(num) &gt; n) &#123;</span><br><span class="line">                <span class="keyword">return</span> num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>通信子网（数据通信）（中间系统）<ul>
+<li>1.物理层：在物理媒体上实现比特流的传输<ul>
+<li>定义接口特性</li>
+<li>定义传输模式：单工、半双工、双工</li>
+<li>定义传输速率</li>
+<li>比特同步</li>
+<li>比特编码</li>
+</ul>
+</li>
+<li>2.数据链路层：把网络层的数据报组装成帧<ul>
+<li>成帧：定义帧的开始和结束</li>
+<li>差错控制：帧错+位错</li>
+<li>流量控制</li>
+<li>访问/接入控制：控制对信道的访问</li>
+</ul>
+</li>
+<li>3.网络层<ul>
+<li>路由选择，选择最佳路径</li>
+<li>流量控制：协调速度</li>
+<li>差错控制：检查错误</li>
+<li>拥塞控制：宏观控制整个网络的拥塞状态</li>
+</ul>
 </li>
 </ul>
 </li>
-<li><p>最佳解法：摩尔投票</p>
-<ul>
-<li><p>空间复杂度为o（1）</p>
-</li>
-<li><p>具体思路为遍历数组，对两个不同的元素进行消去操作，最后剩下的元素即为出现次数超过一半的数</p>
-</li>
-<li><p>具体实现时使用的技巧为“投票”，将数组的第一个值记为众数，在遍历数组遇到相同值则计数器加1，否则计数器减一，计数器为0则代表前面的数值被全部消去，将下一个值再次记为众数，重复该过程，最后得到的即为众数</p>
-</li>
-<li><p>需要注意的是该数组中必须存在超过半数的众数，否则无法找到众数</p>
-</li>
-<li><p>可以通过多遍历一次的方法来进行验证</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> answer=nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(count==<span class="number">0</span>)&#123;</span><br><span class="line">                answer = num;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(answer == num)&#123;</span><br><span class="line">                count = count + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                count = count - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(answer==num)&#123;</span><br><span class="line">                sum++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(sum &gt; n)&#123;</span><br><span class="line">                <span class="keyword">return</span> answer;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">// 无答案</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>4.传输层：负责主机中两个进程的通信，功能：可靠传输、不可靠传输，差错控制，流量控制，复用分用</li>
+<li>资源子网（数据处理）<ul>
+<li>5.会话层：向表示层提供建立连接并有序地传输数据<ul>
+<li>建立，管理，终止会话</li>
+<li>插入校验点用来恢复通信</li>
 </ul>
 </li>
+<li>6.表示层：处理两个通信系统中交换信息的表示方式<ul>
+<li>数据格式变换</li>
+<li>数据加密解密</li>
+<li>数据压缩与恢复</li>
+</ul>
+</li>
+<li>7.应用层：产生网络交互的应用</li>
+</ul>
+</li>
+</ul>
+<h2 id="5层参考模型"><a href="#5层参考模型" class="headerlink" title="5层参考模型"></a>5层参考模型</h2><ul>
+<li>应用层：支持各种网络应用（FTP、SMTP、HTTP）</li>
+<li>传输层：进程-进程的数据传输（TCP、UDP）</li>
+<li>网络层：源主机到目的主机的数据分组路由与转发（IP、ICMP、OSPF）</li>
+<li>数据链路层：把网络层传下来的数据报组装成帧（Ethernet、PPP）</li>
+<li>比特传输</li>
+</ul>
+<h2 id="TCP-IP参考模型"><a href="#TCP-IP参考模型" class="headerlink" title="TCP/IP参考模型"></a>TCP/IP参考模型</h2><ul>
+<li>应用层（HTTP/FTP/DNS）</li>
+<li>传输层（TCP/UDP）</li>
+<li>网际层（IP）</li>
+<li>网络接口层（Ethernet/ATM/Frame Relay）</li>
 </ul>
  
       <!-- reward -->
@@ -293,12 +251,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2039.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%883%EF%BC%89%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
 
     </footer>
   </div>
@@ -306,19 +264,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%884%EF%BC%89%E7%89%A9%E7%90%86%E5%B1%82/" class="article-nav-link">
+      <a href="/2020/12/01/%E5%89%91%E6%8C%87%20Offer%2018.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            计算机网络（4）物理层
+            剑指 Offer 18. 删除链表的节点
           
         </div>
       </a>
     
     
-      <a href="/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2032%20-%20II.%20%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%20II/" class="article-nav-link">
+      <a href="/2020/11/30/%E5%89%91%E6%8C%87%20Offer%2014-%20II.%20%E5%89%AA%E7%BB%B3%E5%AD%90%20II/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">剑指 Offer 32 - II. 从上到下打印二叉树 II</div>
+        <div class="article-nav-title">剑指 Offer 14- II. 剪绳子 II</div>
       </a>
     
   </nav>

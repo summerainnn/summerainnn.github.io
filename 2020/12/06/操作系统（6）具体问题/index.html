@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    操作系统（四）进程 |  summerain
+    操作系统（6）具体问题 |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-操作系统（四）进程"
+  id="post-操作系统（6）具体问题"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,15 +55,15 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  操作系统（四）进程
+  操作系统（6）具体问题
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/11/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89%E8%BF%9B%E7%A8%8B/" class="article-date">
-  <time datetime="2020-11-26T01:47:26.000Z" itemprop="datePublished">2020-11-26</time>
+      <a href="/2020/12/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%886%EF%BC%89%E5%85%B7%E4%BD%93%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2020-12-06T13:15:50.000Z" itemprop="datePublished">2020-12-06</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.9k</span>
+            <span class="post-count">1.1k</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">6 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
@@ -98,141 +98,28 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="一、进程的定义"><a href="#一、进程的定义" class="headerlink" title="一、进程的定义"></a>一、进程的定义</h2><p>程序段、数据段、PCB三部分组成了进程实体，PCB是进程存在的唯一标志，用来描述进程的各种信息。</p>
-<h3 id="典型定义："><a href="#典型定义：" class="headerlink" title="典型定义："></a>典型定义：</h3><p>进程是程序的一次执行过程</p>
-<p>进程是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位。</p>
-<h2 id="二、进程的组成"><a href="#二、进程的组成" class="headerlink" title="二、进程的组成"></a>二、进程的组成</h2><ul>
-<li><h3 id="PCB："><a href="#PCB：" class="headerlink" title="PCB："></a>PCB：</h3><ul>
-<li>进程描述信息：进程标识符PID、用户标识符UID</li>
-<li>进程控制和管理信息：进程当前状态、进程优先级</li>
-<li>资源分配清单：程序段指针、数据段指针、键盘、鼠标</li>
-<li>处理机相关信息：各种寄存器值</li>
-</ul>
-</li>
-<li><h3 id="程序段："><a href="#程序段：" class="headerlink" title="程序段："></a>程序段：</h3><ul>
-<li>存放要执行的代码</li>
-</ul>
-</li>
-<li><h3 id="数据段："><a href="#数据段：" class="headerlink" title="数据段："></a>数据段：</h3><ul>
-<li>存放程序运行过程中处理的各种数据</li>
-</ul>
-</li>
-</ul>
-<h2 id="三、进程的组织"><a href="#三、进程的组织" class="headerlink" title="三、进程的组织"></a>三、进程的组织</h2><p>多个进程之间的组织方式问题</p>
-<ul>
-<li><h3 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h3><ul>
-<li>按照进程状态将PCB分为多个队列<ul>
-<li>执行指针-&gt;当前处于运行态的进程（单CPU中，只有一个进程在同一时刻运行）</li>
-<li>就绪队列指针-&gt;处于就绪态的进程（为一个队列，优先级高的在前）</li>
-<li>阻塞队列指针-&gt;处于阻塞态的进程（可能有多个阻塞队列）</li>
-</ul>
-</li>
-<li>操作系统持有指向各个队列的指针</li>
-</ul>
-</li>
-<li><h3 id="索引方式"><a href="#索引方式" class="headerlink" title="索引方式"></a>索引方式</h3><ul>
-<li>根据进程状态的不同，建立几张索引表</li>
-<li>操作系统持有指向各个索引表的指针</li>
-</ul>
-</li>
-</ul>
-<h2 id="四、进程的特征"><a href="#四、进程的特征" class="headerlink" title="四、进程的特征"></a>四、进程的特征</h2><ol>
-<li>动态性：进程是动态的、变化的、消亡的</li>
-<li>并发性：内存中有多个进程实体，各进程可并发执行</li>
-<li>独立性：进程是能独立运行、独立获得资源、独立接受调度的基本单位</li>
-<li>异步性：并发执行的进程的结果的完成速度的不确定性，操作系统需要提供“进程同步机制”来解决异步问题</li>
-<li>结构性：每个进程都配备一个PCB，结构上由数据段、代码段、PCB组成</li>
-</ol>
-<h2 id="五、进程的状态"><a href="#五、进程的状态" class="headerlink" title="五、进程的状态"></a>五、进程的状态</h2><h3 id="1-三种基本状态："><a href="#1-三种基本状态：" class="headerlink" title="1. 三种基本状态："></a>1. 三种基本状态：</h3><ul>
-<li>运行态：占用CPU<ul>
-<li>CPU✅其它所需资源✅</li>
-</ul>
-</li>
-<li>就绪态：可以运行，但CPU被其它进程占用<ul>
-<li>CPU❌其它所需资源✅</li>
-</ul>
-</li>
-<li>阻塞态：等待某一事件的完成而暂时无法运行<ul>
-<li>CPU❌其它所需资源❌</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-另外两种状态："><a href="#2-另外两种状态：" class="headerlink" title="2.另外两种状态："></a>2.另外两种状态：</h3><ul>
-<li>创建态：操作系统为进程分配资源、初始化PCB</li>
-<li>终止态：进程从操作系统中撤销，操作系统回收进程资源，撤销PCB</li>
-</ul>
-<h3 id="3-进程的状态转换"><a href="#3-进程的状态转换" class="headerlink" title="3.进程的状态转换"></a>3.进程的状态转换</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gl2d2mq7nvj31go0nugqd.jpg" alt="image-20201126102303056"></p>
-<p>注意：运行态-&gt;阻塞态是进程自身的主动行为</p>
-<p>​           阻塞态-&gt;就绪态是被动的，阻塞态不能直接转换为运行态</p>
-<h2 id="六、进程控制"><a href="#六、进程控制" class="headerlink" title="六、进程控制"></a>六、进程控制</h2><h3 id="1-实现的方式："><a href="#1-实现的方式：" class="headerlink" title="1.实现的方式："></a>1.实现的方式：</h3><p>用原语来实现进程的控制，其特点是执行期间不允许中断（原子操作），可以保证进程转换时PCB不会发生混乱（保证进程转换的过程完整发生，而不被其它中断打断，原语运行在核心态中，采用“关中断指令”和“开中断指令”，权限极大是核心态下执行的特权指令）</p>
-<h3 id="2-控制的内容："><a href="#2-控制的内容：" class="headerlink" title="2.控制的内容："></a>2.控制的内容：</h3><ul>
-<li>更新PCB中的信息</li>
-<li>将PCB插入合适的队列</li>
-<li>分配/回收资源</li>
-</ul>
-<h2 id="七、进程通信"><a href="#七、进程通信" class="headerlink" title="七、进程通信"></a>七、进程通信</h2><p>进程间的信息交换</p>
-<h3 id="1-共享存储"><a href="#1-共享存储" class="headerlink" title="1. 共享存储"></a>1. 共享存储</h3><p>两个进程对共享空间的访问必须是<strong>互斥</strong>的（操作系统只负责提供共享空间和同步互斥工具）</p>
-<ul>
-<li>基于数据结构的共享<ul>
-<li>速度慢、限制多，是一种低级通信方式</li>
-</ul>
-</li>
-<li>基于储存区的共享<ul>
-<li>数据的形式和存放位置都由进程控制，速度更快，是一种高级通信方式</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-管道通信"><a href="#2-管道通信" class="headerlink" title="2.管道通信"></a>2.管道通信</h3><p>在内存中开辟一个大小固定的缓存区</p>
-<ul>
-<li>管道只能采用<strong>半双工</strong>通信，某一时间段只能实现单向的传输，要实现双向同时通信，需要两个管道</li>
-<li>各进程<strong>互斥</strong>地形式访问管道</li>
-<li>数据以字符流的形式写入管道，当管道写满时，写进程的write()将被阻塞，等待读进程。当读进程将数据全部取走后，管道变空，此时读进程的read()将被阻塞</li>
-<li>如果<strong>没写满，就不允许读</strong>，如果<strong>没读空，就不允许写</strong></li>
-<li>数据一旦被读出，就从管道中被抛弃，这就意味着读<strong>进程最多只能有一个</strong>，否则可能会有读错数据的情况。</li>
-</ul>
-<h3 id="3-消息传递"><a href="#3-消息传递" class="headerlink" title="3.消息传递"></a>3.消息传递</h3><p>进程间的数据交换以<strong>格式化的消息</strong>为单位。通过操作系统提供的“发消息/接受消息”两个<strong>原语</strong>进行数据交换</p>
-<p>消息由<strong>消息头</strong>和<strong>消息体</strong>组成：消息头包括发送进程ID、接受进程ID、消息类型、消息长度等格式化信息（计网中的“报文”就是一种<strong>格式化</strong>的消息）</p>
-<ul>
-<li>直接通信方式：消息直接挂到接收进程的消息缓冲队列上</li>
-<li>间接通信方式：消息先发送到中间实体（信箱）中，也称信箱通信方式</li>
-</ul>
-<h2 id="八、进程互斥"><a href="#八、进程互斥" class="headerlink" title="八、进程互斥"></a>八、进程互斥</h2><p>实现对临界资源的互斥访问</p>
-<ul>
-<li>空闲让进</li>
-<li>忙则等待</li>
-<li>有限等待</li>
-<li>让权等待</li>
-</ul>
-<p>软件实现方法：</p>
-<ul>
-<li>单标志法</li>
-<li>双标志先检查</li>
-<li>双标志后检查</li>
-<li>Peterson算法</li>
-</ul>
-<h3 id="Peterson算法："><a href="#Peterson算法：" class="headerlink" title="Peterson算法："></a>Peterson算法：</h3><p>结合双标志后检查法和单标志法，定义一个布尔数组和一个轮转标志，同时检查这两个标志，优先让对方先使用临界资源</p>
-<hr>
-<p>硬件实现方法：</p>
-<ul>
-<li>中断屏蔽法</li>
-<li>TestAndSet</li>
-<li>Swap指令</li>
-</ul>
-<h3 id="TestAndSet指令"><a href="#TestAndSet指令" class="headerlink" title="TestAndSet指令"></a>TestAndSet指令</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">TestAndSet</span><span class="params">(<span class="keyword">bool</span> *lock)</span></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> old;</span><br><span class="line">    old = *lock;</span><br><span class="line">    *lock = <span class="literal">true</span>; <span class="comment">// 上锁</span></span><br><span class="line">    <span class="keyword">return</span> old; <span class="comment">// 返回上锁前的状态</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TSL指令实现</span></span><br><span class="line"><span class="keyword">while</span>(TestAndSet(&amp;lock));<span class="comment">// 不停上锁，直到发现某一次临界资源并未被上锁</span></span><br><span class="line"><span class="comment">/**/</span></span><br><span class="line">lock = <span class="literal">false</span>; <span class="comment">// 解锁</span></span><br></pre></td></tr></table></figure>
+  <h1 id="生产者和消费者问题"><a href="#生产者和消费者问题" class="headerlink" title="生产者和消费者问题"></a>生产者和消费者问题</h1><h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>有一个进程可以生产一种资源（生产者程序），另一种程序需要消耗这种资源才能执行，使用一个有限的缓存区来保存这种资源</p>
+<h2 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h2><p>生产者和消费者对于缓存区的使用必须是互斥的，而且针对缓存区满和空这两种情况，生产者和消费者之间有两种先后执行的顺序，即两种同步关系（考虑资源为0时必须先执行生产者，资源为满时必须先执行消费者）</p>
+<h2 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">semaohore mutex &#x3D; 1</span><br><span class="line">semaohore empty &#x3D; n</span><br><span class="line">semaohore full &#x3D; 0</span><br><span class="line">producer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		生产一个产品；</span><br><span class="line">		P(empty);</span><br><span class="line">		P(mutex);</span><br><span class="line">		把产品放入缓存区；</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(full)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">consumer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(full);</span><br><span class="line">		P(mutex);</span><br><span class="line">		从缓存区取出一个产品；</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(empty);</span><br><span class="line">		使用产品；</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Swap指令"><a href="#Swap指令" class="headerlink" title="Swap指令"></a>Swap指令</h3><p>交换old和lock的值来实现锁</p>
-<h2 id="信号量机制"><a href="#信号量机制" class="headerlink" title="信号量机制"></a>信号量机制</h2><p>用户通过操作系统提供的原语来对信号量进行操作，从而实现进程互斥和同步</p>
-<p>一对原语：wait和signal，简写为P、V操作，P（wait，代表需要别人等等，自己要使用了，所以减一）就是将信号量减一，V（signal）就是将信号量加一</p>
-<h3 id="整型信号量："><a href="#整型信号量：" class="headerlink" title="整型信号量："></a>整型信号量：</h3><p>用来表示系统中某种资源的数量（只能进行初始化、P操作和V操作）</p>
-<h3 id="记录型信号量："><a href="#记录型信号量：" class="headerlink" title="记录型信号量："></a>记录型信号量：</h3><p>整型存在忙等问题，用记录型数据结构表示信号量。可以阻塞进程（让权等待，不会忙等），同时用负数表示资源数，记录有进程在等待资源，维护一个等待队列，记录阻塞进程。</p>
-<h3 id="实现进程互斥："><a href="#实现进程互斥：" class="headerlink" title="实现进程互斥："></a>实现进程互斥：</h3><p>设置互斥信号量mutex = 1</p>
-<p>进临界区前执行P（mutex）</p>
-<p>出临界区后执行V（mutex）</p>
-<h3 id="实现进程同步："><a href="#实现进程同步：" class="headerlink" title="实现进程同步："></a>实现进程同步：</h3><p>进程同步问题：让本来异步并发的进程互相配合，有序推进</p>
-<p>设置同步信号量S = 0</p>
-<p>在“前操作”之后执行V（S）：执行了加一，相当于有资源了，后续的代码即可执行</p>
-<p>在“后操作”之前执行P（S）：只有当S执行了加一，才能执行后续的操作，即前操作必须先执行完才可执行后操作</p>
-<h4 id="拓展：实现前驱关系"><a href="#拓展：实现前驱关系" class="headerlink" title="拓展：实现前驱关系"></a>拓展：实现前驱关系</h4><p>对于多个代码的前驱关系，需要多个信号量即可</p>
+
+
+<h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h2><p>实现互斥的P操作一定要在实现同步的P操作之后，否则可能导致死锁（考虑缓存区为双方必须的，但是当一个进程占用后，缓存区确没有自己想要的资源，必须要对方提供，但是自己已经占用了缓存区，对方无法使用缓存区，也就无法为你提供），即互斥的操作可能导致了同步的操作没办法再同步。即互斥后接同步中的后操作，而互斥操作后占用了同步中的先操作的临界区，导致同步的先操作无法完成</p>
+<p>V操作不会导致阻塞，所以两个V操作顺序可以交换</p>
+<hr>
+<h1 id="吸烟者问题"><a href="#吸烟者问题" class="headerlink" title="吸烟者问题"></a>吸烟者问题</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>与生产者消费者类似，多了一个轮流的操作</p>
+<h2 id="分析与解决："><a href="#分析与解决：" class="headerlink" title="分析与解决："></a>分析与解决：</h2><p>多设置一个i，在每次生产后都对i加1取余，通过判断i的值来确定轮到谁进行操作</p>
+<hr>
+<h1 id="读者和写者问题"><a href="#读者和写者问题" class="headerlink" title="读者和写者问题"></a>读者和写者问题</h1><h2 id="题目：-1"><a href="#题目：-1" class="headerlink" title="题目："></a>题目：</h2><p>读者可以一起进行读文件的操作，写者必须单独占用缓存区</p>
+<h2 id="分析：-1"><a href="#分析：-1" class="headerlink" title="分析："></a>分析：</h2><p>对缓存区上锁是很直接的想法，关键是如果仅仅是上锁，会导致读者不能同时进行读操作，所以需要增加一个count来进行计数，记录当前的读者数量，只有当读者数量为0时，才需要进行上锁的操作。</p>
+<p>上述操作存在的问题时count的改变和上锁的动作无法保证连续执行，因此需要增加一个新的互斥量来保证对count的改变和上锁是连续的</p>
+<h2 id="解答：-1"><a href="#解答：-1" class="headerlink" title="解答："></a>解答：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">semaphore rw &#x3D; 1;</span><br><span class="line">int count &#x3D; 0;</span><br><span class="line">semaphore mutex &#x3D; 1;</span><br><span class="line">semaphore w &#x3D; 1; &#x2F;&#x2F; 实现写优先,并不是绝对优先，而是相对于后来的读者有优先权，也可以称为读写公平</span><br><span class="line">writer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(w);</span><br><span class="line">		P(rw);</span><br><span class="line">		写文件；</span><br><span class="line">		V(rw);</span><br><span class="line">		V(w);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">reader()&#123;</span><br><span class="line">	P(w);</span><br><span class="line">	P(mutex);</span><br><span class="line">	if(count &#x3D;&#x3D; 0)&#123;</span><br><span class="line">		P(rw);</span><br><span class="line">	&#125;</span><br><span class="line">	count++;</span><br><span class="line">	V(mutex);</span><br><span class="line">	V(w);</span><br><span class="line">	读文件；</span><br><span class="line">	P(mutex);</span><br><span class="line">	count--;</span><br><span class="line">	if(count &#x3D;&#x3D; 0)&#123;</span><br><span class="line">		V(rw);</span><br><span class="line">	&#125;</span><br><span class="line">	V(mutex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意：-1"><a href="#注意：-1" class="headerlink" title="注意："></a>注意：</h2><p>增加了count计数来判断当前的读者数量，以实现读者的同时访问</p>
+<p>此方法默认了读者的优先级更高，因为只要有读进程还在读，那么文件区就被上锁，写者无法访问，但是读者是可以访问的，新的读者进行访问，相当于延长了读者的时间，除非没有新的读者，且全部读者完成了读操作，此时写者才能进行写操作。可以增加一个信号量w来实现写优先，即在写之前对w进行占用，在对读者进行count++时也进行占用和释放。会发生当写进程被读者的rw阻塞时，新的读进程无法顺利完成count++的操作，即新的读进程无法加入读者行列，只能阻塞等待写进程完成后结束w的占用。实现了写的优先</p>
+<hr>
+<h1 id="哲学家进餐问题"><a href="#哲学家进餐问题" class="headerlink" title="哲学家进餐问题"></a>哲学家进餐问题</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>每个进程需要多个不同的资源</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>每个进程都持有别人需要的资源，都无法完成操作但却同时占用了资源，会形成死锁</p>
  
       <!-- reward -->
       
@@ -303,7 +190,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89%E8%BF%9B%E7%A8%8B/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/12/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%886%EF%BC%89%E5%85%B7%E4%BD%93%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -316,19 +203,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/11/26/Java%EF%BC%88%E4%B8%80%EF%BC%89%E6%8E%A5%E5%8F%A3/" class="article-nav-link">
+      <a href="/2020/12/13/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Java（一）接口
+            密码学
           
         </div>
       </a>
     
     
-      <a href="/2020/11/25/%E5%89%91%E6%8C%87%20Offer%2013.%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/" class="article-nav-link">
+      <a href="/2020/12/02/%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91%E5%92%8Chexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">剑指 Offer 13. 机器人的运动范围</div>
+        <div class="article-nav-title">使用阿里云和hexo搭建个人博客</div>
       </a>
     
   </nav>

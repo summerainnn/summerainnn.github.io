@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    操作系统（一）概念和定义 |  summerain
+    操作系统（5）调度算法 |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-操作系统（一）概念和定义"
+  id="post-操作系统（5）调度算法"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,15 +55,15 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  操作系统（一）概念和定义
+  操作系统（5）调度算法
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E5%BF%B5%E5%92%8C%E5%AE%9A%E4%B9%89/" class="article-date">
-  <time datetime="2020-11-25T10:23:19.000Z" itemprop="datePublished">2020-11-25</time>
+      <a href="/2020/11/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%885%EF%BC%89%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2020-11-29T13:44:25.000Z" itemprop="datePublished">2020-11-29</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">351</span>
+            <span class="post-count">266</span>
         </span>
     </span>
 
@@ -98,41 +98,28 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="操作系统的概念和定义"><a href="#操作系统的概念和定义" class="headerlink" title="操作系统的概念和定义"></a>操作系统的概念和定义</h1><h2 id="一、操作系统的功能和目标："><a href="#一、操作系统的功能和目标：" class="headerlink" title="一、操作系统的功能和目标："></a>一、操作系统的功能和目标：</h2><h3 id="1-作为系统资源的管理者"><a href="#1-作为系统资源的管理者" class="headerlink" title="1.作为系统资源的管理者"></a>1.作为系统资源的管理者</h3><ul>
-<li>提供的功能<ul>
-<li>处理机管理</li>
-<li>储存器管理</li>
-<li>文件管理</li>
-<li>设备管理</li>
-</ul>
-</li>
-<li>目标： 安全、高效</li>
-</ul>
-<h3 id="2-作为用户和计算机硬件之间的接口"><a href="#2-作为用户和计算机硬件之间的接口" class="headerlink" title="2.作为用户和计算机硬件之间的接口"></a>2.作为用户和计算机硬件之间的接口</h3><ul>
-<li>提供的功能<ul>
-<li>命令接口<ul>
-<li>联机命令接口：交互式命令接口（实时反馈）</li>
-<li>脱机命令接口：批处理命令接口（系列指令执行）</li>
-</ul>
-</li>
-<li>程序接口：系统调用（广义指令）</li>
-<li>CUI（图形用户界面）</li>
-</ul>
-</li>
-<li>目标：方便用户使用</li>
-</ul>
-<h3 id="3-实现对硬件机器的拓展"><a href="#3-实现对硬件机器的拓展" class="headerlink" title="3.实现对硬件机器的拓展"></a>3.实现对硬件机器的拓展</h3><h2 id="二、操作系统的特征"><a href="#二、操作系统的特征" class="headerlink" title="二、操作系统的特征"></a>二、操作系统的特征</h2><h3 id="1-并发"><a href="#1-并发" class="headerlink" title="1.并发"></a>1.并发</h3><p>微观上交替，宏观上同时</p>
-<h3 id="2-共享"><a href="#2-共享" class="headerlink" title="2.共享"></a>2.共享</h3><ul>
-<li>互斥共享：一个时间段只允许一个进程访问该资源</li>
-<li>同时共享：允许一个时间段内多个进程“同时”对它们访问（宏观上同时）</li>
-</ul>
-<h3 id="3-虚拟"><a href="#3-虚拟" class="headerlink" title="3.虚拟"></a>3.虚拟</h3><p>把一个物理上的实体变为若干个逻辑上的对应物物理实体是实际存在的，而逻辑对应物是用户感受到的</p>
+  <h1 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h1><h2 id="1-FCFS（First-Come-First-Serve）"><a href="#1-FCFS（First-Come-First-Serve）" class="headerlink" title="1.FCFS（First Come First Serve）"></a>1.FCFS（First Come First Serve）</h2><p>先到先服务，非抢占式</p>
 <ul>
-<li>空分复用技术（虚拟储存技术）</li>
-<li>时分复用技术（虚拟处理器）</li>
+<li>优点：算法简单易实现，公平</li>
+<li>缺点：对长作业有利，对短作业不利</li>
 </ul>
-<h3 id="4-异步"><a href="#4-异步" class="headerlink" title="4.异步"></a>4.异步</h3><p>允许多个程序并发执行，由于资源有限，进程执行不是一贯到底的，而是走走停停，以不可预知的速度向前推进</p>
- 
+<h2 id="2-SJF（Shortest-Job-First）"><a href="#2-SJF（Shortest-Job-First）" class="headerlink" title="2.SJF（Shortest Job First）"></a>2.SJF（Shortest Job First）</h2><p>短进程先进性，分为抢占式和非抢占式</p>
+<ul>
+<li>最短的平均等待时间，平均周转时间</li>
+<li>对短作业有利，长作业不利，可能产生饥饿</li>
+</ul>
+<h2 id="3-HRRN（Highest-Response-Ration-Next"><a href="#3-HRRN（Highest-Response-Ration-Next" class="headerlink" title="3.HRRN（Highest Response Ration Next)"></a>3.HRRN（Highest Response Ration Next)</h2><p>每次调度时计算响应比（$\frac{等待时间+要求服务时间}{要求服务时间}$），选择响应比最高的进行服务，一般为非抢占式</p>
+<h2 id="4-时间片轮转（RR，Round-Robin）"><a href="#4-时间片轮转（RR，Round-Robin）" class="headerlink" title="4.时间片轮转（RR，Round-Robin）"></a>4.时间片轮转（RR，Round-Robin）</h2><p>公平的轮流为各个进程服务，抢占式</p>
+<ul>
+<li>优点：公平，适用于分时操作系统</li>
+<li>缺点：进程切换导致有一定开销，且不区分紧急程度</li>
+</ul>
+<h2 id="5-优先级调服算法"><a href="#5-优先级调服算法" class="headerlink" title="5.优先级调服算法"></a>5.优先级调服算法</h2><p>调度时选择最高优先级的活动，非抢占式和抢占式</p>
+<ul>
+<li>优点：适用于实时操作系统</li>
+<li>缺点：可能导致饥饿</li>
+</ul>
+<h2 id="6-多级反馈队列调度算法"><a href="#6-多级反馈队列调度算法" class="headerlink" title="6.多级反馈队列调度算法"></a>6.多级反馈队列调度算法</h2> 
       <!-- reward -->
       
       <div id="reword-out">
@@ -202,7 +189,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E5%BF%B5%E5%92%8C%E5%AE%9A%E4%B9%89/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%885%EF%BC%89%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -215,19 +202,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/11/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/" class="article-nav-link">
+      <a href="/2020/11/30/%E5%89%91%E6%8C%87%20Offer%2015.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            操作系统（二）中断和异常
+            剑指 Offer 15. 二进制中1的个数
           
         </div>
       </a>
     
     
-      <a href="/2020/11/24/%E5%89%91%E6%8C%87%20Offer%EF%BC%9A12.%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" class="article-nav-link">
+      <a href="/2020/11/26/Java%EF%BC%882%EF%BC%89%E5%A4%9A%E6%80%81/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">剑指 Offer：12.矩阵中的路径</div>
+        <div class="article-nav-title">Java（2）多态</div>
       </a>
     
   </nav>

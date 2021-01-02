@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    操作系统（五）调度算法 |  summerain
+    计算机网络（2）性能指标 |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-操作系统（五）调度算法"
+  id="post-计算机网络（2）性能指标"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,18 +55,18 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  操作系统（五）调度算法
+  计算机网络（2）性能指标
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/11/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%94%EF%BC%89%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" class="article-date">
-  <time datetime="2020-11-29T13:44:25.000Z" itemprop="datePublished">2020-11-29</time>
+      <a href="/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%882%EF%BC%89%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/" class="article-date">
+  <time datetime="2020-11-25T12:32:40.000Z" itemprop="datePublished">2020-11-25</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
   </div>
   
 <div class="word_count">
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">266</span>
+            <span class="post-count">571</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -98,28 +98,33 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h1><h2 id="1-FCFS（First-Come-First-Serve）"><a href="#1-FCFS（First-Come-First-Serve）" class="headerlink" title="1.FCFS（First Come First Serve）"></a>1.FCFS（First Come First Serve）</h2><p>先到先服务，非抢占式</p>
+  <h1 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h1><h2 id="一、速率"><a href="#一、速率" class="headerlink" title="一、速率"></a>一、速率</h2><p>速率即数据率或称数据传输率或者比特率（比特：1/0 位）</p>
+<p><strong><em>区分速率的单位和储存容量的单位</em></strong>     (1Byte = 8bit)<br>$$<br>\begin{aligned}<br>速率：&amp;1Tb/s &amp;=&amp; 10^3Gb &amp;=&amp; 10^6Mb/s &amp;=&amp; 10^9kb/s &amp;=&amp; 10^{12}b/s<br>\储存容量：&amp;1TB &amp;=&amp; 2^{10}GB &amp;=&amp; 2^{20}MB &amp;=&amp; 2^{30}KB &amp;=&amp; 2^{40}B \quad\quad = 2^{40}*8b<br>\end{aligned}<br>$$</p>
+<h2 id="二、带宽"><a href="#二、带宽" class="headerlink" title="二、带宽"></a>二、带宽</h2><p>“带宽”原本指，某个信号具有的频带宽度，即最高频率与最低频率之差，单位是赫兹（Hz）</p>
+<p>计算机网络中，带宽用来表示网络的通信线路传送数据的能力，通常是指单位时间内从网络中的某一点到另一点所能通过的<strong>最高数据率</strong>，单位是“比特每秒”</p>
+<p>指的是网络设备所支持的最高速度，因为信号在链路中的传播速度是一样的，都是光速，不同的只是设备单位时间可以发出的比特的个数</p>
+<h2 id="三、吞吐量"><a href="#三、吞吐量" class="headerlink" title="三、吞吐量"></a>三、吞吐量</h2><p>表示在单位时间内通过某个网络（或信道、接口）的数据量。单位“比特每秒”</p>
+<p>吞吐量和带宽的区别：吞吐量是带宽的实际情况，带宽是吞吐量的理论上限</p>
+<h2 id="四、时延"><a href="#四、时延" class="headerlink" title="四、时延"></a>四、时延</h2><p>指数据从网络的一端传送到另一端所需的时间，单位是秒</p>
 <ul>
-<li>优点：算法简单易实现，公平</li>
-<li>缺点：对长作业有利，对短作业不利</li>
+<li>发送时延:$\frac{数据长度}{信道带宽（发送速率）}$</li>
+<li> 传播时延：$\frac{信道长度}{电磁波在信道上的传播速率}$</li>
+<li>排队时延：等待输出/输入链路可用</li>
+<li>处理时延：检错，找出口</li>
 </ul>
-<h2 id="2-SJF（Shortest-Job-First）"><a href="#2-SJF（Shortest-Job-First）" class="headerlink" title="2.SJF（Shortest Job First）"></a>2.SJF（Shortest Job First）</h2><p>短进程先进性，分为抢占式和非抢占式</p>
+<h2 id="五、时延带宽积"><a href="#五、时延带宽积" class="headerlink" title="五、时延带宽积"></a>五、时延带宽积</h2><p>时延带宽积 = 传播时延 X 带宽        单位：bit</p>
+<p>又称<strong>比特为单位的链路长度</strong>，即<strong>某段链路现在有多少比特</strong></p>
+<h2 id="六、往返时延RTT"><a href="#六、往返时延RTT" class="headerlink" title="六、往返时延RTT"></a>六、往返时延RTT</h2><p>从发送方发送数据开始，到接收方收到接收方的确认（接收方收到数据后立即发送确认）总共经历的时延</p>
+<p>RTT包括</p>
 <ul>
-<li>最短的平均等待时间，平均周转时间</li>
-<li>对短作业有利，长作业不利，可能产生饥饿</li>
+<li>往返时延 = 传播时延 X 2</li>
+<li>末端处理时间</li>
 </ul>
-<h2 id="3-HRRN（Highest-Response-Ration-Next"><a href="#3-HRRN（Highest-Response-Ration-Next" class="headerlink" title="3.HRRN（Highest Response Ration Next)"></a>3.HRRN（Highest Response Ration Next)</h2><p>每次调度时计算响应比（$\frac{等待时间+要求服务时间}{要求服务时间}$），选择响应比最高的进行服务，一般为非抢占式</p>
-<h2 id="4-时间片轮转（RR，Round-Robin）"><a href="#4-时间片轮转（RR，Round-Robin）" class="headerlink" title="4.时间片轮转（RR，Round-Robin）"></a>4.时间片轮转（RR，Round-Robin）</h2><p>公平的轮流为各个进程服务，抢占式</p>
-<ul>
-<li>优点：公平，适用于分时操作系统</li>
-<li>缺点：进程切换导致有一定开销，且不区分紧急程度</li>
+<h2 id="七、利用率"><a href="#七、利用率" class="headerlink" title="七、利用率"></a>七、利用率</h2><ul>
+<li>信道利用率：$\frac{有数据通过时间}{（有+无）数据通过时间}$</li>
+<li>网络利用率：信道利用率</li>
 </ul>
-<h2 id="5-优先级调服算法"><a href="#5-优先级调服算法" class="headerlink" title="5.优先级调服算法"></a>5.优先级调服算法</h2><p>调度时选择最高优先级的活动，非抢占式和抢占式</p>
-<ul>
-<li>优点：适用于实时操作系统</li>
-<li>缺点：可能导致饥饿</li>
-</ul>
-<h2 id="6-多级反馈队列调度算法"><a href="#6-多级反馈队列调度算法" class="headerlink" title="6.多级反馈队列调度算法"></a>6.多级反馈队列调度算法</h2> 
+ 
       <!-- reward -->
       
       <div id="reword-out">
@@ -189,12 +194,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%94%EF%BC%89%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%882%EF%BC%89%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
 
     </footer>
   </div>
@@ -202,19 +207,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/11/30/%E5%89%91%E6%8C%87%20Offer%2015.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/" class="article-nav-link">
+      <a href="/2020/11/25/%E5%89%91%E6%8C%87%20Offer%2013.%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            剑指 Offer 15. 二进制中1的个数
+            剑指 Offer 13. 机器人的运动范围
           
         </div>
       </a>
     
     
-      <a href="/2020/11/26/Java%EF%BC%88%E4%BA%8C%EF%BC%89%E5%A4%9A%E6%80%81/" class="article-nav-link">
+      <a href="/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%881%EF%BC%89%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java（二）多态</div>
+        <div class="article-nav-title">计算机网络（1）基本概念</div>
       </a>
     
   </nav>
