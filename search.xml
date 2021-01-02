@@ -673,11 +673,6 @@
       </tags>
   </entry>
   <entry>
-    <title>操作系统（六）进程</title>
-    <url>/2020/12/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%85%AD%EF%BC%89%E8%BF%9B%E7%A8%8B/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>计算机网络（一）基本概念</title>
     <url>/2020/11/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<h1 id="计算机网络基础"><a href="#计算机网络基础" class="headerlink" title="计算机网络基础"></a>计算机网络基础</h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>将分散的、具有独立功能的计算机系统，通过通信设备与线路连接起来，由功能完善的软件实现资源共享和信息传递的系统</p>
@@ -1011,10 +1006,36 @@
 <li>有限等待</li>
 <li>让权等待</li>
 </ul>
+<p>软件实现方法：</p>
+<ul>
+<li>单标志法</li>
+<li>双标志先检查</li>
+<li>双标志后检查</li>
+<li>Peterson算法</li>
+</ul>
 <h3 id="Peterson算法："><a href="#Peterson算法：" class="headerlink" title="Peterson算法："></a>Peterson算法：</h3><p>结合双标志后检查法和单标志法，定义一个布尔数组和一个轮转标志，同时检查这两个标志，优先让对方先使用临界资源</p>
+<hr>
+<p>硬件实现方法：</p>
+<ul>
+<li>中断屏蔽法</li>
+<li>TestAndSet</li>
+<li>Swap指令</li>
+</ul>
 <h3 id="TestAndSet指令"><a href="#TestAndSet指令" class="headerlink" title="TestAndSet指令"></a>TestAndSet指令</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">TestAndSet</span><span class="params">(<span class="keyword">bool</span> *lock)</span></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> old;</span><br><span class="line">    old = *lock;</span><br><span class="line">    *lock = <span class="literal">true</span>; <span class="comment">// 上锁</span></span><br><span class="line">    <span class="keyword">return</span> old; <span class="comment">// 返回上锁前的状态</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TSL指令实现</span></span><br><span class="line"><span class="keyword">while</span>(TestAndSet(&amp;lock));<span class="comment">// 不停上锁，直到发现某一次临界资源并未被上锁</span></span><br><span class="line"><span class="comment">/**/</span></span><br><span class="line">lock = <span class="literal">false</span>; <span class="comment">// 解锁</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="Swap指令"><a href="#Swap指令" class="headerlink" title="Swap指令"></a>Swap指令</h3><p>交换old和lock的值来实现锁</p>
+<h2 id="信号量机制"><a href="#信号量机制" class="headerlink" title="信号量机制"></a>信号量机制</h2><p>用户通过操作系统提供的原语来对信号量进行操作，从而实现进程互斥和同步</p>
+<p>一对原语：wait和signal，简写为P、V操作，P（wait，代表需要别人等等，自己要使用了，所以减一）就是将信号量减一，V（signal）就是将信号量加一</p>
+<h3 id="整型信号量："><a href="#整型信号量：" class="headerlink" title="整型信号量："></a>整型信号量：</h3><p>用来表示系统中某种资源的数量（只能进行初始化、P操作和V操作）</p>
+<h3 id="记录型信号量："><a href="#记录型信号量：" class="headerlink" title="记录型信号量："></a>记录型信号量：</h3><p>整型存在忙等问题，用记录型数据结构表示信号量。可以阻塞进程（让权等待，不会忙等），同时用负数表示资源数，记录有进程在等待资源，维护一个等待队列，记录阻塞进程。</p>
+<h3 id="实现进程互斥："><a href="#实现进程互斥：" class="headerlink" title="实现进程互斥："></a>实现进程互斥：</h3><p>设置互斥信号量mutex = 1</p>
+<p>进临界区前执行P（mutex）</p>
+<p>出临界区后执行V（mutex）</p>
+<h3 id="实现进程同步："><a href="#实现进程同步：" class="headerlink" title="实现进程同步："></a>实现进程同步：</h3><p>进程同步问题：让本来异步并发的进程互相配合，有序推进</p>
+<p>设置同步信号量S = 0</p>
+<p>在“前操作”之后执行V（S）：执行了加一，相当于有资源了，后续的代码即可执行</p>
+<p>在“后操作”之前执行P（S）：只有当S执行了加一，才能执行后续的操作，即前操作必须先执行完才可执行后操作</p>
+<h4 id="拓展：实现前驱关系"><a href="#拓展：实现前驱关系" class="headerlink" title="拓展：实现前驱关系"></a>拓展：实现前驱关系</h4><p>对于多个代码的前驱关系，需要多个信号量即可</p>
 ]]></content>
       <categories>
         <category>操作系统</category>
@@ -1491,6 +1512,40 @@
       <tags>
         <tag>数组</tag>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统（六）具体问题</title>
+    <url>/2020/12/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%85%AD%EF%BC%89%E5%85%B7%E4%BD%93%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="生产者和消费者问题"><a href="#生产者和消费者问题" class="headerlink" title="生产者和消费者问题"></a>生产者和消费者问题</h1><h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>有一个进程可以生产一种资源（生产者程序），另一种程序需要消耗这种资源才能执行，使用一个有限的缓存区来保存这种资源</p>
+<h2 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h2><p>生产者和消费者对于缓存区的使用必须是互斥的，而且针对缓存区满和空这两种情况，生产者和消费者之间有两种先后执行的顺序，即两种同步关系（考虑资源为0时必须先执行生产者，资源为满时必须先执行消费者）</p>
+<h2 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">semaohore mutex &#x3D; 1</span><br><span class="line">semaohore empty &#x3D; n</span><br><span class="line">semaohore full &#x3D; 0</span><br><span class="line">producer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		生产一个产品；</span><br><span class="line">		P(empty);</span><br><span class="line">		P(mutex);</span><br><span class="line">		把产品放入缓存区；</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(full)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">consumer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(full);</span><br><span class="line">		P(mutex);</span><br><span class="line">		从缓存区取出一个产品；</span><br><span class="line">		V(mutex);</span><br><span class="line">		V(empty);</span><br><span class="line">		使用产品；</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h2><p>实现互斥的P操作一定要在实现同步的P操作之后，否则可能导致死锁（考虑缓存区为双方必须的，但是当一个进程占用后，缓存区确没有自己想要的资源，必须要对方提供，但是自己已经占用了缓存区，对方无法使用缓存区，也就无法为你提供），即互斥的操作可能导致了同步的操作没办法再同步。即互斥后接同步中的后操作，而互斥操作后占用了同步中的先操作的临界区，导致同步的先操作无法完成</p>
+<p>V操作不会导致阻塞，所以两个V操作顺序可以交换</p>
+<hr>
+<h1 id="吸烟者问题"><a href="#吸烟者问题" class="headerlink" title="吸烟者问题"></a>吸烟者问题</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>与生产者消费者类似，多了一个轮流的操作</p>
+<h2 id="分析与解决："><a href="#分析与解决：" class="headerlink" title="分析与解决："></a>分析与解决：</h2><p>多设置一个i，在每次生产后都对i加1取余，通过判断i的值来确定轮到谁进行操作</p>
+<hr>
+<h1 id="读者和写者问题"><a href="#读者和写者问题" class="headerlink" title="读者和写者问题"></a>读者和写者问题</h1><h2 id="题目：-1"><a href="#题目：-1" class="headerlink" title="题目："></a>题目：</h2><p>读者可以一起进行读文件的操作，写者必须单独占用缓存区</p>
+<h2 id="分析：-1"><a href="#分析：-1" class="headerlink" title="分析："></a>分析：</h2><p>对缓存区上锁是很直接的想法，关键是如果仅仅是上锁，会导致读者不能同时进行读操作，所以需要增加一个count来进行计数，记录当前的读者数量，只有当读者数量为0时，才需要进行上锁的操作。</p>
+<p>上述操作存在的问题时count的改变和上锁的动作无法保证连续执行，因此需要增加一个新的互斥量来保证对count的改变和上锁是连续的</p>
+<h2 id="解答：-1"><a href="#解答：-1" class="headerlink" title="解答："></a>解答：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">semaphore rw &#x3D; 1;</span><br><span class="line">int count &#x3D; 0;</span><br><span class="line">semaphore mutex &#x3D; 1;</span><br><span class="line">semaphore w &#x3D; 1; &#x2F;&#x2F; 实现写优先,并不是绝对优先，而是相对于后来的读者有优先权，也可以称为读写公平</span><br><span class="line">writer()&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		P(w);</span><br><span class="line">		P(rw);</span><br><span class="line">		写文件；</span><br><span class="line">		V(rw);</span><br><span class="line">		V(w);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">reader()&#123;</span><br><span class="line">	P(w);</span><br><span class="line">	P(mutex);</span><br><span class="line">	if(count &#x3D;&#x3D; 0)&#123;</span><br><span class="line">		P(rw);</span><br><span class="line">	&#125;</span><br><span class="line">	count++;</span><br><span class="line">	V(mutex);</span><br><span class="line">	V(w);</span><br><span class="line">	读文件；</span><br><span class="line">	P(mutex);</span><br><span class="line">	count--;</span><br><span class="line">	if(count &#x3D;&#x3D; 0)&#123;</span><br><span class="line">		V(rw);</span><br><span class="line">	&#125;</span><br><span class="line">	V(mutex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意：-1"><a href="#注意：-1" class="headerlink" title="注意："></a>注意：</h2><p>增加了count计数来判断当前的读者数量，以实现读者的同时访问</p>
+<p>此方法默认了读者的优先级更高，因为只要有读进程还在读，那么文件区就被上锁，写者无法访问，但是读者是可以访问的，新的读者进行访问，相当于延长了读者的时间，除非没有新的读者，且全部读者完成了读操作，此时写者才能进行写操作。可以增加一个信号量w来实现写优先，即在写之前对w进行占用，在对读者进行count++时也进行占用和释放。会发生当写进程被读者的rw阻塞时，新的读进程无法顺利完成count++的操作，即新的读进程无法加入读者行列，只能阻塞等待写进程完成后结束w的占用。实现了写的优先</p>
+<hr>
+<h1 id="哲学家进餐问题"><a href="#哲学家进餐问题" class="headerlink" title="哲学家进餐问题"></a>哲学家进餐问题</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>每个进程需要多个不同的资源</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>每个进程都持有别人需要的资源，都无法完成操作但却同时占用了资源，会形成死锁</p>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
 </search>
