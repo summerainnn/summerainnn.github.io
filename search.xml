@@ -1628,7 +1628,16 @@
 <h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p>将数据转化为<strong>数字信号</strong><br>数字数据(digtal data)通过 数字发送器(digit emitter) 转化为 数字信号(digtal signal)</p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9rgcc4xpj30o204e3z7.jpg" alt="image-20210102231954526"></p>
 <p>模拟数据(analog data)通过 PCM编码器(PCM coder) 转化为 数字信号 (digtal signal)</p>
-<p><img src="../../../Library/Application%20Support/typora-user-images/image-20210102232017666.png" alt="image-20210102232017666"></p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawpccr6ej30ni04eglv.jpg" alt="image-20210102232017666"></p>
+<h3 id="常见的导向性传输介质"><a href="#常见的导向性传输介质" class="headerlink" title="常见的导向性传输介质"></a>常见的导向性传输介质</h3><ul>
+<li><h3 id="双绞线"><a href="#双绞线" class="headerlink" title="双绞线"></a>双绞线</h3></li>
+<li><h3 id="同轴电缆"><a href="#同轴电缆" class="headerlink" title="同轴电缆"></a>同轴电缆</h3></li>
+<li><h3 id="光纤"><a href="#光纤" class="headerlink" title="光纤"></a>光纤</h3></li>
+</ul>
+<h3 id="常见的非导向性传输介质"><a href="#常见的非导向性传输介质" class="headerlink" title="常见的非导向性传输介质"></a>常见的非导向性传输介质</h3><p>无线电波，微波，红外线</p>
+<h3 id="中继器"><a href="#中继器" class="headerlink" title="中继器"></a>中继器</h3><p>对信号进行再生和还原（数字信号）</p>
+<p>两端是网段而不是子网</p>
+<p>集线器是多口中继器，不能分割冲突域</p>
 ]]></content>
       <categories>
         <category>计算机网络</category>
@@ -1729,6 +1738,43 @@
       <tags>
         <tag>操作系统</tag>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络（5）数据链路层</title>
+    <url>/2021/01/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%885%EF%BC%89%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</url>
+    <content><![CDATA[<h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawokq04uj31he0kin16.jpg" alt="image-20210103205141317"></p>
+<h2 id="封装成帧与透明传输"><a href="#封装成帧与透明传输" class="headerlink" title="封装成帧与透明传输"></a>封装成帧与透明传输</h2><p><strong>封装成帧</strong>就是加将数据加头加尾，相当于将数据打包<br><strong>透明传输</strong>就是为了防止<strong>特殊的数据无法正常传输</strong>的的情况的发生，比如说在封装成帧的过程中出现数据中的某些标记符与开始/结束标记符恰巧重复等等情况</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmastn7rxtj31hi0p81gf.jpg" alt="image-20210103205250970"></p>
+<h3 id="字符计数法"><a href="#字符计数法" class="headerlink" title="字符计数法"></a>字符计数法</h3><p>就是在帧的首部做<strong>计数</strong>，看看数据是否错误<br>缺点：如果在某一个帧内，标记位后面的某个字节的数据丢失，那么会影响后面的帧<br>比如3 1 1 和 4 2 2 2，如果前面的帧丢失变成 3 1，那么后面的4就会被补到前面变成 3 1 4导致错误</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmat0n9smpj30qi0bptc8.jpg" alt="在这里插入图片描述"></p>
+<h3 id="字符填充法"><a href="#字符填充法" class="headerlink" title="字符填充法"></a>字符填充法</h3><p>就是加头加尾分别标记开始结束，和零比特填充法（见下）对比，<strong>开始和结束的对应的字符不一样</strong><br>但有可能出现数据内某段比特流数据正好<strong>与标记字段重复</strong>，从而导致误判断的情况<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmat0y06noj30tc0fmn4f.jpg" alt="在这里插入图片描述"><br><strong>解决方法：添加转义字符</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200627122642435.png?shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTA2NzYwMw==,size_16,color_FFFFFF,t_70" alt="img"></p>
+<h3 id="零比特填充法"><a href="#零比特填充法" class="headerlink" title="零比特填充法"></a>零比特填充法</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmat1jhhvaj30te0eqqa6.jpg" alt="在这里插入图片描述"></p>
+<h3 id="违规编码法"><a href="#违规编码法" class="headerlink" title="违规编码法"></a>违规编码法</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmat1qwqk2j30tz0bjjua.jpg" alt="在这里插入图片描述"></p>
+<h2 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h2><h3 id="差错是什么，从哪来的"><a href="#差错是什么，从哪来的" class="headerlink" title="差错是什么，从哪来的"></a>差错是什么，从哪来的</h3><p>数据链路层的差错检测的是<strong>比特</strong>的错误<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmatfqqnx8j30tt0fjn5m.jpg" alt="在这里插入图片描述"></p>
+<h3 id="为什么要在数据链路层进行差错控制？"><a href="#为什么要在数据链路层进行差错控制？" class="headerlink" title="为什么要在数据链路层进行差错控制？"></a>为什么要在数据链路层进行差错控制？</h3><p>因为错误可以尽早发现，不会让一个错误的数据包发送了很长时间到达最终目的地之后才被发现，从而导致网络资源的浪费</p>
+<h2 id="检错编码（奇偶校验码，循环冗余码CRC）"><a href="#检错编码（奇偶校验码，循环冗余码CRC）" class="headerlink" title="检错编码（奇偶校验码，循环冗余码CRC）"></a>检错编码（奇偶校验码，循环冗余码CRC）</h2><h3 id="奇偶校验码"><a href="#奇偶校验码" class="headerlink" title="奇偶校验码"></a>奇偶校验码</h3><p>缺点：只能检测出1，3，5，7…等等奇位数错误，检测成功率位50%<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmatftfy9tj30hy04bwfw.jpg" alt="在这里插入图片描述"></p>
+<h3 id="循环冗余码CRC"><a href="#循环冗余码CRC" class="headerlink" title="循环冗余码CRC"></a>循环冗余码CRC</h3><p>就是用传输数据除以生成多项式得到冗余码<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmatfqbgrxj30ud047jtl.jpg" alt="在这里插入图片描述"><br>实际例子<br>注释：<br>1.阶数就是最高位是哪位，然后位数-1，如10011就是5-1=4,1011就是4-1=3<br>2.异或运算就是相同得0，不同得1，比如100和101做异或，结果就是001<br>3.出书和最后的余数添加到要发送的数据后面，称为<strong>帧检验序列FCS</strong><br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmatfr4gmoj30um0abq9t.jpg" alt="在这里插入图片描述"><br>接收方收到数据后进行检测<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmatfrklpij30tr0d2tfv.jpg" alt="在这里插入图片描述"><br>需要注意的地方<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmatfs48lcj30sr04jgq7.jpg" alt="在这里插入图片描述"></p>
+<h2 id="纠错编码（海明码）"><a href="#纠错编码（海明码）" class="headerlink" title="纠错编码（海明码）"></a>纠错编码（海明码）</h2><p>分为四步</p>
+<h3 id="第一步-确认校验码位数r"><a href="#第一步-确认校验码位数r" class="headerlink" title="第一步 确认校验码位数r"></a>第一步 确认校验码位数r</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmattscl84j30sj08ntcj.jpg" alt="在这里插入图片描述"></p>
+<h3 id="第二步-确定校验码和数据的位置"><a href="#第二步-确定校验码和数据的位置" class="headerlink" title="第二步 确定校验码和数据的位置"></a>第二步 确定校验码和数据的位置</h3><p>注释：<br>1.为什么是10为数据位？因为4位校验码+6位信息位=10位<br>2.校验码放到2的几次方的位置，其他的地方按顺序放已知的信息位</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmattry01oj30tb0a9jve.jpg" alt="在这里插入图片描述"></p>
+<h3 id="第三步-求出校验码的值"><a href="#第三步-求出校验码的值" class="headerlink" title="第三步 求出校验码的值"></a>第三步 求出校验码的值</h3><p>注释<br>1.先是通过二进制位确定有几位。本题中因为最大位10的二进制是1010，所以是4为，将其标注<br>2.然后从p1开始看，看p1的二进制位的数值和所有信息位的对应位置的数值是否相同，然后找出来这些位<br>这里有点难理解，这里以p1为例辅助理解，这里找出来的就是P1,D1,D2,D4,D5<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmattsudebj30rk045myo.jpg" alt="在这里插入图片描述"><br>然后计算异或值，比如说这里D1=1,D2=0,D4=1,D5=0,就是p1要同时和<strong>0</strong>,<strong>1</strong>，<strong>0</strong>,<strong>1</strong>进行异或之后得到0，为了标识我加粗原始计算数据<br>举例：<strong>0</strong>和<strong>1</strong>异或得1,1和<strong>0</strong>异或得1,1和<strong>1</strong>异或得0，那么p1和0异或得0，p1就是0了<br>3.其他同理，按顺序计算出P2,P3,P4,然后填入表格<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmattupm6zj30ss0g0gtv.jpg" alt="在这里插入图片描述"></p>
+<h3 id="第四步-检测并纠错"><a href="#第四步-检测并纠错" class="headerlink" title="第四步 检测并纠错"></a>第四步 检测并纠错</h3><p>就是和上面一样，将所有校验位进行运算，得出的结果的值就是错误的位<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmattu09uxj30u00g9thr.jpg" alt="在这里插入图片描述"></p>
+<h2 id="数据链路层的流量控制和可靠传输"><a href="#数据链路层的流量控制和可靠传输" class="headerlink" title="数据链路层的流量控制和可靠传输"></a>数据链路层的流量控制和可靠传输</h2><h3 id="流量控制与可靠传输"><a href="#流量控制与可靠传输" class="headerlink" title="流量控制与可靠传输"></a>流量控制与可靠传输</h3><p>流量控制是为了让传输过程中的发送速度和接受速度匹配，减少传输出错与资源浪费<br>可靠传输是发送端发送什么，接收端就要受到什么</p>
+<h3 id="停止等待协议（Stop-and-Wait）"><a href="#停止等待协议（Stop-and-Wait）" class="headerlink" title="停止等待协议（Stop-and-Wait）"></a>停止等待协议（Stop-and-Wait）</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawnctsnrj30tc0d47c9.jpg" alt="在这里插入图片描述"><br>停止等待协议的<strong>无差错</strong>情况<br>注释：因为一次就一个，所以用0和1标记ack就行<br><img src="https://img-blog.csdnimg.cn/20200627150810912.png?xshadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTA2NzYwMw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>停止等待协议的<strong>有差错</strong>情况<br><img src="https://img-blog.csdnimg.cn/20200627151008798.png?shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTA2NzYwMw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawne2e45j30ns0f9tdn.jpg" alt="在这里插入图片描述"><br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawnd353wj30ow0fmaey.jpg" alt="在这里插入图片描述"><br>停止等待协议的特点<br>1.简单<br>2.信道利用率低。大部分时间数据都在路上，发送方很长时间闲置，资源浪费<br><img src="https://img-blog.csdnimg.cn/20200627151529667.png?shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTA2NzYwMw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawnekrkvj30so0e7tfh.jpg" alt="在这里插入图片描述"></p>
+<h3 id="后退N帧协议（GBN）"><a href="#后退N帧协议（GBN）" class="headerlink" title="后退N帧协议（GBN）"></a>后退N帧协议（GBN）</h3><p>因为停止等待协议太浪费时间了，所以尝试采用GBN，发送连续多个数据帧，以增大信道利用率<br>注释：<br>累计确认：就是收到一个确认帧，那么<strong>它和它之前的所有帧</strong>都默认已收到，反之，如果某个确认帧没收到，那么<strong>它和它之后的所有帧</strong>都默认丢失（即使收到了也丢掉），进行重传</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawnvk2i5j30sg0ckwmt.jpg" alt="在这里插入图片描述"><br>下图是一个实例<br>注释：此图发送2帧时丢失，所以接收方几首收到后面的帧也是直接丢弃并且发送最晚收到的有效帧1的ACK，直至2帧的超时重传机制被触发进行重传并得到ACK之后，接收方才会接受2帧以及后面的帧</p>
+<p><img src="https://img-blog.csdnimg.cn/20200627153111466.png?shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTA2NzYwMw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发送窗口不能无限大，与使用的编号的比特数有关<br>很简单，就是1比特编号0和1,同理2比特编号0-3，如果用1比特编号，却要4个窗口长度，那么窗口内数据编号都编不过来，直接乱套了<br>GBN的优缺点也显而易见，优点是提高了信道利用率，缺点是因为重传机制的原因导致已经收到数据却需要强行丢弃而造成浪费</p>
+<h3 id="选择重传协议（SR）"><a href="#选择重传协议（SR）" class="headerlink" title="选择重传协议（SR）"></a>选择重传协议（SR）</h3><p>为了解决GBN的缺点，我们打算尝试只重传错误的帧，这样的话就不用浪费资源吧已经收到的帧再重传一次了。<br>和GBN相比，两者都有窗口了，和GBN的区别其实就是做了一个数据缓存，已经收到的帧不用扔了，等待之前因意外丢失的帧收到的时候确认即可，但是只能缓存窗口尺寸内的包含的帧（PS，缓存咋可能无限大）<br>SR运行过程<br>注释：2帧丢失之后仍然在发送，但是2帧丢失之后只是缓存，并没有移动窗口，直至最后2帧收到后一次性确认2-5帧<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawoz5xnpj30v00hhjuv.jpg" alt="在这里插入图片描述"><br>同样的，因为编号的问题，发送窗口不能无限大<br>发送窗口最后和接受窗口<strong>大小相同</strong>，这样利用率比较高</p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>计算机网络</tag>
       </tags>
   </entry>
 </search>

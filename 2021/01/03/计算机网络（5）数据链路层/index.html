@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    计算机网络（4）物理层 |  summerain
+    计算机网络（5）数据链路层 |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-计算机网络（4）物理层"
+  id="post-计算机网络（5）数据链路层"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,15 +55,15 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  计算机网络（4）物理层
+  计算机网络（5）数据链路层
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%884%EF%BC%89%E7%89%A9%E7%90%86%E5%B1%82/" class="article-date">
-  <time datetime="2021-01-02T14:28:15.000Z" itemprop="datePublished">2021-01-02</time>
+      <a href="/2021/01/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%885%EF%BC%89%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" class="article-date">
+  <time datetime="2021-01-03T12:45:51.000Z" itemprop="datePublished">2021-01-03</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">735</span>
+            <span class="post-count">1.7k</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">5 min</span>
         </span>
     </span>
 </div>
@@ -98,87 +98,31 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><p>在连接各种计算机的传输媒体上传输数据比特流</p>
-<p>主要任务：确定余传输媒体接口有关的一些特性</p>
-<ul>
-<li>机械特性：规定物理连接时所采用的规格、接口形状、引线等</li>
-<li>电气特性：规定传输二进制位时，线路上信号的电压范围、阻抗匹配、传输速率和距离限制等</li>
-<li>功能特性：指明某一电平表示何种意义，接口部件的信号线用途</li>
-<li>规程特性（过程特性）：定义物理线路的工作规程和时序的关系</li>
-</ul>
-<h2 id="数据通信例子："><a href="#数据通信例子：" class="headerlink" title="数据通信例子："></a>数据通信例子：</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9qep6s8nj31hg0iuas9.jpg" alt="image-20210102224341083"></p>
-<h2 id="相关术语："><a href="#相关术语：" class="headerlink" title="相关术语："></a>相关术语：</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9qf7o2u8j31fi0ms1gv.jpg" alt="image-20210102224413342"></p>
-<h3 id="三种通信方式："><a href="#三种通信方式：" class="headerlink" title="三种通信方式："></a>三种通信方式：</h3><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>英文</th>
-<th>定义</th>
-<th>需要信道条数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>单工通信</td>
-<td>Simplex</td>
-<td>只能一个发一个收</td>
-<td>一条</td>
-</tr>
-<tr>
-<td>半双工通信</td>
-<td>half-duplex</td>
-<td>都可以发或者收，但是同一时间只能进行一个</td>
-<td>两条</td>
-</tr>
-<tr>
-<td>全双工通信</td>
-<td>duplex</td>
-<td>都可以同时收发数据</td>
-<td>两条</td>
-</tr>
-</tbody></table>
-<h3 id="两种数据传输方式"><a href="#两种数据传输方式" class="headerlink" title="两种数据传输方式"></a>两种数据传输方式</h3><table>
-<thead>
-<tr>
-<th>传输方式</th>
-<th>特点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>串行传输</td>
-<td>速度慢，省钱，适合远距离</td>
-</tr>
-<tr>
-<td>并行传输</td>
-<td>速度快，耗钱，适合近距离</td>
-</tr>
-</tbody></table>
-<h3 id="码原"><a href="#码原" class="headerlink" title="码原"></a>码原</h3><p>定义：码元是指用一个固定时长的信号波形（数字脉冲），代表离散数值的基本波形。当有多个离散状态时，成为M进制码元<br>一个码元可以携带多个比特的信息（即不为二进制时就可以不只一个比特<br>个人理解：码元就是在网线上传输的一个个信号段。码元的不同进制就是用来表示不同的数值的</p>
-<h3 id="速率"><a href="#速率" class="headerlink" title="速率"></a>速率</h3><p>分为<strong>码元传输速率</strong>和<strong>信息传输速率</strong><br>信息传输速率就是b/s，就是我们平常说的<strong>网速</strong><br>码元可以理解为几个比特的<strong>集合</strong>，所以信息传输速率（网速）=码元传输速率x码元所带信息量（多少比特）<br>码元所带信息量（比特数）=log2（码元进制数）</p>
-<h3 id="带宽"><a href="#带宽" class="headerlink" title="带宽"></a>带宽</h3><p>用来表示最高数据速率</p>
-<h3 id="失真"><a href="#失真" class="headerlink" title="失真"></a>失真</h3><ul>
-<li>码元传输速率</li>
-<li>信号传输距离</li>
-<li>噪声干扰</li>
-<li>传输媒体质量</li>
-</ul>
-<p>码间串扰：接收端收到的信号波形失去了码元之间的清晰界限（频率太高）</p>
-<h2 id="奈式准则（无噪声）"><a href="#奈式准则（无噪声）" class="headerlink" title="奈式准则（无噪声）"></a>奈式准则（无噪声）</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9qy7o5vkj31gy0ncx6a.jpg" alt="image-20210102230229193"></p>
-<h2 id="香农公式（有噪声）"><a href="#香农公式（有噪声）" class="headerlink" title="香农公式（有噪声）"></a>香农公式（有噪声）</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9r4eqrxoj31ha0j07ok.jpg" alt="image-20210102230826383"></p>
-<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9r4tscy9j31hk0n4kg1.jpg" alt="image-20210102230836321"></p>
-<h2 id="基带信号和宽带-带通信号"><a href="#基带信号和宽带-带通信号" class="headerlink" title="基带信号和宽带/带通信号"></a>基带信号和宽带/带通信号</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9rfcsy6kj31cg0c4wva.jpg" alt="image-20210102231856989"></p>
-<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p>将数据转化为<strong>数字信号</strong><br>数字数据(digtal data)通过 数字发送器(digit emitter) 转化为 数字信号(digtal signal)</p>
-<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gm9rgcc4xpj30o204e3z7.jpg" alt="image-20210102231954526"></p>
-<p>模拟数据(analog data)通过 PCM编码器(PCM coder) 转化为 数字信号 (digtal signal)</p>
-<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawpccr6ej30ni04eglv.jpg" alt="image-20210102232017666"></p>
-<h3 id="常见的导向性传输介质"><a href="#常见的导向性传输介质" class="headerlink" title="常见的导向性传输介质"></a>常见的导向性传输介质</h3><ul>
-<li><h3 id="双绞线"><a href="#双绞线" class="headerlink" title="双绞线"></a>双绞线</h3></li>
-<li><h3 id="同轴电缆"><a href="#同轴电缆" class="headerlink" title="同轴电缆"></a>同轴电缆</h3></li>
-<li><h3 id="光纤"><a href="#光纤" class="headerlink" title="光纤"></a>光纤</h3></li>
-</ul>
-<h3 id="常见的非导向性传输介质"><a href="#常见的非导向性传输介质" class="headerlink" title="常见的非导向性传输介质"></a>常见的非导向性传输介质</h3><p>无线电波，微波，红外线</p>
-<h3 id="中继器"><a href="#中继器" class="headerlink" title="中继器"></a>中继器</h3><p>对信号进行再生和还原（数字信号）</p>
-<p>两端是网段而不是子网</p>
-<p>集线器是多口中继器，不能分割冲突域</p>
+  <h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawokq04uj31he0kin16.jpg" alt="image-20210103205141317"></p>
+<h2 id="封装成帧与透明传输"><a href="#封装成帧与透明传输" class="headerlink" title="封装成帧与透明传输"></a>封装成帧与透明传输</h2><p><strong>封装成帧</strong>就是加将数据加头加尾，相当于将数据打包<br><strong>透明传输</strong>就是为了防止<strong>特殊的数据无法正常传输</strong>的的情况的发生，比如说在封装成帧的过程中出现数据中的某些标记符与开始/结束标记符恰巧重复等等情况</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmastn7rxtj31hi0p81gf.jpg" alt="image-20210103205250970"></p>
+<h3 id="字符计数法"><a href="#字符计数法" class="headerlink" title="字符计数法"></a>字符计数法</h3><p>就是在帧的首部做<strong>计数</strong>，看看数据是否错误<br>缺点：如果在某一个帧内，标记位后面的某个字节的数据丢失，那么会影响后面的帧<br>比如3 1 1 和 4 2 2 2，如果前面的帧丢失变成 3 1，那么后面的4就会被补到前面变成 3 1 4导致错误</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmat0n9smpj30qi0bptc8.jpg" alt="在这里插入图片描述"></p>
+<h3 id="字符填充法"><a href="#字符填充法" class="headerlink" title="字符填充法"></a>字符填充法</h3><p>就是加头加尾分别标记开始结束，和零比特填充法（见下）对比，<strong>开始和结束的对应的字符不一样</strong><br>但有可能出现数据内某段比特流数据正好<strong>与标记字段重复</strong>，从而导致误判断的情况<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmat0y06noj30tc0fmn4f.jpg" alt="在这里插入图片描述"><br><strong>解决方法：添加转义字符</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200627122642435.png?shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTA2NzYwMw==,size_16,color_FFFFFF,t_70" alt="img"></p>
+<h3 id="零比特填充法"><a href="#零比特填充法" class="headerlink" title="零比特填充法"></a>零比特填充法</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmat1jhhvaj30te0eqqa6.jpg" alt="在这里插入图片描述"></p>
+<h3 id="违规编码法"><a href="#违规编码法" class="headerlink" title="违规编码法"></a>违规编码法</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmat1qwqk2j30tz0bjjua.jpg" alt="在这里插入图片描述"></p>
+<h2 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h2><h3 id="差错是什么，从哪来的"><a href="#差错是什么，从哪来的" class="headerlink" title="差错是什么，从哪来的"></a>差错是什么，从哪来的</h3><p>数据链路层的差错检测的是<strong>比特</strong>的错误<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmatfqqnx8j30tt0fjn5m.jpg" alt="在这里插入图片描述"></p>
+<h3 id="为什么要在数据链路层进行差错控制？"><a href="#为什么要在数据链路层进行差错控制？" class="headerlink" title="为什么要在数据链路层进行差错控制？"></a>为什么要在数据链路层进行差错控制？</h3><p>因为错误可以尽早发现，不会让一个错误的数据包发送了很长时间到达最终目的地之后才被发现，从而导致网络资源的浪费</p>
+<h2 id="检错编码（奇偶校验码，循环冗余码CRC）"><a href="#检错编码（奇偶校验码，循环冗余码CRC）" class="headerlink" title="检错编码（奇偶校验码，循环冗余码CRC）"></a>检错编码（奇偶校验码，循环冗余码CRC）</h2><h3 id="奇偶校验码"><a href="#奇偶校验码" class="headerlink" title="奇偶校验码"></a>奇偶校验码</h3><p>缺点：只能检测出1，3，5，7…等等奇位数错误，检测成功率位50%<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmatftfy9tj30hy04bwfw.jpg" alt="在这里插入图片描述"></p>
+<h3 id="循环冗余码CRC"><a href="#循环冗余码CRC" class="headerlink" title="循环冗余码CRC"></a>循环冗余码CRC</h3><p>就是用传输数据除以生成多项式得到冗余码<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmatfqbgrxj30ud047jtl.jpg" alt="在这里插入图片描述"><br>实际例子<br>注释：<br>1.阶数就是最高位是哪位，然后位数-1，如10011就是5-1=4,1011就是4-1=3<br>2.异或运算就是相同得0，不同得1，比如100和101做异或，结果就是001<br>3.出书和最后的余数添加到要发送的数据后面，称为<strong>帧检验序列FCS</strong><br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmatfr4gmoj30um0abq9t.jpg" alt="在这里插入图片描述"><br>接收方收到数据后进行检测<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmatfrklpij30tr0d2tfv.jpg" alt="在这里插入图片描述"><br>需要注意的地方<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmatfs48lcj30sr04jgq7.jpg" alt="在这里插入图片描述"></p>
+<h2 id="纠错编码（海明码）"><a href="#纠错编码（海明码）" class="headerlink" title="纠错编码（海明码）"></a>纠错编码（海明码）</h2><p>分为四步</p>
+<h3 id="第一步-确认校验码位数r"><a href="#第一步-确认校验码位数r" class="headerlink" title="第一步 确认校验码位数r"></a>第一步 确认校验码位数r</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmattscl84j30sj08ntcj.jpg" alt="在这里插入图片描述"></p>
+<h3 id="第二步-确定校验码和数据的位置"><a href="#第二步-确定校验码和数据的位置" class="headerlink" title="第二步 确定校验码和数据的位置"></a>第二步 确定校验码和数据的位置</h3><p>注释：<br>1.为什么是10为数据位？因为4位校验码+6位信息位=10位<br>2.校验码放到2的几次方的位置，其他的地方按顺序放已知的信息位</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmattry01oj30tb0a9jve.jpg" alt="在这里插入图片描述"></p>
+<h3 id="第三步-求出校验码的值"><a href="#第三步-求出校验码的值" class="headerlink" title="第三步 求出校验码的值"></a>第三步 求出校验码的值</h3><p>注释<br>1.先是通过二进制位确定有几位。本题中因为最大位10的二进制是1010，所以是4为，将其标注<br>2.然后从p1开始看，看p1的二进制位的数值和所有信息位的对应位置的数值是否相同，然后找出来这些位<br>这里有点难理解，这里以p1为例辅助理解，这里找出来的就是P1,D1,D2,D4,D5<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmattsudebj30rk045myo.jpg" alt="在这里插入图片描述"><br>然后计算异或值，比如说这里D1=1,D2=0,D4=1,D5=0,就是p1要同时和<strong>0</strong>,<strong>1</strong>，<strong>0</strong>,<strong>1</strong>进行异或之后得到0，为了标识我加粗原始计算数据<br>举例：<strong>0</strong>和<strong>1</strong>异或得1,1和<strong>0</strong>异或得1,1和<strong>1</strong>异或得0，那么p1和0异或得0，p1就是0了<br>3.其他同理，按顺序计算出P2,P3,P4,然后填入表格<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmattupm6zj30ss0g0gtv.jpg" alt="在这里插入图片描述"></p>
+<h3 id="第四步-检测并纠错"><a href="#第四步-检测并纠错" class="headerlink" title="第四步 检测并纠错"></a>第四步 检测并纠错</h3><p>就是和上面一样，将所有校验位进行运算，得出的结果的值就是错误的位<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmattu09uxj30u00g9thr.jpg" alt="在这里插入图片描述"></p>
+<h2 id="数据链路层的流量控制和可靠传输"><a href="#数据链路层的流量控制和可靠传输" class="headerlink" title="数据链路层的流量控制和可靠传输"></a>数据链路层的流量控制和可靠传输</h2><h3 id="流量控制与可靠传输"><a href="#流量控制与可靠传输" class="headerlink" title="流量控制与可靠传输"></a>流量控制与可靠传输</h3><p>流量控制是为了让传输过程中的发送速度和接受速度匹配，减少传输出错与资源浪费<br>可靠传输是发送端发送什么，接收端就要受到什么</p>
+<h3 id="停止等待协议（Stop-and-Wait）"><a href="#停止等待协议（Stop-and-Wait）" class="headerlink" title="停止等待协议（Stop-and-Wait）"></a>停止等待协议（Stop-and-Wait）</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawnctsnrj30tc0d47c9.jpg" alt="在这里插入图片描述"><br>停止等待协议的<strong>无差错</strong>情况<br>注释：因为一次就一个，所以用0和1标记ack就行<br><img src="https://img-blog.csdnimg.cn/20200627150810912.png?xshadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTA2NzYwMw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>停止等待协议的<strong>有差错</strong>情况<br><img src="https://img-blog.csdnimg.cn/20200627151008798.png?shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTA2NzYwMw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawne2e45j30ns0f9tdn.jpg" alt="在这里插入图片描述"><br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawnd353wj30ow0fmaey.jpg" alt="在这里插入图片描述"><br>停止等待协议的特点<br>1.简单<br>2.信道利用率低。大部分时间数据都在路上，发送方很长时间闲置，资源浪费<br><img src="https://img-blog.csdnimg.cn/20200627151529667.png?shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTA2NzYwMw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawnekrkvj30so0e7tfh.jpg" alt="在这里插入图片描述"></p>
+<h3 id="后退N帧协议（GBN）"><a href="#后退N帧协议（GBN）" class="headerlink" title="后退N帧协议（GBN）"></a>后退N帧协议（GBN）</h3><p>因为停止等待协议太浪费时间了，所以尝试采用GBN，发送连续多个数据帧，以增大信道利用率<br>注释：<br>累计确认：就是收到一个确认帧，那么<strong>它和它之前的所有帧</strong>都默认已收到，反之，如果某个确认帧没收到，那么<strong>它和它之后的所有帧</strong>都默认丢失（即使收到了也丢掉），进行重传</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawnvk2i5j30sg0ckwmt.jpg" alt="在这里插入图片描述"><br>下图是一个实例<br>注释：此图发送2帧时丢失，所以接收方几首收到后面的帧也是直接丢弃并且发送最晚收到的有效帧1的ACK，直至2帧的超时重传机制被触发进行重传并得到ACK之后，接收方才会接受2帧以及后面的帧</p>
+<p><img src="https://img-blog.csdnimg.cn/20200627153111466.png?shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTA2NzYwMw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发送窗口不能无限大，与使用的编号的比特数有关<br>很简单，就是1比特编号0和1,同理2比特编号0-3，如果用1比特编号，却要4个窗口长度，那么窗口内数据编号都编不过来，直接乱套了<br>GBN的优缺点也显而易见，优点是提高了信道利用率，缺点是因为重传机制的原因导致已经收到数据却需要强行丢弃而造成浪费</p>
+<h3 id="选择重传协议（SR）"><a href="#选择重传协议（SR）" class="headerlink" title="选择重传协议（SR）"></a>选择重传协议（SR）</h3><p>为了解决GBN的缺点，我们打算尝试只重传错误的帧，这样的话就不用浪费资源吧已经收到的帧再重传一次了。<br>和GBN相比，两者都有窗口了，和GBN的区别其实就是做了一个数据缓存，已经收到的帧不用扔了，等待之前因意外丢失的帧收到的时候确认即可，但是只能缓存窗口尺寸内的包含的帧（PS，缓存咋可能无限大）<br>SR运行过程<br>注释：2帧丢失之后仍然在发送，但是2帧丢失之后只是缓存，并没有移动窗口，直至最后2帧收到后一次性确认2-5帧<br><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gmawoz5xnpj30v00hhjuv.jpg" alt="在这里插入图片描述"><br>同样的，因为编号的问题，发送窗口不能无限大<br>发送窗口最后和接受窗口<strong>大小相同</strong>，这样利用率比较高</p>
  
       <!-- reward -->
       
@@ -249,7 +193,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/01/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%884%EF%BC%89%E7%89%A9%E7%90%86%E5%B1%82/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/01/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%885%EF%BC%89%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -262,19 +206,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/01/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%887%EF%BC%89%E6%AD%BB%E9%94%81/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            操作系统（7）死锁
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/12/28/%E5%89%91%E6%8C%87%20Offer%2039.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/" class="article-nav-link">
+      <a href="/2021/01/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%888%EF%BC%89%E5%86%85%E5%AD%98/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">剑指 Offer 39. 数组中出现次数超过一半的数字</div>
+        <div class="article-nav-title">操作系统（8）内存</div>
       </a>
     
   </nav>
