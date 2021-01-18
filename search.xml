@@ -1778,8 +1778,32 @@
       </tags>
   </entry>
   <entry>
-    <title>a</title>
-    <url>/2021/01/11/a/</url>
-    <content><![CDATA[]]></content>
+    <title>设计模式（1）策略模式</title>
+    <url>/2021/01/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%881%EF%BC%89%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="设计模式（1）策略模式"><a href="#设计模式（1）策略模式" class="headerlink" title="设计模式（1）策略模式"></a>设计模式（1）策略模式</h1><h2 id="一、原则："><a href="#一、原则：" class="headerlink" title="一、原则："></a>一、原则：</h2><ol>
+<li>找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混在一起<ol>
+<li>把变化的部分取出并封装，以便于以后可以轻易地改动或扩充此部分，而不影响其它不需要变化的部分</li>
+</ol>
+</li>
+<li>针对接口编程，而不是针对实现编程<ol>
+<li>示例中实现的实例所用到的行为有相应的接口和实现类</li>
+</ol>
+</li>
+<li>多用组合，少用继承<ol>
+<li>在示例中fly和quack都使用了组合的方式，而不是继承</li>
+<li>使用组合的方式拥有更大的弹性，不仅可将算法族封装成类更可以“在运行时动态地改变行为”</li>
+</ol>
+</li>
+</ol>
+<p><a href="https://github.com/summerainnn/designPattern/tree/master/StrategyModel">示例</a></p>
+<h2 id="二、正式定义"><a href="#二、正式定义" class="headerlink" title="二、正式定义"></a>二、正式定义</h2><p>策略模式定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法的变化独立于使用算法的客户</p>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>策略模式</tag>
+      </tags>
   </entry>
 </search>
