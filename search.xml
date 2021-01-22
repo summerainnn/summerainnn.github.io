@@ -1806,8 +1806,46 @@
       </tags>
   </entry>
   <entry>
-    <title>a</title>
-    <url>/2021/01/19/a/</url>
-    <content><![CDATA[]]></content>
+    <title>工厂模式</title>
+    <url>/2021/01/21/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h1><h2 id="1-简单工厂模式"><a href="#1-简单工厂模式" class="headerlink" title="1.简单工厂模式"></a>1.简单工厂模式</h2><p>抽象出工厂和产品</p>
+<h2 id="2-工厂方法模式"><a href="#2-工厂方法模式" class="headerlink" title="2.工厂方法模式"></a>2.工厂方法模式</h2>]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>工厂模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计模式（2）观察者模式</title>
+    <url>/2021/01/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%882%EF%BC%89%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="设计模式（2）观察者模式"><a href="#设计模式（2）观察者模式" class="headerlink" title="设计模式（2）观察者模式"></a>设计模式（2）观察者模式</h1><h2 id="一、原则"><a href="#一、原则" class="headerlink" title="一、原则"></a>一、原则</h2><p>为了交互对象的松耦合设计而努力（松耦合可以将对象之间的相互依赖性降低）</p>
+<p><a href="https://github.com/summerainnn/designPattern/tree/master/StrategyModel">示例</a></p>
+<h2 id="二、定义"><a href="#二、定义" class="headerlink" title="二、定义"></a>二、定义</h2><p>定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会受到通知并自动更新</p>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>观察者模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计模式（3）装饰者模式</title>
+    <url>/2021/01/22/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%883%EF%BC%89%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="设计模式（3）装饰者模式"><a href="#设计模式（3）装饰者模式" class="headerlink" title="设计模式（3）装饰者模式"></a>设计模式（3）装饰者模式</h1><h2 id="一、原则"><a href="#一、原则" class="headerlink" title="一、原则"></a>一、原则</h2><p>开放-关闭原则：类应当对扩展 开放，对修改关闭</p>
+<p>不需要在每个地方都采用开放-关闭原则，把注意力集中在设计中最有可能改变的地方</p>
+<h2 id="二、定义"><a href="#二、定义" class="headerlink" title="二、定义"></a>二、定义</h2><p>动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承者更有弹性的替代方案。</p>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>观察者模式</tag>
+      </tags>
   </entry>
 </search>
