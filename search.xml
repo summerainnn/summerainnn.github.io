@@ -1962,8 +1962,22 @@
       </tags>
   </entry>
   <entry>
-    <title>a</title>
-    <url>/2021/01/27/a/</url>
-    <content><![CDATA[]]></content>
+    <title>剑指 Offer 53 - I. 在排序数组中查找数字 I</title>
+    <url>/2021/01/27/%E5%89%91%E6%8C%87%20Offer%2053%20-%20I.%20%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%95%B0%E5%AD%97%20I/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-53-I-在排序数组中查找数字-I"><a href="#剑指-Offer-53-I-在排序数组中查找数字-I" class="headerlink" title="剑指 Offer 53 - I. 在排序数组中查找数字 I"></a>剑指 Offer 53 - I. 在排序数组中查找数字 I</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>统计一个数字在排序数组中出现的次数。</p>
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/zai-pai-xu-shu-zu-zhong-cha-zhao-shu-zi-lcof/">LeetCode</a></h2><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>一道典型的二分法的题目（有序的数组）</li>
+<li>需要注意的是二分法的边界条件，否则易出错</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(right&gt;=left)&#123;</span><br><span class="line">            mid = (left + right)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(target == nums[mid]) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span>(target &gt; nums[mid]) left = mid+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(target &lt; nums[mid]) right = mid-<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid]!=target) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>((mid-<span class="number">1</span>)&gt;=<span class="number">0</span>&amp;&amp;nums[mid-<span class="number">1</span>]==target) &#123;</span><br><span class="line">            mid = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(mid!=nums.length&amp;&amp;nums[mid]== target)&#123;</span><br><span class="line">            sum = sum + <span class="number">1</span>;</span><br><span class="line">            mid = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>二分法</tag>
+      </tags>
   </entry>
 </search>
