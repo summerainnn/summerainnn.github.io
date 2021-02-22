@@ -2019,4 +2019,22 @@
         <tag>中序遍历</tag>
       </tags>
   </entry>
+  <entry>
+    <title>剑指 Offer 55 - I. 二叉树的深度</title>
+    <url>/2021/02/22/%E5%89%91%E6%8C%87%20Offer%2055%20-%20I.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-55-I-二叉树的深度"><a href="#剑指-Offer-55-I-二叉树的深度" class="headerlink" title="剑指 Offer 55 - I. 二叉树的深度"></a>剑指 Offer 55 - I. 二叉树的深度</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。</p>
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/er-cha-shu-de-shen-du-lcof/">LeetCode</a></h2><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>广度优先搜索，对每个节点进行判断并向下</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> depth = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        deep(<span class="number">0</span>,root);</span><br><span class="line">        <span class="keyword">return</span> depth;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deep</span><span class="params">(<span class="keyword">int</span> depth, TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(depth == <span class="keyword">this</span>.depth)&#123;</span><br><span class="line">            <span class="keyword">this</span>.depth = <span class="keyword">this</span>.depth + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        deep(depth+<span class="number">1</span>,root.left);</span><br><span class="line">        deep(depth+<span class="number">1</span>,root.right);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+        <tag>BFS</tag>
+      </tags>
+  </entry>
 </search>
