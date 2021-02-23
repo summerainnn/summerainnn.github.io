@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">682</span>
+            <span class="post-count">776</span>
         </span>
     </span>
 
@@ -109,13 +109,13 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;&gt;；  &#x2F;&#x2F;按照特定条件过滤某列 不等于为&lt;&gt;</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; between &lt;低端值&gt; and &lt;高端值&gt;；  &#x2F;&#x2F;按照特定条件过滤某个范围的值</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; is null；  &#x2F;&#x2F;按照特定条件过滤某列 不等于为&lt;&gt;</span><br></pre></td></tr></table></figure>
 
 <p>  where可以用and和or进行组合，计算顺序为先计算and，再计算or，可以用（）确定其优先关系</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;&gt; and &lt;列名&gt; is null；  &#x2F;&#x2F;按照组合条件过滤某列</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; in (&lt;条件1&gt;,&lt;条件2&gt;)</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;条件1&gt; or &lt;列名&gt; &#x3D; &lt;条件2&gt; &#x2F;&#x2F;以上两条命令是等价的</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; not in (&lt;条件1&gt;,&lt;条件2&gt;) &#x2F;&#x2F; not关键字代表否定跟在其后的条件</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;&gt; and &lt;列名&gt; is null；  &#x2F;&#x2F;按照组合条件过滤某列</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; in (&lt;条件1&gt;,&lt;条件2&gt;)</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;条件1&gt; or &lt;列名&gt; &#x3D; &lt;条件2&gt; &#x2F;&#x2F;以上两条命令是等价的</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; not in (&lt;条件1&gt;,&lt;条件2&gt;) &#x2F;&#x2F; not关键字代表否定</span><br></pre></td></tr></table></figure>
 
-
-
+<p>  使用通配符%和_进行过滤</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; like &#39;%&lt;&gt;%&lt;&gt;%&#39; &#x2F;&#x2F; %代表任意字符出现任意多次</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; like &#39;_&lt;&gt;_&lt;&gt;_&#39; &#x2F;&#x2F; _代表任意字符出现切仅出现一次</span><br></pre></td></tr></table></figure>
 </li>
+<li></li>
 </ul>
-<p>- </p>
  
       <!-- reward -->
       
@@ -198,6 +198,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2021/02/23/%E5%89%91%E6%8C%87%20Offer%2055%20-%20II.%20%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%20/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            剑指 Offer 55 - II. 平衡二叉树
+          
+        </div>
+      </a>
     
     
       <a href="/2021/02/22/%E5%89%91%E6%8C%87%20Offer%2055%20-%20I.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" class="article-nav-link">

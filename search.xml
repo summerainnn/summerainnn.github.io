@@ -2055,16 +2055,56 @@
   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;&gt;；  &#x2F;&#x2F;按照特定条件过滤某列 不等于为&lt;&gt;</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; between &lt;低端值&gt; and &lt;高端值&gt;；  &#x2F;&#x2F;按照特定条件过滤某个范围的值</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; is null；  &#x2F;&#x2F;按照特定条件过滤某列 不等于为&lt;&gt;</span><br></pre></td></tr></table></figure>
 
 <p>  where可以用and和or进行组合，计算顺序为先计算and，再计算or，可以用（）确定其优先关系</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;&gt; and &lt;列名&gt; is null；  &#x2F;&#x2F;按照组合条件过滤某列</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; in (&lt;条件1&gt;,&lt;条件2&gt;)</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;条件1&gt; or &lt;列名&gt; &#x3D; &lt;条件2&gt; &#x2F;&#x2F;以上两条命令是等价的</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; not in (&lt;条件1&gt;,&lt;条件2&gt;) &#x2F;&#x2F; not关键字代表否定跟在其后的条件</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;&gt; and &lt;列名&gt; is null；  &#x2F;&#x2F;按照组合条件过滤某列</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; in (&lt;条件1&gt;,&lt;条件2&gt;)</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;条件1&gt; or &lt;列名&gt; &#x3D; &lt;条件2&gt; &#x2F;&#x2F;以上两条命令是等价的</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; not in (&lt;条件1&gt;,&lt;条件2&gt;) &#x2F;&#x2F; not关键字代表否定</span><br></pre></td></tr></table></figure>
 
-
-
+<p>  使用通配符%和_进行过滤</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; like &#39;%&lt;&gt;%&lt;&gt;%&#39; &#x2F;&#x2F; %代表任意字符出现任意多次</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; like &#39;_&lt;&gt;_&lt;&gt;_&#39; &#x2F;&#x2F; _代表任意字符出现切仅出现一次</span><br></pre></td></tr></table></figure>
 </li>
+<li></li>
 </ul>
-<p>- </p>
 ]]></content>
       <tags>
         <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 57. 和为s的两个数字</title>
+    <url>/2021/02/23/%E5%89%91%E6%8C%87%20Offer%2057.%20%E5%92%8C%E4%B8%BAs%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-57-和为s的两个数字"><a href="#剑指-Offer-57-和为s的两个数字" class="headerlink" title="剑指 Offer 57. 和为s的两个数字"></a>剑指 Offer 57. 和为s的两个数字</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。如果有多对数字的和等于s，则输出任意一对即可。</p>
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/he-wei-sde-liang-ge-shu-zi-lcof/">LeetCode</a></h2><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>有序数组一前一后两个指针</li>
+<li>当前双指针所指数和不正确且比目标大时，将后方指针减一，否则将前方指针加一</li>
+<li>因为数组是有序的，所以该方法不会漏掉正确解，每次消去的都是比目标小或比目标大的解。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = nums[left] + nums[right];</span><br><span class="line">            <span class="keyword">if</span>(sum &gt; target)&#123;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(sum &lt; target)&#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; nums[left], nums[right] &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+        <tag>有序数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 55 - II. 平衡二叉树</title>
+    <url>/2021/02/23/%E5%89%91%E6%8C%87%20Offer%2055%20-%20II.%20%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%20/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-55-II-平衡二叉树"><a href="#剑指-Offer-55-II-平衡二叉树" class="headerlink" title="剑指 Offer 55 - II. 平衡二叉树"></a>剑指 Offer 55 - II. 平衡二叉树</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>输入一棵二叉树的根节点，判断该树是不是平衡二叉树。如果某二叉树中任意节点的左右子树的深度相差不超过1，那么它就是一棵平衡二叉树。</p>
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/ping-heng-er-cha-shu-lcof/">LeetCode</a></h2><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>深度优先+后序遍历</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> dfs(root)&lt;=<span class="number">0</span>? <span class="keyword">false</span>:<span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> left = dfs(root.left)+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(left == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> right = dfs(root.right)+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(right == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(Math.abs(left - right) &gt; <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(left,right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>平衡二叉树</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
 </search>
