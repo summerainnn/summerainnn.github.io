@@ -2037,4 +2037,34 @@
         <tag>BFS</tag>
       </tags>
   </entry>
+  <entry>
+    <title>MySQL必知必会</title>
+    <url>/2021/02/23/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/</url>
+    <content><![CDATA[<h1 id="MySQL基础知识"><a href="#MySQL基础知识" class="headerlink" title="MySQL基础知识"></a>MySQL基础知识</h1><hr>
+<h2 id="一、数据库的基本结构"><a href="#一、数据库的基本结构" class="headerlink" title="一、数据库的基本结构"></a>一、数据库的基本结构</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[Database\ ]--&gt;B[Table  \ ]</span><br><span class="line">	B--&gt;C(Column \ )</span><br><span class="line">	B--&gt;D(row \ )</span><br><span class="line">	D--&gt;|has | E[primary key  \ ]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="二、数据库内容的查看"><a href="#二、数据库内容的查看" class="headerlink" title="二、数据库内容的查看"></a>二、数据库内容的查看</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">show databases;    &#x2F;&#x2F; 查看整个数据库可用的数据库列表</span><br><span class="line">use &lt;数据库名称&gt;;   &#x2F;&#x2F; 选择某个具体的数据库</span><br><span class="line">show tables;	  &#x2F;&#x2F; 显示目前所选的数据库内的表的列表</span><br><span class="line">show columns from &lt;表名&gt;；	  		&#x2F;&#x2F; 显示所选表的所有列（字段）信息</span><br><span class="line">desc &lt;表名&gt;；	    &#x2F;&#x2F; 显示所选表的所有列（字段）信息</span><br><span class="line">select &lt;列名&gt; from &lt;表名&gt;;   		&#x2F;&#x2F;显示所选表的特定列的所有内容</span><br><span class="line">select * from &lt;表名&gt;; &#x2F;&#x2F;显示所选表的所有列的内容</span><br><span class="line">select distinct &lt;列名&gt; from &lt;表名&gt;	&#x2F;&#x2F;显示所选表的特定列的所有不同内容</span><br><span class="line">select &lt;列名&gt; from &lt;表名&gt; limit [开始行],&lt;行数&gt;;  &#x2F;&#x2F;显示所选表的特定列的特定内容</span><br><span class="line">select &lt;表名&gt;.&lt;列名&gt; from &lt;表名&gt;;   &#x2F;&#x2F;显示所选表的特定列的所有内容（完全限定名）</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、数据库的数据处理"><a href="#三、数据库的数据处理" class="headerlink" title="三、数据库的数据处理"></a>三、数据库的数据处理</h2><ul>
+<li><p>排序</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">order by &lt;列名*&gt; [desc],[列名*] [desc];  &#x2F;&#x2F;某列的升序对数据进行排列显示</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>过滤</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;&gt;；  &#x2F;&#x2F;按照特定条件过滤某列 不等于为&lt;&gt;</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; between &lt;低端值&gt; and &lt;高端值&gt;；  &#x2F;&#x2F;按照特定条件过滤某个范围的值</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; is null；  &#x2F;&#x2F;按照特定条件过滤某列 不等于为&lt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>  where可以用and和or进行组合，计算顺序为先计算and，再计算or，可以用（）确定其优先关系</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;&gt; and &lt;列名&gt; is null；  &#x2F;&#x2F;按照组合条件过滤某列</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; in (&lt;条件1&gt;,&lt;条件2&gt;)</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;条件1&gt; or &lt;列名&gt; &#x3D; &lt;条件2&gt; &#x2F;&#x2F;以上两条命令是等价的</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; not in (&lt;条件1&gt;,&lt;条件2&gt;) &#x2F;&#x2F; not关键字代表否定跟在其后的条件</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p>- </p>
+]]></content>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
 </search>

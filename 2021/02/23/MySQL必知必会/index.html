@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    剑指 Offer 55 - I. 二叉树的深度 |  summerain
+    MySQL必知必会 |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-剑指 Offer 55 - I. 二叉树的深度"
+  id="post-MySQL必知必会"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,26 +55,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  剑指 Offer 55 - I. 二叉树的深度
+  MySQL必知必会
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/02/22/%E5%89%91%E6%8C%87%20Offer%2055%20-%20I.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" class="article-date">
-  <time datetime="2021-02-22T07:55:54.000Z" itemprop="datePublished">2021-02-22</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87-Offer/">剑指 Offer</a>
-  </div>
-  
+      <a href="/2021/02/23/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="article-date">
+  <time datetime="2021-02-23T03:03:07.000Z" itemprop="datePublished">2021-02-23</time>
+</a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">173</span>
+            <span class="post-count">682</span>
         </span>
     </span>
 
@@ -83,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
@@ -98,12 +94,28 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="剑指-Offer-55-I-二叉树的深度"><a href="#剑指-Offer-55-I-二叉树的深度" class="headerlink" title="剑指 Offer 55 - I. 二叉树的深度"></a>剑指 Offer 55 - I. 二叉树的深度</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。</p>
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-de-shen-du-lcof/">LeetCode</a></h2><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>广度优先搜索，对每个节点进行判断并向下</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> depth = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        deep(<span class="number">0</span>,root);</span><br><span class="line">        <span class="keyword">return</span> depth;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deep</span><span class="params">(<span class="keyword">int</span> depth, TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(depth == <span class="keyword">this</span>.depth)&#123;</span><br><span class="line">            <span class="keyword">this</span>.depth = <span class="keyword">this</span>.depth + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        deep(depth+<span class="number">1</span>,root.left);</span><br><span class="line">        deep(depth+<span class="number">1</span>,root.right);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <h1 id="MySQL基础知识"><a href="#MySQL基础知识" class="headerlink" title="MySQL基础知识"></a>MySQL基础知识</h1><hr>
+<h2 id="一、数据库的基本结构"><a href="#一、数据库的基本结构" class="headerlink" title="一、数据库的基本结构"></a>一、数据库的基本结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[Database\ ]--&gt;B[Table  \ ]</span><br><span class="line">	B--&gt;C(Column \ )</span><br><span class="line">	B--&gt;D(row \ )</span><br><span class="line">	D--&gt;|has | E[primary key  \ ]</span><br></pre></td></tr></table></figure>
 
+
+
+<h2 id="二、数据库内容的查看"><a href="#二、数据库内容的查看" class="headerlink" title="二、数据库内容的查看"></a>二、数据库内容的查看</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">show databases;    &#x2F;&#x2F; 查看整个数据库可用的数据库列表</span><br><span class="line">use &lt;数据库名称&gt;;   &#x2F;&#x2F; 选择某个具体的数据库</span><br><span class="line">show tables;	  &#x2F;&#x2F; 显示目前所选的数据库内的表的列表</span><br><span class="line">show columns from &lt;表名&gt;；	  		&#x2F;&#x2F; 显示所选表的所有列（字段）信息</span><br><span class="line">desc &lt;表名&gt;；	    &#x2F;&#x2F; 显示所选表的所有列（字段）信息</span><br><span class="line">select &lt;列名&gt; from &lt;表名&gt;;   		&#x2F;&#x2F;显示所选表的特定列的所有内容</span><br><span class="line">select * from &lt;表名&gt;; &#x2F;&#x2F;显示所选表的所有列的内容</span><br><span class="line">select distinct &lt;列名&gt; from &lt;表名&gt;	&#x2F;&#x2F;显示所选表的特定列的所有不同内容</span><br><span class="line">select &lt;列名&gt; from &lt;表名&gt; limit [开始行],&lt;行数&gt;;  &#x2F;&#x2F;显示所选表的特定列的特定内容</span><br><span class="line">select &lt;表名&gt;.&lt;列名&gt; from &lt;表名&gt;;   &#x2F;&#x2F;显示所选表的特定列的所有内容（完全限定名）</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、数据库的数据处理"><a href="#三、数据库的数据处理" class="headerlink" title="三、数据库的数据处理"></a>三、数据库的数据处理</h2><ul>
+<li><p>排序</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">order by &lt;列名*&gt; [desc],[列名*] [desc];  &#x2F;&#x2F;某列的升序对数据进行排列显示</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>过滤</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;&gt;；  &#x2F;&#x2F;按照特定条件过滤某列 不等于为&lt;&gt;</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; between &lt;低端值&gt; and &lt;高端值&gt;；  &#x2F;&#x2F;按照特定条件过滤某个范围的值</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; is null；  &#x2F;&#x2F;按照特定条件过滤某列 不等于为&lt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>  where可以用and和or进行组合，计算顺序为先计算and，再计算or，可以用（）确定其优先关系</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;&gt; and &lt;列名&gt; is null；  &#x2F;&#x2F;按照组合条件过滤某列</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; in (&lt;条件1&gt;,&lt;条件2&gt;)</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; &#x3D; &lt;条件1&gt; or &lt;列名&gt; &#x3D; &lt;条件2&gt; &#x2F;&#x2F;以上两条命令是等价的</span><br><span class="line">select &lt;列名1&gt; ,&lt;列名2&gt; ...</span><br><span class="line">from &lt;表名&gt;</span><br><span class="line">where &lt;列名&gt; not in (&lt;条件1&gt;,&lt;条件2&gt;) &#x2F;&#x2F; not关键字代表否定跟在其后的条件</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p>- </p>
  
       <!-- reward -->
       
@@ -174,12 +186,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/02/22/%E5%89%91%E6%8C%87%20Offer%2055%20-%20I.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/02/23/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
 
     </footer>
   </div>
@@ -187,19 +199,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/02/23/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            MySQL必知必会
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/02/11/%E5%89%91%E6%8C%87%20Offer%2054.%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E7%AC%ACk%E5%A4%A7%E8%8A%82%E7%82%B9/" class="article-nav-link">
+      <a href="/2021/02/22/%E5%89%91%E6%8C%87%20Offer%2055%20-%20I.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">剑指 Offer 54. 二叉搜索树的第k大节点</div>
+        <div class="article-nav-title">剑指 Offer 55 - I. 二叉树的深度</div>
       </a>
     
   </nav>
