@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    剑指 Offer 57. 和为s的两个数字 |  summerain
+    高性能MySQL |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-剑指 Offer 57. 和为s的两个数字"
+  id="post-高性能MySQL"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,18 +55,18 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  剑指 Offer 57. 和为s的两个数字
+  高性能MySQL
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/02/23/%E5%89%91%E6%8C%87%20Offer%2057.%20%E5%92%8C%E4%B8%BAs%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97/" class="article-date">
-  <time datetime="2021-02-23T07:47:57.000Z" itemprop="datePublished">2021-02-23</time>
+      <a href="/2021/04/08/%E9%AB%98%E6%80%A7%E8%83%BDMySQL/" class="article-date">
+  <time datetime="2021-04-08T01:05:59.000Z" itemprop="datePublished">2021-04-08</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87-Offer/">剑指 Offer</a>
+    <a class="article-category-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
   </div>
   
 <div class="word_count">
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">222</span>
+            <span class="post-count">2.1k</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">7 min</span>
         </span>
     </span>
 </div>
@@ -98,16 +98,43 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="剑指-Offer-57-和为s的两个数字"><a href="#剑指-Offer-57-和为s的两个数字" class="headerlink" title="剑指 Offer 57. 和为s的两个数字"></a>剑指 Offer 57. 和为s的两个数字</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。如果有多对数字的和等于s，则输出任意一对即可。</p>
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/he-wei-sde-liang-ge-shu-zi-lcof/">LeetCode</a></h2><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>有序数组一前一后两个指针</li>
-<li>当前双指针所指数和不正确且比目标大时，将后方指针减一，否则将前方指针加一</li>
-<li>因为数组是有序的，所以该方法不会漏掉正确解，每次消去的都是比目标小或比目标大的解。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = nums[left] + nums[right];</span><br><span class="line">            <span class="keyword">if</span>(sum &gt; target)&#123;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(sum &lt; target)&#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; nums[left], nums[right] &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
+  <h1 id="高性能MySQL"><a href="#高性能MySQL" class="headerlink" title="高性能MySQL"></a>高性能MySQL</h1><hr>
+<h2 id="一、MySQL的架构"><a href="#一、MySQL的架构" class="headerlink" title="一、MySQL的架构"></a>一、MySQL的架构</h2><h3 id="1-逻辑架构"><a href="#1-逻辑架构" class="headerlink" title="1.逻辑架构"></a>1.逻辑架构</h3><h4 id="1-架构图"><a href="#1-架构图" class="headerlink" title="1.架构图"></a>1.架构图</h4><p><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gpb57t4narj30e00heq8l.jpg" alt="image-20210407140239489"></p>
+<ol>
+<li>最上层的服务是大多数基于网络的客户端/服务器的工具或者服务都有类似的架构，如连接处理、授权认证、安全等等</li>
+<li>第二层是MySQL的核心服务，包括查询解析、分析、优化、缓存以及内置函数，所有跨储存引擎的功能都在这一层实现：储存过程、触发器、视图</li>
+<li>第三层包含了储存引擎，负责MySQL中数据的储存和提取，储存引擎API包含几十个底层函数，服务器通过API与储存引擎进行通信，用于诸如“开始一个事物”或者“根据主键提取一行记录”等操作。储存引擎不解析SQL（InnoDB会解析外键定义，因为MySQL服务器未实现该功能）</li>
+</ol>
+<h4 id="2-连接管理与安全性"><a href="#2-连接管理与安全性" class="headerlink" title="2.连接管理与安全性"></a>2.连接管理与安全性</h4><p>每个客户端的连接都会在服务器中拥有一个线程，线程会被服务器所缓存，以便下次连接时使用，但会占用服务器内存，5.5后支持线程池</p>
+<p>客户端连接是使用安全套接字（SSL）的方式连接，同时会验证该客户端的权限</p>
+<h4 id="3-优化与执行"><a href="#3-优化与执行" class="headerlink" title="3.优化与执行"></a>3.优化与执行</h4><p>mysql会解析查询，并创建内部数据结构（解析树），对于select语句，在解析查询前，服务器会先检查查询缓存</p>
+<h3 id="2-并发控制"><a href="#2-并发控制" class="headerlink" title="2.并发控制"></a>2.并发控制</h3><h4 id="1-读写锁"><a href="#1-读写锁" class="headerlink" title="1.读写锁"></a>1.读写锁</h4><p>在处理并发的读写时通过实现一个由共享锁（读锁）和排他锁（写锁）组成的锁系统来解决问题</p>
+<h4 id="2-颗粒度"><a href="#2-颗粒度" class="headerlink" title="2.颗粒度"></a>2.颗粒度</h4><p>提高共享资源并发性的方式就是让锁定对象更有选择性，即锁定的数据量越少，则系统的并发程度越高，但管理锁同样会消耗系统资源，即锁开销，在锁的开销和数据的安全性之间寻找平衡。mysql支持多种选择，以便应对不同的场景</p>
+<h5 id="表锁：开销较小，锁定整张表，在对表进行写操作时，需要先获得写锁，会阻塞其他用户的读写操作，但读锁之间是不互相阻塞的，写锁拥有比读锁更高的优先级"><a href="#表锁：开销较小，锁定整张表，在对表进行写操作时，需要先获得写锁，会阻塞其他用户的读写操作，但读锁之间是不互相阻塞的，写锁拥有比读锁更高的优先级" class="headerlink" title="表锁：开销较小，锁定整张表，在对表进行写操作时，需要先获得写锁，会阻塞其他用户的读写操作，但读锁之间是不互相阻塞的，写锁拥有比读锁更高的优先级"></a>表锁：开销较小，锁定整张表，在对表进行写操作时，需要先获得写锁，会阻塞其他用户的读写操作，但读锁之间是不互相阻塞的，写锁拥有比读锁更高的优先级</h5><h5 id="行级锁：可以最大程度地支持并发处理，同时锁开销也最大，代表引擎为InnoDB。行级锁只在储存引擎层实现，服务器层没有实现"><a href="#行级锁：可以最大程度地支持并发处理，同时锁开销也最大，代表引擎为InnoDB。行级锁只在储存引擎层实现，服务器层没有实现" class="headerlink" title="行级锁：可以最大程度地支持并发处理，同时锁开销也最大，代表引擎为InnoDB。行级锁只在储存引擎层实现，服务器层没有实现"></a>行级锁：可以最大程度地支持并发处理，同时锁开销也最大，代表引擎为InnoDB。行级锁只在储存引擎层实现，服务器层没有实现</h5><h3 id="3-事务"><a href="#3-事务" class="headerlink" title="3.事务"></a>3.事务</h3><p>事务内的语句，要么全部成功，要么全部失败</p>
+<h4 id="1-原子性："><a href="#1-原子性：" class="headerlink" title="1.原子性："></a>1.原子性：</h4><p>事务必须被视为不可分割的最小工作单元，要么全部成功，要么全部失败回滚</p>
+<h4 id="2-一致性："><a href="#2-一致性：" class="headerlink" title="2.一致性："></a>2.一致性：</h4><p>数据库总是从一个一致性的状态转换到另一个一致性的状态，即系统崩溃时不会导致执行一半的事物发生提交</p>
+<h4 id="3-隔离性："><a href="#3-隔离性：" class="headerlink" title="3.隔离性："></a>3.隔离性：</h4><p>通常来说，一个事务在最终发生提交前，对其他事务是不可见的</p>
+<h4 id="4-持久性："><a href="#4-持久性：" class="headerlink" title="4.持久性："></a>4.持久性：</h4><p>一旦事务提交，修改就会永久保存</p>
+<h4 id="5-隔离级别："><a href="#5-隔离级别：" class="headerlink" title="5.隔离级别："></a>5.隔离级别：</h4><ol>
+<li>未提交读：事务中的修改，即使没有提交，也会对其它事务可见，导致事务读取到未提交的数据，这也被称为脏读</li>
+<li>提交读：大多数数据库的默认隔离级别（mysql不是），一个事务直到开始提交之前，所做的修改对其它事务都是不可见的。也叫不可重复读，因为在此级别中同一事务的两次同样的查询可能会得到不一样的结果，因为在此之间插入了其它的事物执行的结果，即修改了数据</li>
+<li>可重复读：解决了脏读的问题，保证了同一事务不会发生不可重复读的问题，但是还有幻读，指的是事务插入了新的数据，导致幻行的产生</li>
+<li>可串行化：强制事务串行，失去了并发</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gpb8c1r6ydj30yw08676u.jpg" alt="image-20210407155031683"></p>
+<h4 id="6-死锁"><a href="#6-死锁" class="headerlink" title="6.死锁"></a>6.死锁</h4><p>两个事务同时保持且请求对方的锁，InnoDB解决死锁的方式是将持有最少行级排他锁的事物进行回滚</p>
+<h4 id="7-事务日志"><a href="#7-事务日志" class="headerlink" title="7.事务日志"></a>7.事务日志</h4><p>储存引擎在修改表时只需要修改其内存拷贝，再把该修改行为记录到持久在硬盘上的事务日志中，写日志是磁盘一小块区域的顺序I/O，速度更快，修改数据需要写两次磁盘，数据的修改如果已经记录到日志并持久化，但还未写会磁盘，此时系统崩溃，该数据能够自动恢复</p>
+<h4 id="8-MySQL中的事务"><a href="#8-MySQL中的事务" class="headerlink" title="8.MySQL中的事务"></a>8.MySQL中的事务</h4><p>InnoDB和NDB Cluster是支持事务的引擎，MyISAM不支持事务，MySQL默认采用自动提交模式，如果说不是显示的开启事务，则每个查询都会被当作事务来执行，对MyISAM来说，没有事务的概念，相当于一直处于自动提交中</p>
+<p>在事务中混合使用储存引擎时，会导致不支持事务的表无法正常回滚</p>
+<h3 id="4-多版本并发控制（MVCC）"><a href="#4-多版本并发控制（MVCC）" class="headerlink" title="4.多版本并发控制（MVCC）"></a>4.多版本并发控制（MVCC）</h3><p>可以认为MVCC时行级锁的变种，但是在大多数情况下避免了加锁操作，开销更低，实现了非阻塞的读操作</p>
+<p>InnoDB的MVCC实现：在每行记录后面保存两个隐藏列，一个保存行的创建时间，一个保存删除时间，需要注意的是UPDATE操作变为插入一行新纪录，保存当前版本号为行版本号，同时保存当前版本号到原来的行作为行删除标志</p>
+<h3 id="5-MySQL的储存引擎"><a href="#5-MySQL的储存引擎" class="headerlink" title="5.MySQL的储存引擎"></a>5.MySQL的储存引擎</h3><h4 id="1-InnoDB"><a href="#1-InnoDB" class="headerlink" title="1.InnoDB"></a>1.InnoDB</h4><p>被设计用来处理大量的短期任务，短期任务大部分都会正常提交，很少会回滚，默认的隔离级别是可重复读的级别，但是加入了间隙锁来防止幻读，基于聚簇索引建立，对主键查询有很高的性能，不过二级索引必须包括主键列，所以主键列很大时，其它的所有索引都会很大。</p>
+<h4 id="2-MyISAM储存引擎"><a href="#2-MyISAM储存引擎" class="headerlink" title="2.MyISAM储存引擎"></a>2.MyISAM储存引擎</h4><p>不支持事务和行级锁，但是支持全文索引、压缩和空间函数，崩溃后无法安全恢复，对于只读的数据或者表比较小，可以忍受修复操作，则可以使用。使用表锁，但是支持在读表时对表进行插入操作（并发插入），延迟更新索引键，在修改完成后不会立刻将修改的索引数据写入磁盘，而是写入内存中的键缓冲区，可以极大地提高写入性能。如果表在创建并导入数据后，不会再进行修改操作，那么这样的表适合采用MyISAM压缩表，可以极大的减少磁盘占用，并提高查询性能</p>
+<h4 id="3-Archive引擎"><a href="#3-Archive引擎" class="headerlink" title="3.Archive引擎"></a>3.Archive引擎</h4><p>只支持INSERT和SELECT操作，不支持索引，查询时需要全表扫描，更适合日志和数据采集类应用，支持行级锁和专用缓存区以实现高并发的插入，也实现了批量插入在完成前对读操作的不可见。</p>
+<h4 id="4-Blackhole引擎"><a href="#4-Blackhole引擎" class="headerlink" title="4.Blackhole引擎"></a>4.Blackhole引擎</h4><p>不实现储存机制，一般用在主从架构中，作为主服务器的日志分发器，主服务器的日志不必发送给每一个从服务器，而是只发送给Blackhole引擎数据库，减少了多个从服务器时的日志分发压力，而Blackhole引擎则不进行任何的储存操作，只是再次把日志发送给从服务器，不占用硬盘，同时可以在此设置过滤，没有读写操作的Blackhole引擎数据库只用作为一个中转，只负责记日志、传日志。</p>
+<h4 id="5-CSV引擎"><a href="#5-CSV引擎" class="headerlink" title="5.CSV引擎"></a>5.CSV引擎</h4><p>不支持索引，可以将csv读入mysql中，外部程序也能从数据库表中读取csv格式的数据，CSV引擎可以作为一种数据交换的机制</p>
+<h4 id="6-Memory引擎"><a href="#6-Memory引擎" class="headerlink" title="6.Memory引擎"></a>6.Memory引擎</h4><p>快速访问数据，且数据不会被修改，丢失也没关系，比MyISAM快一个数量级，所有数据保存在内存中，不需要磁盘I/O</p>
+<h4 id="7-Infobright引擎"><a href="#7-Infobright引擎" class="headerlink" title="7.Infobright引擎"></a>7.Infobright引擎</h4><p>面向列的储存引擎，处理非常大的数据量</p>
  
       <!-- reward -->
       
@@ -178,12 +205,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/02/23/%E5%89%91%E6%8C%87%20Offer%2057.%20%E5%92%8C%E4%B8%BAs%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/04/08/%E9%AB%98%E6%80%A7%E8%83%BDMySQL/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" rel="tag">有序数组</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
 
     </footer>
   </div>
@@ -191,19 +218,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/03/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="article-nav-link">
+      <a href="/2021/04/29/%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            深入理解java虚拟机
+            现代操作系统
           
         </div>
       </a>
     
     
-      <a href="/2021/02/23/%E5%89%91%E6%8C%87%20Offer%2055%20-%20II.%20%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%20/" class="article-nav-link">
+      <a href="/2021/03/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">剑指 Offer 55 - II. 平衡二叉树</div>
+        <div class="article-nav-title">深入理解java虚拟机</div>
       </a>
     
   </nav>

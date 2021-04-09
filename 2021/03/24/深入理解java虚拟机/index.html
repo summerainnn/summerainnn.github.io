@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    a |  summerain
+    深入理解java虚拟机 |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -55,7 +55,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  a
+  深入理解java虚拟机
 </h1>
  
 
@@ -64,13 +64,17 @@
     <div class="article-meta">
       <a href="/2021/03/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="article-date">
   <time datetime="2021-03-24T07:31:59.000Z" itemprop="datePublished">2021-03-24</time>
-</a>   
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+  </div>
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.2k</span>
+            <span class="post-count">4.2k</span>
         </span>
     </span>
 
@@ -79,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">4 min</span>
+            <span class="post-count">14 min</span>
         </span>
     </span>
 </div>
@@ -177,7 +181,163 @@
 </li>
 </ol>
 </li>
-<li></li>
+<li><p>方法区</p>
+<ol>
+<li>运行时常量池是方法区的一部分（注意字符串常量池和intern()方法）</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-垃圾收集器与内存分配策略"><a href="#2-垃圾收集器与内存分配策略" class="headerlink" title="2. 垃圾收集器与内存分配策略"></a>2. 垃圾收集器与内存分配策略</h1><hr>
+<ol>
+<li>对象是否存活的判定：<ol>
+<li>引用计数法，有引用就加一，没有就减一，难以解决循环引用</li>
+<li>可达性分析，固定的GC root对象<ol>
+<li>在虚拟机栈(栈帧中的本地变量表)中引用的对象，譬如各个线程被调用的方法堆栈中使用到的 参数、局部变量、临时变量等。</li>
+<li>在方法区中类静态属性引用的对象，譬如Java类的引用类型静态变量。</li>
+<li>在方法区中常量引用的对象，譬如字符串常量池(String Table)里的引用。</li>
+<li>在本地方法栈中JNI(即通常所说的Native方法)引用的对象。</li>
+<li>Java虚拟机内部的引用，如基本数据类型对应的Class对象，一些常驻的异常对象(比如NullPointExcepiton、OutOfMemoryError)等，还有系统类加载器。</li>
+<li>所有被同步锁(synchronized关键字)持有的对象。</li>
+<li>反映Java虚拟机内部情况的JM XBean、JVM TI中注册的回调、本地代码缓存等。</li>
+<li>除了这些固定的GC Roots集合以外，根据用户所选用的垃圾收集器以及当前回收的内存区域不 同，还可以有其他对象“临时性”地加入，共同构成完整GC Roots集合。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>引用，1.2后扩展为四种引用，目的是扩展对象的引用二态：被引用和未被引用，解决某些可有和可无的对象在GC中是否清理的问题，如系统的缓存，相当于定义了优先级<ol>
+<li><strong>强引用，普遍存在的引用赋值</strong>，只要强应用关系还在，引用的对象就不会被GC（ArrayList 的 clear() 方法实现，将其全部置null）</li>
+<li><strong>软引用是用来描述一些还有用，但非必须的对象。</strong>只被软引用关联着的对象，在系统将要发生内 存溢出异常前，会把这些对象列进回收范围之中进行第二次回收，如果这次回收还没有足够的内存， 才会抛出内存溢出异常。java提供的类为<strong>SoftReference类</strong>，在缓存中使用较多</li>
+<li><strong>弱引用也是用来描述那些非必须对象，但是它的强度比软引用更弱一些</strong>，被弱引用关联的对象只 能生存到下一次垃圾收集发生为止。当垃圾收集器开始工作，无论当前内存是否足够，都会回收掉只 被弱引用关联的对象。java提供的类为<strong>WeakReference类</strong>，可以在不使用某一个对象时，只用将其置为null，其它引用若为弱引用，则可由GC自动处理</li>
+<li>虚引用也称为“幽灵引用”或者“幻影引用”，它是最弱的一种引用关系。一个对象是否有虚引用的 存在，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。为一个对象<strong>设置虚引用关联的唯一目的只是为了能在这个对象被收集器回收时收到一个系统通知。</strong>java提供的类为<strong>PhantomReference类</strong>，一般可以通过虚引用达到回收一些非java内的一些资源比如堆外内存的行为</li>
+</ol>
+</li>
+<li>不可达对象，GC调用其finalize()方法，但该方法只调用一次，若该对象重新可达，则可避免此次回收</li>
+<li>回收方法区，方法区一般不会被回收，除非是某个常量被完全废弃，没有了任何一个引用，或者某个类满足：1.所有实例被回收，2.加载该类的类加载器被回收，3.java.lang.Class没有被引用</li>
+<li>垃圾回收算法，追踪式垃圾收集，适用于java的可达性分析，也被称作间接垃圾收集<ol>
+<li>三条经验法则：<ol>
+<li>弱分代假说：绝大多数对象都是朝生夕灭</li>
+<li>强分代假说：熬过越多次垃圾收集过程的对象就越难以消亡。</li>
+<li>跨代引用假说：跨代引用占比很少，所以只需要维护一个数据集来标识出老年代的哪一块内存会存在跨代引用，并将其加入GCroot的扫描中</li>
+</ol>
+</li>
+<li>收集的区分<ol>
+<li>部分收集(Partial GC):指目标不是完整收集整个Java堆的垃圾收集，其中又分为:<ol>
+<li>新生代收集(M inor GC/Young GC):指目标只是新生代的垃圾收集。</li>
+<li>老年代收集(Major GC/Old GC):指目标只是老年代的垃圾收集。目前只有CMS收集器会有单 独收集老年代的行为。另外请注意“Major GC”这个说法现在有点混淆，在不同资料上常有不同所指， 读者需按上下文区分到底是指老年代的收集还是整堆收集。</li>
+<li>混合收集(Mixed GC):指目标是收集整个新生代以及部分老年代的垃圾收集。目前只有G1收 集器会有这种行为。</li>
+</ol>
+</li>
+<li>整堆收集(Full GC):收集整个Java堆和方法区的垃圾收集。</li>
+</ol>
+</li>
+<li>标记-清楚算法：<ol>
+<li>两次扫描，一次标记，一次清除</li>
+<li>缺点：<ol>
+<li>效率低，若有大量对象，则耗时久</li>
+<li>产生内存碎片</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>标记-复制算法：<ol>
+<li>直接清除可回收对象，当一块用完后，就将活着的转移到另一块，改进的方法是分为80%的Eden区，两个10%的fSurvivor，只有一个Survivor会被空出来，另设逃生门机制，将多余的对象给到老年代</li>
+<li>缺点：存在空间浪费</li>
+</ol>
+</li>
+<li>标记-整理算法：<ol>
+<li>类似标记-清除算法，但是不是直接清理可回收对象造成内存碎片，而是将所有的存活对象都像空间的一端移动，适用于老年代的对象存活特征</li>
+</ol>
+</li>
+<li>几种收集器：<ol>
+<li>Serial收集器：直接stop</li>
+<li>CMS收集器：款基于“标记-清除”算法实现的收集器，会产生大量内存碎片，分为四个阶段<ol>
+<li>初始标记，得到GCroot的直接关联对象，需要stop</li>
+<li>并发标记，并发进行</li>
+<li>重新标记，关注增量更新，以进行修正，需要stop</li>
+<li>并发清楚</li>
+</ol>
+</li>
+<li>Garbage First收集器：分块进行垃圾清理</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="3-类加载机制"><a href="#3-类加载机制" class="headerlink" title="3. 类加载机制"></a>3. 类加载机制</h1><hr>
+<ol>
+<li>类的整个生命周期：加载、验证、准备、初始化和卸载这五个阶段的顺序是确定的，类型的加载过程必须按 照这种顺序按部就班地开始，过程之间是交叉混合的<img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gowiq676fsj31b00g6q9i.jpg" alt="image-20210325222634821"></li>
+<li>加载<ol>
+<li>通过一个类的全限定名来获取定义此类的二进制字节流</li>
+<li>将字节流转为方法区的运行时数据结构</li>
+<li>在内存中生成Java.lang.Class对象<strong>（如果说类是对象抽象和集合的话，那么Class类就是对类的抽象和集合）</strong></li>
+</ol>
+</li>
+<li>验证，验证字节码以保护java虚拟机</li>
+<li>准备，为类中定义的变量(即静态变量，被static修饰的变量)分配内存并设置类变量初始值的阶段，此时的初始值为零值，（类变量经过static修饰，被所有对象共享，实例变量，未经过static修饰）被final和static修饰则会被直接赋值</li>
+<li>解析，Java虚拟机将常量池内的符号引用替换为直接引用的过程</li>
+<li>初始化，执行类构造器<clinit >()方法的过程（这是类的构造方法，而不是实例对象的构造方法），对静态变量，静态代码块进行初始化</li>
+<li>类与类加载器<ol>
+<li>3个系统提供的类加载器：<ol>
+<li>启动类加载器(使用C++实现)：</li>
+<li>扩展类加载器：是一种Java系统类库的扩 展机制</li>
+<li>应用程序类加载器：加载用户类路径 (ClassPath)上所有的类库，一般情况下这个就是程序中默认的类加载器。</li>
+</ol>
+</li>
+<li>双亲委派机制：<ol>
+<li>先检查请求的类是否已经被加载过了</li>
+<li>若没有则检查是否有父类，无父类就加载，有就调用父类</li>
+<li>如果父类抛出加载失败的异常，则自己加载</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="4-高并发"><a href="#4-高并发" class="headerlink" title="4. 高并发"></a>4. 高并发</h1><hr>
+<ol>
+<li>高速缓存<img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gp29sfui4lj314a0ge45x.jpg" alt="image-20210330215045080"></li>
+<li>java内存模型<ol>
+<li>内存间交互操作，原子操作<ol>
+<li>lock，作用于主内存</li>
+<li>unlock，作用于主内存</li>
+<li>read，作用于主内存，将值输送到线程的工作内容中，以便随后的load操作</li>
+<li>load，作用于工作内存，将read得到的值放入工作内存的副本之中</li>
+<li>use，作用于工作内存，它把工作内存中一个变量的值传递给执行引擎</li>
+<li>assign，作用于工作内存的变量，它把一个从执行引擎接收的值赋给工作内存的变量</li>
+<li>store，作用于工作内存的变量，它把工作内存中一个变量的值传送到主内存中，以便随 后的write操作使用。</li>
+<li>write，作用于主内存的变量，它把store操作从工作内存中得到的变量的值放入主内存的 变量中。</li>
+</ol>
+</li>
+<li>volatile的两项特性：<ol>
+<li>保证此变量对所有线程的可见 性，这里的“可见性”是指当一条线程修改了这个变量的值，新值对于其他线程来说是可以立即得知的。</li>
+<li>禁止指令重排序优化</li>
+</ol>
+</li>
+<li>线程的实现<ol>
+<li>实现线程主要有三种方式:使用内核线程实现(1:1实现)，使用用户线程实现(1:N实现)， 使用用户线程加轻量级进程混合实现(N:M 实现)。<ol>
+<li>内核线程的实现，1:1实现，使用内核线程的一种高级接口—轻量级进程，每个轻量级进程都由一个内核线程支持。线程操作需要进行系统调用，需要在用户态和内核态之间来回切换，且需要内核线程支持的轻量级进程是需要消耗一定的内核资源的。<img src="https://tva1.sinaimg.cn/large/008eGmZEly1gp3451y0cej315q0sadu2.jpg" alt="image-20210331152050473"></li>
+<li>用户线程实现，1:N实现，不需要用户内核支援，所有的线程的创建、销毁、切换和调度都是用户自行考虑<img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gp40db3610j31520rogwd.jpg" alt="image-20210401095559556"></li>
+<li>混合实现，N:M,既存在用户线程，也存在轻量级进程。 用户线程还是完全建立在用户空间中，因此用户线程的创建、切换、析构等操作依然廉价，并且可以 支持大规模的用户线程并发。而操作系统支持的轻量级进程则作为用户线程和内核线程之间的桥梁， 这样可以使用内核提供的线程调度功能及处理器映射，并且用户线程的系统调用要通过轻量级进程来 完成，这大大降低了整个进程被完全阻塞的风险。<img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gp40jfi4wdj31500qetb4.jpg" alt="image-20210401095610647"></li>
+</ol>
+</li>
+<li>java线程采用1:1的方式实现</li>
+<li>java线程的调度：抢占式的调度</li>
+<li>java线程的6态：新建、运行、无限期等待、限期等待、阻塞、结束</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>java锁优化：<ol>
+<li>自旋锁与自适应锁<ol>
+<li>自旋锁是为了减少线程阻塞时线程切换的开销，但是会占用处理器资源</li>
+<li>自适应就是自适应意味着自旋的时间不再是固定的了，而是由 前一次在同一个锁上的自旋时间及锁的拥有者的状态来决定的</li>
+</ol>
+</li>
+<li>锁消除是指虚拟机即时编译器在运行时，对一些代码要求同步，但是对被检测到不可能存在共享 数据竞争的锁进行消除。</li>
+<li>锁粗化，将一系列的循环加锁，就会扩大加锁范围</li>
+<li>轻量级锁</li>
+<li>偏向锁</li>
+</ol>
+</li>
 </ol>
  
       <!-- reward -->
@@ -254,11 +414,22 @@
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
     </footer>
   </div>
 
    
   <nav class="article-nav">
+    
+      <a href="/2021/04/08/%E9%AB%98%E6%80%A7%E8%83%BDMySQL/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            高性能MySQL
+          
+        </div>
+      </a>
     
     
       <a href="/2021/02/23/%E5%89%91%E6%8C%87%20Offer%2057.%20%E5%92%8C%E4%B8%BAs%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97/" class="article-nav-link">
