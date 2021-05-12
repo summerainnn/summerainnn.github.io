@@ -2440,6 +2440,228 @@
 <h4 id="5-CSV引擎"><a href="#5-CSV引擎" class="headerlink" title="5.CSV引擎"></a>5.CSV引擎</h4><p>不支持索引，可以将csv读入mysql中，外部程序也能从数据库表中读取csv格式的数据，CSV引擎可以作为一种数据交换的机制</p>
 <h4 id="6-Memory引擎"><a href="#6-Memory引擎" class="headerlink" title="6.Memory引擎"></a>6.Memory引擎</h4><p>快速访问数据，且数据不会被修改，丢失也没关系，比MyISAM快一个数量级，所有数据保存在内存中，不需要磁盘I/O</p>
 <h4 id="7-Infobright引擎"><a href="#7-Infobright引擎" class="headerlink" title="7.Infobright引擎"></a>7.Infobright引擎</h4><p>面向列的储存引擎，处理非常大的数据量</p>
+<hr>
+<h2 id="二、MySQL的数据类型"><a href="#二、MySQL的数据类型" class="headerlink" title="二、MySQL的数据类型"></a>二、MySQL的数据类型</h2><h3 id="1-整数类型"><a href="#1-整数类型" class="headerlink" title="1.整数类型"></a>1.整数类型</h3><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">大小</th>
+<th align="left">范围（有符号）</th>
+<th align="left">范围（无符号）</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">TINYINT</td>
+<td align="left">1 byte</td>
+<td align="left">(-128，127)</td>
+<td align="left">(0，255)</td>
+<td align="left">小整数值</td>
+</tr>
+<tr>
+<td align="left">SMALLINT</td>
+<td align="left">2 bytes</td>
+<td align="left">(-32 768，32 767)</td>
+<td align="left">(0，65 535)</td>
+<td align="left">大整数值</td>
+</tr>
+<tr>
+<td align="left">MEDIUMINT</td>
+<td align="left">3 bytes</td>
+<td align="left">(-8 388 608，8 388 607)</td>
+<td align="left">(0，16 777 215)</td>
+<td align="left">大整数值</td>
+</tr>
+<tr>
+<td align="left">INT或INTEGER</td>
+<td align="left">4 bytes</td>
+<td align="left">(-2 147 483 648，2 147 483 647)</td>
+<td align="left">(0，4 294 967 295)</td>
+<td align="left">大整数值</td>
+</tr>
+<tr>
+<td align="left">BIGINT</td>
+<td align="left">8 bytes</td>
+<td align="left">(-9,223,372,036,854,775,808，9 223 372 036 854 775 807)</td>
+<td align="left">(0，18 446 744 073 709 551 615)</td>
+<td align="left">极大整数值</td>
+</tr>
+</tbody></table>
+<p>mysql可以为整数类型指定宽度，但是这对大多数应用是没有意义的：它不会限制值的合法范围，只是规定了交互工具显示的字符个数</p>
+<h3 id="2-实数类型"><a href="#2-实数类型" class="headerlink" title="2.实数类型"></a>2.实数类型</h3><table>
+<thead>
+<tr>
+<th>DOUBLE</th>
+<th>8 bytes</th>
+<th>(-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</th>
+<th>0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</th>
+<th>双精度 浮点数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DECIMAL</td>
+<td>对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2</td>
+<td>依赖于M和D的值</td>
+<td>依赖于M和D的值</td>
+<td>小数值</td>
+</tr>
+</tbody></table>
+<h3 id="3-字符串类型"><a href="#3-字符串类型" class="headerlink" title="3.字符串类型"></a>3.字符串类型</h3><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">大小</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CHAR</td>
+<td align="left">0-255 bytes</td>
+<td align="left">定长字符串</td>
+</tr>
+<tr>
+<td align="left">VARCHAR</td>
+<td align="left">0-65535 bytes</td>
+<td align="left">变长字符串</td>
+</tr>
+<tr>
+<td align="left">TINYBLOB</td>
+<td align="left">0-255 bytes</td>
+<td align="left">不超过 255 个字符的二进制字符串</td>
+</tr>
+<tr>
+<td align="left">TINYTEXT</td>
+<td align="left">0-255 bytes</td>
+<td align="left">短文本字符串</td>
+</tr>
+<tr>
+<td align="left">BLOB</td>
+<td align="left">0-65 535 bytes</td>
+<td align="left">二进制形式的长文本数据</td>
+</tr>
+<tr>
+<td align="left">TEXT</td>
+<td align="left">0-65 535 bytes</td>
+<td align="left">长文本数据</td>
+</tr>
+<tr>
+<td align="left">MEDIUMBLOB</td>
+<td align="left">0-16 777 215 bytes</td>
+<td align="left">二进制形式的中等长度文本数据</td>
+</tr>
+<tr>
+<td align="left">MEDIUMTEXT</td>
+<td align="left">0-16 777 215 bytes</td>
+<td align="left">中等长度文本数据</td>
+</tr>
+<tr>
+<td align="left">LONGBLOB</td>
+<td align="left">0-4 294 967 295 bytes</td>
+<td align="left">二进制形式的极大文本数据</td>
+</tr>
+<tr>
+<td align="left">LONGTEXT</td>
+<td align="left">0-4 294 967 295 bytes</td>
+<td align="left">极大文本数据</td>
+</tr>
+</tbody></table>
+<p>varchar用于储存可变长字符串，但需要使用1个额外字节来记录字符串长度（如果最大长度大于255则需要两个额外字节），在update时，如果页内没有更多的空间可以储存，MyISAM会将行拆成不同的片段储存，而InnoDB则会分裂页来使其可以放入页内。会产生碎片。</p>
+<p>char是定长的 ，同时储存char时，mysql会删除所有的末尾空格</p>
+<h3 id="4-枚举"><a href="#4-枚举" class="headerlink" title="4.枚举"></a>4.枚举</h3><p>enum 单选 只能在给定的范围内选一个值</p>
+<p>set 多选 在给定的范围内可以选择一个或一个以上的值</p>
+<h3 id="5-日期和时间类型"><a href="#5-日期和时间类型" class="headerlink" title="5.日期和时间类型"></a>5.日期和时间类型</h3><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">大小 ( bytes)</th>
+<th align="left">范围</th>
+<th align="left">格式</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">DATE</td>
+<td align="left">3</td>
+<td align="left">1000-01-01/9999-12-31</td>
+<td align="left">YYYY-MM-DD</td>
+<td align="left">日期值</td>
+</tr>
+<tr>
+<td align="left">TIME</td>
+<td align="left">3</td>
+<td align="left">‘-838:59:59’/‘838:59:59’</td>
+<td align="left">HH:MM:SS</td>
+<td align="left">时间值或持续时间</td>
+</tr>
+<tr>
+<td align="left">YEAR</td>
+<td align="left">1</td>
+<td align="left">1901/2155</td>
+<td align="left">YYYY</td>
+<td align="left">年份值</td>
+</tr>
+<tr>
+<td align="left">DATETIME</td>
+<td align="left">8</td>
+<td align="left">1000-01-01 00:00:00/9999-12-31 23:59:59</td>
+<td align="left">YYYY-MM-DD HH:MM:SS</td>
+<td align="left">混合日期和时间值</td>
+</tr>
+<tr>
+<td align="left">TIMESTAMP</td>
+<td align="left">4</td>
+<td align="left">1970-01-01 00:00:00/2038结束时间是第 <strong>2147483647</strong> 秒，北京时间 <strong>2038-1-19 11:14:07</strong>，格林尼治时间 2038年1月19日 凌晨 03:14:07</td>
+<td align="left">YYYYMMDD HHMMSS</td>
+<td align="left">混合日期和时间值，时间戳</td>
+</tr>
+</tbody></table>
+<h3 id="6-位数据类型"><a href="#6-位数据类型" class="headerlink" title="6.位数据类型"></a>6.位数据类型</h3><p>从技术上来说都是字符串类型</p>
+<h3 id="7-范式"><a href="#7-范式" class="headerlink" title="7.范式"></a>7.范式</h3><ol>
+<li>数据表的每一列都要保持它的原子特性，也就是列不能再被分割</li>
+<li>属性必须完全依赖于主键</li>
+<li>所有的非主属性不依赖于其他的非主属性</li>
+</ol>
+<hr>
+<h2 id="三、索引"><a href="#三、索引" class="headerlink" title="三、索引"></a>三、索引</h2><h3 id="1-B-Tree索引"><a href="#1-B-Tree索引" class="headerlink" title="1.B-Tree索引"></a>1.B-Tree索引</h3><p><a href="https://www.cnblogs.com/owenma/p/8723465.html">B-Tree的相关信息</a></p>
+<h3 id="2-哈希索引"><a href="#2-哈希索引" class="headerlink" title="2.哈希索引"></a>2.哈希索引</h3><p>为索引列计算一个哈希码，将哈希码储存在索引中，同时在哈希表中保存指向每个数据行的指针</p>
+<h3 id="3-空间数据索引"><a href="#3-空间数据索引" class="headerlink" title="3.空间数据索引"></a>3.空间数据索引</h3><p>MyISAM表支持空间索引，可以用作地理数据存储</p>
+<h3 id="4-全文索引"><a href="#4-全文索引" class="headerlink" title="4.全文索引"></a>4.全文索引</h3><p>查找文本中的关键词</p>
+<h3 id="5-索引的优点"><a href="#5-索引的优点" class="headerlink" title="5.索引的优点"></a>5.索引的优点</h3><ol>
+<li>索引大大减少了服务器需要扫描的数据量</li>
+<li>索引可以帮助服务器避免排序和临时表</li>
+<li>索引可以将随机I/O变为顺序I/O</li>
+</ol>
+<hr>
+<h2 id="四、复制"><a href="#四、复制" class="headerlink" title="四、复制"></a>四、复制</h2><h3 id="1-复制概述"><a href="#1-复制概述" class="headerlink" title="1.复制概述"></a>1.复制概述</h3><p>mysql支持两种复制方式，基于行的复制和基于语句的复制，这两种方式都是通过在主库上记录二进制日志，在备库重放日志的方式来实现异步的数据复制</p>
+<blockquote>
+<p><a href="https://www.cnblogs.com/wy123/p/8365234.html">关于MySQL的六种日志</a></p>
+<p><a href="https://blog.csdn.net/yu757371316/article/details/81081669">redo和undo日志</a></p>
+</blockquote>
+<h3 id="2-复制解决的问题"><a href="#2-复制解决的问题" class="headerlink" title="2.复制解决的问题"></a>2.复制解决的问题</h3><ol>
+<li>数据分布：在不同的地理位置分布数据备份</li>
+<li>负载均衡：将读操作分布到多个服务器上，实现对读密集型应用的优化</li>
+<li>备份</li>
+<li>高可用性和故障切换：帮助应用程序避免MySQL单点失败，包含鼓掌的故障切换系统可以显著地缩短宕机时间</li>
+<li>MySQL升级测试：使用一个更高版本的MySQL作为备库，保证在升级全部实例前，查询能够在备库按照预期执行</li>
+</ol>
+<h3 id="3-实现过程"><a href="#3-实现过程" class="headerlink" title="3.实现过程"></a>3.实现过程</h3><ol>
+<li>在主库上把数据更改记录到二进制日志中</li>
+<li>备库将主库上的日志复制到自己的中继日志中</li>
+<li>备库读取中继日志中的事件，将其重放到备数据库之上</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gph1qvwxy5j31240i2tf9.jpg" alt="image-20210412163556145"></p>
+<h3 id="4-复制的原理"><a href="#4-复制的原理" class="headerlink" title="4.复制的原理"></a>4.复制的原理</h3><h4 id="1-基于语句的复制"><a href="#1-基于语句的复制" class="headerlink" title="1.基于语句的复制"></a>1.基于语句的复制</h4><p>基于语句的复制（也称为<strong>逻辑复制</strong>）主库会记录那些造成数据更改的查询，当备库读取并重放这些事件时，实际上只是把主库上执行过的SQL再执行一遍</p>
+<p>特点：</p>
+<ol>
+<li>实现简单，只需要执行相关sql语句，能够让主备保持同步，日志文件一般占用较小。</li>
+<li>如果语句中包含元数据信息（比如当前时间），则会出现问题。</li>
+<li>而且更新必须是串行的，这需要更多的锁。</li>
+</ol>
+<h4 id="2-基于行的复制，这种方式将实际的数据记录在二进制文件中。"><a href="#2-基于行的复制，这种方式将实际的数据记录在二进制文件中。" class="headerlink" title="2.基于行的复制，这种方式将实际的数据记录在二进制文件中。"></a>2.基于行的复制，这种方式将实际的数据记录在二进制文件中。</h4><p>特点：</p>
+<ol>
+<li>由于无需重放更新主数据库的查询过程，直接进行复制，所以可以高效的复制数据。</li>
+<li>有的时候只是需要复制指令，全表的更新，如果使用基于行的复制将会造成大的开销。</li>
+</ol>
 ]]></content>
       <categories>
         <category>读书笔记</category>
@@ -2451,7 +2673,7 @@
   <entry>
     <title>TCP/IP详解</title>
     <url>/2021/04/09/TCP:IP%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<h1 id="TCP-IP详解"><a href="#TCP-IP详解" class="headerlink" title="TCP/IP详解"></a>TCP/IP详解</h1>]]></content>
+    <content><![CDATA[<h1 id="TCP-IP详解"><a href="#TCP-IP详解" class="headerlink" title="TCP/IP详解"></a>TCP/IP详解</h1><h2 id="1-TCP连接的建立与终止"><a href="#1-TCP连接的建立与终止" class="headerlink" title="1.TCP连接的建立与终止"></a>1.TCP连接的建立与终止</h2>]]></content>
       <categories>
         <category>读书笔记</category>
       </categories>
