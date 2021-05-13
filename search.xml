@@ -2662,6 +2662,10 @@
 <li>由于无需重放更新主数据库的查询过程，直接进行复制，所以可以高效的复制数据。</li>
 <li>有的时候只是需要复制指令，全表的更新，如果使用基于行的复制将会造成大的开销。</li>
 </ol>
+<h3 id="5-复制拓扑结构"><a href="#5-复制拓扑结构" class="headerlink" title="5.复制拓扑结构"></a>5.复制拓扑结构</h3><h4 id="1-一主库多备库"><a href="#1-一主库多备库" class="headerlink" title="1.一主库多备库"></a>1.一主库多备库</h4><p>适用于少量写和大量读，把读分担到多个备库，直到备库给主库造成太大的负担，或者主备之间的带宽出现瓶颈（解决方法：Blackhole引擎）<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqfslnuqm3j31240qajzs.jpg" alt="image-20210512175418050"></p>
+<h4 id="2-主动-主动模式下的主-主复制"><a href="#2-主动-主动模式下的主-主复制" class="headerlink" title="2.主动-主动模式下的主-主复制"></a>2.主动-主动模式下的主-主复制</h4><p>双主复制包含两台服务器，每一台都被配制成对方的主库和备库<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqfsoex0rwj311g06q0u8.jpg" alt="image-20210512175659127"></p>
+<p>一个可能的应用场景是处于不同地理位置的办公室，并且都需要一份可写的数据拷贝。在MySQL的BinaryLog中记录了当前MySQL的server-id，而且Master和Slave的server-id参数值比需要不一致才能使MySQLReplication搭建成功。一旦有了server-id的值之后，MySQL就很容易判断某个变更是从哪一个MySQLServer最初产生的，所以就很容易避免出现循环复制的情况。</p>
+<h4 id="3-主动-被动模式下的主-主复制"><a href="#3-主动-被动模式下的主-主复制" class="headerlink" title="3.主动-被动模式下的主-主复制"></a>3.主动-被动模式下的主-主复制</h4><p>这是双主复制的变体，主要区别在于其中一台服务器是只读的被动服务器</p>
 ]]></content>
       <categories>
         <category>读书笔记</category>
