@@ -2622,7 +2622,7 @@
 <li>所有的非主属性不依赖于其他的非主属性</li>
 </ol>
 <hr>
-<h2 id="三、索引"><a href="#三、索引" class="headerlink" title="三、索引"></a>三、索引</h2><h3 id="1-B-Tree索引"><a href="#1-B-Tree索引" class="headerlink" title="1.B-Tree索引"></a>1.B-Tree索引</h3><p><a href="https://www.cnblogs.com/owenma/p/8723465.html">B-Tree的相关信息</a></p>
+<h2 id="三、索引（待补充）"><a href="#三、索引（待补充）" class="headerlink" title="三、索引（待补充）"></a>三、索引（待补充）</h2><h3 id="1-B-Tree索引"><a href="#1-B-Tree索引" class="headerlink" title="1.B-Tree索引"></a>1.B-Tree索引</h3><p><a href="https://www.cnblogs.com/owenma/p/8723465.html">B-Tree的相关信息</a></p>
 <h3 id="2-哈希索引"><a href="#2-哈希索引" class="headerlink" title="2.哈希索引"></a>2.哈希索引</h3><p>为索引列计算一个哈希码，将哈希码储存在索引中，同时在哈希表中保存指向每个数据行的指针</p>
 <h3 id="3-空间数据索引"><a href="#3-空间数据索引" class="headerlink" title="3.空间数据索引"></a>3.空间数据索引</h3><p>MyISAM表支持空间索引，可以用作地理数据存储</p>
 <h3 id="4-全文索引"><a href="#4-全文索引" class="headerlink" title="4.全文索引"></a>4.全文索引</h3><p>查找文本中的关键词</p>
@@ -2665,7 +2665,27 @@
 <h3 id="5-复制拓扑结构"><a href="#5-复制拓扑结构" class="headerlink" title="5.复制拓扑结构"></a>5.复制拓扑结构</h3><h4 id="1-一主库多备库"><a href="#1-一主库多备库" class="headerlink" title="1.一主库多备库"></a>1.一主库多备库</h4><p>适用于少量写和大量读，把读分担到多个备库，直到备库给主库造成太大的负担，或者主备之间的带宽出现瓶颈（解决方法：Blackhole引擎）<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqfslnuqm3j31240qajzs.jpg" alt="image-20210512175418050"></p>
 <h4 id="2-主动-主动模式下的主-主复制"><a href="#2-主动-主动模式下的主-主复制" class="headerlink" title="2.主动-主动模式下的主-主复制"></a>2.主动-主动模式下的主-主复制</h4><p>双主复制包含两台服务器，每一台都被配制成对方的主库和备库<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqfsoex0rwj311g06q0u8.jpg" alt="image-20210512175659127"></p>
 <p>一个可能的应用场景是处于不同地理位置的办公室，并且都需要一份可写的数据拷贝。在MySQL的BinaryLog中记录了当前MySQL的server-id，而且Master和Slave的server-id参数值比需要不一致才能使MySQLReplication搭建成功。一旦有了server-id的值之后，MySQL就很容易判断某个变更是从哪一个MySQLServer最初产生的，所以就很容易避免出现循环复制的情况。</p>
-<h4 id="3-主动-被动模式下的主-主复制"><a href="#3-主动-被动模式下的主-主复制" class="headerlink" title="3.主动-被动模式下的主-主复制"></a>3.主动-被动模式下的主-主复制</h4><p>这是双主复制的变体，主要区别在于其中一台服务器是只读的被动服务器</p>
+<h4 id="3-主动-被动模式下的主-主复制"><a href="#3-主动-被动模式下的主-主复制" class="headerlink" title="3.主动-被动模式下的主-主复制"></a>3.主动-被动模式下的主-主复制</h4><p>这是双主复制的变体，主要区别在于其中一台服务器是只读的被动服务器，因为服务器的配置是对称的，所以故障转移和故障恢复很容易，可以使得在不关闭服务器的情况下执行维护，优化和升级<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqh1nkjedjj312c0f4tf4.jpg" alt="image-20210513195305204"></p>
+<h4 id="4-主库，分发库以及备库"><a href="#4-主库，分发库以及备库" class="headerlink" title="4.主库，分发库以及备库"></a>4.主库，分发库以及备库</h4><p>每个备库都会在主库上创建一个进程来执行binlog dump命令（读取二进制文件中的数据并将其发送给备库），每个备库都会重复这项工作，无法共享binlog dump的资源。太多的备库就会导致主库的性能受到影响。可以使用分发库来移除负载<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqh22sqk9cj30ea0ic77g.jpg" alt="image-20210513200745725"></p>
+<p>使用分发主库的缺点是无法使用一个备库来代替主库，由于分发主库的存在，导致备库与原始主库的二进制日志坐标不同</p>
+<h4 id="5-选择性复制"><a href="#5-选择性复制" class="headerlink" title="5.选择性复制"></a>5.选择性复制</h4><p>利用局部性原理，将需要读的工作集驻留在内存中，可以复制少量数据到备库中，每个备库只有主库的一部分数据，将读分配给备库，可以更好的利用备库的内存，并且每个备库也只有主库一部分的写入负载，这样主库的能力更强并能保证备库延迟。该方案类似于水平数据划分。</p>
+<h3 id="6-复制和容量规划"><a href="#6-复制和容量规划" class="headerlink" title="6.复制和容量规划"></a>6.复制和容量规划</h3><p>复制的瓶颈在于写操作，因为复制是无法扩展写操作的，所有的写操作都要在所有的服务器上进行，而读操作则可以进行负载的均衡。对数据进行分区是唯一可以扩展写入的方法</p>
+<h2 id="五、可扩展的MySQL"><a href="#五、可扩展的MySQL" class="headerlink" title="五、可扩展的MySQL"></a>五、可扩展的MySQL</h2><h3 id="1-向上扩展"><a href="#1-向上扩展" class="headerlink" title="1.向上扩展"></a>1.向上扩展</h3><p>将单台服务器的硬件进行扩展，较简单，但是向上扩展会导致备库的配置较为困难，不会配置和主库一样强大的备库，高负载的主库通常可以承担比拥有同样配置的备库更多的工作，因为备库的复制线程无法高效的利用多核CPU和磁盘资源。单服务器通常会先到达读限制。复杂的读查询在MySQL内部是单线程的。</p>
+<h3 id="2-向外扩展"><a href="#2-向外扩展" class="headerlink" title="2.向外扩展"></a>2.向外扩展</h3><p>策略分为三个部分：复制、拆分以及数据分片</p>
+<h4 id="1-按功能拆分"><a href="#1-按功能拆分" class="headerlink" title="1.按功能拆分"></a>1.按功能拆分</h4><p>将独立的服务器或节点分配给不同的应用，例如门户网站通常把不同的栏目放在一起可以把不同功能区域的数据放到专用的MySQL服务器中。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqhz0dzk92j30fm0f4di5.jpg" alt="image-20210514150710445"></p>
+<p>另一种可能的划分是对 单个服务器的数据进行划分，并确保划分的表集合之间不会执行关联操作。特点是每种类型的数据只能在单个节点上找到。</p>
+<h4 id="2-数据分片"><a href="#2-数据分片" class="headerlink" title="2.数据分片"></a>2.数据分片</h4><p>把数据分割成一小片或者一块，然后储存到不同的节点之中。如下图所示的博客服务的划分</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqhzmd8em8j30zg0d8gtk.jpg" alt="image-20210514152820569"></p>
+<p>最后可以通过用户ID来对文章和评论进行分片，为全局节点配置一个主-备结构并为分片节点使用主-主结构</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqhzqp8tvwj30oy0aiaej.jpg" alt="image-20210514153230228"></p>
+<p>如非必要，尽量不分片，分片的架构主要是为了扩展写容量</p>
+<h4 id="3-选择分区键"><a href="#3-选择分区键" class="headerlink" title="3.选择分区键"></a>3.选择分区键</h4><p>数据分片最大的挑战是查找和获取数据，对那些最重要并且频繁查询的数据减少分片（可扩展性法则：避免不同节点间的交互），选择分区键时尽可能选择那些能够避免跨分片查询的，同时让分片足够小且尽可能同样小</p>
+<h4 id="4-多个分区键"><a href="#4-多个分区键" class="headerlink" title="4.多个分区键"></a>4.多个分区键</h4><p>对于多个分区键并不需要设计两个冗余的数据储存，而是将其放在一起储存</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqhzzp9h6gj30zq07sdkh.jpg" alt="image-20210514154108949"></p>
+<h4 id="5-跨分片查询"><a href="#5-跨分片查询" class="headerlink" title="5.跨分片查询"></a>5.跨分片查询</h4><p>跨分片查询可以借助汇总表来执行，可以遍历所有分片来生成汇总表，并把汇总表放到另外的一个数据储存。</p>
+<h4 id="6-固定分配"><a href="#6-固定分配" class="headerlink" title="6.固定分配"></a>6.固定分配</h4><p>一般采用哈希函数的方式来进行，缺点是无法自定义，且修改分片策略很困难</p>
+<h4 id="7-动态分配"><a href="#7-动态分配" class="headerlink" title="7.动态分配"></a>7.动态分配</h4><p>在表中增加分区键，根据该键来指定分片。缺点是增加了分区函数的开销，同时多了一次查询数据所属分片的情况开销。需要调用一次外部资源。</p>
 ]]></content>
       <categories>
         <category>读书笔记</category>
@@ -2683,6 +2703,27 @@
       </categories>
       <tags>
         <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 34. 二叉树中和为某一值的路径</title>
+    <url>/2021/05/17/%E5%89%91%E6%8C%87%20Offer%2034.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-34-二叉树中和为某一值的路径"><a href="#剑指-Offer-34-二叉树中和为某一值的路径" class="headerlink" title="剑指 Offer 34. 二叉树中和为某一值的路径"></a>剑指 Offer 34. 二叉树中和为某一值的路径</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径。</p>
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/">LeetCode</a></h2><hr>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>亮点一在于将求和变为了差值比较，这样不用去记录路径和再进行比较而是路径和与target相等是其差为0，代码简洁</li>
+<li>36行的remove是移除了29行的add，这里即为回溯</li>
+<li>32行的add需要将此时的path进行深拷贝，否则传递的是对象，后续会发生变化</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    LinkedList&lt;Integer&gt; path = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; pathSum(TreeNode root, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        recur(root,target);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recur</span><span class="params">(TreeNode root, <span class="keyword">int</span> target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        path.add(root.val);</span><br><span class="line">        target = target -  root.val;</span><br><span class="line">        <span class="keyword">if</span>(target == <span class="number">0</span> &amp;&amp; root.left==<span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">            res.add(<span class="keyword">new</span> LinkedList(path));</span><br><span class="line">        &#125;</span><br><span class="line">        recur(root.left,target);</span><br><span class="line">        recur(root.right,target);</span><br><span class="line">        path.removeLast();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>二叉树</tag>
       </tags>
   </entry>
 </search>
