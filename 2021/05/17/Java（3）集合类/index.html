@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    剑指 Offer 37. 序列化二叉树 |  summerain
+    Java（3）集合类 |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-剑指 Offer 37. 序列化二叉树"
+  id="post-Java（3）集合类"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,18 +55,18 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  剑指 Offer 37. 序列化二叉树
+  Java（3）集合类
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/05/18/%E5%89%91%E6%8C%87%20Offer%2037.%20%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
-  <time datetime="2021-05-18T03:57:23.000Z" itemprop="datePublished">2021-05-18</time>
+      <a href="/2021/05/17/Java%EF%BC%883%EF%BC%89%E9%9B%86%E5%90%88%E7%B1%BB/" class="article-date">
+  <time datetime="2021-05-17T03:44:24.000Z" itemprop="datePublished">2021-05-17</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87-Offer/">剑指 Offer</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
   </div>
   
 <div class="word_count">
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">438</span>
+            <span class="post-count">272</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">1 min</span>
         </span>
     </span>
 </div>
@@ -98,16 +98,19 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="剑指-Offer-37-序列化二叉树"><a href="#剑指-Offer-37-序列化二叉树" class="headerlink" title="剑指 Offer 37. 序列化二叉树"></a>剑指 Offer 37. 序列化二叉树</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>请实现两个函数，分别用来序列化和反序列化二叉树。</p>
-<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof/">LeetCode</a></h2><hr>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
-<li>该题虽然为hard，但是总体流程是比较清晰的，需要注意的是对细节等方面的把控就好</li>
-<li>首先是序列化，此处使用的是LinkedList最后转为String，也可以直接使用StringBuffer来进行操作，类似层序遍历树的方式，不同的是对于每个叶子结点都要给出其左右子树的null，以此来方便后续的反序列化</li>
-<li>反序列化，和序列化类似，都用到的是队列，经过序列化后的字符串进行解析，且有null补全，直接遍历并分配给左右子树即可。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Codec</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Encodes a tree to a single string.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">serialize</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;[]&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        List l = <span class="keyword">new</span> LinkedList();</span><br><span class="line">        Queue&lt;TreeNode&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        q.offer(root);</span><br><span class="line">        <span class="keyword">while</span>(!q.isEmpty())&#123;</span><br><span class="line">            root = q.poll();</span><br><span class="line">            <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">                l.add(<span class="string">&quot;null&quot;</span>);</span><br><span class="line"></span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                l.add(root.val);</span><br><span class="line">                q.offer(root.left);</span><br><span class="line">                q.offer(root.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Decodes your encoded data to tree.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">deserialize</span><span class="params">(String data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(data.equals(<span class="string">&quot;[]&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String[] strs = data.substring(<span class="number">1</span>, data.length() - <span class="number">1</span>).split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(Integer.parseInt(strs[<span class="number">0</span>].trim()));</span><br><span class="line">        TreeNode tmp = root;</span><br><span class="line">        Queue&lt;TreeNode&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        q.offer(root);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(!q.isEmpty())&#123;</span><br><span class="line">            root = q.poll();</span><br><span class="line">            <span class="keyword">if</span>(!strs[i].trim().equals(<span class="string">&quot;null&quot;</span>))&#123;</span><br><span class="line">                root.left = <span class="keyword">new</span> TreeNode(Integer.parseInt(strs[i].trim()));</span><br><span class="line">                q.offer(root.left);</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">if</span>(!strs[i].trim().equals(<span class="string">&quot;null&quot;</span>))&#123;</span><br><span class="line">                root.right = <span class="keyword">new</span> TreeNode(Integer.parseInt(strs[i].trim()));</span><br><span class="line">                q.offer(root.right);</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Your Codec object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment">// Codec codec = new Codec();</span></span><br><span class="line"><span class="comment">// codec.deserialize(codec.serialize(root));</span></span><br></pre></td></tr></table></figure>
+  <h1 id="Java（三）集合类"><a href="#Java（三）集合类" class="headerlink" title="Java（三）集合类"></a>Java（三）集合类</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/LittleHann/p/3690187.html">https://www.cnblogs.com/LittleHann/p/3690187.html</a></p>
+<h2 id="1-java中集合类的关系图"><a href="#1-java中集合类的关系图" class="headerlink" title="1.java中集合类的关系图"></a>1.java中集合类的关系图</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlmf1xphkj30vg0lukf0.jpg" alt="image-20210517185339567"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqla203ogxj30s00glta7.jpg" alt="图片"></p>
+<h2 id="2-Iterator"><a href="#2-Iterator" class="headerlink" title="2.Iterator"></a>2.Iterator</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">E <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> <span class="comment">// 移除当前迭代器所指的元素</span></span></span><br></pre></td></tr></table></figure>
 
- 
+<h2 id="3-collection"><a href="#3-collection" class="headerlink" title="3.collection"></a>3.collection</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span></span>;</span><br><span class="line">Object[] toArray();</span><br><span class="line">&lt;T&gt; T[] toArray(T[] a); <span class="comment">// 将容器内的元素放入给定的数组中，容量太小会报错，太大会补null</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">containsAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? extends E&gt; c)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">removeAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">retainAll</span><span class="params">(Collection&lt;?&gt; c)</span></span>; <span class="comment">// 仅保留某些元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-List"><a href="#1-List" class="headerlink" title="1.List"></a>1.List</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index, Collection&lt;? extends E&gt; c)</span></span>;</span><br><span class="line"><span class="function">E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line"><span class="function">E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span></span>;</span><br><span class="line"><span class="function">E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(Object o)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lastIndexOf</span><span class="params">(Object o)</span></span>;</span><br><span class="line"><span class="function">ListIterator&lt;E&gt; <span class="title">listIterator</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">ListIterator&lt;E&gt; <span class="title">listIterator</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line"><span class="function">List&lt;E&gt; <span class="title">subList</span><span class="params">(<span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Queue"><a href="#2-Queue" class="headerlink" title="2.Queue"></a>2.Queue</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">offer</span><span class="params">(E e)</span></span>; <span class="comment">// 在队列的容量受限时，比add安全，add会抛出错误</span></span><br><span class="line"><span class="function">E <span class="title">poll</span><span class="params">()</span></span>; <span class="comment">// 返回头部元素，并移除该元素</span></span><br><span class="line"><span class="function">E <span class="title">peek</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">E <span class="title">element</span><span class="params">()</span></span>; <span class="comment">// 同peek()，但是当没有头部元素时会直接报错，而peek()则返回null</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Set"><a href="#3-Set" class="headerlink" title="3.Set"></a>3.Set</h3><p>set和collection相同</p>
+<h2 id="4-具体实现类"><a href="#4-具体实现类" class="headerlink" title="4.具体实现类"></a>4.具体实现类</h2><h3 id="1-hashSet"><a href="#1-hashSet" class="headerlink" title="1.hashSet"></a>1.hashSet</h3> 
       <!-- reward -->
       
       <div id="reword-out">
@@ -177,12 +180,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/05/18/%E5%89%91%E6%8C%87%20Offer%2037.%20%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/05/17/Java%EF%BC%883%EF%BC%89%E9%9B%86%E5%90%88%E7%B1%BB/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="tag">基础语法</a></li></ul>
 
     </footer>
   </div>
@@ -190,10 +193,19 @@
    
   <nav class="article-nav">
     
+      <a href="/2021/05/18/%E5%89%91%E6%8C%87%20Offer%2037.%20%E5%BA%8F%E5%88%97%E5%8C%96%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            剑指 Offer 37. 序列化二叉树
+          
+        </div>
+      </a>
     
-      <a href="/2021/05/17/Java%EF%BC%883%EF%BC%89%E9%9B%86%E5%90%88%E7%B1%BB/" class="article-nav-link">
+    
+      <a href="/2021/05/17/%E5%89%91%E6%8C%87%20Offer%2034.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java（3）集合类</div>
+        <div class="article-nav-title">剑指 Offer 34. 二叉树中和为某一值的路径</div>
       </a>
     
   </nav>
