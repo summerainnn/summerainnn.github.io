@@ -2771,4 +2771,31 @@
         <tag>基础语法</tag>
       </tags>
   </entry>
+  <entry>
+    <title>剑指 Offer 41. 数据流中的中位数</title>
+    <url>/2021/05/19/%E5%89%91%E6%8C%87%20Offer%2041.%20%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-41-数据流中的中位数"><a href="#剑指-Offer-41-数据流中的中位数" class="headerlink" title="剑指 Offer 41. 数据流中的中位数"></a>剑指 Offer 41. 数据流中的中位数</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，那么中位数就是所有数值排序之后中间两个数的平均值。</p>
+<p>例如，</p>
+<p>[2,3,4] 的中位数是 3</p>
+<p>[2,3] 的中位数是 (2 + 3) / 2 = 2.5</p>
+<p>设计一个支持以下两种操作的数据结构：</p>
+<ul>
+<li>void addNum(int num) - 从数据流中添加一个整数到数据结构中。</li>
+<li>double findMedian() - 返回目前所有元素的中位数。</li>
+</ul>
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof">LeetCode</a></h2><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>使用两个有序的结构来各自保存一半的数据，取中位数较为方便</li>
+<li>这里选择一个大顶堆和一个小顶堆，堆默认是小顶堆，需要自己重写compare来得到大顶堆，这里使用了lambda表达式，来得到大顶堆</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MedianFinder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Queue&lt;Integer&gt; A,B;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MedianFinder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        A = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">        B = <span class="keyword">new</span> PriorityQueue&lt;&gt;((x, y) -&gt; (y - x));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addNum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(A.size()==B.size())&#123;</span><br><span class="line">            B.add(num);</span><br><span class="line">            A.add(B.poll());</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            A.add(num);</span><br><span class="line">            B.add(A.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedian</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(A.size()==B.size())&#123;</span><br><span class="line">            <span class="keyword">return</span> (A.peek()+B.peek())/<span class="number">2.0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> A.peek();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MedianFinder object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MedianFinder obj = new MedianFinder();</span></span><br><span class="line"><span class="comment"> * obj.addNum(num);</span></span><br><span class="line"><span class="comment"> * double param_2 = obj.findMedian();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>堆</tag>
+      </tags>
+  </entry>
 </search>
