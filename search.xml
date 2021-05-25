@@ -2085,8 +2085,8 @@
         <category>剑指 Offer</category>
       </categories>
       <tags>
-        <tag>双指针</tag>
         <tag>有序数组</tag>
+        <tag>双指针 - 算法</tag>
       </tags>
   </entry>
   <entry>
@@ -2762,7 +2762,10 @@
 <h3 id="2-Queue"><a href="#2-Queue" class="headerlink" title="2.Queue"></a>2.Queue</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">offer</span><span class="params">(E e)</span></span>; <span class="comment">// 在队列的容量受限时，比add安全，add会抛出错误</span></span><br><span class="line"><span class="function">E <span class="title">poll</span><span class="params">()</span></span>; <span class="comment">// 返回头部元素，并移除该元素</span></span><br><span class="line"><span class="function">E <span class="title">peek</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">E <span class="title">element</span><span class="params">()</span></span>; <span class="comment">// 同peek()，但是当没有头部元素时会直接报错，而peek()则返回null</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="3-Set"><a href="#3-Set" class="headerlink" title="3.Set"></a>3.Set</h3><p>set和collection相同</p>
-<h2 id="4-具体实现类"><a href="#4-具体实现类" class="headerlink" title="4.具体实现类"></a>4.具体实现类</h2><h3 id="1-hashSet"><a href="#1-hashSet" class="headerlink" title="1.hashSet"></a>1.hashSet</h3>]]></content>
+<h2 id="4-具体实现类"><a href="#4-具体实现类" class="headerlink" title="4.具体实现类"></a>4.具体实现类</h2><h3 id="1-HashSet"><a href="#1-HashSet" class="headerlink" title="1.HashSet"></a>1.HashSet</h3><p>hashSet的底层实现时hashMap，置value为一个空的object。</p>
+<h3 id="2-LinkedHashSet"><a href="#2-LinkedHashSet" class="headerlink" title="2.LinkedHashSet"></a>2.LinkedHashSet</h3><h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><h4 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h4><p>hashMap类中的元素是Node类，node类除了基础的hash，key，value外，还有next，记录下一个node，因此hashMap中保存的是<code>transient Node&lt;K,V&gt;[] table</code>，记录每一个头节点，即可遍历整个map。table的大小是2的次方，方便用与运算进行散列（以及1.8后的扩容），对于散列后相同的node，将其直接添加到头节点之后，形成链表，当链表的长度大于8后，就转换为红黑树（当table的大小小于64时会先扩容table）</p>
+<h4 id="扩容："><a href="#扩容：" class="headerlink" title="扩容："></a>扩容：</h4><p>hashMap的扩容加载因子默认为0.75，即当hashMap中储存的Node的大小超过四分之三的table数组的长度后会触发扩容</p>
+]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -2819,6 +2822,29 @@
       <tags>
         <tag>算法</tag>
         <tag>队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>剑指 Offer 56 - II. 数组中数字出现的次数 II</title>
+    <url>/2021/05/25/%E5%89%91%E6%8C%87%20Offer%2056%20-%20II.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E6%95%B0%E5%AD%97%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0%20II/</url>
+    <content><![CDATA[<h1 id="剑指-Offer-56-II-数组中数字出现的次数-II"><a href="#剑指-Offer-56-II-数组中数字出现的次数-II" class="headerlink" title="剑指 Offer 56 - II. 数组中数字出现的次数 II"></a>剑指 Offer 56 - II. 数组中数字出现的次数 II</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>在一个数组 <code>nums</code> 中除一个数字只出现一次之外，其他数字都出现了三次。请找出那个只出现一次的数字。</p>
+<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/">LeetCode</a></h2><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
+<li>此处用到了状态机和位运算的相关知识点，即对于每一个出现三次的数字，经过位运算后将该数字转化为二进制后该位上的1消除。</li>
+<li>此状态机共有3种状态，且3种状态是每一位都共用的，将其用二进制进行表示并进行位运算</li>
+<li>由图可得在经过一次1后，只有第二位为1，可以直接返回状态机的此位，即为最后剩下未被消除的仅出现一次的数字第三态可为10，也可为11，此处采用11进行计算得到其方程</li>
+<li><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gquhsxcjsdj30fo08aab2.jpg" alt="image-20210525110410488"></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>;  <span class="comment">// a代表第一位，b代表第二位</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            <span class="comment">// 该表达式的计算是难点，较耗时</span></span><br><span class="line">            a = b &amp; (a ^ num);</span><br><span class="line">            b = b ^ (num &amp; (~ a));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>剑指 Offer</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+        <tag>状态机 - 算法</tag>
       </tags>
   </entry>
 </search>
