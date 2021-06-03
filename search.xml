@@ -2391,7 +2391,7 @@
 <p>进程创建子进程，子进程 又可以创建子进程，从而形成了进程树，但是其深度很少超过3层，且存在时间较短，通常为几分钟</p>
 <h4 id="2-地址空间"><a href="#2-地址空间" class="headerlink" title="2.地址空间"></a>2.地址空间</h4><p>操作系统保护内存中同时存在的多道程序之间不会出现相互干扰</p>
 <h4 id="3-文件"><a href="#3-文件" class="headerlink" title="3.文件"></a>3.文件</h4><p>操作系统隐藏磁盘和其它I/O设备的细节特性，提供一个独立于设备的抽象文件模型。</p>
-<p>大多数操作系统支持目录的概念，并产生 树状结构的文件系统。</p>
+<p>大多数操作系统支持目录的概念，并产生树状结构的文件系统。进程和文件都会产生类似的树状结构，但是它们在深度和持续时间上有很大的区别，同时在所有权及保护方面也是有区别的，只有父进程能控制和访问子进程，而在文件和目录中存在一种机制，使得文件所有者之外的其他用户也可以访问文件</p>
 ]]></content>
       <categories>
         <category>读书笔记</category>
@@ -2622,7 +2622,8 @@
 <li>所有的非主属性不依赖于其他的非主属性</li>
 </ol>
 <hr>
-<h2 id="三、索引（待补充）"><a href="#三、索引（待补充）" class="headerlink" title="三、索引（待补充）"></a>三、索引（待补充）</h2><h3 id="1-B-Tree索引"><a href="#1-B-Tree索引" class="headerlink" title="1.B-Tree索引"></a>1.B-Tree索引</h3><p><a href="https://www.cnblogs.com/owenma/p/8723465.html">B-Tree的相关信息</a></p>
+<h2 id="三、索引（待补充）"><a href="#三、索引（待补充）" class="headerlink" title="三、索引（待补充）"></a>三、索引（待补充）</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqvv86ker5j318005ugn2.jpg" alt="image-20210526153410941"></p>
+<h3 id="1-B-Tree索引"><a href="#1-B-Tree索引" class="headerlink" title="1.B-Tree索引"></a>1.B-Tree索引</h3><p><a href="https://www.cnblogs.com/owenma/p/8723465.html">B-Tree的相关信息</a></p>
 <h3 id="2-哈希索引"><a href="#2-哈希索引" class="headerlink" title="2.哈希索引"></a>2.哈希索引</h3><p>为索引列计算一个哈希码，将哈希码储存在索引中，同时在哈希表中保存指向每个数据行的指针</p>
 <h3 id="3-空间数据索引"><a href="#3-空间数据索引" class="headerlink" title="3.空间数据索引"></a>3.空间数据索引</h3><p>MyISAM表支持空间索引，可以用作地理数据存储</p>
 <h3 id="4-全文索引"><a href="#4-全文索引" class="headerlink" title="4.全文索引"></a>4.全文索引</h3><p>查找文本中的关键词</p>
@@ -2884,6 +2885,107 @@
       <tags>
         <tag>算法</tag>
         <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java并发编程的艺术</title>
+    <url>/2021/05/26/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/</url>
+    <content><![CDATA[<h1 id="1-Java并发机制的底层实现原理"><a href="#1-Java并发机制的底层实现原理" class="headerlink" title="1.Java并发机制的底层实现原理"></a>1.Java并发机制的底层实现原理</h1><hr>
+<h2 id="1-1-volatile的应用"><a href="#1-1-volatile的应用" class="headerlink" title="1.1. volatile的应用"></a>1.1. volatile的应用</h2><ol>
+<li><p>定义与实现原理：</p>
+<p> 在将由volatile修饰的共享变量进行写操作时，转变为的汇编代码会多出一个Lock前缀的指令，该指令在多核处理器下会引发两件事：</p>
+<pre><code> 1. 将当前处理器缓存行的数据写回到系统内存
+  2. 这个写回内存的操作会使在其它CPU里缓存了该地址的数据无效</code></pre>
+<blockquote>
+<p>处理器是和缓存（L1，L2或其它）进行通信的，但是操作完后不知道何时会讲这个变量所在缓存行的数据写回到系统内存。但是即便写回内存，其它缓存的值还是旧的，所以会有<strong>缓存一致性协议</strong>，每个处理器通过嗅探在总线上传播的数据来检查自己的缓存值是不是过期了</p>
+<blockquote>
+<p>嗅探的实现：连接缓存总线的各方都有一个一致性控制器</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqw32m80w7j30if0d93zf.jpg" alt="image-20201219142943093"></p>
+<ul>
+<li>事务表（Outstanding Transaction Table）：保存由当前核芯发起的未完成的总线事务表。</li>
+<li>总线嗅探器（snooper）：<strong>监听总线上的事务。当其接收到信号时，控制器检测缓存内的tag是否需要响应该总线事务</strong>。</li>
+<li>有限状态机（FSM）：判断缓存块的状态如何改变。后面分析缓存一致性协议的时候会讲到。</li>
+<li>写回缓存区（write back buffer）：所有需要写回的缓存块先保存到该缓存区中。</li>
+</ul>
+</blockquote>
+<p>缓存一致性原则MESI：</p>
+<p>M(Modified)：被修改的。处于这一状态的数据，只在本CPU中有缓存数据，而其他CPU中没有。同时其状态相对于内存中的值来说，是已经被修改的，且没有更新到内存中。</p>
+<p>E(Exclusive)：独占的。处于这一状态的数据，只有在本CPU中有缓存，且其数据没有修改，即与内存中一致。</p>
+<p>S(Shared)：共享的。处于这一状态的数据在多个CPU中都有缓存，且与内存一致。</p>
+<p>I(Invalid)：要么已经不在缓存中，要么它的内容已经过时。为了达到缓存的目的，这种状态的段将会被忽略。一旦缓存段被标记为失效，那效果就等同于它从来没被加载到缓存中。</p>
+</blockquote>
+</li>
+<li><p>volatile的两条实现原则</p>
+<ol>
+<li>Lock前缀指令会引起处理器缓存回写到内存。</li>
+<li>一个处理器的缓存回写到内存会导致其他处理器的缓存无效</li>
+</ol>
+</li>
+<li><p>volatile的使用优化</p>
+<p> 追加字节的方式来优化队列出队和入队的性能，将队列的头节点和尾节点追加到超过缓存行的64个字节大小，这样头节点和尾节点不会因为同时存在一行内而被同时锁住，提高了并发</p>
+</li>
+</ol>
+<h2 id="2-1-synchronized的实现"><a href="#2-1-synchronized的实现" class="headerlink" title="2.1.synchronized的实现"></a>2.1.synchronized的实现</h2><ol>
+<li><p>synchronized实现同步的基础：java中的每一个对象都可以作为锁，具体表现为以下三种形式：</p>
+<ul>
+<li><p>对于普通的同步方法，锁是当前实例对象</p>
+</li>
+<li><p>对于静态同步方法，锁的是当前类的Class对象</p>
+</li>
+<li><p>对于同步方法，锁的是Synchronized括号里配置的对象</p>
+<p>synchronized在JVM里的实现原理，JVM基于进入和退出Monitor对象来实现方法同步和代码块同步，代码块同步是使用monitorenter和monitorexit指令实现（类似于锁），在编译后插入同步代码块的开始位置，monitorexit插入到方法的结束处和异常处，并保证每个monitorenter和monitorexit都会配对，任何对象都有一个monitor与之关联，当一个monitor被持有后，将处于锁定状态，线程执行到monitorenter时会尝试获取该对象的monitor所有权，即尝试获取锁</p>
+</li>
+</ul>
+</li>
+<li><p>synchronizd用的锁monitor存在java对象头里，数组对象的对象头为3个字长，其它对象的对象头为2字长</p>
+<p> <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr2wwnv2wzj311c07uq6e.jpg" alt="image-20210601175114836"></p>
+<p> java对象头的存储结构</p>
+<p> <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr55zwar2dj310u05g768.jpg" alt="image-20210603163653683"><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr56unn0xoj311o0a2ae6.jpg" alt="image-20210603170629280"></p>
+</li>
+<li><p>锁的四种状态，级别从低到高：无锁状态、</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MapReduce</title>
+    <url>/2021/05/28/MapReduce/</url>
+    <content><![CDATA[<h1 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h1><p>中文翻译：<a href="https://zhuanlan.zhihu.com/p/122571315">https://zhuanlan.zhihu.com/p/122571315</a></p>
+<h2 id="一、概要"><a href="#一、概要" class="headerlink" title="一、概要"></a>一、概要</h2><p>通过分布式的方式来解决实际生产中遇到的问题：对于map集合的合并（曾遇到过的实际案例：合并拥有相同的第一个元素的二元组）。对该抽象问题在极大规模下运行的性能问题，本论文的工作是通过用户自行编写的map（生成K/V）和reduce（map的合并规则）代码，调用MapReduce即可实现自动并行化和分布式执行。</p>
+<h2 id="二、执行概述"><a href="#二、执行概述" class="headerlink" title="二、执行概述"></a>二、执行概述</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqxyu7wipsj313q0so14e.jpg" alt="image-20210528111016849"></p>
+<p>从整个图来看是一种分治的思想，揉杂了生产者和消费者的模式，以及一个Master的控制节点，同时在该分布式中还会使用到外部排序，来应对大量的数据最后的合并，还会运用到rpc远程调用来读取数据。</p>
+<blockquote>
+<ol>
+<li>将原始数据进行分割，交给map worker进行map操作并将得到的数据写入硬盘中，并通知master节点，master节点会通过分区函数来进行分割。</li>
+<li>master节点将处理过的map数据分割交给reduce worker，reduce worker会先用外部排序来将其进行排序，然后用用户编写的reduce将分配的map数据进行合并，最后输出到硬盘中。</li>
+<li>在第二步中多个reduce worker会生成多个输出文件，一般情况下最后会由一个reduce worker进行合并，或者交给另外一个可对其进行处理的分布式系统</li>
+</ol>
+</blockquote>
+<h2 id="三、系统的具体实现"><a href="#三、系统的具体实现" class="headerlink" title="三、系统的具体实现"></a>三、系统的具体实现</h2><ol>
+<li><p>master节点的设计</p>
+<p> 在Master中包含了一些数据结构。它保存了每个Map任务和每个Reduce任务的状态（闲置，正在运行，以及完成），以及非空闲任务的worker机器的ID。</p>
+</li>
+<li><p>容错</p>
+<p> 对于大型的分布式系统来讲，故障发生是很常见的事情，所以容错在分布式系统中很重要。</p>
+<p> worker节点：master节点会周期性的对worker节点进行ping操作，如果在某段时间内没有接收到该节点的响应，那么就可以认为该节点挂掉了（类似redis中的哨兵），在master确认某个节点挂掉后，会使用其他节点来代替该节点，并重置该节点上次执行的任务的状态，重新执行该任务。</p>
+<p> master节点：master节点是单节点的，所以在此系统中，master节点挂掉后，该任务会被直接中断执行，对于master节点的容错操作是周期性的对master节点的内容进行储存，保存目前已经完成的任务备份，便于下次重启</p>
+</li>
+<li><p>备用任务</p>
+<p> 在分布式系统中有可能会出现落伍者，导致某个节点的缓慢执行拖累了 整个系统的执行速度，因此，使用了一个通用机制来在整个任务快要执行结束时，使用空闲的worker来执行那些尚在执行中的任务，以此来避免落伍者的拖累</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>分布式</tag>
       </tags>
   </entry>
 </search>
