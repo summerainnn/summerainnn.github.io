@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    MapReduce |  summerain
+    Netty |  summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-MapReduce"
+  id="post-Netty"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,26 +55,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  MapReduce
+  Netty
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/05/28/MapReduce/" class="article-date">
-  <time datetime="2021-05-28T02:51:42.000Z" itemprop="datePublished">2021-05-28</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>
-  </div>
-  
+      <a href="/2021/06/04/Netty/" class="article-date">
+  <time datetime="2021-06-04T03:10:44.000Z" itemprop="datePublished">2021-06-04</time>
+</a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">771</span>
+            <span class="post-count">491</span>
         </span>
     </span>
 
@@ -98,30 +94,14 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h1><p>中文翻译：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/122571315">https://zhuanlan.zhihu.com/p/122571315</a></p>
-<h2 id="一、概要"><a href="#一、概要" class="headerlink" title="一、概要"></a>一、概要</h2><p>通过分布式的方式来解决实际生产中遇到的问题：对于map集合的合并（曾遇到过的实际案例：合并拥有相同的第一个元素的二元组）。对该抽象问题在极大规模下运行的性能问题，本论文的工作是通过用户自行编写的map（生成K/V）和reduce（map的合并规则）代码，调用MapReduce即可实现自动并行化和分布式执行。</p>
-<h2 id="二、执行概述"><a href="#二、执行概述" class="headerlink" title="二、执行概述"></a>二、执行概述</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqxyu7wipsj313q0so14e.jpg" alt="image-20210528111016849"></p>
-<p>从整个图来看是一种分治的思想，揉杂了生产者和消费者的模式，以及一个Master的控制节点，同时在该分布式中还会使用到外部排序，来应对大量的数据最后的合并，还会运用到rpc远程调用来读取数据。</p>
-<blockquote>
-<ol>
-<li>将原始数据进行分割，交给map worker进行map操作并将得到的数据写入硬盘中，并通知master节点，master节点会通过分区函数来进行分割。</li>
-<li>master节点将处理过的map数据分割交给reduce worker，reduce worker会先用外部排序来将其进行排序，然后用用户编写的reduce将分配的map数据进行合并，最后输出到硬盘中。</li>
-<li>在第二步中多个reduce worker会生成多个输出文件，一般情况下最后会由一个reduce worker进行合并，或者交给另外一个可对其进行处理的分布式系统</li>
-</ol>
-</blockquote>
-<h2 id="三、系统的具体实现"><a href="#三、系统的具体实现" class="headerlink" title="三、系统的具体实现"></a>三、系统的具体实现</h2><ol>
-<li><p>master节点的设计</p>
-<p> 在Master中包含了一些数据结构。它保存了每个Map任务和每个Reduce任务的状态（闲置，正在运行，以及完成），以及非空闲任务的worker机器的ID。</p>
-</li>
-<li><p>容错</p>
-<p> 对于大型的分布式系统来讲，故障发生是很常见的事情，所以容错在分布式系统中很重要。</p>
-<p> worker节点：master节点会周期性的对worker节点进行ping操作，如果在某段时间内没有接收到该节点的响应，那么就可以认为该节点挂掉了（类似redis中的哨兵），在master确认某个节点挂掉后，会使用其他节点来代替该节点，并重置该节点上次执行的任务的状态，重新执行该任务。</p>
-<p> master节点：master节点是单节点的，所以在此系统中，master节点挂掉后，该任务会被直接中断执行，对于master节点的容错操作是周期性的对master节点的内容进行储存，保存目前已经完成的任务备份，便于下次重启</p>
-</li>
-<li><p>备用任务</p>
-<p> 在分布式系统中有可能会出现落伍者，导致某个节点的缓慢执行拖累了 整个系统的执行速度，因此，使用了一个通用机制来在整个任务快要执行结束时，使用空闲的worker来执行那些尚在执行中的任务，以此来避免落伍者的拖累</p>
-</li>
-</ol>
+  <h1 id="Neety"><a href="#Neety" class="headerlink" title="Neety"></a>Neety</h1><hr>
+<h2 id="1-Buffer"><a href="#1-Buffer" class="headerlink" title="1.Buffer"></a>1.Buffer</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr6744ia3uj315u062mxp.jpg" alt="image-20210604140106604"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Invariants: mark &lt;= position &lt;= limit &lt;= capacity</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> mark = -<span class="number">1</span>; <span class="comment">// 给出的一个额外的标记值，会与position进行联动</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> position = <span class="number">0</span>; <span class="comment">// 目前指针位置</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> limit; <span class="comment">// 指针的限制</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> capacity; <span class="comment">// 容量 </span></span><br><span class="line"><span class="comment">// Used only by direct buffers</span></span><br><span class="line"><span class="comment">// <span class="doctag">NOTE:</span> hoisted here for speed in JNI GetDirectBufferAddress</span></span><br><span class="line"><span class="keyword">long</span> address;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认的构造方法及构造方法用到的函数</span></span><br><span class="line">Buffer(<span class="keyword">int</span> mark, <span class="keyword">int</span> pos, <span class="keyword">int</span> lim, <span class="keyword">int</span> cap) &#123;       <span class="comment">// package-private</span></span><br><span class="line">    <span class="keyword">if</span> (cap &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Negative capacity: &quot;</span> + cap);</span><br><span class="line">    <span class="keyword">this</span>.capacity = cap;</span><br><span class="line">    limit(lim);</span><br><span class="line">    position(pos);</span><br><span class="line">    <span class="keyword">if</span> (mark &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mark &gt; pos)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;mark &gt; position: (&quot;</span></span><br><span class="line">                                               + mark + <span class="string">&quot; &gt; &quot;</span> + pos + <span class="string">&quot;)&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.mark = mark;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">limit</span><span class="params">(<span class="keyword">int</span> newLimit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((newLimit &gt; capacity) || (newLimit &lt; <span class="number">0</span>))</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">    limit = newLimit;</span><br><span class="line">    <span class="keyword">if</span> (position &gt; limit) position = limit;</span><br><span class="line">    <span class="keyword">if</span> (mark &gt; limit) mark = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">position</span><span class="params">(<span class="keyword">int</span> newPosition)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((newPosition &gt; limit) || (newPosition &lt; <span class="number">0</span>))</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">    position = newPosition;</span><br><span class="line">    <span class="keyword">if</span> (mark &gt; position) mark = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象类中的final方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">mark</span><span class="params">()</span></span>; <span class="comment">// 对buffer做出标记</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">reset</span><span class="params">()</span></span>; <span class="comment">// 将position重回至标记处</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">clear</span><span class="params">()</span></span>; <span class="comment">// 将position置0，limit置尾，mark失效，即清楚buffer中的相关指针标记，但是并不改变buffer的内容，一般用在写之前，方便进行全覆盖写</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">flip</span><span class="params">()</span></span>; <span class="comment">// limit置为position的位置，再将position置0，一般用于读取buffer此次写入的有效内容</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">rewind</span><span class="params">()</span></span>; <span class="comment">//与flip()相比，少了将limit置为position的位置的步骤</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">remaining</span><span class="params">()</span></span>; <span class="comment">// 返回limit- position，即得到剩余的有效内容</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">hasRemaining</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-ByteBuffer"><a href="#2-ByteBuffer" class="headerlink" title="2.ByteBuffer"></a>2.ByteBuffer</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">byte</span>[] hb;                  <span class="comment">// Non-null only for heap buffers</span></span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> offset;</span><br><span class="line"><span class="keyword">boolean</span> isReadOnly; 			  <span class="comment">// Valid only for heap buffers</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ByteBuffer(<span class="keyword">int</span> mark, <span class="keyword">int</span> pos, <span class="keyword">int</span> lim, <span class="keyword">int</span> cap,   <span class="comment">// package-private</span></span><br><span class="line">                 <span class="keyword">byte</span>[] hb, <span class="keyword">int</span> offset)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 该方法调用的是HeapByteBuffer的构造方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ByteBuffer <span class="title">allocate</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (capacity &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> HeapByteBuffer(capacity, capacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 再此处开辟了byte[]数组空间</span></span><br><span class="line">HeapByteBuffer(<span class="keyword">int</span> cap, <span class="keyword">int</span> lim) &#123;            <span class="comment">// package-private</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">super</span>(-<span class="number">1</span>, <span class="number">0</span>, lim, cap, <span class="keyword">new</span> <span class="keyword">byte</span>[cap], <span class="number">0</span>);</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        hb = new byte[cap];</span></span><br><span class="line"><span class="comment">        offset = 0;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 被HeapByteBuffer调用的父类方法</span></span><br><span class="line">ByteBuffer(<span class="keyword">int</span> mark, <span class="keyword">int</span> pos, <span class="keyword">int</span> lim, <span class="keyword">int</span> cap,   <span class="comment">// package-private</span></span><br><span class="line">                 <span class="keyword">byte</span>[] hb, <span class="keyword">int</span> offset)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">super</span>(mark, pos, lim, cap);</span><br><span class="line">    <span class="keyword">this</span>.hb = hb;</span><br><span class="line">    <span class="keyword">this</span>.offset = offset;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
  
       <!-- reward -->
       
@@ -192,12 +172,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/05/28/MapReduce/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/06/04/Netty/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
 
     </footer>
   </div>
@@ -205,19 +185,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/06/04/Netty/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Netty
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/05/26/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/" class="article-nav-link">
+      <a href="/2021/05/28/MapReduce/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java并发编程的艺术</div>
+        <div class="article-nav-title">MapReduce</div>
       </a>
     
   </nav>
