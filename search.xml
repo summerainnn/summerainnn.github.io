@@ -1642,7 +1642,7 @@
   <entry>
     <title>设计模式（3）装饰者模式</title>
     <url>/2021/01/22/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%883%EF%BC%89%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<h1 id="设计模式（3）装饰者模式"><a href="#设计模式（3）装饰者模式" class="headerlink" title="设计模式（3）装饰者模式"></a>设计模式（3）装饰者模式</h1><h2 id="一、原则"><a href="#一、原则" class="headerlink" title="一、原则"></a>一、原则</h2><p>开放-关闭原则：类应当对扩展 开放，对修改关闭</p>
+    <content><![CDATA[<h1 id="设计模式（3）装饰者模式"><a href="#设计模式（3）装饰者模式" class="headerlink" title="设计模式（3）装饰者模式"></a>设计模式（3）装饰者模式</h1><h2 id="一、原则"><a href="#一、原则" class="headerlink" title="一、原则"></a>一、原则</h2><p>开放-关闭原则：类应当对扩展开放，对修改关闭</p>
 <p>不需要在每个地方都采用开放-关闭原则，把注意力集中在设计中最有可能改变的地方</p>
 <p><a href="https://github.com/summerainnn/designPattern/tree/master/DecoratorPattern">示例</a></p>
 <p>抽象工厂模式：提供一个接口，用于创建相关或依赖对象的家族。而不需要明确指定具体类</p>
@@ -2005,7 +2005,7 @@
     <content><![CDATA[<h1 id="剑指-Offer-54-二叉搜索树的第k大节点"><a href="#剑指-Offer-54-二叉搜索树的第k大节点" class="headerlink" title="剑指 Offer 54. 二叉搜索树的第k大节点"></a>剑指 Offer 54. 二叉搜索树的第k大节点</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>给定一棵二叉搜索树，请找出其中第k大的节点。</p>
 <h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a><a href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/">LeetCode</a></h2><h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><ul>
 <li>二叉搜索树的右子树的数值大于根节点，根节点大于左子树</li>
-<li>中序遍历是按照右-&gt;根-&gt;左的顺序</li>
+<li>中序遍历是按照左-&gt;根-&gt;右的顺序</li>
 <li>只需中序遍历二叉搜索树即可</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> k;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> result;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthLargest</span><span class="params">(TreeNode root, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.k = k;</span><br><span class="line">        right(root);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">right</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        right(root.right);</span><br><span class="line">        <span class="keyword">this</span>.k = <span class="keyword">this</span>.k-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.k == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">this</span>.result = root.val;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        right(root.left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2117,7 +2117,7 @@
 <li>运行时数据区域<img src="https://tva1.sinaimg.cn/large/008eGmZEly1gov18laf5qj311w0u0wyl.jpg" alt="image-20210324153557866"></li>
 <li>程序计数器：<ol>
 <li>当前线程所执行的字节码的行号指示器，通过改变值来选取下一条执行的字节码指令</li>
-<li>程序控制流的指示器，分支、循环、跳转、异常处 理、线程恢复等基础功能都需要依赖这个计数器来完成。</li>
+<li>程序控制流的指示器，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器来完成。</li>
 <li>程序计数器是线程私有的，</li>
 <li>执行Java方法时，这个计数器记录的是正在执行的虚拟机字节码指令的地 址;如果正在执行的是本地(Native)方法，这个计数器值则应为空(Undefined)。</li>
 <li>唯一一个不会出现OutOfMemoryError情况的区域</li>
@@ -2211,7 +2211,7 @@
 <li>Java虚拟机内部的引用，如基本数据类型对应的Class对象，一些常驻的异常对象(比如NullPointExcepiton、OutOfMemoryError)等，还有系统类加载器。</li>
 <li>所有被同步锁(synchronized关键字)持有的对象。</li>
 <li>反映Java虚拟机内部情况的JM XBean、JVM TI中注册的回调、本地代码缓存等。</li>
-<li>除了这些固定的GC Roots集合以外，根据用户所选用的垃圾收集器以及当前回收的内存区域不 同，还可以有其他对象“临时性”地加入，共同构成完整GC Roots集合。</li>
+<li>除了这些固定的GC Roots集合以外，根据用户所选用的垃圾收集器以及当前回收的内存区域不同，还可以有其他对象“临时性”地加入，共同构成完整GC Roots集合。</li>
 </ol>
 </li>
 </ol>
@@ -2220,7 +2220,7 @@
 <li><strong>强引用，普遍存在的引用赋值</strong>，只要强应用关系还在，引用的对象就不会被GC（ArrayList 的 clear() 方法实现，将其全部置null）</li>
 <li><strong>软引用是用来描述一些还有用，但非必须的对象。</strong>只被软引用关联着的对象，在系统将要发生内 存溢出异常前，会把这些对象列进回收范围之中进行第二次回收，如果这次回收还没有足够的内存， 才会抛出内存溢出异常。java提供的类为<strong>SoftReference类</strong>，在缓存中使用较多</li>
 <li><strong>弱引用也是用来描述那些非必须对象，但是它的强度比软引用更弱一些</strong>，被弱引用关联的对象只 能生存到下一次垃圾收集发生为止。当垃圾收集器开始工作，无论当前内存是否足够，都会回收掉只 被弱引用关联的对象。java提供的类为<strong>WeakReference类</strong>，可以在不使用某一个对象时，只用将其置为null，其它引用若为弱引用，则可由GC自动处理</li>
-<li>虚引用也称为“幽灵引用”或者“幻影引用”，它是最弱的一种引用关系。一个对象是否有虚引用的 存在，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。为一个对象<strong>设置虚引用关联的唯一目的只是为了能在这个对象被收集器回收时收到一个系统通知。</strong>java提供的类为<strong>PhantomReference类</strong>，一般可以通过虚引用达到回收一些非java内的一些资源比如堆外内存的行为</li>
+<li>虚引用也称为“幽灵引用”或者“幻影引用”，它是最弱的一种引用关系。一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。为一个对象<strong>设置虚引用关联的唯一目的只是为了能在这个对象被收集器回收时收到一个系统通知。</strong>java提供的类为<strong>PhantomReference类</strong>，一般可以通过虚引用达到回收一些非java内的一些资源比如堆外内存的行为</li>
 </ol>
 </li>
 <li>不可达对象，GC调用其finalize()方法，但该方法只调用一次，若该对象重新可达，则可避免此次回收</li>
@@ -2320,7 +2320,7 @@
 </ol>
 </li>
 <li>volatile的两项特性：<ol>
-<li>保证此变量对所有线程的可见 性，这里的“可见性”是指当一条线程修改了这个变量的值，新值对于其他线程来说是可以立即得知的。</li>
+<li>保证此变量对所有线程的可见性，这里的“可见性”是指当一条线程修改了这个变量的值，新值对于其他线程来说是可以立即得知的。</li>
 <li>禁止指令重排序优化</li>
 </ol>
 </li>
@@ -2332,7 +2332,7 @@
 </ol>
 </li>
 <li>java线程采用1:1的方式实现</li>
-<li>java线程的调度：抢占式的调度</li>
+<li>java线程的调度：抢占式的调度，可以使用yield()主动让出执行时间，但是没办法主动获取执行时间，java的线程是被映射到系统的原生线程上来实现的(1:1)</li>
 <li>java线程的6态：新建、运行、无限期等待、限期等待、阻塞、结束</li>
 </ol>
 </li>
@@ -3000,7 +3000,7 @@
 <h2 id="1-Buffer"><a href="#1-Buffer" class="headerlink" title="1.Buffer"></a>1.Buffer</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gr6744ia3uj315u062mxp.jpg" alt="image-20210604140106604"></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Invariants: mark &lt;= position &lt;= limit &lt;= capacity</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> mark = -<span class="number">1</span>; <span class="comment">// 给出的一个额外的标记值，会与position进行联动</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> position = <span class="number">0</span>; <span class="comment">// 目前指针位置</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> limit; <span class="comment">// 指针的限制</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> capacity; <span class="comment">// 容量 </span></span><br><span class="line"><span class="comment">// Used only by direct buffers</span></span><br><span class="line"><span class="comment">// <span class="doctag">NOTE:</span> hoisted here for speed in JNI GetDirectBufferAddress</span></span><br><span class="line"><span class="keyword">long</span> address;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认的构造方法及构造方法用到的函数</span></span><br><span class="line">Buffer(<span class="keyword">int</span> mark, <span class="keyword">int</span> pos, <span class="keyword">int</span> lim, <span class="keyword">int</span> cap) &#123;       <span class="comment">// package-private</span></span><br><span class="line">    <span class="keyword">if</span> (cap &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Negative capacity: &quot;</span> + cap);</span><br><span class="line">    <span class="keyword">this</span>.capacity = cap;</span><br><span class="line">    limit(lim);</span><br><span class="line">    position(pos);</span><br><span class="line">    <span class="keyword">if</span> (mark &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mark &gt; pos)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;mark &gt; position: (&quot;</span></span><br><span class="line">                                               + mark + <span class="string">&quot; &gt; &quot;</span> + pos + <span class="string">&quot;)&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.mark = mark;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">limit</span><span class="params">(<span class="keyword">int</span> newLimit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((newLimit &gt; capacity) || (newLimit &lt; <span class="number">0</span>))</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">    limit = newLimit;</span><br><span class="line">    <span class="keyword">if</span> (position &gt; limit) position = limit;</span><br><span class="line">    <span class="keyword">if</span> (mark &gt; limit) mark = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">position</span><span class="params">(<span class="keyword">int</span> newPosition)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((newPosition &gt; limit) || (newPosition &lt; <span class="number">0</span>))</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">    position = newPosition;</span><br><span class="line">    <span class="keyword">if</span> (mark &gt; position) mark = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象类中的final方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">mark</span><span class="params">()</span></span>; <span class="comment">// 对buffer做出标记</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">reset</span><span class="params">()</span></span>; <span class="comment">// 将position重回至标记处</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">clear</span><span class="params">()</span></span>; <span class="comment">// 将position置0，limit置尾，mark失效，即清楚buffer中的相关指针标记，但是并不改变buffer的内容，一般用在写之前，方便进行全覆盖写</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">flip</span><span class="params">()</span></span>; <span class="comment">// limit置为position的位置，再将position置0，一般用于读取buffer此次写入的有效内容</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Buffer <span class="title">rewind</span><span class="params">()</span></span>; <span class="comment">//与flip()相比，少了将limit置为position的位置的步骤</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">remaining</span><span class="params">()</span></span>; <span class="comment">// 返回limit- position，即得到剩余的有效内容</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">hasRemaining</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-ByteBuffer"><a href="#2-ByteBuffer" class="headerlink" title="2.ByteBuffer"></a>2.ByteBuffer</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">byte</span>[] hb;                  <span class="comment">// Non-null only for heap buffers</span></span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> offset;</span><br><span class="line"><span class="keyword">boolean</span> isReadOnly; 			  <span class="comment">// Valid only for heap buffers</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ByteBuffer(<span class="keyword">int</span> mark, <span class="keyword">int</span> pos, <span class="keyword">int</span> lim, <span class="keyword">int</span> cap,   <span class="comment">// package-private</span></span><br><span class="line">                 <span class="keyword">byte</span>[] hb, <span class="keyword">int</span> offset)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 该方法调用的是HeapByteBuffer的构造方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ByteBuffer <span class="title">allocate</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (capacity &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> HeapByteBuffer(capacity, capacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 再此处开辟了byte[]数组空间</span></span><br><span class="line">HeapByteBuffer(<span class="keyword">int</span> cap, <span class="keyword">int</span> lim) &#123;            <span class="comment">// package-private</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">super</span>(-<span class="number">1</span>, <span class="number">0</span>, lim, cap, <span class="keyword">new</span> <span class="keyword">byte</span>[cap], <span class="number">0</span>);</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        hb = new byte[cap];</span></span><br><span class="line"><span class="comment">        offset = 0;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 被HeapByteBuffer调用的父类方法</span></span><br><span class="line">ByteBuffer(<span class="keyword">int</span> mark, <span class="keyword">int</span> pos, <span class="keyword">int</span> lim, <span class="keyword">int</span> cap,   <span class="comment">// package-private</span></span><br><span class="line">                 <span class="keyword">byte</span>[] hb, <span class="keyword">int</span> offset)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">super</span>(mark, pos, lim, cap);</span><br><span class="line">    <span class="keyword">this</span>.hb = hb;</span><br><span class="line">    <span class="keyword">this</span>.offset = offset;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-ByteBuffer"><a href="#2-ByteBuffer" class="headerlink" title="2.ByteBuffer"></a>2.ByteBuffer</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">byte</span>[] hb;                  <span class="comment">// Non-null only for heap buffers</span></span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> offset;</span><br><span class="line"><span class="keyword">boolean</span> isReadOnly; 			  <span class="comment">// Valid only for heap buffers</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ByteBuffer(<span class="keyword">int</span> mark, <span class="keyword">int</span> pos, <span class="keyword">int</span> lim, <span class="keyword">int</span> cap,   <span class="comment">// package-private</span></span><br><span class="line">                 <span class="keyword">byte</span>[] hb, <span class="keyword">int</span> offset)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 该方法调用的是HeapByteBuffer的构造方法</span></span><br><span class="line"><span class="comment">// 一般使用该静态方法来获取一个ByteBuffer</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ByteBuffer <span class="title">allocate</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (capacity &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> HeapByteBuffer(capacity, capacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 再此处开辟了byte[]数组空间</span></span><br><span class="line">HeapByteBuffer(<span class="keyword">int</span> cap, <span class="keyword">int</span> lim) &#123;            <span class="comment">// package-private</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">super</span>(-<span class="number">1</span>, <span class="number">0</span>, lim, cap, <span class="keyword">new</span> <span class="keyword">byte</span>[cap], <span class="number">0</span>);</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        hb = new byte[cap];</span></span><br><span class="line"><span class="comment">        offset = 0;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 被HeapByteBuffer调用的父类方法</span></span><br><span class="line">ByteBuffer(<span class="keyword">int</span> mark, <span class="keyword">int</span> pos, <span class="keyword">int</span> lim, <span class="keyword">int</span> cap,   <span class="comment">// package-private</span></span><br><span class="line">                 <span class="keyword">byte</span>[] hb, <span class="keyword">int</span> offset)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">super</span>(mark, pos, lim, cap);</span><br><span class="line">    <span class="keyword">this</span>.hb = hb;</span><br><span class="line">    <span class="keyword">this</span>.offset = offset;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -3008,5 +3008,80 @@
       <tags>
         <tag>java</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2021/05/07/%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<h2 id="1-关系模型简述"><a href="#1-关系模型简述" class="headerlink" title="1.关系模型简述"></a>1.关系模型简述</h2><hr>
+<ol>
+<li>关系模型是处理 Table的，由三个部分组成：<ol>
+<li>描述DB各种数据的基本结构形式</li>
+<li>描述Table与Table之间可能发生的各种操作（关系运算）</li>
+<li>描述这些操作所应遵循的约束条件</li>
+</ol>
+</li>
+<li>关系模型的三个要素：<ol>
+<li>基本结构：Relation/Table</li>
+<li>基本操作：<ol>
+<li>并与差需要满足并相容性</li>
+<li>笛卡尔积：任意组合，需要知道度数是表的列的数目</li>
+</ol>
+</li>
+<li>完整性约束：实体完整性（主键约束）、参照完整性（外键约束）和用户自定义的完整性（列约束）</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-数据库的完整性与安全性控制"><a href="#2-数据库的完整性与安全性控制" class="headerlink" title="2.数据库的完整性与安全性控制"></a>2.数据库的完整性与安全性控制</h2><hr>
+<ol>
+<li>数据库完整性是指DBMS应保证DB在任何情况下的正确性、有效性和一致性<ol>
+<li>广义：语义完整性、并发控制、安全控制、DB故障恢复</li>
+<li>狭义：专指语义完整，</li>
+</ol>
+</li>
+<li>关系模型完整性要求：<ol>
+<li>实体完整性</li>
+<li>参照完整性</li>
+<li>用户自定义完整性</li>
+</ol>
+</li>
+<li>完整性约束条件的一般形式（Quad四元组）<ol>
+<li>Integrity Constraint = （O·P·A·R）</li>
+<li>O–数据集合：约束的对象</li>
+<li>P–谓词条件：什么样的约束</li>
+<li>A–触发条件：什么时候检查</li>
+<li>R–响应动作：不满足时怎么办</li>
+</ol>
+</li>
+</ol>
+<h2 id="3-函数依赖及其公理-定理"><a href="#3-函数依赖及其公理-定理" class="headerlink" title="3.函数依赖及其公理/定理"></a>3.函数依赖及其公理/定理</h2><hr>
+<ol>
+<li><p>函数依赖记为X-&gt;Y，称为X函数决定Y，即对于同一个x只有唯一的一个确定的Y（函数）<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqd5rrhmwmj30zc0jygpb.jpg" alt="image-20210510111315944"></p>
+</li>
+<li><p>完全函数依赖和部分函数依赖：</p>
+<ol>
+<li>完全函数依赖，X-&gt;Y（X，Y是属性集合）必须由完全的X才可以决定Y，X是决定Y的最小不可分割属性集合，记为<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqd5ylndbtj303o01edfp.jpg" alt="image-20210510111952135"></li>
+<li>部分函数依赖：X满足X-&gt;Y,X的真子集X’满足X’-&gt;Y，记为<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqd5yv9n6bj304e01cq2v.jpg" alt="image-20210510112008071"></li>
+</ol>
+</li>
+<li><p>传递函数依赖：若X-&gt;Y,Y-&gt;Z,且X不包含Y，Y不包含Z，X不包含Z，Y不决定X，则称Z传递函数依赖于X。</p>
+</li>
+<li><p>函数依赖的相关概念</p>
+<ol>
+<li>候选键：<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqdg1xf298j30wq0f0acr.jpg" alt="image-20210510170901787"></li>
+</ol>
+</li>
+</ol>
+<h2 id="4-关系模式范式设计"><a href="#4-关系模式范式设计" class="headerlink" title="4.关系模式范式设计"></a>4.关系模式范式设计</h2><hr>
+<ol>
+<li>每个分量都是不可分的</li>
+<li>每一非主属性完全函数依赖于候选键</li>
+<li>非主属性没有对主属性的传递依赖，即非主键列只依赖于主键，不依赖于其他非主键（如果满足第三范式则一定满足第二范式）<ol>
+<li>BCNF：不存在主属性决定主属性的情况</li>
+</ol>
+</li>
+<li></li>
+</ol>
+<h2 id="5-数据库物理储存"><a href="#5-数据库物理储存" class="headerlink" title="5.数据库物理储存"></a>5.数据库物理储存</h2><hr>
+]]></content>
   </entry>
 </search>

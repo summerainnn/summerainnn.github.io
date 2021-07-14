@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Archives: 2021 |  summerain
+     summerain
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -43,240 +43,220 @@
       
     <main class="content on">
       <section class="outer">
-  
-  <article class="articles">
-    
-    
-    <h1 class="page-type-title">2021</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2021" class="archive-year">2021</a>
+  <article
+  id="post-数据库"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2021/05/07/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="article-date">
+  <time datetime="2021-05-07T10:03:11.267Z" itemprop="datePublished">2021-05-07</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">611</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">2 min</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-    <div class="archives">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/05/07/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="archive-article-date">
-  <time datetime="2021-05-07T10:03:11.267Z" itemprop="datePublished">05/07</time>
-</a>
-      
+    <div class="tocbot"></div>
 
-    </header>
-    
-    
-  </div>
-</article>
-      
+
+
+
   
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/04/29/%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  <time datetime="2021-04-29T01:31:59.000Z" itemprop="datePublished">04/29</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/04/29/%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
-    >现代操作系统</a> 
-</h2>
+  <h2 id="1-关系模型简述"><a href="#1-关系模型简述" class="headerlink" title="1.关系模型简述"></a>1.关系模型简述</h2><hr>
+<ol>
+<li>关系模型是处理 Table的，由三个部分组成：<ol>
+<li>描述DB各种数据的基本结构形式</li>
+<li>描述Table与Table之间可能发生的各种操作（关系运算）</li>
+<li>描述这些操作所应遵循的约束条件</li>
+</ol>
+</li>
+<li>关系模型的三个要素：<ol>
+<li>基本结构：Relation/Table</li>
+<li>基本操作：<ol>
+<li>并与差需要满足并相容性</li>
+<li>笛卡尔积：任意组合，需要知道度数是表的列的数目</li>
+</ol>
+</li>
+<li>完整性约束：实体完整性（主键约束）、参照完整性（外键约束）和用户自定义的完整性（列约束）</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-数据库的完整性与安全性控制"><a href="#2-数据库的完整性与安全性控制" class="headerlink" title="2.数据库的完整性与安全性控制"></a>2.数据库的完整性与安全性控制</h2><hr>
+<ol>
+<li>数据库完整性是指DBMS应保证DB在任何情况下的正确性、有效性和一致性<ol>
+<li>广义：语义完整性、并发控制、安全控制、DB故障恢复</li>
+<li>狭义：专指语义完整，</li>
+</ol>
+</li>
+<li>关系模型完整性要求：<ol>
+<li>实体完整性</li>
+<li>参照完整性</li>
+<li>用户自定义完整性</li>
+</ol>
+</li>
+<li>完整性约束条件的一般形式（Quad四元组）<ol>
+<li>Integrity Constraint = （O·P·A·R）</li>
+<li>O–数据集合：约束的对象</li>
+<li>P–谓词条件：什么样的约束</li>
+<li>A–触发条件：什么时候检查</li>
+<li>R–响应动作：不满足时怎么办</li>
+</ol>
+</li>
+</ol>
+<h2 id="3-函数依赖及其公理-定理"><a href="#3-函数依赖及其公理-定理" class="headerlink" title="3.函数依赖及其公理/定理"></a>3.函数依赖及其公理/定理</h2><hr>
+<ol>
+<li><p>函数依赖记为X-&gt;Y，称为X函数决定Y，即对于同一个x只有唯一的一个确定的Y（函数）<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqd5rrhmwmj30zc0jygpb.jpg" alt="image-20210510111315944"></p>
+</li>
+<li><p>完全函数依赖和部分函数依赖：</p>
+<ol>
+<li>完全函数依赖，X-&gt;Y（X，Y是属性集合）必须由完全的X才可以决定Y，X是决定Y的最小不可分割属性集合，记为<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqd5ylndbtj303o01edfp.jpg" alt="image-20210510111952135"></li>
+<li>部分函数依赖：X满足X-&gt;Y,X的真子集X’满足X’-&gt;Y，记为<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqd5yv9n6bj304e01cq2v.jpg" alt="image-20210510112008071"></li>
+</ol>
+</li>
+<li><p>传递函数依赖：若X-&gt;Y,Y-&gt;Z,且X不包含Y，Y不包含Z，X不包含Z，Y不决定X，则称Z传递函数依赖于X。</p>
+</li>
+<li><p>函数依赖的相关概念</p>
+<ol>
+<li>候选键：<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqdg1xf298j30wq0f0acr.jpg" alt="image-20210510170901787"></li>
+</ol>
+</li>
+</ol>
+<h2 id="4-关系模式范式设计"><a href="#4-关系模式范式设计" class="headerlink" title="4.关系模式范式设计"></a>4.关系模式范式设计</h2><hr>
+<ol>
+<li>每个分量都是不可分的</li>
+<li>每一非主属性完全函数依赖于候选键</li>
+<li>非主属性没有对主属性的传递依赖，即非主键列只依赖于主键，不依赖于其他非主键（如果满足第三范式则一定满足第二范式）<ol>
+<li>BCNF：不存在主属性决定主属性的情况</li>
+</ol>
+</li>
+<li></li>
+</ol>
+<h2 id="5-数据库物理储存"><a href="#5-数据库物理储存" class="headerlink" title="5.数据库物理储存"></a>5.数据库物理储存</h2><hr>
  
-
-    </header>
-    
-    
-  </div>
-</article>
+      <!-- reward -->
       
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/04/09/TCP:IP%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  <time datetime="2021-04-09T06:52:59.000Z" itemprop="datePublished">04/09</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/04/09/TCP:IP%E8%AF%A6%E8%A7%A3/"
-    >TCP/IP详解</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/04/08/%E9%AB%98%E6%80%A7%E8%83%BDMySQL/" class="archive-article-date">
-  <time datetime="2021-04-08T01:05:59.000Z" itemprop="datePublished">04/08</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/04/08/%E9%AB%98%E6%80%A7%E8%83%BDMySQL/"
-    >高性能MySQL</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="archive-article-date">
-  <time datetime="2021-03-24T07:31:59.000Z" itemprop="datePublished">03/24</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/03/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/"
-    >深入理解java虚拟机</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/02/23/%E5%89%91%E6%8C%87%20Offer%2057.%20%E5%92%8C%E4%B8%BAs%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97/" class="archive-article-date">
-  <time datetime="2021-02-23T07:47:57.000Z" itemprop="datePublished">02/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/02/23/%E5%89%91%E6%8C%87%20Offer%2057.%20%E5%92%8C%E4%B8%BAs%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97/"
-    >剑指 Offer 57. 和为s的两个数字</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/02/23/%E5%89%91%E6%8C%87%20Offer%2055%20-%20II.%20%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%20/" class="archive-article-date">
-  <time datetime="2021-02-23T07:11:52.000Z" itemprop="datePublished">02/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/02/23/%E5%89%91%E6%8C%87%20Offer%2055%20-%20II.%20%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%20/"
-    >剑指 Offer 55 - II. 平衡二叉树</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/02/23/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="archive-article-date">
-  <time datetime="2021-02-23T03:03:07.000Z" itemprop="datePublished">02/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/02/23/MySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/"
-    >MySQL必知必会</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/02/22/%E5%89%91%E6%8C%87%20Offer%2055%20-%20I.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" class="archive-article-date">
-  <time datetime="2021-02-22T07:55:54.000Z" itemprop="datePublished">02/22</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/02/22/%E5%89%91%E6%8C%87%20Offer%2055%20-%20I.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/"
-    >剑指 Offer 55 - I. 二叉树的深度</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/02/11/%E5%89%91%E6%8C%87%20Offer%2054.%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E7%AC%ACk%E5%A4%A7%E8%8A%82%E7%82%B9/" class="archive-article-date">
-  <time datetime="2021-02-11T11:20:39.000Z" itemprop="datePublished">02/11</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/02/11/%E5%89%91%E6%8C%87%20Offer%2054.%20%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E7%AC%ACk%E5%A4%A7%E8%8A%82%E7%82%B9/"
-    >剑指 Offer 54. 二叉搜索树的第k大节点</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
       
     </div>
-  </div>
-  
-  
-
-  
-  <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/2021/">上一页</a><a class="page-number" href="/archives/2021/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2021/page/3/">3</a><a class="page-number" href="/archives/2021/page/4/">4</a><a class="extend next" rel="next" href="/archives/2021/page/3/">下一页</a>
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/05/07/%E6%95%B0%E6%8D%AE%E5%BA%93/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/05/17/%E5%89%91%E6%8C%87%20Offer%2034.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            剑指 Offer 34. 二叉树中和为某一值的路径
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/04/29/%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">现代操作系统</div>
+      </a>
+    
   </nav>
+
   
+     
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -422,6 +402,23 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
